@@ -1,6 +1,9 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 @layer base {
   :root {
@@ -96,6 +99,42 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-poppins;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .service-card {
+    @apply relative overflow-hidden bg-white shadow-lg rounded-xl p-6 transition-all duration-300 hover:shadow-xl;
+  }
+  
+  .service-card::before {
+    content: '';
+    @apply absolute inset-0 opacity-0 transition-opacity duration-300;
+  }
+  
+  .service-card:hover::before {
+    @apply opacity-10;
+  }
+  
+  .service-card.embroidery::before {
+    background: linear-gradient(135deg, theme('colors.brand.blue'), theme('colors.brand.green'));
+  }
+  
+  .service-card.printing::before {
+    background: linear-gradient(135deg, theme('colors.brand.red'), theme('colors.brand.blue'));
+  }
+  
+  .service-card.tailoring::before {
+    background: linear-gradient(135deg, theme('colors.brand.green'), theme('colors.brand.red'));
+  }
+  
+  .service-card.speed::before {
+    background: linear-gradient(135deg, theme('colors.brand.red'), theme('colors.brand.green'));
   }
 }

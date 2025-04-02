@@ -1,0 +1,11 @@
+
+.mask-uniform {
+  mask-image: url('public/lovable-uploads/41d79cc6-318f-4b17-9c6d-6c07e1028dae.png');
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-image: url('public/lovable-uploads/41d79cc6-318f-4b17-9c6d-6c07e1028dae.png');
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+}
