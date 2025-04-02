@@ -3,12 +3,12 @@ import { useEffect, useRef } from 'react';
 
 const Clients = () => {
   const clients = [
-    { name: "Hilton Dubai", logo: "/placeholder.svg" },
-    { name: "Dubai Golf", logo: "/placeholder.svg" },
-    { name: "Raddison Red", logo: "/placeholder.svg" },
-    { name: "Little Bangkok", logo: "/placeholder.svg" },
-    { name: "Jones the Grocer", logo: "/placeholder.svg" },
-    { name: "Fairgreen International School", logo: "/placeholder.svg" },
+    { name: "Hilton Dubai", logo: "public/lovable-uploads/2614de58-ea35-4170-9839-08bbbce4eeed.png" },
+    { name: "Dubai Golf", logo: "public/lovable-uploads/770df8ec-a0bc-4a00-ba18-7d166c71a7f8.png" },
+    { name: "Radisson Blu", logo: "public/lovable-uploads/194371d9-ffe8-4715-aadc-e3bb4d7f5aa2.png" },
+    { name: "Little Bangkok", logo: "public/lovable-uploads/5c02239f-d1aa-4a39-8b4b-4f1ea4180b59.png" },
+    { name: "Jones the Grocer", logo: "public/lovable-uploads/34708d28-a3c3-4142-8d90-f0def4d8b341.png" },
+    { name: "Fairgreen International School", logo: "public/lovable-uploads/22a3dd05-a767-49f8-8ae6-5801a509bf62.png" },
   ];
 
   const sectionRef = useRef<HTMLElement>(null);
@@ -53,7 +53,7 @@ const Clients = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8">
           {clients.map((client, index) => (
             <div 
               key={index} 
@@ -62,7 +62,7 @@ const Clients = () => {
               <img 
                 src={client.logo} 
                 alt={client.name} 
-                className="max-w-full max-h-16 mb-4 opacity-70"
+                className="max-w-full max-h-20 mb-4 object-contain"
               />
               <p className="text-center font-medium text-gray-700">{client.name}</p>
             </div>

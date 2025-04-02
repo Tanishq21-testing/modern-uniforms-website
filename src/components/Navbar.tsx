@@ -36,18 +36,11 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
         <a href="#hero" className="flex items-center space-x-2">
-          <div className="relative">
-            <div className="absolute -left-6 -top-6 w-12 h-12 rounded-full bg-brand-blue flex items-center justify-center">
-              <div className="w-6 h-6 bg-black mask-uniform"></div>
-            </div>
-            <div className="w-16 h-16 rounded-full bg-brand-red flex items-center justify-center">
-              <div className="w-8 h-8 bg-black mask-uniform"></div>
-            </div>
-            <div className="absolute -right-4 -bottom-2 w-10 h-10 rounded-full bg-brand-green flex items-center justify-center">
-              <div className="w-5 h-5 bg-black mask-uniform"></div>
-            </div>
-          </div>
-          <span className="text-xl font-semibold ml-4">UniformConnect</span>
+          <img 
+            src="public/lovable-uploads/4feb5bf9-5dd6-4d6e-9a1d-ec2829a7bf5e.png" 
+            alt="UniformConnect Logo" 
+            className="h-12 w-auto"
+          />
         </a>
 
         {/* Desktop Menu */}

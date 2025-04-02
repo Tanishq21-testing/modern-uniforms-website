@@ -1,11 +1,22 @@
 
 .mask-uniform {
-  mask-image: url('public/lovable-uploads/41d79cc6-318f-4b17-9c6d-6c07e1028dae.png');
+  mask-image: url('public/lovable-uploads/22a3dd05-a767-49f8-8ae6-5801a509bf62.png');
   mask-size: contain;
   mask-repeat: no-repeat;
   mask-position: center;
-  -webkit-mask-image: url('public/lovable-uploads/41d79cc6-318f-4b17-9c6d-6c07e1028dae.png');
+  -webkit-mask-image: url('public/lovable-uploads/22a3dd05-a767-49f8-8ae6-5801a509bf62.png');
   -webkit-mask-size: contain;
   -webkit-mask-repeat: no-repeat;
   -webkit-mask-position: center;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-image {
+  height: auto;
+  width: 100%;
+  max-width: 200px;
 }

@@ -31,17 +31,11 @@ const Hero = () => {
         </div>
         
         <div className="order-1 md:order-2 flex justify-center animate-slide-in-right" style={{ animationDelay: '0.5s' }}>
-          <div className="relative">
-            <div className="absolute -left-16 top-0 w-32 h-32 rounded-full bg-brand-blue flex items-center justify-center animate-float" style={{ animationDelay: '0.2s' }}>
-              <div className="w-16 h-16 bg-black mask-uniform"></div>
-            </div>
-            <div className="w-64 h-64 rounded-full bg-brand-red flex items-center justify-center">
-              <div className="w-32 h-32 bg-black mask-uniform"></div>
-            </div>
-            <div className="absolute -right-8 bottom-4 w-24 h-24 rounded-full bg-brand-green flex items-center justify-center animate-float" style={{ animationDelay: '0.7s' }}>
-              <div className="w-12 h-12 bg-black mask-uniform"></div>
-            </div>
-          </div>
+          <img 
+            src="public/lovable-uploads/ed44585b-831a-4f48-b0ba-cd780069350a.png" 
+            alt="UniformConnect Logo" 
+            className="w-auto h-auto max-w-full"
+          />
         </div>
       </div>
     </section>
