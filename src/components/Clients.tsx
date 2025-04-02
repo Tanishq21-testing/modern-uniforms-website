@@ -3,12 +3,12 @@ import { useEffect, useRef } from 'react';
 
 const Clients = () => {
   const clients = [
-    { name: "Hilton Dubai", logo: "public/lovable-uploads/2614de58-ea35-4170-9839-08bbbce4eeed.png" },
-    { name: "Dubai Golf", logo: "public/lovable-uploads/770df8ec-a0bc-4a00-ba18-7d166c71a7f8.png" },
-    { name: "Radisson Blu", logo: "public/lovable-uploads/194371d9-ffe8-4715-aadc-e3bb4d7f5aa2.png" },
-    { name: "Little Bangkok", logo: "public/lovable-uploads/5c02239f-d1aa-4a39-8b4b-4f1ea4180b59.png" },
-    { name: "Jones the Grocer", logo: "public/lovable-uploads/34708d28-a3c3-4142-8d90-f0def4d8b341.png" },
-    { name: "Fairgreen International School", logo: "public/lovable-uploads/22a3dd05-a767-49f8-8ae6-5801a509bf62.png" },
+    { name: "Hilton", logo: "public/lovable-uploads/99892b74-d545-4bd1-bc07-984c4f423139.png" },
+    { name: "Dubai Golf", logo: "public/lovable-uploads/de9d1bb9-9276-43e3-b9c1-089a81f98d66.png" },
+    { name: "Radisson Blu", logo: "public/lovable-uploads/961d484c-e6d4-41be-b37b-760ef7719be2.png" },
+    { name: "Little Bangkok", logo: "public/lovable-uploads/973bd696-f3d4-44b8-ac1f-6b5da097933f.png" },
+    { name: "Jones the Grocer", logo: "public/lovable-uploads/e04847a1-d76b-43cc-84b3-ac2918abf1de.png" },
+    { name: "Fairgreen International School", logo: "public/lovable-uploads/c522c6f5-23d9-47bc-9d70-926710ca3bfa.png" },
   ];
 
   const sectionRef = useRef<HTMLElement>(null);
