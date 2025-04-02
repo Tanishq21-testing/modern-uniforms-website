@@ -32,7 +32,7 @@ const Hero = () => {
         
         <div className="order-1 md:order-2 flex justify-center animate-slide-in-right" style={{ animationDelay: '0.5s' }}>
           <img 
-            src="public/lovable-uploads/ed44585b-831a-4f48-b0ba-cd780069350a.png" 
+            src="public/lovable-uploads/7b06a816-98dc-4284-9f22-f5f23c2e2494.png" 
             alt="UniformConnect Logo" 
             className="w-auto h-auto max-w-full"
           />

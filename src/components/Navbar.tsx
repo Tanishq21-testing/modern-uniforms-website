@@ -37,7 +37,7 @@ const Navbar = () => {
       <div className="container mx-auto px-4 flex justify-between items-center">
         <a href="#hero" className="flex items-center space-x-2">
           <img 
-            src="public/lovable-uploads/4feb5bf9-5dd6-4d6e-9a1d-ec2829a7bf5e.png" 
+            src="public/lovable-uploads/7b06a816-98dc-4284-9f22-f5f23c2e2494.png" 
             alt="UniformConnect Logo" 
             className="h-12 w-auto"
           />
