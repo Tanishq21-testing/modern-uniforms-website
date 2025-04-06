@@ -3,6 +3,7 @@ import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
 import { Check } from 'lucide-react';
+import Clients from '@/components/Clients';
 
 const Landing = () => {
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -111,24 +112,8 @@ const Landing = () => {
         </div>
       </section>
 
-      {/* Trusted By Section */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-4">Trusted By</h2>
-          <p className="text-center text-gray-600 mb-12">
-            Join these prestigious brands who trust us with their uniform needs
-          </p>
-          
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 items-center justify-items-center">
-            <img src="public/lovable-uploads/99892b74-d545-4bd1-bc07-984c4f423139.png" alt="Hilton" className="h-16 w-auto object-contain" />
-            <img src="public/lovable-uploads/de9d1bb9-9276-43e3-b9c1-089a81f98d66.png" alt="Dubai Golf" className="h-16 w-auto object-contain" />
-            <img src="public/lovable-uploads/961d484c-e6d4-41be-b37b-760ef7719be2.png" alt="Radisson Blu" className="h-16 w-auto object-contain" />
-            <img src="public/lovable-uploads/973bd696-f3d4-44b8-ac1f-6b5da097933f.png" alt="Little Bangkok" className="h-16 w-auto object-contain" />
-            <img src="public/lovable-uploads/e04847a1-d76b-43cc-84b3-ac2918abf1de.png" alt="Jones the Grocer" className="h-16 w-auto object-contain" />
-            <img src="public/lovable-uploads/c522c6f5-23d9-47bc-9d70-926710ca3bfa.png" alt="Fairgreen International School" className="h-16 w-auto object-contain" />
-          </div>
-        </div>
-      </section>
+      {/* Trusted By Section - Now using the Clients component */}
+      <Clients />
 
       {/* CTA Section */}
       <section className="py-16 bg-gray-900 text-white">
