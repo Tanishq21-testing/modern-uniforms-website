@@ -136,4 +136,17 @@
   .service-card.speed::before {
     background: linear-gradient(135deg, theme('colors.brand.red'), theme('colors.brand.green'));
   }
+  
+  .landing-cta {
+    @apply relative overflow-hidden bg-brand-red text-white px-6 py-3 rounded-md transition-all;
+  }
+  
+  .landing-cta::before {
+    content: '';
+    @apply absolute inset-0 bg-white opacity-0 transition-opacity duration-300;
+  }
+  
+  .landing-cta:hover::before {
+    @apply opacity-10;
+  }
 }
