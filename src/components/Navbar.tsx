@@ -50,7 +50,7 @@ const Navbar = () => {
           <Link to="/about-us" className="text-gray-700 hover:text-brand-blue transition-colors">About Us</Link>
           <Link to="/case-studies" className="text-gray-700 hover:text-brand-green transition-colors">Case Studies</Link>
           <Link to="/services" className="text-gray-700 hover:text-brand-blue transition-colors">Services</Link>
-          <a href="#clients" className="text-gray-700 hover:text-brand-green transition-colors">Clients</a>
+          <Link to="/clients" className="text-gray-700 hover:text-brand-green transition-colors">Clients</Link>
           <a href="#why-us" className="text-gray-700 hover:text-brand-red transition-colors">Why Choose Us</a>
         </nav>
 
@@ -101,13 +101,13 @@ const Navbar = () => {
             >
               Services
             </Link>
-            <a 
-              href="#clients" 
+            <Link 
+              to="/clients"
               className="text-gray-700 hover:text-brand-green transition-colors py-2"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Clients
-            </a>
+            </Link>
             <a 
               href="#why-us" 
               className="text-gray-700 hover:text-brand-red transition-colors py-2"
