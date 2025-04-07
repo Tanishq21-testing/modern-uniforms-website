@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -35,25 +36,28 @@ const Navbar = () => {
       )}
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
-        <a href="#hero" className="flex items-center space-x-2">
+        <Link to="/" className="flex items-center space-x-2">
           <img 
             src="public/lovable-uploads/7b06a816-98dc-4284-9f22-f5f23c2e2494.png" 
             alt="UniformConnect Logo" 
             className="h-12 w-auto"
           />
-        </a>
+        </Link>
 
         {/* Desktop Menu */}
         <nav className="hidden md:flex space-x-8">
-          <a href="#about" className="text-gray-700 hover:text-brand-red transition-colors">About Us</a>
+          <Link to="/" className="text-gray-700 hover:text-brand-red transition-colors">Home</Link>
+          <Link to="/about-us" className="text-gray-700 hover:text-brand-blue transition-colors">About Us</Link>
           <a href="#services" className="text-gray-700 hover:text-brand-blue transition-colors">Services</a>
           <a href="#clients" className="text-gray-700 hover:text-brand-green transition-colors">Clients</a>
           <a href="#why-us" className="text-gray-700 hover:text-brand-red transition-colors">Why Choose Us</a>
         </nav>
 
-        <Button className="hidden md:flex bg-brand-red hover:bg-brand-red/90 text-white">
-          Contact Us
-        </Button>
+        <Link to="/landing">
+          <Button className="hidden md:flex bg-brand-red hover:bg-brand-red/90 text-white">
+            Contact Us
+          </Button>
+        </Link>
 
         {/* Mobile Menu Toggle */}
         <button 
@@ -68,13 +72,20 @@ const Navbar = () => {
       {isMobileMenuOpen && (
         <div className="md:hidden bg-white absolute w-full shadow-lg animate-fade-in">
           <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
-            <a 
-              href="#about" 
+            <Link 
+              to="/"
               className="text-gray-700 hover:text-brand-red transition-colors py-2"
               onClick={() => setIsMobileMenuOpen(false)}
             >
+              Home
+            </Link>
+            <Link 
+              to="/about-us"
+              className="text-gray-700 hover:text-brand-blue transition-colors py-2"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
               About Us
-            </a>
+            </Link>
             <a 
               href="#services" 
               className="text-gray-700 hover:text-brand-blue transition-colors py-2"
@@ -96,9 +107,11 @@ const Navbar = () => {
             >
               Why Choose Us
             </a>
-            <Button className="bg-brand-red hover:bg-brand-red/90 text-white w-full">
-              Contact Us
-            </Button>
+            <Link to="/landing">
+              <Button className="bg-brand-red hover:bg-brand-red/90 text-white w-full">
+                Contact Us
+              </Button>
+            </Link>
           </div>
         </div>
       )}
