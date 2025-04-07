@@ -48,6 +48,7 @@ const Navbar = () => {
         <nav className="hidden md:flex space-x-8">
           <Link to="/" className="text-gray-700 hover:text-brand-red transition-colors">Home</Link>
           <Link to="/about-us" className="text-gray-700 hover:text-brand-blue transition-colors">About Us</Link>
+          <Link to="/case-studies" className="text-gray-700 hover:text-brand-green transition-colors">Case Studies</Link>
           <a href="#services" className="text-gray-700 hover:text-brand-blue transition-colors">Services</a>
           <a href="#clients" className="text-gray-700 hover:text-brand-green transition-colors">Clients</a>
           <a href="#why-us" className="text-gray-700 hover:text-brand-red transition-colors">Why Choose Us</a>
@@ -85,6 +86,13 @@ const Navbar = () => {
               onClick={() => setIsMobileMenuOpen(false)}
             >
               About Us
+            </Link>
+            <Link 
+              to="/case-studies"
+              className="text-gray-700 hover:text-brand-green transition-colors py-2"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Case Studies
             </Link>
             <a 
               href="#services" 
