@@ -54,7 +54,7 @@ const Navbar = () => {
           <a href="#why-us" className="text-gray-700 hover:text-brand-red transition-colors">Why Choose Us</a>
         </nav>
 
-        <Link to="/landing">
+        <Link to="/contact-us">
           <Button className="hidden md:flex bg-brand-red hover:bg-brand-red/90 text-white">
             Contact Us
           </Button>
@@ -115,7 +115,10 @@ const Navbar = () => {
             >
               Why Choose Us
             </a>
-            <Link to="/landing">
+            <Link 
+              to="/contact-us"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
               <Button className="bg-brand-red hover:bg-brand-red/90 text-white w-full">
                 Contact Us
               </Button>
