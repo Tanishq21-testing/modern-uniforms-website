@@ -51,7 +51,6 @@ const Navbar = () => {
           <Link to="/case-studies" className="text-gray-700 hover:text-brand-green transition-colors">Case Studies</Link>
           <Link to="/services" className="text-gray-700 hover:text-brand-blue transition-colors">Services</Link>
           <Link to="/clients" className="text-gray-700 hover:text-brand-green transition-colors">Clients</Link>
-          <a href="#why-us" className="text-gray-700 hover:text-brand-red transition-colors">Why Choose Us</a>
         </nav>
 
         <Link to="/contact-us">
@@ -108,13 +107,6 @@ const Navbar = () => {
             >
               Clients
             </Link>
-            <a 
-              href="#why-us" 
-              className="text-gray-700 hover:text-brand-red transition-colors py-2"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Why Choose Us
-            </a>
             <Link 
               to="/contact-us"
               onClick={() => setIsMobileMenuOpen(false)}
