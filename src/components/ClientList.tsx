@@ -1,14 +1,15 @@
 
 import React, { useEffect, useRef, useState } from 'react';
+import { images } from '@/assets/images';
 
 const ClientList = () => {
   const clients = [
-    { name: "Hilton", logo: "public/lovable-uploads/99892b74-d545-4bd1-bc07-984c4f423139.png", category: "Hospitality" },
-    { name: "Dubai Golf", logo: "public/lovable-uploads/de9d1bb9-9276-43e3-b9c1-089a81f98d66.png", category: "Sports" },
-    { name: "Radisson Blu", logo: "public/lovable-uploads/961d484c-e6d4-41be-b37b-760ef7719be2.png", category: "Hospitality" },
-    { name: "Little Bangkok", logo: "public/lovable-uploads/973bd696-f3d4-44b8-ac1f-6b5da097933f.png", category: "Food & Beverage" },
-    { name: "Jones the Grocer", logo: "public/lovable-uploads/e04847a1-d76b-43cc-84b3-ac2918abf1de.png", category: "Food & Beverage" },
-    { name: "Fairgreen International School", logo: "public/lovable-uploads/c522c6f5-23d9-47bc-9d70-926710ca3bfa.png", category: "Education" },
+    { name: "Hilton", logo: images.clientLogos.hilton, category: "Hospitality" },
+    { name: "Dubai Golf", logo: images.clientLogos.dubaiGolf, category: "Sports" },
+    { name: "Radisson Blu", logo: images.clientLogos.radissonBlu, category: "Hospitality" },
+    { name: "Little Bangkok", logo: images.clientLogos.littleBangkok, category: "Food & Beverage" },
+    { name: "Jones the Grocer", logo: images.clientLogos.jonesTheGrocer, category: "Food & Beverage" },
+    { name: "Fairgreen International School", logo: images.clientLogos.fairgreen, category: "Education" },
     // You can add more clients here
   ];
 

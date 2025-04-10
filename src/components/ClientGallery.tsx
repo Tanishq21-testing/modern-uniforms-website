@@ -7,36 +7,37 @@ import {
   CarouselNext, 
   CarouselPrevious 
 } from "@/components/ui/carousel";
+import { images } from '@/assets/images';
 
 const ClientGallery = () => {
   const galleryItems = [
     {
-      image: "public/lovable-uploads/973bd696-f3d4-44b8-ac1f-6b5da097933f.png",
+      image: images.clientLogos.littleBangkok,
       title: "Restaurant Staff Uniforms",
       description: "Custom aprons and chef uniforms for Jones The Grocer"
     },
     {
-      image: "public/lovable-uploads/194371d9-ffe8-4715-aadc-e3bb4d7f5aa2.png",
+      image: images.clientLogos.littleBangkok,
       title: "Little Bangkok Uniforms",
       description: "Complete staff attire for all Little Bangkok locations"
     },
     {
-      image: "public/lovable-uploads/770df8ec-a0bc-4a00-ba18-7d166c71a7f8.png",
+      image: images.servicesHero,
       title: "School Hoodies",
       description: "Premium embroidered hoodies for Fairgreen International School"
     },
     {
-      image: "public/lovable-uploads/ba74cbb7-6e39-4a0f-850e-6e9098beaf83.png",
+      image: images.callToAction,
       title: "Corporate Uniforms",
       description: "Professional attire for corporate clients"
     },
     {
-      image: "public/lovable-uploads/99892b74-d545-4bd1-bc07-984c4f423139.png",
+      image: images.clientLogos.hilton,
       title: "Hospitality Uniforms",
       description: "Elegant staff uniforms for luxury hotels"
     },
     {
-      image: "public/lovable-uploads/de9d1bb9-9276-43e3-b9c1-089a81f98d66.png",
+      image: images.clientLogos.dubaiGolf,
       title: "Sports Uniforms",
       description: "Custom sportswear for Dubai Golf"
     }

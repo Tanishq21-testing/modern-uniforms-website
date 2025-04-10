@@ -2,6 +2,7 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
+import { images } from '@/assets/images';
 
 const CallToAction = () => {
   return (
@@ -27,7 +28,7 @@ const CallToAction = () => {
             </div>
             <div className="md:w-1/2 relative">
               <img 
-                src="/lovable-uploads/ba74cbb7-6e39-4a0f-850e-6e9098beaf83.png" 
+                src={images.callToAction} 
                 alt="Uniform Services" 
                 className="w-full h-full object-cover"
               />

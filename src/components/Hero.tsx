@@ -1,6 +1,7 @@
 
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { images } from '@/assets/images';
 
 const Hero = () => {
   return (
@@ -32,7 +33,7 @@ const Hero = () => {
         
         <div className="order-1 md:order-2 flex justify-center animate-slide-in-right" style={{ animationDelay: '0.5s' }}>
           <img 
-            src="public/lovable-uploads/ffa24dba-a9d1-4e66-92f4-6e7fa64c26e6.png" 
+            src={images.heroImage} 
             alt="UniformConnect Concept" 
             className="w-auto h-auto max-w-full"
           />

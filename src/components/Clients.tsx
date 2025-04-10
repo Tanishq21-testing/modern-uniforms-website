@@ -1,14 +1,15 @@
 
 import { useEffect, useRef, useState } from 'react';
+import { images } from '@/assets/images';
 
 const Clients = () => {
   const clients = [
-    { name: "Hilton", logo: "public/lovable-uploads/99892b74-d545-4bd1-bc07-984c4f423139.png" },
-    { name: "Dubai Golf", logo: "public/lovable-uploads/de9d1bb9-9276-43e3-b9c1-089a81f98d66.png" },
-    { name: "Radisson Blu", logo: "public/lovable-uploads/961d484c-e6d4-41be-b37b-760ef7719be2.png" },
-    { name: "Little Bangkok", logo: "public/lovable-uploads/973bd696-f3d4-44b8-ac1f-6b5da097933f.png" },
-    { name: "Jones the Grocer", logo: "public/lovable-uploads/e04847a1-d76b-43cc-84b3-ac2918abf1de.png" },
-    { name: "Fairgreen International School", logo: "public/lovable-uploads/c522c6f5-23d9-47bc-9d70-926710ca3bfa.png" },
+    { name: "Hilton", logo: images.clientLogos.hilton },
+    { name: "Dubai Golf", logo: images.clientLogos.dubaiGolf },
+    { name: "Radisson Blu", logo: images.clientLogos.radissonBlu },
+    { name: "Little Bangkok", logo: images.clientLogos.littleBangkok },
+    { name: "Jones the Grocer", logo: images.clientLogos.jonesTheGrocer },
+    { name: "Fairgreen International School", logo: images.clientLogos.fairgreen },
   ];
 
   const sectionRef = useRef<HTMLElement>(null);

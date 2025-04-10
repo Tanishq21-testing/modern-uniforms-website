@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { motion } from 'framer-motion';
+import { images } from '@/assets/images';
 
 const ServicesHero = () => {
   return (
@@ -31,7 +31,7 @@ const ServicesHero = () => {
             <div className="relative">
               <div className="w-full h-80 md:h-96 bg-gray-200 rounded-lg overflow-hidden opacity-0 animate-fade-in" style={{ animationDelay: '0.4s' }}>
                 <img 
-                  src="/lovable-uploads/770df8ec-a0bc-4a00-ba18-7d166c71a7f8.png" 
+                  src={images.servicesHero} 
                   alt="Uniform Services" 
                   className="w-full h-full object-cover"
                 />

@@ -1,9 +1,9 @@
-
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
 import { Check } from 'lucide-react';
 import Clients from '@/components/Clients';
+import { images } from '@/assets/images';
 
 const Landing = () => {
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -21,7 +21,7 @@ const Landing = () => {
         <div className="container mx-auto px-4 flex justify-between items-center">
           <div>
             <img 
-              src="public/lovable-uploads/7b06a816-98dc-4284-9f22-f5f23c2e2494.png" 
+              src={images.logo} 
               alt="UniformConnect Logo" 
               className="h-12 w-auto"
             />
@@ -73,7 +73,7 @@ const Landing = () => {
             
             <div className="flex justify-center items-center">
               <img 
-                src="public/lovable-uploads/ffa24dba-a9d1-4e66-92f4-6e7fa64c26e6.png" 
+                src={images.heroImage} 
                 alt="UniformConnect Concept" 
                 className="w-auto h-auto max-w-full shadow-lg rounded-lg"
               />
@@ -189,7 +189,7 @@ const Landing = () => {
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-4 md:mb-0">
               <img 
-                src="public/lovable-uploads/7b06a816-98dc-4284-9f22-f5f23c2e2494.png" 
+                src={images.logo} 
                 alt="UniformConnect Logo" 
                 className="h-10 w-auto"
               />

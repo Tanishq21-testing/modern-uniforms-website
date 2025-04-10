@@ -5,6 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/hooks/useAuth";
+import { useEffect } from "react";
 import Index from "./pages/Index";
 import Landing from "./pages/Landing";
 import AboutUs from "./pages/AboutUs";
@@ -16,32 +17,56 @@ import Auth from "./pages/Auth";
 import Products from "./pages/Products";
 import NotFound from "./pages/NotFound";
 
+// Setup image mappings for easier reference
+import { images } from "@/assets/images";
+
 const queryClient = new QueryClient();
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <AuthProvider>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/landing" element={<Landing />} />
-            <Route path="/about-us" element={<AboutUs />} />
-            <Route path="/case-studies" element={<CaseStudies />} />
-            <Route path="/contact-us" element={<ContactUs />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/clients" element={<Clients />} />
-            <Route path="/auth" element={<Auth />} />
-            <Route path="/products" element={<Products />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </AuthProvider>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+const App = () => {
+  // Pre-load images to ensure they're available in production
+  useEffect(() => {
+    // Create an array of all image paths to preload
+    const imageUrls = [
+      images.logo,
+      images.heroImage,
+      images.servicesHero,
+      images.uniformServices,
+      images.callToAction,
+      ...Object.values(images.clientLogos)
+    ];
+
+    // Preload all images
+    imageUrls.forEach(url => {
+      const img = new Image();
+      img.src = url;
+    });
+  }, []);
+
+  return (
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <AuthProvider>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/landing" element={<Landing />} />
+              <Route path="/about-us" element={<AboutUs />} />
+              <Route path="/case-studies" element={<CaseStudies />} />
+              <Route path="/contact-us" element={<ContactUs />} />
+              <Route path="/services" element={<Services />} />
+              <Route path="/clients" element={<Clients />} />
+              <Route path="/auth" element={<Auth />} />
+              <Route path="/products" element={<Products />} />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </AuthProvider>
+        </BrowserRouter>
+      </TooltipProvider>
+    </QueryClientProvider>
+  );
+};
 
 export default App;
