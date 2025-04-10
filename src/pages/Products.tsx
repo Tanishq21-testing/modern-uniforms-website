@@ -46,7 +46,7 @@ const Products = () => {
         
         setProfile(profileData);
 
-        if (!profileData.company_id) {
+        if (!profileData?.company_id) {
           setLoading(false);
           return;
         }
