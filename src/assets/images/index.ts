@@ -2,20 +2,31 @@
 // Export all images from this file for easy imports
 export const images = {
   // Logos
-  logo: "/assets/logo.png",
+  logo: "/newest logo (1).jpeg",
   
   // Client logos
   clientLogos: {
-    hilton: "/assets/clients/hilton.png",
-    dubaiGolf: "/assets/clients/dubai-golf.png",
-    radissonBlu: "/assets/clients/radisson-blu.png",
-    littleBangkok: "/assets/clients/little-bangkok.png",
-    jonesTheGrocer: "/assets/clients/jones-the-grocer.png",
-    fairgreen: "/assets/clients/fairgreen.png"
+    hilton: "/Hilton Hotel Logo.jpg",
+    dubaiGolf: "/Dubai Golf - Logo.png",
+    radissonBlu: "/Radisson Blue .jpeg",
+    radissonRed: "/Raddison Red Logo.png",
+    littleBangkok: "/Little Bangkok logo.jpeg",
+    jonesTheGrocer: "/Jones The Grocer logo.jpg",
+    fairgreen: "/fairgreen logo.png",
+    mezzaHouse: "/Mezza House Logo.jpeg",
+    gems: "/gems logo.jpg",
+    raffles: "/raffles logo.png",
+    khansaheb: "/khansaheb - Logo.webp",
+    eis: "/EIS Logo.jpg",
+    eisAlt: "/EIS Logo 2.jpeg",
+    dia: "/DIA LOGO.png",
+    aud: "/AUD logo.jpg",
+    dubaiCreek: "/Dubai Creek Logo.png",
+    jc: "/JC Logo.jpg"
   },
   
   // Hero and promotional images
-  heroImage: "/assets/hero-image.png",
+  heroImage: "/newest logo (1).jpeg",
   servicesHero: "/assets/services-hero.png",
   uniformServices: "/assets/uniform-services.png",
   callToAction: "/assets/cta-background.png"

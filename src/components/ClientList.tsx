@@ -7,10 +7,19 @@ const ClientList = () => {
     { name: "Hilton", logo: images.clientLogos.hilton, category: "Hospitality" },
     { name: "Dubai Golf", logo: images.clientLogos.dubaiGolf, category: "Sports" },
     { name: "Radisson Blu", logo: images.clientLogos.radissonBlu, category: "Hospitality" },
+    { name: "Radisson Red", logo: images.clientLogos.radissonRed, category: "Hospitality" },
     { name: "Little Bangkok", logo: images.clientLogos.littleBangkok, category: "Food & Beverage" },
     { name: "Jones the Grocer", logo: images.clientLogos.jonesTheGrocer, category: "Food & Beverage" },
     { name: "Fairgreen International School", logo: images.clientLogos.fairgreen, category: "Education" },
-    // You can add more clients here
+    { name: "Mezza House", logo: images.clientLogos.mezzaHouse, category: "Food & Beverage" },
+    { name: "GEMS Education", logo: images.clientLogos.gems, category: "Education" },
+    { name: "Raffles", logo: images.clientLogos.raffles, category: "Hospitality" },
+    { name: "Khansaheb", logo: images.clientLogos.khansaheb, category: "Construction" },
+    { name: "Emirates International School", logo: images.clientLogos.eis, category: "Education" },
+    { name: "Dubai International Academy", logo: images.clientLogos.dia, category: "Education" },
+    { name: "American University in Dubai", logo: images.clientLogos.aud, category: "Education" },
+    { name: "Dubai Creek", logo: images.clientLogos.dubaiCreek, category: "Hospitality" },
+    { name: "JC", logo: images.clientLogos.jc, category: "Business" },
   ];
 
   const sectionRef = useRef<HTMLElement>(null);
