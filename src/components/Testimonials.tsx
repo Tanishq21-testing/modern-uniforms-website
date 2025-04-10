@@ -1,27 +1,30 @@
 
 import { useEffect, useState, useRef } from 'react';
-import { ArrowLeft, ArrowRight, Star } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Star, Building } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Testimonials = () => {
   const testimonials = [
     {
       name: "Sarah Johnson",
-      position: "HR Manager, Hilton Dubai",
-      text: "The uniforms provided by UniformConnect have exceeded our expectations. The quality is exceptional, and they perfectly capture our brand's essence. Our staff feels proud wearing them.",
+      position: "Head of Operations, Hilton Hotel Group UAE",
+      text: "As a hotel chain with over 200 staff members across multiple properties, consistency is critical. UniformConnect delivered perfectly matched uniforms for all our locations, maintaining our brand standards while accommodating different regional requirements.",
       rating: 5,
+      organization: "Hospitality Chain"
     },
     {
       name: "Ahmed Al Falasi",
-      position: "Operations Director, Dubai Golf",
-      text: "We've been working with UniformConnect for over 5 years now. Their attention to detail and commitment to quality is unmatched. The durability of their uniforms has saved us money in the long run.",
+      position: "Director of Corporate Services, Dubai Golf",
+      text: "Managing uniforms for 120 staff across our golf clubs used to be a logistical challenge. UniformConnect's account management system and quality control processes have simplified our uniform program while elevating our professional appearance.",
       rating: 5,
+      organization: "Sports & Recreation"
     },
     {
       name: "Maria Rodriguez",
-      position: "Principal, Fairgreen International School",
-      text: "The school uniforms designed by UniformConnect have received positive feedback from both students and parents. They are comfortable, durable, and represent our school's values beautifully.",
-      rating: 4,
+      position: "Executive Principal, Fairgreen International School Network",
+      text: "With three campuses and over 150 staff members, we needed a uniform partner who understood our educational environment and brand values. UniformConnect provided a solution that works for our administrative staff, teachers, and support personnel.",
+      rating: 5,
+      organization: "Educational Institution"
     },
   ];
 
@@ -59,10 +62,10 @@ const Testimonials = () => {
       
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-16 opacity-0 animate-fade-in">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">What Our Clients Say</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">Trusted by Enterprise Clients</h2>
           <div className="w-20 h-1 bg-brand-blue mx-auto mb-6"></div>
           <p className="text-gray-600 text-lg">
-            Don't just take our word for it. Here's what our satisfied clients have to say about our services.
+            See how we've helped organizations with 50+ employees solve their uniform challenges with tailored solutions.
           </p>
         </div>
         
@@ -71,6 +74,11 @@ const Testimonials = () => {
             ref={testimonialRef} 
             className="bg-white rounded-xl shadow-xl p-8 md:p-12 text-center animate-fade-in"
           >
+            <div className="inline-flex items-center justify-center bg-gray-100 p-3 rounded-full mb-6">
+              <Building size={28} className="text-brand-blue" />
+              <span className="ml-2 font-semibold text-gray-700">{testimonials[currentIndex].organization}</span>
+            </div>
+            
             <div className="flex justify-center mb-6">
               {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
                 <Star key={i} size={24} className="text-yellow-400 fill-yellow-400" />
