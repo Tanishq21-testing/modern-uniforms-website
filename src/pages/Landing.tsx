@@ -1,17 +1,19 @@
-import { ArrowRight } from 'lucide-react';
+
 import { Button } from '@/components/ui/button';
-import { useState } from 'react';
-import { Check } from 'lucide-react';
-import Clients from '@/components/Clients';
+import { ArrowRight, Building, Users, CheckCircle, BadgeCheck } from 'lucide-react';
+import Hero from '@/components/Hero';
+import WhyChooseUs from '@/components/WhyChooseUs';
+import ClientList from '@/components/ClientList';
+import Testimonials from '@/components/Testimonials';
+import CallToAction from '@/components/CallToAction';
+import { useRef } from 'react';
 import { images } from '@/assets/images';
 
 const Landing = () => {
-  const [formSubmitted, setFormSubmitted] = useState(false);
+  const consultationFormRef = useRef<HTMLDivElement>(null);
   
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setFormSubmitted(true);
-    // In a real implementation, you would send the form data to a server
+  const scrollToConsultation = () => {
+    consultationFormRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
@@ -26,159 +28,156 @@ const Landing = () => {
               className="h-12 w-auto"
             />
           </div>
-          <Button className="bg-brand-red hover:bg-brand-red/90 text-white">
+          <Button 
+            className="bg-brand-red hover:bg-brand-red/90 text-white"
+            onClick={scrollToConsultation}
+          >
             Contact Us
           </Button>
         </div>
       </header>
 
-      {/* Hero Section */}
-      <section className="flex-grow flex items-center relative overflow-hidden py-12">
-        {/* Background Elements */}
-        <div className="absolute top-1/4 -left-20 w-40 h-40 rounded-full bg-brand-blue/20 animate-float"></div>
-        <div className="absolute bottom-1/4 -right-40 w-80 h-80 rounded-full bg-brand-red/10 animate-float" style={{ animationDelay: '2s' }}></div>
-        
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-                Custom <span className="text-brand-red">Uniform</span> Solutions for Your <span className="text-brand-blue">Brand</span>
-              </h1>
-              <p className="text-lg text-gray-600">
-                Premium uniform manufacturing in the UAE since 1978. Elevate your brand with our custom-designed uniforms.
-              </p>
-              
-              <div className="space-y-4">
-                <div className="flex items-center">
-                  <Check className="text-brand-green mr-2" />
-                  <span>Free design consultation</span>
-                </div>
-                <div className="flex items-center">
-                  <Check className="text-brand-green mr-2" />
-                  <span>High-quality materials</span>
-                </div>
-                <div className="flex items-center">
-                  <Check className="text-brand-green mr-2" />
-                  <span>Fast turnaround times</span>
-                </div>
-              </div>
+      {/* Hero Section - Now using the Hero component */}
+      <Hero scrollToConsultation={scrollToConsultation} />
 
-              <div className="pt-4">
-                <Button className="bg-brand-red hover:bg-brand-red/90 text-white text-lg px-8 py-6 rounded-md">
-                  Get A Free Consultation
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-              </div>
-            </div>
-            
-            <div className="flex justify-center items-center">
-              <img 
-                src={images.heroImage} 
-                alt="UniformConnect Concept" 
-                className="w-auto h-auto max-w-full shadow-lg rounded-lg"
-              />
-            </div>
+      {/* Enterprise Features Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <h2 className="text-3xl font-bold mb-6">Enterprise-Grade Uniform Solutions</h2>
+            <p className="text-gray-600">
+              Designed specifically for organizations with 50+ employees, our uniform programs deliver consistency, quality, and brand alignment at scale.
+            </p>
           </div>
-        </div>
-      </section>
-
-      {/* Benefits Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Why Choose UniformConnect?</h2>
           
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white p-6 rounded-lg shadow-md border-t-4 border-brand-red">
-              <h3 className="text-xl font-semibold mb-3">Premium Quality</h3>
+            <div className="bg-white p-6 rounded-lg shadow-md border-t-4 border-brand-blue">
+              <div className="flex items-center mb-4">
+                <Building className="text-brand-blue mr-3 h-8 w-8" />
+                <h3 className="text-xl font-semibold">Corporate & Institutions</h3>
+              </div>
               <p className="text-gray-600">
-                Our uniforms are crafted from the highest quality materials, ensuring durability and comfort for your staff.
+                Comprehensive uniform programs for corporate offices, educational institutions, and government organizations.
               </p>
             </div>
             
-            <div className="bg-white p-6 rounded-lg shadow-md border-t-4 border-brand-blue">
-              <h3 className="text-xl font-semibold mb-3">Custom Design</h3>
+            <div className="bg-white p-6 rounded-lg shadow-md border-t-4 border-brand-red">
+              <div className="flex items-center mb-4">
+                <Users className="text-brand-red mr-3 h-8 w-8" />
+                <h3 className="text-xl font-semibold">Multi-Location Businesses</h3>
+              </div>
               <p className="text-gray-600">
-                We tailor each uniform to reflect your brand's unique identity and meet your specific requirements.
+                Consistent uniform solutions for hospitality chains, restaurant groups, and retail businesses with multiple locations.
               </p>
             </div>
             
             <div className="bg-white p-6 rounded-lg shadow-md border-t-4 border-brand-green">
-              <h3 className="text-xl font-semibold mb-3">Timely Delivery</h3>
+              <div className="flex items-center mb-4">
+                <CheckCircle className="text-brand-green mr-3 h-8 w-8" />
+                <h3 className="text-xl font-semibold">Large Workforce Solutions</h3>
+              </div>
               <p className="text-gray-600">
-                We understand the importance of deadlines and ensure your uniforms are delivered when you need them.
+                Efficient uniform management systems for organizations with 50 to 5,000+ employees across different departments.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Trusted By Section - Now using the Clients component */}
-      <Clients />
+      {/* Why Choose Us Section - Using the WhyChooseUs component */}
+      <WhyChooseUs />
 
-      {/* CTA Section */}
-      <section className="py-16 bg-gray-900 text-white">
+      {/* Trusted By Section - Using the ClientList component with full client list */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4 text-center mb-12">
+          <h2 className="text-3xl font-bold mb-6">Our Enterprise Clients</h2>
+          <p className="text-gray-600 max-w-3xl mx-auto">
+            Join these prestigious organizations who trust us with their uniform needs
+          </p>
+        </div>
+        <ClientList />
+        <div className="container mx-auto px-4 mt-12 text-center">
+          <div className="max-w-3xl mx-auto">
+            <h3 className="text-2xl font-bold mb-6">Become One of Our Trusted Clients</h3>
+            <Button 
+              className="bg-brand-blue hover:bg-brand-blue/90 text-white text-lg px-8 py-6"
+              onClick={scrollToConsultation}
+            >
+              Get Your Free Consultation
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section - Using the Testimonials component */}
+      <Testimonials />
+
+      {/* CallToAction Section - Using the CallToAction component */}
+      <CallToAction scrollToConsultation={scrollToConsultation} />
+
+      {/* CTA Section with Form */}
+      <section className="py-16 bg-gray-900 text-white" ref={consultationFormRef}>
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
-            {!formSubmitted ? (
-              <>
-                <h2 className="text-3xl font-bold text-center mb-8">Get Your Free Consultation Today</h2>
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                      <label htmlFor="name" className="block text-sm font-medium mb-1">Name</label>
-                      <input 
-                        type="text" 
-                        id="name" 
-                        required 
-                        className="w-full px-4 py-2 rounded-md bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-brand-red" 
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="email" className="block text-sm font-medium mb-1">Email</label>
-                      <input 
-                        type="email" 
-                        id="email" 
-                        required 
-                        className="w-full px-4 py-2 rounded-md bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-brand-red" 
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <label htmlFor="company" className="block text-sm font-medium mb-1">Company</label>
-                    <input 
-                      type="text" 
-                      id="company" 
-                      required 
-                      className="w-full px-4 py-2 rounded-md bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-brand-red" 
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="message" className="block text-sm font-medium mb-1">Message</label>
-                    <textarea 
-                      id="message" 
-                      rows={4}
-                      className="w-full px-4 py-2 rounded-md bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-brand-red" 
-                    ></textarea>
-                  </div>
-                  <div className="pt-2">
-                    <Button type="submit" className="w-full bg-brand-red hover:bg-brand-red/90 text-white py-3 text-lg">
-                      Get A Free Consultation
-                      <ArrowRight className="ml-2 h-5 w-5" />
-                    </Button>
-                  </div>
-                </form>
-              </>
-            ) : (
-              <div className="text-center py-12 space-y-4">
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-brand-green/20 mb-4">
-                  <Check className="h-8 w-8 text-brand-green" />
+            <h2 className="text-3xl font-bold text-center mb-8">Get Your Free Enterprise Consultation Today</h2>
+            <form className="space-y-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label htmlFor="name" className="block text-sm font-medium mb-1">Name</label>
+                  <input 
+                    type="text" 
+                    id="name" 
+                    required 
+                    className="w-full px-4 py-2 rounded-md bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-brand-red" 
+                  />
                 </div>
-                <h3 className="text-2xl font-bold">Thank You!</h3>
-                <p className="text-gray-300">
-                  We've received your request for a consultation. One of our experts will contact you within 24 hours.
-                </p>
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium mb-1">Email</label>
+                  <input 
+                    type="email" 
+                    id="email" 
+                    required 
+                    className="w-full px-4 py-2 rounded-md bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-brand-red" 
+                  />
+                </div>
               </div>
-            )}
+              <div>
+                <label htmlFor="company" className="block text-sm font-medium mb-1">Company</label>
+                <input 
+                  type="text" 
+                  id="company" 
+                  required 
+                  className="w-full px-4 py-2 rounded-md bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-brand-red" 
+                />
+              </div>
+              <div>
+                <label htmlFor="employees" className="block text-sm font-medium mb-1">Number of Employees</label>
+                <select 
+                  id="employees" 
+                  className="w-full px-4 py-2 rounded-md bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-brand-red"
+                >
+                  <option value="50-100">50-100</option>
+                  <option value="101-500">101-500</option>
+                  <option value="501-1000">501-1000</option>
+                  <option value="1000+">1000+</option>
+                </select>
+              </div>
+              <div>
+                <label htmlFor="message" className="block text-sm font-medium mb-1">Tell us about your uniform needs</label>
+                <textarea 
+                  id="message" 
+                  rows={4}
+                  className="w-full px-4 py-2 rounded-md bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-brand-red" 
+                ></textarea>
+              </div>
+              <div className="pt-2">
+                <Button type="submit" className="w-full bg-brand-red hover:bg-brand-red/90 text-white py-3 text-lg">
+                  Get Your Enterprise Consultation
+                  <BadgeCheck className="ml-2 h-5 w-5" />
+                </Button>
+              </div>
+            </form>
           </div>
         </div>
       </section>

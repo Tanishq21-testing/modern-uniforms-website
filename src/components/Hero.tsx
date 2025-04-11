@@ -1,9 +1,9 @@
 
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, BadgeCheck } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { images } from '@/assets/images';
 
-const Hero = () => {
+const Hero = ({ scrollToConsultation }: { scrollToConsultation: () => void }) => {
   return (
     <section id="hero" className="min-h-screen flex items-center relative overflow-hidden pt-16">
       {/* Background Elements */}
@@ -15,19 +15,27 @@ const Hero = () => {
         <div className="order-2 md:order-1 animate-fade-in" style={{ animationDelay: '0.3s' }}>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
             Premium <span className="text-brand-red">Uniforms</span> for 
-            <span className="text-brand-blue"> Prestigious</span> Brands
+            <span className="text-brand-blue"> Enterprise</span> Organizations
           </h1>
           <p className="text-lg text-gray-600 mb-8">
-            Manufacturing excellence since 1978. We deliver high-quality, custom-designed uniforms that reflect your brand's unique identity.
+            Serving organizations with 50+ employees since 1978. We deliver high-quality, custom-designed uniforms that maintain consistency across multiple locations and departments.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <Button className="bg-brand-red hover:bg-brand-red/90 text-white text-lg px-8 py-6">
-              Explore Services
+            <Button 
+              className="bg-brand-red hover:bg-brand-red/90 text-white text-lg px-8 py-6"
+              onClick={scrollToConsultation}
+            >
+              Get Enterprise Consultation
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
             <Button variant="outline" className="border-brand-blue text-brand-blue hover:bg-brand-blue/10 text-lg px-8 py-6">
-              Our Portfolio
+              View Enterprise Case Studies
             </Button>
+          </div>
+          
+          <div className="mt-8 flex items-center">
+            <BadgeCheck className="text-brand-green h-6 w-6 mr-2" />
+            <span className="text-gray-700">Trusted by leading organizations across the UAE</span>
           </div>
         </div>
         

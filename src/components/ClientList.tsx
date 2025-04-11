@@ -1,6 +1,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { images } from '@/assets/images';
+import { Building, Users, GraduationCap, Utensils, BadgeCheck } from 'lucide-react';
 
 const ClientList = () => {
   const clients = [
@@ -32,6 +33,19 @@ const ClientList = () => {
     ? clients.filter(client => client.category === activeCategory) 
     : clients;
 
+  const getCategoryIcon = (category: string) => {
+    switch (category) {
+      case "Hospitality":
+        return <Building className="mr-1 h-4 w-4" />;
+      case "Food & Beverage":
+        return <Utensils className="mr-1 h-4 w-4" />;
+      case "Education":
+        return <GraduationCap className="mr-1 h-4 w-4" />;
+      default:
+        return <Users className="mr-1 h-4 w-4" />;
+    }
+  };
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -56,15 +70,8 @@ const ClientList = () => {
   }, []);
 
   return (
-    <section className="py-16 bg-white" ref={sectionRef}>
+    <section className="py-12 bg-white" ref={sectionRef}>
       <div className="container mx-auto px-4">
-        <div className={`text-center max-w-3xl mx-auto mb-12 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
-          <h2 className="text-3xl font-bold mb-6">Trusted By Industry Leaders</h2>
-          <p className="text-gray-600">
-            We're honored to provide premium uniform solutions to these distinguished organizations
-          </p>
-        </div>
-
         <div className="flex justify-center mb-8 overflow-x-auto pb-2">
           <div className="flex space-x-2">
             <button
@@ -75,7 +82,10 @@ const ClientList = () => {
               }`}
               onClick={() => setActiveCategory(null)}
             >
-              All
+              <div className="flex items-center">
+                <BadgeCheck className="mr-1 h-4 w-4" />
+                <span>All Enterprise Clients</span>
+              </div>
             </button>
             {categories.map((category) => (
               <button
@@ -87,7 +97,10 @@ const ClientList = () => {
                 }`}
                 onClick={() => setActiveCategory(category)}
               >
-                {category}
+                <div className="flex items-center">
+                  {getCategoryIcon(category)}
+                  <span>{category}</span>
+                </div>
               </button>
             ))}
           </div>
@@ -108,14 +121,17 @@ const ClientList = () => {
                 />
               </div>
               <p className="text-center font-medium text-gray-700">{client.name}</p>
-              <p className="text-center text-sm text-gray-500">{client.category}</p>
+              <div className="flex items-center mt-2">
+                {getCategoryIcon(client.category)}
+                <p className="text-center text-sm text-gray-500">{client.category}</p>
+              </div>
             </div>
           ))}
         </div>
         
         <div className="text-center mt-12">
           <p className="text-gray-600 italic">
-            ...and many more satisfied clients throughout the UAE and beyond.
+            ...and many more satisfied enterprise clients throughout the UAE and beyond.
           </p>
         </div>
       </div>
