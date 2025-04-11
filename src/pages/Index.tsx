@@ -1,5 +1,5 @@
 
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
@@ -12,6 +12,13 @@ import Footer from '@/components/Footer';
 import '../styles/logo.css';
 
 const Index = () => {
+  const contactRef = useRef<HTMLElement>(null);
+  
+  const scrollToConsultation = () => {
+    // Scroll to the Contact section which contains the consultation form
+    contactRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       const sections = document.querySelectorAll('section[id]');
@@ -37,13 +44,15 @@ const Index = () => {
   return (
     <div className="overflow-x-hidden">
       <Navbar />
-      <Hero />
+      <Hero scrollToConsultation={scrollToConsultation} />
       <About />
       <Services />
       <Clients />
       <WhyChooseUs />
       <Testimonials />
-      <Contact />
+      <section ref={contactRef}>
+        <Contact />
+      </section>
       <Footer />
     </div>
   );
