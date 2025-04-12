@@ -30,7 +30,7 @@ const About = () => {
               <div className="w-full h-[400px] bg-gray-200 rounded-lg overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-r from-brand-blue/20 to-brand-red/20 rounded-lg"></div>
                 <img 
-                  src="/placeholder.svg" 
+                  src="/public/newest logo (1).jpeg" 
                   alt="Uniform manufacturing facility" 
                   className="w-full h-full object-cover"
                 />
