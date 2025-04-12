@@ -8,6 +8,7 @@ import { AuthProvider } from "@/hooks/useAuth";
 import { useEffect } from "react";
 import Index from "./pages/Index";
 import Landing from "./pages/Landing";
+import LandingPage2 from "./pages/LandingPage2";
 import AboutUs from "./pages/AboutUs";
 import CaseStudies from "./pages/CaseStudies";
 import ContactUs from "./pages/ContactUs";
@@ -52,6 +53,7 @@ const App = () => {
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/landing" element={<Landing />} />
+              <Route path="/landing2" element={<LandingPage2 />} />
               <Route path="/about-us" element={<AboutUs />} />
               <Route path="/case-studies" element={<CaseStudies />} />
               <Route path="/contact-us" element={<ContactUs />} />
