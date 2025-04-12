@@ -33,7 +33,7 @@ const ServicesHero = () => {
                 <img 
                   src={images.servicesHero} 
                   alt="Uniform Services" 
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-contain p-4"
                 />
               </div>
               <div className="absolute -bottom-6 -right-6 hidden md:block">

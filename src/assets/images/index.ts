@@ -31,7 +31,7 @@ export const images = {
   uniformServices: "/assets/Little Bangkok - uniforms.jpg",
   callToAction: "/assets/Jones the grocer Case Studies .jpg",
   schoolHoodie: "/assets/Fairgreen school hoodie.png",
-  aboutImage: "/assets/newest logo (1).jpeg"
+  aboutImage: "/assets/Uniform Connect ad 1.png"
 };
 
 export default images;
