@@ -1,5 +1,6 @@
 
 import { Check } from 'lucide-react';
+import { images } from '@/assets/images';
 
 const About = () => {
   const achievements = [
@@ -30,7 +31,7 @@ const About = () => {
               <div className="w-full h-[400px] bg-gray-200 rounded-lg overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-r from-brand-blue/20 to-brand-red/20 rounded-lg"></div>
                 <img 
-                  src="/public/newest logo (1).jpeg" 
+                  src={images.aboutImage} 
                   alt="Uniform manufacturing facility" 
                   className="w-full h-full object-cover"
                 />

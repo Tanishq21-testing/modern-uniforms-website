@@ -2,34 +2,36 @@
 // Export all images from this file for easy imports
 export const images = {
   // Logos
-  logo: "/newest logo (1).jpeg",
+  logo: "/assets/newest logo (1).jpeg",
   
   // Client logos
   clientLogos: {
-    hilton: "/Hilton Hotel Logo.jpg",
-    dubaiGolf: "/Dubai Golf - Logo.png",
-    radissonBlu: "/Radisson Blue .jpeg",
-    radissonRed: "/Raddison Red Logo.png",
-    littleBangkok: "/Little Bangkok logo.jpeg",
-    jonesTheGrocer: "/Jones The Grocer logo.jpg",
-    fairgreen: "/fairgreen logo.png",
-    mezzaHouse: "/Mezza House Logo.jpeg",
-    gems: "/gems logo.jpg",
-    raffles: "/raffles logo.png",
-    khansaheb: "/khansaheb - Logo.webp",
-    eis: "/EIS Logo.jpg",
-    eisAlt: "/EIS Logo 2.jpeg",
-    dia: "/DIA LOGO.png",
-    aud: "/AUD logo.jpg",
-    dubaiCreek: "/Dubai Creek Logo.png",
-    jc: "/JC Logo.jpg"
+    hilton: "/assets/Hilton Hotel Logo.jpg",
+    dubaiGolf: "/assets/Dubai Golf - Logo.png",
+    radissonBlu: "/assets/Radisson Blue .jpeg",
+    radissonRed: "/assets/Raddison Red Logo.png",
+    littleBangkok: "/assets/Little Bangkok logo.jpeg",
+    jonesTheGrocer: "/assets/Jones The Grocer logo.jpg",
+    fairgreen: "/assets/fairgreen logo.png",
+    mezzaHouse: "/assets/Mezza House Logo.jpeg",
+    gems: "/assets/gems logo.jpg",
+    raffles: "/assets/raffles logo.png",
+    khansaheb: "/assets/khansaheb - Logo.webp",
+    eis: "/assets/EIS Logo.jpg",
+    eisAlt: "/assets/EIS Logo 2.jpeg",
+    dia: "/assets/DIA LOGO.png",
+    aud: "/assets/AUD logo.jpg",
+    dubaiCreek: "/assets/Dubai Creek Logo.png",
+    jc: "/assets/JC Logo.jpg"
   },
   
   // Hero and promotional images
-  heroImage: "/newest logo (1).jpeg",
-  servicesHero: "/assets/services-hero.png",
-  uniformServices: "/assets/uniform-services.png",
-  callToAction: "/assets/cta-background.png"
+  heroImage: "/assets/newest logo (1).jpeg",
+  servicesHero: "/assets/Uniform Connect ad 1.png",
+  uniformServices: "/assets/Little Bangkok - uniforms.jpg",
+  callToAction: "/assets/Jones the grocer Case Studies .jpg",
+  schoolHoodie: "/assets/Fairgreen school hoodie.png",
+  aboutImage: "/assets/newest logo (1).jpeg"
 };
 
 export default images;

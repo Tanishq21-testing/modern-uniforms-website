@@ -12,23 +12,23 @@ import { images } from '@/assets/images';
 const ClientGallery = () => {
   const galleryItems = [
     {
-      image: images.clientLogos.littleBangkok,
+      image: images.clientLogos.jonesTheGrocer,
       title: "Restaurant Staff Uniforms",
       description: "Custom aprons and chef uniforms for Jones The Grocer"
     },
     {
-      image: images.clientLogos.littleBangkok,
+      image: images.uniformServices,
       title: "Little Bangkok Uniforms",
       description: "Complete staff attire for all Little Bangkok locations"
     },
     {
-      image: images.servicesHero,
+      image: images.schoolHoodie,
       title: "School Hoodies",
       description: "Premium embroidered hoodies for Fairgreen International School"
     },
     {
       image: images.callToAction,
-      title: "Corporate Uniforms",
+      title: "Jones the Grocer",
       description: "Professional attire for corporate clients"
     },
     {
