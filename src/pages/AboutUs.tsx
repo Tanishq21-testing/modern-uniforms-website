@@ -1,9 +1,9 @@
-
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Star } from "lucide-react";
 import { useEffect } from "react";
+import { images } from "@/assets/images";
 
 const AboutUs = () => {
   useEffect(() => {
@@ -56,9 +56,9 @@ const AboutUs = () => {
                   <div className="absolute -bottom-4 -right-4 w-40 h-40 bg-brand-red/10 rounded-full"></div>
                   <div className="relative rounded-lg overflow-hidden shadow-xl">
                     <img 
-                      src="/placeholder.svg" 
+                      src={images.servicesHero} 
                       alt="UniformConnect Family Business" 
-                      className="w-full h-full object-cover"
+                      className="w-full h-auto object-cover"
                     />
                   </div>
                 </div>

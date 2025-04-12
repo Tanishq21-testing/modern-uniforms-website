@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import { images } from '@/assets/images';
 
 const CaseStudies = () => {
   useEffect(() => {
@@ -58,7 +59,7 @@ const CaseStudies = () => {
             <div className="order-1 md:order-2 flex justify-center animate-fade-in">
               <div className="relative bg-white shadow-xl rounded-xl p-4 max-w-md overflow-hidden">
                 <img 
-                  src="public/lovable-uploads/973bd696-f3d4-44b8-ac1f-6b5da097933f.png" 
+                  src={images.callToAction} 
                   alt="Jones The Grocer Uniforms" 
                   className="rounded-lg w-full h-auto"
                 />
@@ -76,7 +77,7 @@ const CaseStudies = () => {
             <div className="flex justify-center animate-fade-in">
               <div className="relative bg-white shadow-xl rounded-xl p-4 max-w-md overflow-hidden">
                 <img 
-                  src="public/lovable-uploads/194371d9-ffe8-4715-aadc-e3bb4d7f5aa2.png" 
+                  src={images.uniformServices} 
                   alt="Little Bangkok Uniforms" 
                   className="rounded-lg w-full h-auto"
                 />
@@ -136,7 +137,7 @@ const CaseStudies = () => {
             <div className="order-1 md:order-2 flex justify-center animate-fade-in">
               <div className="relative bg-white shadow-xl rounded-xl p-4 max-w-md overflow-hidden">
                 <img 
-                  src="public/lovable-uploads/770df8ec-a0bc-4a00-ba18-7d166c71a7f8.png" 
+                  src={images.schoolHoodie} 
                   alt="Fairgreen School Uniforms" 
                   className="rounded-lg w-full h-auto"
                 />

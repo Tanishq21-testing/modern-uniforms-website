@@ -29,11 +29,11 @@ const ServicesHero = () => {
           </div>
           <div className="md:w-1/2">
             <div className="relative">
-              <div className="w-full h-80 md:h-96 bg-gray-200 rounded-lg overflow-hidden opacity-0 animate-fade-in" style={{ animationDelay: '0.4s' }}>
+              <div className="w-full h-[300px] md:h-[400px] bg-gray-200 rounded-lg overflow-hidden opacity-0 animate-fade-in" style={{ animationDelay: '0.4s' }}>
                 <img 
                   src={images.servicesHero} 
                   alt="Uniform Services" 
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain"
                 />
               </div>
               <div className="absolute -bottom-6 -right-6 hidden md:block">
