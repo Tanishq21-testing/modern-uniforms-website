@@ -28,7 +28,7 @@ const AuthoritySection = () => {
             <div className="inline-flex items-center justify-center w-16 h-16 bg-brand-blue/10 text-brand-blue rounded-full mb-6">
               <Users className="h-8 w-8" />
             </div>
-            <div className="text-4xl font-bold mb-2">200+</div>
+            <div className="text-4xl font-bold mb-2">150+</div>
             <p className="text-xl font-semibold mb-2">Enterprise Clients</p>
             <p className="text-gray-600">Trusted by leading businesses across the UAE</p>
           </div>
