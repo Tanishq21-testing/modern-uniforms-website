@@ -90,8 +90,8 @@ const ResultsShowcase = () => {
                   <h4 className="text-2xl font-bold">Fairgreen International School</h4>
                 </div>
                 <p className="text-gray-700 mb-6">
-                  "The school uniforms from Uniform Connect have exceeded our expectations. The durability, 
-                  comfort, and professional appearance have made a significant impact on our school community."
+                  "The school Hoodies from Uniform Connect have exceeded our expectations. The durability, 
+                  comfort, and professional appearance have made a significant impact on our school community for the children."
                 </p>
                 <div className="flex flex-wrap gap-2 mb-6">
                   <span className="px-3 py-1 bg-brand-blue/10 text-brand-blue rounded-full text-sm">Education</span>
@@ -100,7 +100,7 @@ const ResultsShowcase = () => {
                 </div>
                 <div className="flex items-center text-sm text-gray-500">
                   <span className="font-semibold">Results:</span>
-                  <span className="ml-2">90% parent satisfaction, simplified morning routines</span>
+                  <span className="ml-2">90% parent, students and teacher satisfaction, comfort and stylish</span>
                 </div>
               </div>
             </div>
