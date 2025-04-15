@@ -1,10 +1,8 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import uniformServices from '../scr/assets/images/Uniform Connect ad 1.png';
-import jonesTheGrocer from '../scr/assets/images/Jones the grocer Case Studies .jpg';
-import schoolHoodie from '../../assets/images/Fairgreen school hoodie.png';
 import { ArrowRight, Award, CheckCircle } from 'lucide-react';
+import { images } from '@/assets/images';
 
 const ResultsSection = () => {
   return (
@@ -14,7 +12,7 @@ const ResultsSection = () => {
         <div className="flex flex-col lg:flex-row items-center gap-12">
           <div className="lg:w-1/2 space-y-8">
             <div className="inline-flex items-center rounded-full bg-brand-red/10 px-3 py-1 text-sm font-medium text-brand-red mb-4">
-              <Award className="h-4 w-4 mr-1" /> Premium Quality Uniformssssssssssss
+              <Award className="h-4 w-4 mr-1" /> Premium Quality Uniforms
             </div>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
@@ -60,7 +58,7 @@ const ResultsSection = () => {
           <div className="lg:w-1/2 grid grid-cols-2 gap-4 relative">
             <div className="col-span-2 overflow-hidden rounded-xl shadow-xl transform rotate-1 z-10">
               <img 
-                src={images.uniformServices} 
+                src={images.servicesHero} 
                 alt="Premium Uniform Service" 
                 className="w-full h-64 md:h-80 object-cover"
               />
