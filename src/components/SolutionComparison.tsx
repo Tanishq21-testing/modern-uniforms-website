@@ -116,16 +116,6 @@ const SolutionComparison = () => {
                   </td>
                 </tr>
                 
-                <tr className="bg-gray-50">
-                  <td className="p-6 border-b">International Sourcing Network</td>
-                  <td className="p-6 border-b text-center">
-                    <Check className="h-6 w-6 text-green-500 mx-auto" />
-                  </td>
-                  <td className="p-6 border-b text-center">
-                    <X className="h-6 w-6 text-red-500 mx-auto" />
-                  </td>
-                </tr>
-                
                 <tr className="bg-white">
                   <td className="p-6 border-b">Sustainable Material Options</td>
                   <td className="p-6 border-b text-center">
@@ -137,7 +127,7 @@ const SolutionComparison = () => {
                 </tr>
                 
                 <tr className="bg-gray-50">
-                  <td className="p-6 border-b">50+ Years Experience</td>
+                  <td className="p-6 border-b">Years Of Experience</td>
                   <td className="p-6 border-b text-center">
                     <Check className="h-6 w-6 text-green-500 mx-auto" />
                   </td>
@@ -145,16 +135,7 @@ const SolutionComparison = () => {
                     <X className="h-6 w-6 text-red-500 mx-auto" />
                   </td>
                 </tr>
-                
-                <tr className="bg-white">
-                  <td className="p-6 border-b">Enterprise Program Management</td>
-                  <td className="p-6 border-b text-center">
-                    <Check className="h-6 w-6 text-green-500 mx-auto" />
-                  </td>
-                  <td className="p-6 border-b text-center">
-                    <X className="h-6 w-6 text-red-500 mx-auto" />
-                  </td>
-                </tr>
+        
                 
                 <tr className="bg-gray-50">
                   <td className="p-6">Satisfaction Guarantee</td>
