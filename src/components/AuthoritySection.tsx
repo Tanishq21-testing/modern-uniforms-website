@@ -66,10 +66,10 @@ const AuthoritySection = () => {
                   2
                 </div>
                 <div className="flex-grow">
-                  <h4 className="text-xl font-bold mb-2">Custom Design Development</h4>
+                  <h4 className="text-xl font-bold mb-2">Custom Development</h4>
                   <p className="text-gray-700">
-                    Our design team creates custom uniform concepts that align with your brand identity and practical needs.
-                    We present multiple options with detailed material specifications and visual mockups.
+                    Our team works with you to decide fabric, colors and materials for your uniforms that align with your brand identity and practical needs.
+                    We present multiple options with detailed material specifications. 
                   </p>
                 </div>
               </div>
