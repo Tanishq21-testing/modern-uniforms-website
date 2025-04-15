@@ -29,7 +29,7 @@ const ResultsShowcase = () => {
           </div>
           
           <div className="bg-gray-50 rounded-xl p-8 text-center shadow-lg transform transition hover:-translate-y-2 duration-300">
-            <div className="text-5xl font-bold text-green-600 mb-4">87%</div>
+            <div className="text-5xl font-bold text-green-600 mb-4">91%</div>
             <p className="text-xl font-semibold mb-2">Brand Recognition</p>
             <p className="text-gray-600">Increase in customer brand recognition with custom uniform programs</p>
           </div>
