@@ -41,16 +41,7 @@ const AuthoritySection = () => {
             <p className="text-xl font-semibold mb-2">Expert Team</p>
             <p className="text-gray-600">Dedicated professionals across design, production and service</p>
           </div>
-          
-          <div className="bg-white rounded-xl p-8 text-center shadow-lg">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-purple-600/10 text-purple-600 rounded-full mb-6">
-              <Award className="h-8 w-8" />
-            </div>
-            <div className="text-4xl font-bold mb-2">12+</div>
-            <p className="text-xl font-semibold mb-2">Industry Awards</p>
-            <p className="text-gray-600">Recognized for excellence in uniform solutions</p>
-          </div>
-        </div>
+        
         
         <div className="max-w-5xl mx-auto bg-white rounded-xl shadow-xl overflow-hidden">
           <div className="p-12">
