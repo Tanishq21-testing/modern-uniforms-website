@@ -29,7 +29,7 @@ export const images = {
   heroImage: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/media/newest%20logo%20(1).jpeg',
   servicesHero: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/media/Uniform%20Connect%20ad%201.png',
   uniformServices: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/media/Little%20Bangkok%20-%20uniforms.jpg',
-  callToAction:,
+  callToAction: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/media/logo%20-%20longer.png',
 schoolHoodie: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/media/Fairgreen%20school%20hoodie.png',
   aboutImage: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/media/Uniform%20Connect%20ad%201.png'
 };
