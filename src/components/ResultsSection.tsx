@@ -12,7 +12,7 @@ const ResultsSection = () => {
         <div className="flex flex-col lg:flex-row items-center gap-12">
           <div className="lg:w-1/2 space-y-8">
             <div className="inline-flex items-center rounded-full bg-brand-red/10 px-3 py-1 text-sm font-medium text-brand-red mb-4">
-              <Award className="h-4 w-4 mr-1" /> Premium Quality Uniforms
+              <Award className="h-4 w-4 mr-1" /> Premium Quality Uniformssss
             </div>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
