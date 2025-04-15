@@ -82,8 +82,8 @@ const SocialProofSection = () => {
                   ))}
                 </div>
                 <p className="text-gray-700 mb-8 italic">
-                  "As an educational institution, we needed uniforms that would be practical, comfortable, and 
-                  represent our values. Uniform Connect delivered exactly what we needed, with exceptional 
+                  "As an educational institution, we needed unified hoodies that would be practical, comfortable, and 
+                  represent our schools brand and indentities. Uniform Connect delivered exactly what we needed, with exceptional 
                   customer service throughout the process. The quality of the school uniforms has impressed 
                   parents and students alike."
                 </p>
