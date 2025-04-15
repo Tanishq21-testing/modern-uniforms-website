@@ -46,9 +46,9 @@ const SolutionComparison = () => {
                   <Check className="h-6 w-6 text-brand-red" />
                 </div>
                 <div>
-                  <h4 className="text-xl font-semibold mb-2">Unparalleled Design Expertise</h4>
+                  <h4 className="text-xl font-semibold mb-2">Unparalleled Expertise In The Industry</h4>
                   <p className="text-gray-700">
-                    Our design team brings decades of experience creating uniforms that enhance brand identity while ensuring functionality.
+                    Our team brings decades of experience creating uniforms that enhance brand identity while ensuring functionality.
                   </p>
                 </div>
               </div>
