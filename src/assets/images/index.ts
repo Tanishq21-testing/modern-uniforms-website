@@ -30,7 +30,7 @@ export const images = {
   servicesHero: new URL('/assets/Uniform Connect ad 1.png', import.meta.url).href,
   uniformServices: new URL('/assets/Little Bangkok - uniforms.jpg', import.meta.url).href,
   callToAction: new URL('/assets/Jones the grocer Case Studies .jpg', import.meta.url).href,
-  schoolHoodie: new URL('/assets/Fairgreen school hoodie.png', import.meta.url).href,
+schoolHoodie: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/media/Fairgreen%20school%20hoodie.png',
   aboutImage: new URL('/assets/Uniform Connect ad 1.png', import.meta.url).href
 };
 
