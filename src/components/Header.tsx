@@ -15,6 +15,13 @@ const Header = ({ scrollToConsultation }: HeaderProps) => {
             src={images.logo} 
             alt="UniformConnect Logo" 
             className="h-12 w-auto"
+            onError={(e) => {
+              console.error('Image failed to load:', e);
+              // Fallback for logo if it fails to load
+              const target = e.target as HTMLImageElement;
+              target.onerror = null; // Prevent infinite error loop
+              target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjUwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjx0ZXh0IHg9IjEwIiB5PSIzMCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjIwIiBmaWxsPSIjMDAwIj5Vbmlmb3JtQ29ubmVjdDwvdGV4dD48L3N2Zz4=';
+            }}
           />
         </div>
         <Button 

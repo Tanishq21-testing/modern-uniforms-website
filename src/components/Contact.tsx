@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -14,6 +13,8 @@ const Contact = () => {
     phone: '',
     message: '',
   });
+
+  const testImageUrl = 'https://your-supabase-url.supabase.co/storage/v1/object/public/your-bucket/newest%20logo%20(1).jpeg';
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -32,7 +33,6 @@ const Contact = () => {
 
   return (
     <section id="contact" className="py-20 bg-gray-900 text-white relative overflow-hidden">
-      {/* Decorative elements */}
       <div className="absolute top-0 right-0 w-64 h-64 bg-brand-red/10 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-brand-blue/10 rounded-full blur-3xl"></div>
       
@@ -43,6 +43,14 @@ const Contact = () => {
           <p className="text-gray-300 text-lg">
             Have questions or ready to discuss your uniform needs? Get in touch with us today.
           </p>
+          
+          <div className="mt-4 flex justify-center">
+            <img 
+              src={testImageUrl} 
+              alt="Test from Supabase" 
+              className="h-12 w-auto hidden"
+            />
+          </div>
         </div>
         
         <div className="grid md:grid-cols-2 gap-12 items-start">
