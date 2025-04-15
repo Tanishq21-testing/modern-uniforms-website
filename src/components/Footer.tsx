@@ -55,12 +55,12 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold mb-4">Contact</h4>
             <address className="not-italic text-gray-400">
-              Dubai Design District, Building 7<br />
+             Office 13, Karama, Dubai<br />
               Dubai, United Arab Emirates
             </address>
             <p className="text-gray-400 mt-2">
-              <strong>Phone:</strong> +971 4 123 4567<br />
-              <strong>Email:</strong> info@uniformconnect.ae
+              <strong>Phone:</strong> +971 50 759 9245<br />
+              <strong>Email:</strong> premparsram@gmail.com
             </p>
           </div>
         </div>
