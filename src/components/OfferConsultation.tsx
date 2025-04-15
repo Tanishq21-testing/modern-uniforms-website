@@ -1,7 +1,7 @@
 
 import { Button } from '@/components/ui/button';
 import { BadgeCheck, Calendar, Phone } from 'lucide-react';
-import { forwardRef } from 'react';
+import { forwardRef, useState } from 'react';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/components/ui/use-toast';
@@ -13,13 +13,65 @@ interface OfferConsultationProps {
 const OfferConsultation = forwardRef<HTMLDivElement, OfferConsultationProps>(
   ({ title = "Get Your Free Enterprise Consultation" }, ref) => {
     const { toast } = useToast();
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [formData, setFormData] = useState({
+      name: '',
+      email: '',
+      company: '',
+      phone: '',
+      employeeCount: 'under50',
+      message: ''
+    });
     
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+      const { id, value } = e.target;
+      setFormData(prev => ({ ...prev, [id]: value }));
+    };
+    
+    const handleSubmit = async (e: React.FormEvent) => {
       e.preventDefault();
-      toast({
-        title: "Consultation Request Received!",
-        description: "We'll contact you within 24 hours to schedule your free consultation.",
-      });
+      setIsSubmitting(true);
+      
+      try {
+        // Create email content
+        const emailContent = `
+          New Consultation Request:
+          Name: ${formData.name}
+          Email: ${formData.email}
+          Company: ${formData.company}
+          Phone: ${formData.phone}
+          Employee Count: ${formData.employeeCount}
+          Message: ${formData.message}
+        `;
+        
+        // Send email using mailto link for now
+        // In a production environment, this would be replaced with a proper email API
+        const mailtoLink = `mailto:premparsram@gmail.com?subject=New Consultation Request&body=${encodeURIComponent(emailContent)}`;
+        window.open(mailtoLink);
+        
+        toast({
+          title: "Consultation Request Received!",
+          description: "We'll contact you within 24 hours to schedule your free consultation.",
+        });
+        
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          company: '',
+          phone: '',
+          employeeCount: 'under50',
+          message: ''
+        });
+      } catch (error) {
+        toast({
+          title: "Something went wrong",
+          description: "Please try again or contact us directly.",
+          variant: "destructive"
+        });
+      } finally {
+        setIsSubmitting(false);
+      }
     };
     
     return (
@@ -80,6 +132,8 @@ const OfferConsultation = forwardRef<HTMLDivElement, OfferConsultationProps>(
                         required 
                         className="bg-white/5 border-white/10 text-white placeholder:text-gray-400" 
                         placeholder="John Smith"
+                        value={formData.name}
+                        onChange={handleChange}
                       />
                     </div>
                     <div>
@@ -90,6 +144,8 @@ const OfferConsultation = forwardRef<HTMLDivElement, OfferConsultationProps>(
                         required 
                         className="bg-white/5 border-white/10 text-white placeholder:text-gray-400" 
                         placeholder="john@company.com"
+                        value={formData.email}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -102,6 +158,8 @@ const OfferConsultation = forwardRef<HTMLDivElement, OfferConsultationProps>(
                         required 
                         className="bg-white/5 border-white/10 text-white placeholder:text-gray-400" 
                         placeholder="Your Company"
+                        value={formData.company}
+                        onChange={handleChange}
                       />
                     </div>
                     <div>
@@ -111,6 +169,8 @@ const OfferConsultation = forwardRef<HTMLDivElement, OfferConsultationProps>(
                         required 
                         className="bg-white/5 border-white/10 text-white placeholder:text-gray-400" 
                         placeholder="+971 50 123 4567"
+                        value={formData.phone}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -120,6 +180,8 @@ const OfferConsultation = forwardRef<HTMLDivElement, OfferConsultationProps>(
                     <select 
                       id="employeeCount" 
                       className="w-full px-4 py-2 rounded-md bg-white/5 border border-white/10 text-white focus:outline-none focus:ring-2 focus:ring-brand-red"
+                      value={formData.employeeCount}
+                      onChange={handleChange}
                     >
                       <option value="under50">Under 50</option>
                       <option value="50-100">50-100</option>
@@ -136,11 +198,17 @@ const OfferConsultation = forwardRef<HTMLDivElement, OfferConsultationProps>(
                       rows={4}
                       className="bg-white/5 border-white/10 text-white placeholder:text-gray-400" 
                       placeholder="Please describe your uniform requirements"
+                      value={formData.message}
+                      onChange={handleChange}
                     />
                   </div>
                   
-                  <Button type="submit" className="w-full bg-brand-red hover:bg-brand-red/90 text-white py-6 text-lg">
-                    Book My Free Consultation
+                  <Button 
+                    type="submit" 
+                    className="w-full bg-brand-red hover:bg-brand-red/90 text-white py-6 text-lg"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? "Submitting..." : "Book My Free Consultation"}
                   </Button>
                   
                   <p className="text-xs text-center text-gray-400">

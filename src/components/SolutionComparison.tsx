@@ -1,149 +1,151 @@
 
-import React from 'react';
+import { Check } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Check, X } from 'lucide-react';
-import { images } from '@/assets/images';
 
 const SolutionComparison = () => {
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-20 bg-white">
       <div className="container mx-auto px-4">
-        <div className="max-w-3xl mx-auto text-center mb-16">
-          <h2 className="text-4xl font-bold mb-6">Why Choose Uniform Connect?</h2>
-          <p className="text-xl text-gray-700">
-            We differentiate ourselves with premium quality, dedicated service, and comprehensive solutions
-            that meet the unique needs of enterprises across the UAE.
-          </p>
-        </div>
-        
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
-          <div className="rounded-2xl overflow-hidden shadow-xl">
-            <img 
-              src={images.callToAction} 
-              alt="Premium Uniform Service" 
-              className="w-full h-96 object-cover"
-            />
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">Why Choose UniformConnect?</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              We combine decades of experience with innovative technology to deliver uniform solutions that exceed expectations.
+            </p>
           </div>
           
-          <div className="space-y-8">
-            <h3 className="text-3xl font-bold">The Uniform Connect Difference</h3>
-            
-            <div className="space-y-6">
-              <div className="flex items-start">
-                <div className="bg-brand-red/10 p-3 rounded-full mr-4 mt-1">
-                  <Check className="h-6 w-6 text-brand-red" />
-                </div>
-                <div>
-                  <h4 className="text-xl font-semibold mb-2">Premium Quality Materials</h4>
-                  <p className="text-gray-700">
-                    We source the finest fabrics and materials that withstand the demands of daily use while providing superior comfort.
-                  </p>
-                </div>
-              </div>
-              
-              <div className="flex items-start">
-                <div className="bg-brand-red/10 p-3 rounded-full mr-4 mt-1">
-                  <Check className="h-6 w-6 text-brand-red" />
-                </div>
-                <div>
-                  <h4 className="text-xl font-semibold mb-2">Unparalleled Expertise In The Industry</h4>
-                  <p className="text-gray-700">
-                    Our team brings decades of experience creating uniforms that enhance brand identity while ensuring functionality.
-                  </p>
-                </div>
-              </div>
-              
-              <div className="flex items-start">
-                <div className="bg-brand-red/10 p-3 rounded-full mr-4 mt-1">
-                  <Check className="h-6 w-6 text-brand-red" />
-                </div>
-                <div>
-                  <h4 className="text-xl font-semibold mb-2">End-to-End Enterprise Solutions</h4>
-                  <p className="text-gray-700">
-                    From initial design to delivery and reordering, we handle every aspect of your uniform program.
-                  </p>
-                </div>
-              </div>
+          <div className="grid lg:grid-cols-3 gap-8 mb-16">
+            <div className="bg-gray-50 rounded-xl p-8 h-full">
+              <h3 className="text-2xl font-bold mb-6 text-gray-800">Standard Uniform Providers</h3>
+              <ul className="space-y-4 mb-8">
+                <li className="flex items-start">
+                  <span className="h-6 w-6 rounded-full bg-gray-200 flex items-center justify-center mr-3 mt-0.5">
+                    <Check className="h-4 w-4 text-gray-500" />
+                  </span>
+                  <span className="text-gray-600">Basic uniform options</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="h-6 w-6 rounded-full bg-gray-200 flex items-center justify-center mr-3 mt-0.5">
+                    <Check className="h-4 w-4 text-gray-500" />
+                  </span>
+                  <span className="text-gray-600">Limited customization</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="h-6 w-6 rounded-full bg-gray-200 flex items-center justify-center mr-3 mt-0.5">
+                    <Check className="h-4 w-4 text-gray-500" />
+                  </span>
+                  <span className="text-gray-600">Standard fabrics only</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="h-6 w-6 rounded-full bg-gray-200 flex items-center justify-center mr-3 mt-0.5">
+                    <Check className="h-4 w-4 text-gray-500" />
+                  </span>
+                  <span className="text-gray-600">Fixed production timelines</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="h-6 w-6 rounded-full bg-gray-200 flex items-center justify-center mr-3 mt-0.5">
+                    <Check className="h-4 w-4 text-gray-500" />
+                  </span>
+                  <span className="text-gray-600">Minimal post-sale support</span>
+                </li>
+              </ul>
             </div>
             
-            <Button className="bg-brand-red hover:bg-brand-red/90 text-white px-8 py-6 text-lg">
-              Learn More About Our Approach
-            </Button>
+            <div className="bg-brand-blue rounded-xl p-8 text-white transform scale-105 shadow-xl relative z-10 h-full">
+              <div className="absolute top-0 right-0 bg-brand-red text-white text-sm font-bold px-4 py-1 rounded-bl-lg rounded-tr-lg">
+                RECOMMENDED
+              </div>
+              <h3 className="text-2xl font-bold mb-6">UniformConnect</h3>
+              <ul className="space-y-4 mb-8">
+                <li className="flex items-start">
+                  <span className="h-6 w-6 rounded-full bg-white flex items-center justify-center mr-3 mt-0.5">
+                    <Check className="h-4 w-4 text-brand-blue" />
+                  </span>
+                  <span>Premium custom uniform design</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="h-6 w-6 rounded-full bg-white flex items-center justify-center mr-3 mt-0.5">
+                    <Check className="h-4 w-4 text-brand-blue" />
+                  </span>
+                  <span>Full brand alignment & identity integration</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="h-6 w-6 rounded-full bg-white flex items-center justify-center mr-3 mt-0.5">
+                    <Check className="h-4 w-4 text-brand-blue" />
+                  </span>
+                  <span>Premium global fabrics selection</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="h-6 w-6 rounded-full bg-white flex items-center justify-center mr-3 mt-0.5">
+                    <Check className="h-4 w-4 text-brand-blue" />
+                  </span>
+                  <span>Flexible production & rush options</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="h-6 w-6 rounded-full bg-white flex items-center justify-center mr-3 mt-0.5">
+                    <Check className="h-4 w-4 text-brand-blue" />
+                  </span>
+                  <span>Dedicated account management</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="h-6 w-6 rounded-full bg-white flex items-center justify-center mr-3 mt-0.5">
+                    <Check className="h-4 w-4 text-brand-blue" />
+                  </span>
+                  <span>Free consultation & design services</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="h-6 w-6 rounded-full bg-white flex items-center justify-center mr-3 mt-0.5">
+                    <Check className="h-4 w-4 text-brand-blue" />
+                  </span>
+                  <span>Ongoing maintenance program</span>
+                </li>
+              </ul>
+            </div>
+            
+            <div className="bg-gray-50 rounded-xl p-8 h-full">
+              <h3 className="text-2xl font-bold mb-6 text-gray-800">Large Global Providers</h3>
+              <ul className="space-y-4 mb-8">
+                <li className="flex items-start">
+                  <span className="h-6 w-6 rounded-full bg-gray-200 flex items-center justify-center mr-3 mt-0.5">
+                    <Check className="h-4 w-4 text-gray-500" />
+                  </span>
+                  <span className="text-gray-600">Advanced uniform options</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="h-6 w-6 rounded-full bg-gray-200 flex items-center justify-center mr-3 mt-0.5">
+                    <Check className="h-4 w-4 text-gray-500" />
+                  </span>
+                  <span className="text-gray-600">Some customization available</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="h-6 w-6 rounded-full bg-gray-200 flex items-center justify-center mr-3 mt-0.5">
+                    <Check className="h-4 w-4 text-gray-500" />
+                  </span>
+                  <span className="text-gray-600">Higher minimum order quantities</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="h-6 w-6 rounded-full bg-gray-200 flex items-center justify-center mr-3 mt-0.5">
+                    <Check className="h-4 w-4 text-gray-500" />
+                  </span>
+                  <span className="text-gray-600">Long lead times</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="h-6 w-6 rounded-full bg-gray-200 flex items-center justify-center mr-3 mt-0.5">
+                    <Check className="h-4 w-4 text-gray-500" />
+                  </span>
+                  <span className="text-gray-600">Less personalized service</span>
+                </li>
+              </ul>
+            </div>
           </div>
-        </div>
-        
-        <div className="max-w-5xl mx-auto">
-          <h3 className="text-3xl font-bold text-center mb-12">How We Compare</h3>
           
-          <div className="relative overflow-x-auto shadow-xl rounded-xl">
-            <table className="w-full text-left">
-              <thead className="text-white bg-brand-blue">
-                <tr>
-                  <th className="p-6 text-lg font-semibold">Features</th>
-                  <th className="p-6 text-lg font-semibold text-center">Uniform Connect</th>
-                  <th className="p-6 text-lg font-semibold text-center">Generic Providers</th>
-                </tr>
-              </thead>
-              
-              <tbody>
-                <tr className="bg-white">
-                  <td className="p-6 border-b">Custom Design Services</td>
-                  <td className="p-6 border-b text-center">
-                    <Check className="h-6 w-6 text-green-500 mx-auto" />
-                  </td>
-                  <td className="p-6 border-b text-center">
-                    <Check className="h-6 w-6 text-green-500 mx-auto" />
-                  </td>
-                </tr>
-                
-                <tr className="bg-gray-50">
-                  <td className="p-6 border-b">Dedicated Account Manager</td>
-                  <td className="p-6 border-b text-center">
-                    <Check className="h-6 w-6 text-green-500 mx-auto" />
-                  </td>
-                  <td className="p-6 border-b text-center">
-                    <X className="h-6 w-6 text-red-500 mx-auto" />
-                  </td>
-                </tr>
-                
-                <tr className="bg-white">
-                  <td className="p-6 border-b">Premium Material Selection</td>
-                  <td className="p-6 border-b text-center">
-                    <Check className="h-6 w-6 text-green-500 mx-auto" />
-                  </td>
-                  <td className="p-6 border-b text-center">
-                    <X className="h-6 w-6 text-red-500 mx-auto" />
-                  </td>
-                </tr>
-                
-                <tr className="bg-white">
-                  <td className="p-6 border-b">Sustainable Material Options</td>
-                  <td className="p-6 border-b text-center">
-                    <Check className="h-6 w-6 text-green-500 mx-auto" />
-                  </td>
-                  <td className="p-6 border-b text-center">
-                    <X className="h-6 w-6 text-red-500 mx-auto" />
-                  </td>
-                </tr>
-                
-                <tr className="bg-gray-50">
-                  <td className="p-6 border-b">Years Of Experience</td>
-                  <td className="p-6 border-b text-center">
-                    <Check className="h-6 w-6 text-green-500 mx-auto" />
-                  </td>
-                  <td className="p-6 border-b text-center">
-                    <X className="h-6 w-6 text-red-500 mx-auto" />
-                  </td>
-                </tr>
-        
-                
-                <tr className="bg-gray-50">
-                  <td className="p-6">Satisfaction Guarantee</td>
-                  <td className="p-6 text-center font-bold text-brand-red">100%</td>
-                  <td className="p-6 text-center text-gray-500">Limited</td>
-                </tr>
-              </tbody>
-            </table>
+          <div className="text-center">
+            <Link to="/about-us">
+              <Button variant="outline" className="border-2 border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white text-lg px-6 py-6">
+                Learn More About Our Approach
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

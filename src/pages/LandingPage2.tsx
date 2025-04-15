@@ -1,5 +1,6 @@
 
 import { useRef } from 'react';
+import { Link } from 'react-router-dom';
 import Header from '@/components/Header';
 import ResultsSection from '@/components/ResultsSection';
 import OfferConsultation from '@/components/OfferConsultation';
