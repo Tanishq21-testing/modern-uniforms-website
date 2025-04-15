@@ -42,7 +42,7 @@ const OfferConsultation = forwardRef<HTMLDivElement, OfferConsultationProps>(
                       <BadgeCheck className="h-6 w-6 text-brand-red" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-semibold">Experience tailored uniform solutions</h3>
+                      <h3 className="text-xl font-semibold">Experience Tailored Uniform Solutions</h3>
                       <p className="text-gray-300">Trusted by many companies in the UAE</p>
                     </div>
                   </div>
