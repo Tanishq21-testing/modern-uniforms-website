@@ -1,7 +1,9 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { images } from '@/assets/images';
+import uniformServices from '../scr/assets/images/Uniform Connect ad 1.png';
+import jonesTheGrocer from '../scr/assets/images/Jones the grocer Case Studies .jpg';
+import schoolHoodie from '../../assets/images/Fairgreen school hoodie.png';
 import { ArrowRight, Award, CheckCircle } from 'lucide-react';
 
 const ResultsSection = () => {
