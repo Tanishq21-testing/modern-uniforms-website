@@ -1,6 +1,5 @@
-
 import React from 'react';
-import { Award, FileText, Star, Users } from 'lucide-react';
+import { FileText, Users, Star } from 'lucide-react';
 
 const AuthoritySection = () => {
   return (
@@ -14,7 +13,7 @@ const AuthoritySection = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
           <div className="bg-white rounded-xl p-8 text-center shadow-lg">
             <div className="inline-flex items-center justify-center w-16 h-16 bg-brand-red/10 text-brand-red rounded-full mb-6">
               <FileText className="h-8 w-8" />
@@ -28,7 +27,7 @@ const AuthoritySection = () => {
             <div className="inline-flex items-center justify-center w-16 h-16 bg-brand-blue/10 text-brand-blue rounded-full mb-6">
               <Users className="h-8 w-8" />
             </div>
-            <div className="text-4xl font-bold mb-2">150+</div>
+            <div className="text-4xl font-bold mb-2">200+</div>
             <p className="text-xl font-semibold mb-2">Enterprise Clients</p>
             <p className="text-gray-600">Trusted by leading businesses across the UAE</p>
           </div>
@@ -41,9 +40,9 @@ const AuthoritySection = () => {
             <p className="text-xl font-semibold mb-2">Expert Team</p>
             <p className="text-gray-600">Dedicated professionals across design, production and service</p>
           </div>
-        
-        
-        <div className="max-w-5xl mx-auto bg-white rounded-xl shadow-xl overflow-hidden">
+        </div>
+
+        <div className="max-w-5xl mx-auto bg-white rounded-xl shadow-xl overflow-hidden mt-16">
           <div className="p-12">
             <h3 className="text-3xl font-bold text-center mb-12">Our Expert Process</h3>
             
