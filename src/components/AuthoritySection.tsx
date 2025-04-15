@@ -69,7 +69,7 @@ const AuthoritySection = () => {
                   <h4 className="text-xl font-bold mb-2">Custom Development</h4>
                   <p className="text-gray-700">
                     Our team works with you to decide fabric, colors and materials for your uniforms that align with your brand identity and practical needs.
-                    We present multiple options with detailed material specifications. 
+                    We present multiple options with detailed specifications. 
                   </p>
                 </div>
               </div>
