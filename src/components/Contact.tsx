@@ -129,8 +129,8 @@ const Contact = () => {
                 <div>
                   <h4 className="font-medium text-lg">Call Us</h4>
                   <p className="text-gray-300 mt-1">
-                    +971 4 123 4567<br />
-                    +971 50 987 6543
+                    +971 50 759 9245<br />
+                
                   </p>
                 </div>
               </div>
@@ -142,8 +142,7 @@ const Contact = () => {
                 <div>
                   <h4 className="font-medium text-lg">Email Us</h4>
                   <p className="text-gray-300 mt-1">
-                    info@uniformconnect.ae<br />
-                    sales@uniformconnect.ae
+                    premparsram@gmail.com <br/>
                   </p>
                 </div>
               </div>
@@ -154,15 +153,15 @@ const Contact = () => {
               <div className="bg-gray-800 rounded-lg p-6">
                 <div className="flex justify-between mb-2">
                   <span>Monday - Friday</span>
-                  <span>8:30 AM - 6:00 PM</span>
+                  <span>10:00 AM - 10:00 PM</span>
                 </div>
                 <div className="flex justify-between mb-2">
                   <span>Saturday</span>
-                  <span>9:00 AM - 4:00 PM</span>
+                  <span>10:00 AM - 10:00 PM</span>
                 </div>
                 <div className="flex justify-between">
                   <span>Sunday</span>
-                  <span>Closed</span>
+                  <span>10:00 AM - 1:00 PM, 4:00 PM - 10:00 PM</span>
                 </div>
               </div>
             </div>
