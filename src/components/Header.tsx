@@ -11,8 +11,9 @@ const Header = ({ scrollToConsultation }: HeaderProps) => {
     <header className="bg-white py-4 shadow-sm">
       <div className="container mx-auto px-4 flex justify-between items-center">
         <div>
+          import logo from './assets/images/newest logo (1).jpeg'
           <img 
-            src={images.logo} 
+            src={logo} 
             alt="UniformConnect Logo" 
             className="h-12 w-auto"
           />
