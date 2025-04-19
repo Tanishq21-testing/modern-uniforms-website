@@ -1,4 +1,3 @@
-
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -38,50 +37,43 @@ const ResultsSection = () => {
                 </Button>
               </Link>
             </div>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-4">
-                <div className="bg-gray-100 rounded-lg overflow-hidden shadow-md transform hover:scale-105 transition-transform duration-300">
-                  <img 
-                    src={images.uniformServices} 
-                    alt="Custom hotel uniform" 
-                    className="w-full h-56 object-cover"
-                  />
-                </div>
-                <div className="bg-gray-100 rounded-lg overflow-hidden shadow-md transform hover:scale-105 transition-transform duration-300">
-                  <img 
-                    src={images.callToAction} 
-                    alt="Restaurant staff uniforms" 
-                    className="w-full h-40 object-cover"
-                  />
-                </div>
-              </div>
-              <div className="space-y-4 mt-8">
-                <div className="bg-gray-100 rounded-lg overflow-hidden shadow-md transform hover:scale-105 transition-transform duration-300">
-                  <img 
-                    src={images.schoolHoodie} 
-                    alt="School uniform hoodie" 
-                    className="w-full h-40 object-cover"
-                  />
-                </div>
-                <div className="bg-gray-100 rounded-lg overflow-hidden shadow-md transform hover:scale-105 transition-transform duration-300">
-                  <img 
-                    src={images.servicesHero} 
-                    alt="Corporate uniform" 
-                    className="w-full h-56 object-cover"
-                  />
-                </div>
-              </div>
+            <div className="rounded-lg overflow-hidden shadow-xl transform hover:scale-105 transition-transform duration-300">
+              <img 
+                src={images.uniformServices} 
+                alt="Custom uniform services" 
+                className="w-full h-auto object-cover"
+              />
             </div>
           </div>
           
           <div className="text-center mb-16">
-            <h3 className="text-3xl font-bold mb-6">Trusted By Leading UAE Companies</h3>
-            <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
-              <img src={images.clientLogos.jonesTheGrocer} alt="Jones The Grocer" className="h-12 grayscale hover:grayscale-0 transition-all duration-300" />
-              <img src={images.clientLogos.littleBangkok} alt="Little Bangkok" className="h-12 grayscale hover:grayscale-0 transition-all duration-300" />
-              <img src={images.clientLogos.fairgreen} alt="Fairgreen School" className="h-12 grayscale hover:grayscale-0 transition-all duration-300" />
-              <img src={images.clientLogos.aud} alt="American University Dubai" className="h-12 grayscale hover:grayscale-0 transition-all duration-300" />
-              <img src={images.clientLogos.hilton} alt="Hilton Hotel" className="h-12 grayscale hover:grayscale-0 transition-all duration-300" />
+            <h3 className="text-3xl font-bold mb-8">Trusted By Leading UAE Companies</h3>
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-8 items-center">
+              <img 
+                src={images.clientLogos.jonesTheGrocer} 
+                alt="Jones The Grocer" 
+                className="w-full max-h-32 object-contain hover:scale-105 transition-transform duration-300"
+              />
+              <img 
+                src={images.clientLogos.littleBangkok} 
+                alt="Little Bangkok" 
+                className="w-full max-h-32 object-contain hover:scale-105 transition-transform duration-300"
+              />
+              <img 
+                src={images.clientLogos.fairgreen} 
+                alt="Fairgreen School" 
+                className="w-full max-h-32 object-contain hover:scale-105 transition-transform duration-300"
+              />
+              <img 
+                src={images.clientLogos.aud} 
+                alt="American University Dubai" 
+                className="w-full max-h-32 object-contain hover:scale-105 transition-transform duration-300"
+              />
+              <img 
+                src={images.clientLogos.hilton} 
+                alt="Hilton Hotel" 
+                className="w-full max-h-32 object-contain hover:scale-105 transition-transform duration-300"
+              />
             </div>
           </div>
           
