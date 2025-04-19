@@ -1,10 +1,10 @@
-
 import { Button } from '@/components/ui/button';
 import { BadgeCheck, Calendar, Phone } from 'lucide-react';
 import { forwardRef, useState } from 'react';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { useToast } from '@/components/ui/use-toast';
+import { useToast } from '@/hooks/use-toast';
+import { supabase } from '@/integrations/supabase/client';
 
 interface OfferConsultationProps {
   title?: string;
@@ -33,21 +33,26 @@ const OfferConsultation = forwardRef<HTMLDivElement, OfferConsultationProps>(
       setIsSubmitting(true);
       
       try {
-        // Create email content
-        const emailContent = `
-          New Consultation Request:
-          Name: ${formData.name}
-          Email: ${formData.email}
-          Company: ${formData.company}
-          Phone: ${formData.phone}
-          Employee Count: ${formData.employeeCount}
-          Message: ${formData.message}
-        `;
-        
-        // Send email using mailto link for now
-        // In a production environment, this would be replaced with a proper email API
-        const mailtoLink = `mailto:premparsram@gmail.com?subject=New Consultation Request&body=${encodeURIComponent(emailContent)}`;
-        window.open(mailtoLink);
+        // Save to Supabase
+        const { error: dbError } = await supabase
+          .from('consultation_submissions')
+          .insert({
+            name: formData.name,
+            email: formData.email,
+            company: formData.company,
+            phone: formData.phone,
+            employee_count: formData.employeeCount,
+            message: formData.message
+          });
+
+        if (dbError) throw dbError;
+
+        // Send email notification
+        const { error: emailError } = await supabase.functions.invoke('send-consultation-email', {
+          body: formData
+        });
+
+        if (emailError) throw emailError;
         
         toast({
           title: "Consultation Request Received!",
@@ -64,6 +69,7 @@ const OfferConsultation = forwardRef<HTMLDivElement, OfferConsultationProps>(
           message: ''
         });
       } catch (error) {
+        console.error('Submission error:', error);
         toast({
           title: "Something went wrong",
           description: "Please try again or contact us directly.",

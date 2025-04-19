@@ -27,6 +27,39 @@ export type Database = {
         }
         Relationships: []
       }
+      consultation_submissions: {
+        Row: {
+          company: string
+          created_at: string
+          email: string
+          employee_count: string
+          id: string
+          message: string | null
+          name: string
+          phone: string
+        }
+        Insert: {
+          company: string
+          created_at?: string
+          email: string
+          employee_count: string
+          id?: string
+          message?: string | null
+          name: string
+          phone: string
+        }
+        Update: {
+          company?: string
+          created_at?: string
+          email?: string
+          employee_count?: string
+          id?: string
+          message?: string | null
+          name?: string
+          phone?: string
+        }
+        Relationships: []
+      }
       products: {
         Row: {
           company_id: string | null
