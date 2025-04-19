@@ -16,7 +16,11 @@ serve(async (req) => {
   }
 
   try {
+    console.log("Received email request");
     const { name, email, company, phone, employeeCount, message } = await req.json();
+    
+    console.log("Form data received:", { name, email, company, phone, employeeCount, message });
+    console.log("Using Resend API Key:", Deno.env.get("RESEND_API_KEY") ? "API key exists" : "API key missing");
 
     const emailResponse = await resend.emails.send({
       from: "UniformConnect <onboarding@resend.dev>",
