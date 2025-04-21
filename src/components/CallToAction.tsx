@@ -30,11 +30,6 @@ const CallToAction = ({ scrollToConsultation }: { scrollToConsultation: () => vo
               </div>
             </div>
             <div className="md:w-1/2 relative flex items-center justify-center p-8">
-              <img 
-                src={images.heroImage} 
-                alt="Uniform Services" 
-                className="max-w-full max-h-[400px] object-contain rounded-lg shadow-lg"
-              />
               <div className="absolute inset-0 bg-black/30 flex items-center justify-center rounded-lg">
                 <div className="text-center bg-white/10 backdrop-blur-md p-8 rounded-lg max-w-xs mx-auto opacity-0 animate-fade-in" style={{ animationDelay: '0.8s' }}>
                   <div className="flex justify-center mb-4">
