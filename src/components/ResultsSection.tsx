@@ -39,7 +39,7 @@ const ResultsSection = () => {
             </div>
             <div className="rounded-lg overflow-hidden shadow-xl transform hover:scale-105 transition-transform duration-300">
               <img 
-                src={images.servicesHero} 
+                src={images.aboutImage} 
                 alt="Custom services Hero" 
                 className="w-full h-auto object-cover"
               />
