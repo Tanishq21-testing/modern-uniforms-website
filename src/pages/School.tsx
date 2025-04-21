@@ -98,7 +98,7 @@ const School = () => {
             <Card className="overflow-hidden hover:shadow-lg transition-shadow">
               <div className="h-64 bg-gray-200 relative">
                 <img 
-                  src={images.schoolHoodie} 
+                  src={images.Varsityjacket} 
                   alt="Varsity Jackets" 
                   className="w-full h-full object-cover"
                   onError={(e) => {
@@ -119,7 +119,7 @@ const School = () => {
             <Card className="overflow-hidden hover:shadow-lg transition-shadow">
               <div className="h-64 bg-gray-200 relative">
                 <img 
-                  src={images.schoolHoodie} 
+                  src={images.Hoodieimage} 
                   alt="Hoodies" 
                   className="w-full h-full object-cover"
                   onError={(e) => {
@@ -140,7 +140,7 @@ const School = () => {
             <Card className="overflow-hidden hover:shadow-lg transition-shadow">
               <div className="h-64 bg-gray-200 relative">
                 <img 
-                  src={images.uniformServices} 
+                  src={images.Sweater} 
                   alt="Sweaters" 
                   className="w-full h-full object-cover"
                   onError={(e) => {
@@ -161,7 +161,7 @@ const School = () => {
             <Card className="overflow-hidden hover:shadow-lg transition-shadow">
               <div className="h-64 bg-gray-200 relative">
                 <img 
-                  src={images.uniformServices} 
+                  src={images.Tshirt} 
                   alt="T-Shirts" 
                   className="w-full h-full object-cover"
                   onError={(e) => {
