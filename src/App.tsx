@@ -14,6 +14,7 @@ import CaseStudies from "./pages/CaseStudies";
 import ContactUs from "./pages/ContactUs";
 import Services from "./pages/Services";
 import Clients from "./pages/Clients";
+import School from "./pages/School";
 import Auth from "./pages/Auth";
 import Products from "./pages/Products";
 import NotFound from "./pages/NotFound";
@@ -59,6 +60,7 @@ const App = () => {
               <Route path="/contact-us" element={<ContactUs />} />
               <Route path="/services" element={<Services />} />
               <Route path="/clients" element={<Clients />} />
+              <Route path="/school" element={<School />} />
               <Route path="/auth" element={<Auth />} />
               <Route path="/products" element={<Products />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
