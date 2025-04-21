@@ -33,12 +33,13 @@ export const images = {
   schoolHoodie: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/media/Fairgreen%20school%20hoodie.png',
   aboutImage: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/media/Uniform%20Connect%20ad%201.png',
   jonesthegrocercase: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/media/Jones%20the%20grocer%20Case%20Studies%20.jpg',
-},
 
-//Product Images
+  //Product Images
 Varsityjacket: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/Products/ACC5FADD-6557-4408-9F1B-66FB644A5130.JPG',
 Hoodieimage: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/Products/98677ED1-800F-446D-8043-37459187D776.JPG',
 Sweater: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/Products/Screenshot%202025-04-21%20at%206.24.54%20PM.png',
 Tshirt: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/Products/tshirt.jpeg',
 };
+
+
 export default images;
