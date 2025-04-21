@@ -24,7 +24,7 @@ const CallToAction = ({ scrollToConsultation }: { scrollToConsultation: () => vo
                 >
                   Start Your Consultation <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
-                <Button variant="outline" className="border-white text-white hover:bg-white/10">
+                <Button variant="outline" className="border-white text-brand-blue hover:bg-white/10">
                   View Case Studies
                 </Button>
               </div>
