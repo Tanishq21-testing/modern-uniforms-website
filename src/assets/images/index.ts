@@ -32,6 +32,7 @@ export const images = {
   callToAction: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/media/logo%20-%20longer.png',
 schoolHoodie: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/media/Fairgreen%20school%20hoodie.png',
   aboutImage: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/media/Uniform%20Connect%20ad%201.png'
+  jonesthegrocercase: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/media/Jones%20the%20grocer%20Case%20Studies%20.jpg',
 };
 
 export default images;
