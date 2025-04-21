@@ -31,7 +31,7 @@ const CallToAction = ({ scrollToConsultation }: { scrollToConsultation: () => vo
             </div>
             <div className="md:w-1/2 relative flex items-center justify-center p-8">
               <img 
-                src={images.uniformServices} 
+                src={images.heroImage} 
                 alt="Uniform Services" 
                 className="max-w-full max-h-[400px] object-contain rounded-lg shadow-lg"
               />
