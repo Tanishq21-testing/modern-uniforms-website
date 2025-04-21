@@ -59,7 +59,7 @@ const CaseStudies = () => {
             <div className="order-1 md:order-2 flex justify-center animate-fade-in">
               <div className="relative bg-white shadow-xl rounded-xl p-4 max-w-md overflow-hidden">
                 <img 
-                  src={images.callToAction} 
+                  src={images.jonesthegrocercase} 
                   alt="Jones The Grocer Uniforms" 
                   className="rounded-lg w-full h-auto"
                 />
