@@ -61,42 +61,42 @@ const LandingPage2 = () => {
                   </button>
                 </Link>
               </div>
-              <div className="rounded-lg overflow-hidden shadow-xl transform hover:scale-105 transition-transform duration-300">
+              <div className="rounded-lg overflow-hidden shadow-xl transform hover:scale-105 transition-transform duration-300 flex justify-center">
                 <img 
                   src={images.uniformServices} 
                   alt="Uniform Services" 
-                  className="w-full h-auto object-cover rounded-lg"
+                  className="w-auto max-h-[400px] object-contain rounded-lg"
                 />
               </div>
             </div>
             
             <div className="text-center mb-16">
               <h3 className="text-3xl font-bold mb-8">Trusted By Leading UAE Companies</h3>
-              <div className="grid grid-cols-2 md:grid-cols-5 gap-8 items-center justify-center">
+              <div className="grid grid-cols-2 md:grid-cols-5 gap-8 items-center justify-center max-w-4xl mx-auto">
                 <img 
                   src={images.clientLogos.jonesTheGrocer} 
                   alt="Jones The Grocer" 
-                  className="w-full max-h-40 object-contain hover:scale-105 transition-transform duration-300 mx-auto"
+                  className="max-h-28 w-auto object-contain hover:scale-105 transition-transform duration-300 mx-auto"
                 />
                 <img 
                   src={images.clientLogos.littleBangkok} 
                   alt="Little Bangkok" 
-                  className="w-full max-h-40 object-contain hover:scale-105 transition-transform duration-300 mx-auto"
+                  className="max-h-28 w-auto object-contain hover:scale-105 transition-transform duration-300 mx-auto"
                 />
                 <img 
                   src={images.clientLogos.fairgreen} 
                   alt="Fairgreen School" 
-                  className="w-full max-h-40 object-contain hover:scale-105 transition-transform duration-300 mx-auto"
+                  className="max-h-28 w-auto object-contain hover:scale-105 transition-transform duration-300 mx-auto"
                 />
                 <img 
                   src={images.clientLogos.aud} 
                   alt="American University Dubai" 
-                  className="w-full max-h-40 object-contain hover:scale-105 transition-transform duration-300 mx-auto"
+                  className="max-h-28 w-auto object-contain hover:scale-105 transition-transform duration-300 mx-auto"
                 />
                 <img 
                   src={images.clientLogos.hilton} 
                   alt="Hilton Hotel" 
-                  className="w-full max-h-40 object-contain hover:scale-105 transition-transform duration-300 mx-auto"
+                  className="max-h-28 w-auto object-contain hover:scale-105 transition-transform duration-300 mx-auto"
                 />
               </div>
             </div>

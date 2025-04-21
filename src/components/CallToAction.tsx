@@ -29,13 +29,13 @@ const CallToAction = ({ scrollToConsultation }: { scrollToConsultation: () => vo
                 </Button>
               </div>
             </div>
-            <div className="md:w-1/2 relative">
+            <div className="md:w-1/2 relative flex items-center justify-center p-8">
               <img 
-                src={images.heroImage} 
-                alt="Uniform Connect Logo" 
-                className="w-full h-full object-cover"
+                src={images.uniformServices} 
+                alt="Uniform Services" 
+                className="max-w-full max-h-[400px] object-contain rounded-lg shadow-lg"
               />
-              <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
+              <div className="absolute inset-0 bg-black/30 flex items-center justify-center rounded-lg">
                 <div className="text-center bg-white/10 backdrop-blur-md p-8 rounded-lg max-w-xs mx-auto opacity-0 animate-fade-in" style={{ animationDelay: '0.8s' }}>
                   <div className="flex justify-center mb-4">
                     <Users className="h-12 w-12 text-white" />
