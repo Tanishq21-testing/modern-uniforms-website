@@ -12,7 +12,7 @@ import { images } from '@/assets/images';
 const ClientGallery = () => {
   const galleryItems = [
     {
-      image: images.clientLogos.jonesTheGrocer,
+      image: images.jonesthegrocercase,
       title: "Restaurant Staff Uniforms",
       description: "Custom aprons and chef uniforms for Jones The Grocer"
     },
@@ -27,7 +27,7 @@ const ClientGallery = () => {
       description: "Premium embroidered hoodies for Fairgreen International School"
     },
     {
-      image: images.callToAction,
+      image: images.jonesthegrocercase,
       title: "Jones the Grocer",
       description: "Professional attire for corporate clients"
     },
