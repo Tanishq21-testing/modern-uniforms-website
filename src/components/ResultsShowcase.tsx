@@ -20,7 +20,7 @@ const ResultsShowcase = () => {
             <div className="bg-white rounded-xl overflow-hidden shadow-lg group hover:shadow-xl transition-shadow">
               <div className="relative h-64 overflow-hidden">
                 <img 
-                  src={images.callToAction} 
+                  src={images.jonesthegrocercase} 
                   alt="Jones The Grocer Uniforms" 
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
