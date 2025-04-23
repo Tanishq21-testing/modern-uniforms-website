@@ -9,7 +9,7 @@ const Footer = () => {
   return (
     <footer className="bg-gray-900 text-white pt-12 pb-6">
       <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-4 gap-8 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-12">
           <div>
             <div className="flex items-center space-x-2 mb-6">
               <div className="relative">
@@ -30,32 +30,32 @@ const Footer = () => {
             </p>
           </div>
           
-          <div>
+          <div className="mt-4 sm:mt-0">
             <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
-            <ul className="space-y-2">
-              <li><a href="#about" className="text-gray-400 hover:text-white transition-colors">About Us</a></li>
-              <li><a href="#services" className="text-gray-400 hover:text-white transition-colors">Services</a></li>
-              <li><a href="#clients" className="text-gray-400 hover:text-white transition-colors">Our Clients</a></li>
-              <li><a href="#why-us" className="text-gray-400 hover:text-white transition-colors">Why Choose Us</a></li>
-              <li><a href="#contact" className="text-gray-400 hover:text-white transition-colors">Contact Us</a></li>
+            <ul className="space-y-2 grid grid-cols-1">
+              <li><a href="#about" className="text-gray-400 hover:text-white transition-colors block py-1">About Us</a></li>
+              <li><a href="#services" className="text-gray-400 hover:text-white transition-colors block py-1">Services</a></li>
+              <li><a href="#clients" className="text-gray-400 hover:text-white transition-colors block py-1">Our Clients</a></li>
+              <li><a href="#why-us" className="text-gray-400 hover:text-white transition-colors block py-1">Why Choose Us</a></li>
+              <li><a href="#contact" className="text-gray-400 hover:text-white transition-colors block py-1">Contact Us</a></li>
             </ul>
           </div>
           
           <div>
             <h4 className="text-lg font-semibold mb-4">Services</h4>
-            <ul className="space-y-2">
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Embroidery</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Screen Printing</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Tailoring</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Custom Designs</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Corporate Uniforms</a></li>
+            <ul className="space-y-2 grid grid-cols-1">
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors block py-1">Embroidery</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors block py-1">Screen Printing</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors block py-1">Tailoring</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors block py-1">Custom Designs</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors block py-1">Corporate Uniforms</a></li>
             </ul>
           </div>
           
           <div>
             <h4 className="text-lg font-semibold mb-4">Contact</h4>
             <address className="not-italic text-gray-400">
-             Office 13, Karama, Dubai<br />
+              Office 13, Karama, Dubai<br />
               Dubai, United Arab Emirates
             </address>
             <p className="text-gray-400 mt-2">
@@ -66,7 +66,7 @@ const Footer = () => {
         </div>
         
         <div className="border-t border-gray-800 pt-6 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-400 text-sm mb-4 md:mb-0">
+          <p className="text-gray-400 text-sm mb-4 md:mb-0 text-center md:text-left">
             &copy; {new Date().getFullYear()} UniformConnect. All Rights Reserved.
           </p>
           

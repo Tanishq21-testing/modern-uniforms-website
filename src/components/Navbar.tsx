@@ -31,6 +31,18 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Add effect to prevent scrolling when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMobileMenuOpen]);
+
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
@@ -53,12 +65,12 @@ const Navbar = () => {
           <img 
             src="/lovable-uploads/7b06a816-98dc-4284-9f22-f5f23c2e2494.png" 
             alt="UniformConnect Logo" 
-            className="h-12 w-auto"
+            className="h-10 md:h-12 w-auto"
           />
         </Link>
 
         {/* Desktop Menu */}
-        <nav className="hidden md:flex space-x-8">
+        <nav className="hidden md:flex space-x-4 lg:space-x-8">
           <Link to="/" className="text-gray-700 hover:text-brand-red transition-colors">Home</Link>
           <Link to="/about-us" className="text-gray-700 hover:text-brand-blue transition-colors">About Us</Link>
           <Link to="/case-studies" className="text-gray-700 hover:text-brand-green transition-colors">Case Studies</Link>
@@ -103,99 +115,109 @@ const Navbar = () => {
 
         {/* Mobile Menu Toggle */}
         <button 
-          className="md:hidden text-gray-700"
+          className="md:hidden text-gray-700 z-50 p-2"
           onClick={toggleMobileMenu}
+          aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
         >
           {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu - Fullscreen Overlay */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-white absolute w-full shadow-lg animate-fade-in">
-          <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
-            <Link 
-              to="/"
-              className="text-gray-700 hover:text-brand-red transition-colors py-2"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Home
-            </Link>
-            <Link 
-              to="/about-us"
-              className="text-gray-700 hover:text-brand-blue transition-colors py-2"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              About Us
-            </Link>
-            <Link 
-              to="/case-studies"
-              className="text-gray-700 hover:text-brand-green transition-colors py-2"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Case Studies
-            </Link>
-            <Link 
-              to="/services"
-              className="text-gray-700 hover:text-brand-blue transition-colors py-2"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Services
-            </Link>
-            <Link 
-              to="/school"
-              className="text-gray-700 hover:text-brand-red transition-colors py-2"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              School
-            </Link>
-            <Link 
-              to="/clients"
-              className="text-gray-700 hover:text-brand-green transition-colors py-2"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Clients
-            </Link>
-            <Link 
-              to="/contact-us"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              <Button className="bg-brand-red hover:bg-brand-red/90 text-white w-full">
-                Contact Us
-              </Button>
-            </Link>
-            
-            {user ? (
-              <>
-                <Link 
-                  to="/products"
-                  className="text-gray-700 hover:text-brand-blue transition-colors py-2"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  My Products
-                </Link>
-                <Button 
-                  variant="outline" 
-                  className="w-full" 
-                  onClick={() => {
-                    handleSignOut();
-                    setIsMobileMenuOpen(false);
-                  }}
-                >
-                  Sign Out
-                </Button>
-              </>
-            ) : (
+        <div className="md:hidden fixed inset-0 bg-white z-40 flex flex-col animate-fade-in">
+          <div className="container mx-auto px-4 py-16 flex flex-col h-full">
+            <div className="flex flex-col space-y-6 text-lg">
               <Link 
-                to="/auth"
+                to="/"
+                className="text-gray-700 hover:text-brand-red transition-colors py-3 border-b border-gray-100"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                <Button variant="outline" className="w-full flex items-center justify-center gap-2">
-                  <LogIn size={18} />
-                  Sign In
+                Home
+              </Link>
+              <Link 
+                to="/about-us"
+                className="text-gray-700 hover:text-brand-blue transition-colors py-3 border-b border-gray-100"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                About Us
+              </Link>
+              <Link 
+                to="/case-studies"
+                className="text-gray-700 hover:text-brand-green transition-colors py-3 border-b border-gray-100"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Case Studies
+              </Link>
+              <Link 
+                to="/services"
+                className="text-gray-700 hover:text-brand-blue transition-colors py-3 border-b border-gray-100"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Services
+              </Link>
+              <Link 
+                to="/school"
+                className="text-gray-700 hover:text-brand-red transition-colors py-3 border-b border-gray-100"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                School
+              </Link>
+              <Link 
+                to="/clients"
+                className="text-gray-700 hover:text-brand-green transition-colors py-3 border-b border-gray-100"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Clients
+              </Link>
+            </div>
+            
+            <div className="mt-auto pb-8 flex flex-col space-y-4">
+              <Link 
+                to="/contact-us"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="w-full"
+              >
+                <Button className="bg-brand-red hover:bg-brand-red/90 text-white w-full py-6 text-lg">
+                  Contact Us
                 </Button>
               </Link>
-            )}
+              
+              {user ? (
+                <>
+                  <Link 
+                    to="/products"
+                    className="w-full"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    <Button variant="outline" className="w-full py-5">
+                      My Products
+                    </Button>
+                  </Link>
+                  <Button 
+                    variant="outline" 
+                    className="w-full py-5" 
+                    onClick={() => {
+                      handleSignOut();
+                      setIsMobileMenuOpen(false);
+                    }}
+                  >
+                    Sign Out
+                  </Button>
+                </>
+              ) : (
+                <Link 
+                  to="/auth"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="w-full"
+                >
+                  <Button variant="outline" className="w-full py-5 flex items-center justify-center gap-2">
+                    <LogIn size={18} />
+                    Sign In
+                  </Button>
+                </Link>
+              )}
+            </div>
           </div>
         </div>
       )}

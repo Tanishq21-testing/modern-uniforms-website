@@ -1,177 +1,207 @@
+
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { MapPin, Phone, Mail } from 'lucide-react';
-import { useToast } from '@/components/ui/use-toast';
+import { Phone, Mail, MapPin, Send } from 'lucide-react';
+import { useToast } from '@/hooks/use-toast';
 
 const Contact = () => {
-  const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
+    company: '',
     message: '',
   });
-
-  const testImageUrl = 'https://your-supabase-url.supabase.co/storage/v1/object/public/your-bucket/newest%20logo%20(1).jpeg';
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for contacting us. We'll get back to you soon.",
-    });
-    setFormData({ name: '', email: '', phone: '', message: '' });
+    setIsSubmitting(true);
+
+    try {
+      // Here you would normally send the form data to your backend
+      // For now, we'll simulate a successful submission
+      await new Promise(resolve => setTimeout(resolve, 1000));
+
+      toast({
+        title: "Message sent!",
+        description: "We've received your message and will get back to you soon.",
+      });
+
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        company: '',
+        message: '',
+      });
+    } catch (error) {
+      toast({
+        title: "Something went wrong",
+        description: "Unable to send your message. Please try again later.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
-    <section id="contact" className="py-20 bg-gray-900 text-white relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-64 h-64 bg-brand-red/10 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-brand-blue/10 rounded-full blur-3xl"></div>
-      
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-16 opacity-0 animate-fade-in">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Contact Us</h2>
-          <div className="w-20 h-1 bg-brand-green mx-auto mb-6"></div>
-          <p className="text-gray-300 text-lg">
-            Have questions or ready to discuss your uniform needs? Get in touch with us today.
+    <section id="contact" className="py-16 md:py-24 bg-gray-50">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Contact Us</h2>
+          <p className="text-gray-600 max-w-2xl mx-auto">
+            Ready to elevate your organization's professional image? Get in touch with us today to discuss your uniform requirements.
           </p>
-          
-          <div className="mt-4 flex justify-center">
-            <img 
-              src={testImageUrl} 
-              alt="Test from Supabase" 
-              className="h-12 w-auto hidden"
-            />
-          </div>
         </div>
         
-        <div className="grid md:grid-cols-2 gap-12 items-start">
-          <div className="opacity-0 animate-slide-in-left" style={{ animationDelay: '0.3s' }}>
-            <h3 className="text-2xl font-semibold mb-6">Get In Touch</h3>
-            <p className="text-gray-300 mb-8">
-              We'd love to hear from you. Fill out the form, and our team will get back to you as soon as possible.
-            </p>
+        <div className="grid md:grid-cols-2 gap-10">
+          <div className="bg-white p-6 md:p-8 rounded-lg shadow-md order-2 md:order-1">
+            <h3 className="text-2xl font-bold mb-6">Send Us a Message</h3>
             
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div className="space-y-4">
                 <div>
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Full Name <span className="text-red-500">*</span></label>
                   <Input
+                    id="name"
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    placeholder="Your Name"
+                    placeholder="John Doe"
                     required
-                    className="bg-gray-800 border-gray-700 focus:border-brand-blue"
+                    className="w-full touch-button"
                   />
                 </div>
+                
                 <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email Address <span className="text-red-500">*</span></label>
                   <Input
+                    id="email"
                     name="email"
                     type="email"
                     value={formData.email}
                     onChange={handleChange}
-                    placeholder="Your Email"
+                    placeholder="john@example.com"
                     required
-                    className="bg-gray-800 border-gray-700 focus:border-brand-blue"
+                    className="w-full touch-button"
                   />
                 </div>
+                
                 <div>
+                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
                   <Input
+                    id="phone"
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    placeholder="Your Phone"
-                    className="bg-gray-800 border-gray-700 focus:border-brand-blue"
+                    placeholder="+971 50 123 4567"
+                    className="w-full touch-button"
                   />
                 </div>
+                
                 <div>
+                  <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-1">Company Name</label>
+                  <Input
+                    id="company"
+                    name="company"
+                    value={formData.company}
+                    onChange={handleChange}
+                    placeholder="Your Company"
+                    className="w-full touch-button"
+                  />
+                </div>
+                
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Message <span className="text-red-500">*</span></label>
                   <Textarea
+                    id="message"
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
-                    placeholder="Your Message"
+                    placeholder="Tell us about your uniform requirements..."
                     required
-                    className="bg-gray-800 border-gray-700 focus:border-brand-blue"
-                    rows={5}
+                    className="w-full min-h-[120px]"
                   />
                 </div>
-                <Button 
-                  type="submit" 
-                  className="w-full bg-brand-red hover:bg-brand-red/90"
-                >
-                  Send Message
-                </Button>
               </div>
+              
+              <Button 
+                type="submit" 
+                className="w-full bg-brand-red hover:bg-brand-red/90 text-white py-6 touch-button"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? 'Sending...' : 'Send Message'}
+                <Send className="ml-2 h-4 w-4" />
+              </Button>
             </form>
           </div>
           
-          <div className="opacity-0 animate-slide-in-right" style={{ animationDelay: '0.5s' }}>
-            <h3 className="text-2xl font-semibold mb-6">Contact Information</h3>
-            
-            <div className="space-y-6">
-              <div className="flex items-start">
-                <div className="mr-4 p-3 bg-brand-blue/20 rounded-full text-brand-blue">
-                  <MapPin size={24} />
-                </div>
-                <div>
-                  <h4 className="font-medium text-lg">Our Location</h4>
-                  <p className="text-gray-300 mt-1">
-                    Dubai Design District, Building 7<br />
-                    Dubai, United Arab Emirates
-                  </p>
-                </div>
-              </div>
+          <div className="order-1 md:order-2">
+            <div className="bg-white p-6 md:p-8 rounded-lg shadow-md mb-8">
+              <h3 className="text-xl font-bold mb-6">Contact Information</h3>
               
-              <div className="flex items-start">
-                <div className="mr-4 p-3 bg-brand-red/20 rounded-full text-brand-red">
-                  <Phone size={24} />
+              <div className="space-y-6">
+                <div className="flex items-start">
+                  <div className="mr-4 bg-brand-blue/10 p-3 rounded-full text-brand-blue">
+                    <Phone size={20} />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold mb-1">Phone</h4>
+                    <p className="text-gray-600">+971 50 759 9245</p>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="font-medium text-lg">Call Us</h4>
-                  <p className="text-gray-300 mt-1">
-                    +971 50 759 9245<br />
                 
-                  </p>
+                <div className="flex items-start">
+                  <div className="mr-4 bg-brand-red/10 p-3 rounded-full text-brand-red">
+                    <Mail size={20} />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold mb-1">Email</h4>
+                    <p className="text-gray-600">premparsram@gmail.com</p>
+                  </div>
                 </div>
-              </div>
-              
-              <div className="flex items-start">
-                <div className="mr-4 p-3 bg-brand-green/20 rounded-full text-brand-green">
-                  <Mail size={24} />
-                </div>
-                <div>
-                  <h4 className="font-medium text-lg">Email Us</h4>
-                  <p className="text-gray-300 mt-1">
-                    premparsram@gmail.com <br/>
-                  </p>
+                
+                <div className="flex items-start">
+                  <div className="mr-4 bg-brand-green/10 p-3 rounded-full text-brand-green">
+                    <MapPin size={20} />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold mb-1">Location</h4>
+                    <p className="text-gray-600">
+                     Office 13, Karama, Dubai<br />
+                      Dubai, United Arab Emirates
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
             
-            <div className="mt-12">
-              <h4 className="font-medium text-lg mb-4">Business Hours</h4>
-              <div className="bg-gray-800 rounded-lg p-6">
-                <div className="flex justify-between mb-2">
-                  <span>Monday - Friday</span>
-                  <span>10:00 AM - 10:00 PM</span>
-                </div>
-                <div className="flex justify-between mb-2">
-                  <span>Saturday</span>
-                  <span>10:00 AM - 10:00 PM</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Sunday</span>
-                  <span>10:00 AM - 1:00 PM, 4:00 PM - 10:00 PM</span>
-                </div>
-              </div>
+            <div className="bg-white p-6 md:p-8 rounded-lg shadow-md">
+              <h3 className="text-xl font-bold mb-4">Business Hours</h3>
+              <ul className="space-y-2">
+                <li className="flex justify-between">
+                  <span className="text-gray-600">Monday - Friday:</span>
+                  <span className="font-medium">9:00 AM - 6:00 PM</span>
+                </li>
+                <li className="flex justify-between">
+                  <span className="text-gray-600">Saturday:</span>
+                  <span className="font-medium">10:00 AM - 4:00 PM</span>
+                </li>
+                <li className="flex justify-between">
+                  <span className="text-gray-600">Sunday:</span>
+                  <span className="font-medium">Closed</span>
+                </li>
+              </ul>
             </div>
           </div>
         </div>

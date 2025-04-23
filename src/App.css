@@ -2,7 +2,53 @@
 /* Reset any default styling */
 #root {
   max-width: none;
+  width: 100%;
   margin: 0;
   padding: 0;
   text-align: inherit;
+  overflow-x: hidden;
+}
+
+/* Global responsive styles */
+.responsive-container {
+  width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Ensure buttons are touch-friendly */
+button, 
+a.btn,
+input[type="button"],
+input[type="submit"] {
+  min-height: 44px;
+}
+
+/* Fix potential overflow issues */
+img, svg, video, canvas, audio, iframe, embed, object {
+  display: block;
+  max-width: 100%;
+}
+
+/* Improve form element display on mobile */
+input, select, textarea {
+  font-size: 16px; /* Prevents iOS zoom on focus */
+}
+
+/* Utility for visually hiding elements but keeping them accessible */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Utility for no-js fallbacks */
+.no-js .js-required {
+  display: none;
 }
