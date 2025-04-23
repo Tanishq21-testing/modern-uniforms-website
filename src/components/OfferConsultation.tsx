@@ -53,6 +53,11 @@ const OfferConsultation = forwardRef<HTMLDivElement, OfferConsultationProps>(
         });
 
         if (emailError) throw emailError;
+
+        // Track conversion with Google Ads
+        if (typeof window !== 'undefined' && (window as any).gtag && (window as any).gtagSendEvent) {
+          (window as any).gtagSendEvent();
+        }
         
         toast({
           title: "Consultation Request Received!",
