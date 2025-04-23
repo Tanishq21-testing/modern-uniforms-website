@@ -1,4 +1,3 @@
-
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '@/components/Header';
@@ -63,7 +62,7 @@ const LandingPage2 = () => {
               </div>
               <div className="rounded-lg overflow-hidden shadow-xl transform hover:scale-105 transition-transform duration-300 flex justify-center">
                 <img 
-                  src={images.uniformServices} 
+                  src={images.aboutImage} 
                   alt="Uniform Services" 
                   className="w-auto max-h-[400px] object-contain rounded-lg"
                 />
