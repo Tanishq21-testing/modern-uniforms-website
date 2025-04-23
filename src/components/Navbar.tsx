@@ -4,7 +4,6 @@ import { cn } from '@/lib/utils';
 import { Menu, X, User, LogIn } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
-import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/hooks/useAuth';
 import {
   DropdownMenu,
@@ -70,16 +69,13 @@ const Navbar = () => {
         </Link>
 
         {/* Desktop Menu */}
-        <nav className="hidden md:flex space-x-4 lg:space-x-8">
+        <nav className="hidden md:flex items-center space-x-8">
           <Link to="/" className="text-gray-700 hover:text-brand-red transition-colors">Home</Link>
           <Link to="/about-us" className="text-gray-700 hover:text-brand-blue transition-colors">About Us</Link>
           <Link to="/case-studies" className="text-gray-700 hover:text-brand-green transition-colors">Case Studies</Link>
           <Link to="/services" className="text-gray-700 hover:text-brand-blue transition-colors">Services</Link>
           <Link to="/school" className="text-gray-700 hover:text-brand-red transition-colors">School</Link>
           <Link to="/clients" className="text-gray-700 hover:text-brand-green transition-colors">Clients</Link>
-        </nav>
-
-        <div className="hidden md:flex items-center space-x-4">
           <Link to="/contact-us">
             <Button className="bg-brand-red hover:bg-brand-red/90 text-white">
               Contact Us
@@ -111,116 +107,109 @@ const Navbar = () => {
               </Button>
             </Link>
           )}
-        </div>
+        </nav>
 
         {/* Mobile Menu Toggle */}
         <button 
-          className="md:hidden text-gray-700 z-50 p-2"
+          className="md:hidden text-gray-700"
           onClick={toggleMobileMenu}
           aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
         >
           {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
-      </div>
 
-      {/* Mobile Menu - Fullscreen Overlay */}
-      {isMobileMenuOpen && (
-        <div className="md:hidden fixed inset-0 bg-white z-40 flex flex-col animate-fade-in">
-          <div className="container mx-auto px-4 py-16 flex flex-col h-full">
-            <div className="flex flex-col space-y-6 text-lg">
-              <Link 
-                to="/"
-                className="text-gray-700 hover:text-brand-red transition-colors py-3 border-b border-gray-100"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Home
-              </Link>
-              <Link 
-                to="/about-us"
-                className="text-gray-700 hover:text-brand-blue transition-colors py-3 border-b border-gray-100"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                About Us
-              </Link>
-              <Link 
-                to="/case-studies"
-                className="text-gray-700 hover:text-brand-green transition-colors py-3 border-b border-gray-100"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Case Studies
-              </Link>
-              <Link 
-                to="/services"
-                className="text-gray-700 hover:text-brand-blue transition-colors py-3 border-b border-gray-100"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Services
-              </Link>
-              <Link 
-                to="/school"
-                className="text-gray-700 hover:text-brand-red transition-colors py-3 border-b border-gray-100"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                School
-              </Link>
-              <Link 
-                to="/clients"
-                className="text-gray-700 hover:text-brand-green transition-colors py-3 border-b border-gray-100"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Clients
-              </Link>
-            </div>
-            
-            <div className="mt-auto pb-8 flex flex-col space-y-4">
-              <Link 
-                to="/contact-us"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="w-full"
-              >
-                <Button className="bg-brand-red hover:bg-brand-red/90 text-white w-full py-6 text-lg">
-                  Contact Us
-                </Button>
-              </Link>
-              
-              {user ? (
-                <>
-                  <Link 
-                    to="/products"
-                    className="w-full"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    <Button variant="outline" className="w-full py-5">
-                      My Products
-                    </Button>
-                  </Link>
-                  <Button 
-                    variant="outline" 
-                    className="w-full py-5" 
-                    onClick={() => {
-                      handleSignOut();
-                      setIsMobileMenuOpen(false);
-                    }}
-                  >
-                    Sign Out
-                  </Button>
-                </>
-              ) : (
+        {/* Mobile Menu */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden fixed inset-0 z-50 bg-white">
+            <div className="container mx-auto px-4 py-8">
+              <div className="flex flex-col space-y-4">
                 <Link 
-                  to="/auth"
+                  to="/"
+                  className="text-xl text-gray-700 hover:text-brand-red transition-colors py-2"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="w-full"
                 >
-                  <Button variant="outline" className="w-full py-5 flex items-center justify-center gap-2">
-                    <LogIn size={18} />
-                    Sign In
+                  Home
+                </Link>
+                <Link 
+                  to="/about-us"
+                  className="text-xl text-gray-700 hover:text-brand-blue transition-colors py-2"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  About Us
+                </Link>
+                <Link 
+                  to="/case-studies"
+                  className="text-xl text-gray-700 hover:text-brand-green transition-colors py-2"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Case Studies
+                </Link>
+                <Link 
+                  to="/services"
+                  className="text-xl text-gray-700 hover:text-brand-blue transition-colors py-2"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Services
+                </Link>
+                <Link 
+                  to="/school"
+                  className="text-xl text-gray-700 hover:text-brand-red transition-colors py-2"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  School
+                </Link>
+                <Link 
+                  to="/clients"
+                  className="text-xl text-gray-700 hover:text-brand-green transition-colors py-2"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Clients
+                </Link>
+                <Link 
+                  to="/contact-us"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  <Button className="w-full bg-brand-red hover:bg-brand-red/90 text-white">
+                    Contact Us
                   </Button>
                 </Link>
-              )}
+                {user ? (
+                  <>
+                    <Link 
+                      to="/products"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      <Button variant="outline" className="w-full">
+                        My Products
+                      </Button>
+                    </Link>
+                    <Button 
+                      variant="outline" 
+                      className="w-full" 
+                      onClick={() => {
+                        handleSignOut();
+                        setIsMobileMenuOpen(false);
+                      }}
+                    >
+                      Sign Out
+                    </Button>
+                  </>
+                ) : (
+                  <Link 
+                    to="/auth"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    <Button variant="outline" className="w-full flex items-center justify-center gap-2">
+                      <LogIn size={18} />
+                      Sign In
+                    </Button>
+                  </Link>
+                )}
+              </div>
             </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </header>
   );
 };
