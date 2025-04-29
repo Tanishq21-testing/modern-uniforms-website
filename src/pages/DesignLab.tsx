@@ -1,12 +1,12 @@
 
 import { useState, useRef, useEffect } from 'react';
-import { Navbar } from "@/components/Navbar";
-import { PageFooter } from "@/components/PageFooter";
+import Navbar from "@/components/Navbar";
+import PageFooter from "@/components/PageFooter";
 import DesignEditor from "@/components/design-lab/DesignEditor";
-import { useMediaQuery } from '@/hooks/use-mobile';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const DesignLab = () => {
-  const isMobile = useMediaQuery("(max-width: 768px)");
+  const isMobile = useIsMobile();
   
   return (
     <div className="min-h-screen flex flex-col bg-white">
