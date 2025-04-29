@@ -17,6 +17,7 @@ import Clients from "./pages/Clients";
 import School from "./pages/School";
 import Auth from "./pages/Auth";
 import Products from "./pages/Products";
+import DesignLab from "./pages/DesignLab";
 import NotFound from "./pages/NotFound";
 
 // Setup image mappings for easier reference
@@ -63,6 +64,7 @@ const App = () => {
               <Route path="/school" element={<School />} />
               <Route path="/auth" element={<Auth />} />
               <Route path="/products" element={<Products />} />
+              <Route path="/design-lab" element={<DesignLab />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
