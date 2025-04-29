@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -27,6 +28,8 @@ const ContactInfo = () => {
     setIsSubmitting(true);
 
     try {
+      console.log('Submitting form data:', formData);
+      
       // Save to Supabase
       const { error: dbError } = await supabase
         .from('consultation_submissions')
@@ -39,10 +42,15 @@ const ContactInfo = () => {
           message: formData.message
         });
 
-      if (dbError) throw dbError;
+      if (dbError) {
+        console.error('Database error:', dbError);
+        throw dbError;
+      }
+      
+      console.log('Successfully saved to database');
 
       // Send email notification
-      const { error: emailError } = await supabase.functions.invoke('send-consultation-email', {
+      const { error: emailError, data: emailData } = await supabase.functions.invoke('send-consultation-email', {
         body: {
           ...formData,
           employeeCount: 'not specified',
@@ -50,10 +58,18 @@ const ContactInfo = () => {
         }
       });
 
-      if (emailError) throw emailError;
+      console.log('Email function response:', emailData);
+
+      if (emailError) {
+        console.error('Email error:', emailError);
+        throw emailError;
+      }
+      
+      console.log('Successfully sent email notification');
       
       // Track conversion with Google Ads if available
       if (typeof window !== 'undefined' && (window as any).gtag && (window as any).gtagSendEvent) {
+        console.log('Triggering Google Ads conversion tracking');
         (window as any).gtagSendEvent();
       }
 
