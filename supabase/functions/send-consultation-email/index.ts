@@ -17,26 +17,27 @@ serve(async (req) => {
 
   try {
     console.log("Received email request");
-    const { name, email, company, phone, employeeCount, message } = await req.json();
+    const { name, email, company, phone, employeeCount, message, formType = "Consultation Form" } = await req.json();
     
     console.log("Email Configuration:", {
       from: "UniformConnect <onboarding@resend.dev>",
       to: "premparsram@gmail.com",
       sender_email: email,
-      sender_name: name
+      sender_name: name,
+      formType
     });
 
     const emailResponse = await resend.emails.send({
       from: "UniformConnect <onboarding@resend.dev>",
       to: "premparsram@gmail.com",
-      subject: "New Consultation Request",
+      subject: `New ${formType} Submission`,
       html: `
-        <h1>New Consultation Request Received</h1>
+        <h1>New ${formType} Submission Received</h1>
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Company:</strong> ${company}</p>
         <p><strong>Phone:</strong> ${phone}</p>
-        <p><strong>Employee Count:</strong> ${employeeCount}</p>
+        <p><strong>Employee Count:</strong> ${employeeCount || 'Not specified'}</p>
         <p><strong>Message:</strong> ${message}</p>
       `,
     });

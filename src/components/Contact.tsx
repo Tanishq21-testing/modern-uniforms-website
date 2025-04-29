@@ -5,6 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Phone, Mail, MapPin, Send } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { supabase } from '@/integrations/supabase/client';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -27,9 +28,35 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      // Here you would normally send the form data to your backend
-      // For now, we'll simulate a successful submission
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Save to Supabase
+      const { error: dbError } = await supabase
+        .from('consultation_submissions')
+        .insert({
+          name: formData.name,
+          email: formData.email,
+          company: formData.company,
+          phone: formData.phone,
+          employee_count: 'not specified', // Default value
+          message: formData.message
+        });
+
+      if (dbError) throw dbError;
+
+      // Send email notification
+      const { error: emailError } = await supabase.functions.invoke('send-consultation-email', {
+        body: {
+          ...formData,
+          employeeCount: 'not specified',
+          formType: 'Contact Form'
+        }
+      });
+
+      if (emailError) throw emailError;
+      
+      // Track conversion with Google Ads if available
+      if (typeof window !== 'undefined' && (window as any).gtag && (window as any).gtagSendEvent) {
+        (window as any).gtagSendEvent();
+      }
 
       toast({
         title: "Message sent!",
@@ -44,6 +71,7 @@ const Contact = () => {
         message: '',
       });
     } catch (error) {
+      console.error('Submission error:', error);
       toast({
         title: "Something went wrong",
         description: "Unable to send your message. Please try again later.",
@@ -211,3 +239,4 @@ const Contact = () => {
 };
 
 export default Contact;
+

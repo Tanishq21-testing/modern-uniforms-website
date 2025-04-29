@@ -1,13 +1,14 @@
-
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { MapPin, Phone, Mail, Clock, Building } from 'lucide-react';
 import { useToast } from '@/components/ui/use-toast';
+import { supabase } from '@/integrations/supabase/client';
 
 const ContactInfo = () => {
   const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -21,14 +22,57 @@ const ContactInfo = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for contacting UniformConnect. We'll get back to you soon.",
-    });
-    setFormData({ name: '', email: '', phone: '', company: '', message: '' });
+    setIsSubmitting(true);
+
+    try {
+      // Save to Supabase
+      const { error: dbError } = await supabase
+        .from('consultation_submissions')
+        .insert({
+          name: formData.name,
+          email: formData.email,
+          company: formData.company,
+          phone: formData.phone,
+          employee_count: 'not specified', // Default value
+          message: formData.message
+        });
+
+      if (dbError) throw dbError;
+
+      // Send email notification
+      const { error: emailError } = await supabase.functions.invoke('send-consultation-email', {
+        body: {
+          ...formData,
+          employeeCount: 'not specified',
+          formType: 'Contact Page Form'
+        }
+      });
+
+      if (emailError) throw emailError;
+      
+      // Track conversion with Google Ads if available
+      if (typeof window !== 'undefined' && (window as any).gtag && (window as any).gtagSendEvent) {
+        (window as any).gtagSendEvent();
+      }
+
+      toast({
+        title: "Message Sent!",
+        description: "Thank you for contacting UniformConnect. We'll get back to you soon.",
+      });
+      
+      setFormData({ name: '', email: '', phone: '', company: '', message: '' });
+    } catch (error) {
+      console.error('Submission error:', error);
+      toast({
+        title: "Something went wrong",
+        description: "Unable to send your message. Please try again later.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
