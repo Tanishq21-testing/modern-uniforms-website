@@ -3,7 +3,11 @@ import { useState, useRef, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { ColorOption, HoodieView, DesignElement } from '../types';
-import { images } from '@/assets/images';
+import { useHoodieImage } from '@/hooks/use-hoodie-image';
+import { Skeleton } from "@/components/ui/skeleton";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { Badge } from "@/components/ui/badge";
+import { Toggle, ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 
 interface PreviewPanelProps {
   currentView: HoodieView;
@@ -32,6 +36,8 @@ const PreviewPanel = ({
 }: PreviewPanelProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
+  const { imageUrl, isLoading } = useHoodieImage(selectedColor, currentView);
+  
   const [dragInfo, setDragInfo] = useState<{
     isDragging: boolean;
     elementId: string | null;
@@ -61,14 +67,8 @@ const PreviewPanel = ({
     updateSize();
     window.addEventListener('resize', updateSize);
     
-    return () => window.removeEventListener('resize', updateSize);
+    return () => window.addEventListener('resize', updateSize);
   }, []);
-
-  const getHoodieImage = () => {
-    // For simplicity, we're using a single hoodie image
-    // In a real implementation, you'd have different images for different colors
-    return images.Hoodieimage;
-  };
 
   const handleDragStart = (e: React.MouseEvent, id: string) => {
     const element = designElements.find(el => el.id === id);
@@ -180,61 +180,82 @@ const PreviewPanel = ({
   };
 
   return (
-    <div className="h-full flex flex-col bg-gray-50 p-4">
-      <h2 className="text-xl font-semibold mb-4 text-center">Preview</h2>
+    <div className="h-full flex flex-col bg-gray-50 rounded-md p-5 shadow-sm">
+      <div className="flex justify-between items-center mb-5">
+        <h2 className="text-xl font-semibold">Preview</h2>
+        
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Badge variant="outline" className="bg-white">
+                {currentView === 'front' ? 'Front View' : 'Back View'}
+              </Badge>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>Current view of the hoodie</p>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
+      </div>
       
       <div className="flex justify-center mb-4">
-        <div className="flex gap-4 items-center">
-          <Button 
-            variant="outline" 
-            size="sm" 
-            onClick={() => setCurrentView('front')}
-            disabled={currentView === 'front'}
-          >
-            <ArrowLeft className="mr-1" size={16} />
+        <ToggleGroup type="single" value={currentView} onValueChange={(value) => value && setCurrentView(value as HoodieView)}>
+          <ToggleGroupItem value="front" aria-label="Front view">
+            <ArrowLeft className="mr-2" size={16} />
             Front
-          </Button>
-          <Button 
-            variant="outline" 
-            size="sm" 
-            onClick={() => setCurrentView('back')}
-            disabled={currentView === 'back'}
-          >
+          </ToggleGroupItem>
+          <ToggleGroupItem value="back" aria-label="Back view">
             Back
-            <ArrowRight className="ml-1" size={16} />
-          </Button>
-        </div>
+            <ArrowRight className="ml-2" size={16} />
+          </ToggleGroupItem>
+        </ToggleGroup>
       </div>
       
-      <div 
-        ref={containerRef}
-        className="flex-grow relative overflow-hidden border rounded-lg bg-white shadow-inner"
-        onMouseMove={handleDragMove}
-        onMouseUp={handleDragEnd}
-        onMouseLeave={handleDragEnd}
-      >
-        {/* Hoodie background image */}
-        <div className="absolute inset-0 pointer-events-none flex items-center justify-center">
-          <img 
-            src={getHoodieImage()} 
-            alt={`${currentView} view of hoodie`}
-            className="max-h-full object-contain"
-            style={{
-              filter: `brightness(${selectedColor === 'white' ? 1 : 0.9}) 
-                       hue-rotate(${selectedColor === 'navy' ? '210deg' : 
-                                    selectedColor === 'red' ? '0deg' : 
-                                    selectedColor === 'green' ? '120deg' : 
-                                    selectedColor === 'blue' ? '240deg' : 
-                                    selectedColor === 'purple' ? '280deg' : 
-                                    selectedColor === 'yellow' ? '60deg' : 
-                                    selectedColor === 'orange' ? '30deg' : '0deg'})`
-            }}
-          />
+      <TooltipProvider>
+        <div 
+          ref={containerRef}
+          className="flex-grow relative overflow-hidden border rounded-lg bg-white shadow-inner"
+          onMouseMove={handleDragMove}
+          onMouseUp={handleDragEnd}
+          onMouseLeave={handleDragEnd}
+        >
+          {/* Loading state */}
+          {isLoading && (
+            <div className="absolute inset-0 flex items-center justify-center bg-white/80 z-10">
+              <Skeleton className="h-[350px] w-[250px] rounded-md" />
+            </div>
+          )}
+          
+          {/* Hoodie image from Supabase */}
+          <div className="absolute inset-0 pointer-events-none flex items-center justify-center">
+            {imageUrl && (
+              <img 
+                src={imageUrl} 
+                alt={`${currentView} view of ${selectedColor} hoodie`}
+                className="max-h-full max-w-full object-contain transition-opacity duration-300"
+                style={{ opacity: isLoading ? 0 : 1 }}
+              />
+            )}
+          </div>
+          
+          {/* Design elements */}
+          {renderDesignElements()}
+
+          {/* Tooltip helper */}
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <div className="absolute bottom-3 right-3">
+                <Button variant="outline" size="sm" className="bg-white/80">
+                  ?
+                </Button>
+              </div>
+            </TooltipTrigger>
+            <TooltipContent side="left">
+              <p>Click and drag to reposition elements on the hoodie</p>
+            </TooltipContent>
+          </Tooltip>
         </div>
-        
-        {/* Design elements */}
-        {renderDesignElements()}
-      </div>
+      </TooltipProvider>
       
       <div className="mt-4 text-center text-sm text-gray-500">
         Click and drag to reposition elements on the hoodie

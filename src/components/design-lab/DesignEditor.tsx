@@ -5,13 +5,14 @@ import ToolsPanel from './panels/ToolsPanel';
 import PreviewPanel from './panels/PreviewPanel';
 import OrderPanel from './panels/OrderPanel';
 import { ColorOption, DesignPlacement, HoodieView, DesignElement, Font } from './types';
+import { toast } from "sonner";
 
 interface DesignEditorProps {
   isMobile: boolean;
 }
 
 const DesignEditor = ({ isMobile }: DesignEditorProps) => {
-  const [selectedColor, setSelectedColor] = useState<ColorOption>('black');
+  const [selectedColor, setSelectedColor] = useState<ColorOption>('black'); // Default black color
   const [customPartColor, setCustomPartColor] = useState<{
     body: string;
     sleeves: string;
@@ -22,7 +23,7 @@ const DesignEditor = ({ isMobile }: DesignEditorProps) => {
     hood: 'black',
   });
   
-  const [currentView, setCurrentView] = useState<HoodieView>('front');
+  const [currentView, setCurrentView] = useState<HoodieView>('back'); // Start with back view
   const [selectedSize, setSelectedSize] = useState<string>('M');
   const [quantity, setQuantity] = useState<number>(1);
   const [price, setPrice] = useState<number>(49.99);
@@ -44,6 +45,11 @@ const DesignEditor = ({ isMobile }: DesignEditorProps) => {
     // Update price based on quantity
     setPrice(parseFloat((total * quantity).toFixed(2)));
   }, [quantity, designElements]);
+
+  const handleViewChange = (view: HoodieView) => {
+    setCurrentView(view);
+    toast.info(`Viewing ${view} of hoodie`);
+  };
   
   const addTextElement = (text: string, font: Font, color: string) => {
     const newElement: DesignElement = {
@@ -59,6 +65,7 @@ const DesignEditor = ({ isMobile }: DesignEditorProps) => {
     
     setDesignElements([...designElements, newElement]);
     setSelectedElement(newElement.id);
+    toast.success('Text element added');
   };
   
   const addImageElement = (imageUrl: string) => {
@@ -73,6 +80,7 @@ const DesignEditor = ({ isMobile }: DesignEditorProps) => {
     
     setDesignElements([...designElements, newElement]);
     setSelectedElement(newElement.id);
+    toast.success('Image element added');
   };
   
   const updateElement = (id: string, updates: Partial<DesignElement>) => {
@@ -86,6 +94,7 @@ const DesignEditor = ({ isMobile }: DesignEditorProps) => {
   const removeElement = (id: string) => {
     setDesignElements(designElements.filter(element => element.id !== id));
     setSelectedElement(null);
+    toast.info('Element removed');
   };
   
   const handleColorChange = (color: ColorOption) => {
@@ -95,6 +104,7 @@ const DesignEditor = ({ isMobile }: DesignEditorProps) => {
       sleeves: color,
       hood: color
     });
+    toast.success(`Hoodie color updated to ${color}`);
   };
   
   const handlePartColorChange = (part: 'body' | 'sleeves' | 'hood', color: string) => {
@@ -102,15 +112,16 @@ const DesignEditor = ({ isMobile }: DesignEditorProps) => {
       ...customPartColor,
       [part]: color
     });
+    toast.success(`${part} color updated`);
   };
   
   // For mobile, render a stacked layout
   if (isMobile) {
     return (
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-6">
         <PreviewPanel 
           currentView={currentView}
-          setCurrentView={setCurrentView}
+          setCurrentView={handleViewChange}
           designElements={designElements}
           selectedElement={selectedElement}
           setSelectedElement={setSelectedElement}
@@ -148,7 +159,7 @@ const DesignEditor = ({ isMobile }: DesignEditorProps) => {
   return (
     <ResizablePanelGroup 
       direction="horizontal" 
-      className="min-h-[600px] rounded-lg border"
+      className="min-h-[650px] rounded-lg border"
     >
       <ResizablePanel defaultSize={25} minSize={20}>
         <ToolsPanel 
@@ -166,12 +177,12 @@ const DesignEditor = ({ isMobile }: DesignEditorProps) => {
         />
       </ResizablePanel>
       
-      <ResizableHandle />
+      <ResizableHandle withHandle />
       
       <ResizablePanel defaultSize={50}>
         <PreviewPanel 
           currentView={currentView}
-          setCurrentView={setCurrentView}
+          setCurrentView={handleViewChange}
           designElements={designElements}
           selectedElement={selectedElement}
           setSelectedElement={setSelectedElement}
@@ -181,7 +192,7 @@ const DesignEditor = ({ isMobile }: DesignEditorProps) => {
         />
       </ResizablePanel>
       
-      <ResizableHandle />
+      <ResizableHandle withHandle />
       
       <ResizablePanel defaultSize={25} minSize={20}>
         <OrderPanel 
