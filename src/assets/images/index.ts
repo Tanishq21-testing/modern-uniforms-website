@@ -35,6 +35,19 @@ export const images = {
   jonesthegrocercase: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/media/Jones%20the%20grocer%20Case%20Studies%20.jpg',
 
   //Product Images
+
+Hoodiebackblack: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/Hoodies/hoodie-black.jpg',
+Hoodiefrontblack: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/Hoodies/Hoodie-front-black.jpg',
+Hoodiebackblue: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/Hoodies/hoodie-blue.jpg',
+Hoodiefrontblue: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/Hoodies/Hoodie-front-blue.jpg',
+Hoodiebackorange: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/Hoodies/hoodie-orange.jpg',
+Hoodiefrontorange: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/Hoodies/Hoodie-front-orange.jpg',
+Hoodiebackgrey: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/Hoodies/hoodie-grey.jpg',
+Hoodiefrontgrey: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/Hoodies/Hoodie-front-grey.jpg',
+Hoodiebacklightgrey: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/Hoodies/hoodie-lightgrey.jpg',
+Hoodiefrontlightgrey: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/Hoodies/Hoodie-front-lightgrey.jpg',
+Hoodiebackred: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/Hoodies/Hoodie-front-red.jpg',
+Hoodiefrontred: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/Hoodies/hoodie-red.jpg',
 Varsityjacket: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/Products/ACC5FADD-6557-4408-9F1B-66FB644A5130.JPG',
 Hoodieimage: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/Products/98677ED1-800F-446D-8043-37459187D776.JPG',
 Sweater: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/Products/Screenshot%202025-04-21%20at%206.24.54%20PM.png',
