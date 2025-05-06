@@ -18,12 +18,12 @@ export function useHoodieImage(color: string, view: HoodieView) {
         const imagePath = `hoodies/${color}/${view}.png`;
         
         // Get the public URL for the image
-        const { data, error } = await supabase
+        const { data } = await supabase
           .storage
           .from('design-lab')
           .getPublicUrl(imagePath);
         
-        if (error) throw error;
+        if (!data) throw new Error('Failed to get image URL');
         
         // Set the image URL
         setImageUrl(data.publicUrl);

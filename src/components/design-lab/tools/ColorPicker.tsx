@@ -27,15 +27,19 @@ const ColorPicker = ({ selectedColor, onColorChange }: ColorPickerProps) => {
         {colors.map(color => (
           <Tooltip key={color.value}>
             <TooltipTrigger asChild>
-              <div 
-                className={`w-12 h-12 rounded-full cursor-pointer transition-all duration-200 hover:scale-105 ${
-                  selectedColor === color.value ? 'ring-2 ring-offset-2 ring-brand-blue transform scale-110' : ''
+              <button 
+                className={`w-12 h-12 rounded-full cursor-pointer transition-all duration-200 
+                  hover:scale-110 active:scale-95 ${
+                  selectedColor === color.value 
+                    ? 'ring-2 ring-offset-2 ring-brand-blue shadow-md transform scale-110' 
+                    : 'hover:shadow-md'
                 }`}
                 style={{ 
                   backgroundColor: color.value,
                   border: color.value === 'white' ? '1px solid #e5e7eb' : 'none'
                 }}
                 onClick={() => onColorChange(color.value)}
+                aria-label={`Select ${color.label} color`}
               />
             </TooltipTrigger>
             <TooltipContent>
