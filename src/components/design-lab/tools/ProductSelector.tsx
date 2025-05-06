@@ -18,9 +18,9 @@ const ProductSelector = ({ selectedProduct, onProductChange }: ProductSelectorPr
 
   return (
     <div className="mb-6">
-      <div className="flex items-center gap-2 mb-2">
+      <div className="flex items-center gap-2 mb-3">
         <Shirt className="h-5 w-5 text-gray-700" />
-        <h3 className="font-medium">Select Product</h3>
+        <h3 className="font-medium text-lg">Select Product</h3>
       </div>
       <Select 
         value={selectedProduct} 

@@ -14,7 +14,8 @@ const DesignLab = () => {
       <Navbar />
       <Toaster position="bottom-right" closeButton richColors />
       
-      <main className="flex-grow">
+      {/* Add pt-24 to create padding space for the fixed navbar */}
+      <main className="flex-grow pt-24">
         <div className="container mx-auto px-4 py-8 max-w-7xl">
           <div className="text-center mb-8">
             <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-3 tracking-tight">
