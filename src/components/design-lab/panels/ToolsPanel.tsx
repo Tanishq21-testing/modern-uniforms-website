@@ -9,9 +9,10 @@ import {
   TextEditor,
   DesignUploader,
   PlacementSelector,
-  ArtworkSelector
+  ArtworkSelector,
+  ProductSelector
 } from '../tools';
-import { ColorOption, DesignPlacement, DesignElement } from '../types';
+import { ColorOption, DesignPlacement, DesignElement, ProductType } from '../types';
 
 interface ToolsPanelProps {
   selectedColor: ColorOption;
@@ -29,6 +30,8 @@ interface ToolsPanelProps {
   selectedElement: DesignElement | null;
   updateElement: (id: string, updates: Partial<DesignElement>) => void;
   removeElement: (id: string) => void;
+  selectedProduct: ProductType;
+  onProductChange: (product: ProductType) => void;
 }
 
 const ToolsPanel = ({
@@ -42,11 +45,18 @@ const ToolsPanel = ({
   addImageElement,
   selectedElement,
   updateElement,
-  removeElement
+  removeElement,
+  selectedProduct,
+  onProductChange
 }: ToolsPanelProps) => {
   return (
     <div className="h-full overflow-auto p-4 border-r">
-      <h2 className="text-xl font-semibold mb-4">Customize Your Hoodie</h2>
+      <h2 className="text-xl font-semibold mb-4">Customize Your Product</h2>
+      
+      <ProductSelector 
+        selectedProduct={selectedProduct}
+        onProductChange={onProductChange}
+      />
       
       <Tabs defaultValue="color">
         <TabsList className="w-full mb-4">
@@ -57,65 +67,67 @@ const ToolsPanel = ({
         
         <TabsContent value="color" className="space-y-4">
           <div>
-            <h3 className="font-medium mb-2">Hoodie Color</h3>
+            <h3 className="font-medium mb-2">Product Color</h3>
             <ColorPicker 
               selectedColor={selectedColor} 
               onColorChange={onColorChange} 
             />
           </div>
           
-          <div>
-            <h3 className="font-medium mb-2">Custom Parts</h3>
-            <div className="space-y-2">
-              <div>
-                <Label htmlFor="body-color">Body</Label>
-                <div className="flex gap-2 mt-1">
-                  {['black', 'navy', 'gray', 'white', 'red'].map(color => (
-                    <div 
-                      key={color}
-                      className={`w-8 h-8 rounded-full cursor-pointer ${
-                        customPartColor.body === color ? 'ring-2 ring-offset-2 ring-brand-blue' : ''
-                      }`}
-                      style={{ backgroundColor: color }}
-                      onClick={() => onPartColorChange('body', color)}
-                    />
-                  ))}
+          {selectedProduct === 'varsityJacket' && (
+            <div>
+              <h3 className="font-medium mb-2">Custom Parts</h3>
+              <div className="space-y-2">
+                <div>
+                  <Label htmlFor="body-color">Body</Label>
+                  <div className="flex gap-2 mt-1">
+                    {['black', 'navy', 'gray', 'white', 'red'].map(color => (
+                      <div 
+                        key={color}
+                        className={`w-8 h-8 rounded-full cursor-pointer ${
+                          customPartColor.body === color ? 'ring-2 ring-offset-2 ring-brand-blue' : ''
+                        }`}
+                        style={{ backgroundColor: color }}
+                        onClick={() => onPartColorChange('body', color)}
+                      />
+                    ))}
+                  </div>
                 </div>
-              </div>
-              
-              <div>
-                <Label htmlFor="sleeves-color">Sleeves</Label>
-                <div className="flex gap-2 mt-1">
-                  {['black', 'navy', 'gray', 'white', 'red'].map(color => (
-                    <div 
-                      key={color}
-                      className={`w-8 h-8 rounded-full cursor-pointer ${
-                        customPartColor.sleeves === color ? 'ring-2 ring-offset-2 ring-brand-blue' : ''
-                      }`}
-                      style={{ backgroundColor: color }}
-                      onClick={() => onPartColorChange('sleeves', color)}
-                    />
-                  ))}
+                
+                <div>
+                  <Label htmlFor="sleeves-color">Sleeves</Label>
+                  <div className="flex gap-2 mt-1">
+                    {['black', 'navy', 'gray', 'white', 'red'].map(color => (
+                      <div 
+                        key={color}
+                        className={`w-8 h-8 rounded-full cursor-pointer ${
+                          customPartColor.sleeves === color ? 'ring-2 ring-offset-2 ring-brand-blue' : ''
+                        }`}
+                        style={{ backgroundColor: color }}
+                        onClick={() => onPartColorChange('sleeves', color)}
+                      />
+                    ))}
+                  </div>
                 </div>
-              </div>
-              
-              <div>
-                <Label htmlFor="hood-color">Hood</Label>
-                <div className="flex gap-2 mt-1">
-                  {['black', 'navy', 'gray', 'white', 'red'].map(color => (
-                    <div 
-                      key={color}
-                      className={`w-8 h-8 rounded-full cursor-pointer ${
-                        customPartColor.hood === color ? 'ring-2 ring-offset-2 ring-brand-blue' : ''
-                      }`}
-                      style={{ backgroundColor: color }}
-                      onClick={() => onPartColorChange('hood', color)}
-                    />
-                  ))}
+                
+                <div>
+                  <Label htmlFor="hood-color">Hood</Label>
+                  <div className="flex gap-2 mt-1">
+                    {['black', 'navy', 'gray', 'white', 'red'].map(color => (
+                      <div 
+                        key={color}
+                        className={`w-8 h-8 rounded-full cursor-pointer ${
+                          customPartColor.hood === color ? 'ring-2 ring-offset-2 ring-brand-blue' : ''
+                        }`}
+                        style={{ backgroundColor: color }}
+                        onClick={() => onPartColorChange('hood', color)}
+                      />
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          )}
         </TabsContent>
         
         <TabsContent value="design" className="space-y-4">

@@ -4,7 +4,7 @@ import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from '@/componen
 import ToolsPanel from './panels/ToolsPanel';
 import PreviewPanel from './panels/PreviewPanel';
 import OrderPanel from './panels/OrderPanel';
-import { ColorOption, DesignPlacement, HoodieView, DesignElement, Font } from './types';
+import { ColorOption, DesignPlacement, HoodieView, DesignElement, Font, ProductType } from './types';
 import { toast } from "sonner";
 
 interface DesignEditorProps {
@@ -12,6 +12,7 @@ interface DesignEditorProps {
 }
 
 const DesignEditor = ({ isMobile }: DesignEditorProps) => {
+  const [selectedProduct, setSelectedProduct] = useState<ProductType>('hoodie');
   const [selectedColor, setSelectedColor] = useState<ColorOption>('black'); // Default black color
   const [customPartColor, setCustomPartColor] = useState<{
     body: string;
@@ -36,6 +37,15 @@ const DesignEditor = ({ isMobile }: DesignEditorProps) => {
     // Base price
     let basePrice = 49.99;
     
+    // Different base prices based on product
+    if (selectedProduct === 'varsityJacket') {
+      basePrice = 89.99;
+    } else if (selectedProduct === 'sweater') {
+      basePrice = 39.99;
+    } else if (selectedProduct === 'tshirt') {
+      basePrice = 24.99;
+    }
+    
     // Add price for custom elements
     const elementsPrice = designElements.length * 5;
     
@@ -44,11 +54,18 @@ const DesignEditor = ({ isMobile }: DesignEditorProps) => {
     
     // Update price based on quantity
     setPrice(parseFloat((total * quantity).toFixed(2)));
-  }, [quantity, designElements]);
+  }, [quantity, designElements, selectedProduct]);
 
   const handleViewChange = (view: HoodieView) => {
     setCurrentView(view);
-    toast.info(`Viewing ${view} of hoodie`);
+    toast.info(`Viewing ${view} of ${selectedProduct}`);
+  };
+  
+  const handleProductChange = (product: ProductType) => {
+    setSelectedProduct(product);
+    // Reset color to black when changing products
+    setSelectedColor('black');
+    toast.success(`Product changed to ${product}`);
   };
   
   const addTextElement = (text: string, font: Font, color: string) => {
@@ -104,7 +121,7 @@ const DesignEditor = ({ isMobile }: DesignEditorProps) => {
       sleeves: color,
       hood: color
     });
-    toast.success(`Hoodie color updated to ${color}`);
+    toast.success(`Product color updated to ${color}`);
   };
   
   const handlePartColorChange = (part: 'body' | 'sleeves' | 'hood', color: string) => {
@@ -128,6 +145,7 @@ const DesignEditor = ({ isMobile }: DesignEditorProps) => {
           updateElement={updateElement}
           selectedColor={selectedColor}
           customPartColor={customPartColor}
+          selectedProduct={selectedProduct}
         />
         
         <ToolsPanel 
@@ -142,6 +160,8 @@ const DesignEditor = ({ isMobile }: DesignEditorProps) => {
           selectedElement={selectedElement ? designElements.find(el => el.id === selectedElement) : null}
           updateElement={updateElement}
           removeElement={removeElement}
+          selectedProduct={selectedProduct}
+          onProductChange={handleProductChange}
         />
         
         <OrderPanel 
@@ -174,6 +194,8 @@ const DesignEditor = ({ isMobile }: DesignEditorProps) => {
           selectedElement={selectedElement ? designElements.find(el => el.id === selectedElement) : null}
           updateElement={updateElement}
           removeElement={removeElement}
+          selectedProduct={selectedProduct}
+          onProductChange={handleProductChange}
         />
       </ResizablePanel>
       
@@ -189,6 +211,7 @@ const DesignEditor = ({ isMobile }: DesignEditorProps) => {
           updateElement={updateElement}
           selectedColor={selectedColor}
           customPartColor={customPartColor}
+          selectedProduct={selectedProduct}
         />
       </ResizablePanel>
       

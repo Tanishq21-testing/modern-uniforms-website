@@ -10,20 +10,16 @@ interface ColorPickerProps {
 const ColorPicker = ({ selectedColor, onColorChange }: ColorPickerProps) => {
   const colors: { value: ColorOption; label: string }[] = [
     { value: 'black', label: 'Black' },
-    { value: 'navy', label: 'Navy Blue' },
-    { value: 'gray', label: 'Gray' },
-    { value: 'white', label: 'White' }, 
-    { value: 'red', label: 'Red' },
-    { value: 'green', label: 'Green' },
     { value: 'blue', label: 'Blue' },
-    { value: 'purple', label: 'Purple' },
-    { value: 'yellow', label: 'Yellow' },
+    { value: 'gray', label: 'Gray' },
+    { value: 'lightgray', label: 'Light Gray' },
+    { value: 'red', label: 'Red' },
     { value: 'orange', label: 'Orange' }
   ];
   
   return (
     <TooltipProvider>
-      <div className="grid grid-cols-5 gap-3">
+      <div className="grid grid-cols-3 gap-3">
         {colors.map(color => (
           <Tooltip key={color.value}>
             <TooltipTrigger asChild>
@@ -35,8 +31,8 @@ const ColorPicker = ({ selectedColor, onColorChange }: ColorPickerProps) => {
                     : 'hover:shadow-md'
                 }`}
                 style={{ 
-                  backgroundColor: color.value,
-                  border: color.value === 'white' ? '1px solid #e5e7eb' : 'none'
+                  backgroundColor: color.value === 'lightgray' ? '#ccc' : color.value,
+                  border: color.value === 'lightgray' ? '1px solid #e5e7eb' : 'none'
                 }}
                 onClick={() => onColorChange(color.value)}
                 aria-label={`Select ${color.label} color`}

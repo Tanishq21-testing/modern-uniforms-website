@@ -1,5 +1,7 @@
 
-export type ColorOption = 'black' | 'navy' | 'gray' | 'white' | 'red' | 'green' | 'blue' | 'purple' | 'yellow' | 'orange';
+export type ColorOption = 'black' | 'blue' | 'gray' | 'lightgray' | 'red' | 'orange';
+
+export type ProductType = 'hoodie' | 'varsityJacket' | 'sweater' | 'tshirt';
 
 export type DesignPlacement = 'chest-left' | 'chest-right' | 'back-center';
 

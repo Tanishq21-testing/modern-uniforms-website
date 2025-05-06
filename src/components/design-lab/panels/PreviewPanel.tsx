@@ -1,8 +1,7 @@
-
 import { useState, useRef, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { ColorOption, HoodieView, DesignElement } from '../types';
+import { ColorOption, HoodieView, DesignElement, ProductType } from '../types';
 import { useHoodieImage } from '@/hooks/use-hoodie-image';
 import { Skeleton } from "@/components/ui/skeleton";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
@@ -22,6 +21,7 @@ interface PreviewPanelProps {
     sleeves: string;
     hood: string;
   };
+  selectedProduct: ProductType;
 }
 
 const PreviewPanel = ({
@@ -32,11 +32,12 @@ const PreviewPanel = ({
   setSelectedElement,
   updateElement,
   selectedColor,
-  customPartColor
+  customPartColor,
+  selectedProduct
 }: PreviewPanelProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
-  const { imageUrl, isLoading } = useHoodieImage(selectedColor, currentView);
+  const { imageUrl, isLoading } = useHoodieImage(selectedProduct, selectedColor, currentView);
   
   const [dragInfo, setDragInfo] = useState<{
     isDragging: boolean;
@@ -69,6 +70,22 @@ const PreviewPanel = ({
     
     return () => window.addEventListener('resize', updateSize);
   }, []);
+
+  // Get the product name for display
+  const getProductName = () => {
+    switch (selectedProduct) {
+      case 'hoodie':
+        return 'Hoodie';
+      case 'varsityJacket':
+        return 'Varsity Jacket';
+      case 'sweater':
+        return 'Sweater';
+      case 'tshirt':
+        return 'T-Shirt';
+      default:
+        return 'Product';
+    }
+  };
 
   const handleDragStart = (e: React.MouseEvent, id: string) => {
     const element = designElements.find(el => el.id === id);
@@ -182,7 +199,7 @@ const PreviewPanel = ({
   return (
     <div className="h-full flex flex-col bg-gray-50 rounded-md p-5 shadow-sm">
       <div className="flex justify-between items-center mb-5">
-        <h2 className="text-xl font-semibold">Preview</h2>
+        <h2 className="text-xl font-semibold">Preview: {getProductName()}</h2>
         
         <TooltipProvider>
           <Tooltip>
@@ -192,7 +209,7 @@ const PreviewPanel = ({
               </Badge>
             </TooltipTrigger>
             <TooltipContent>
-              <p>Current view of the hoodie</p>
+              <p>Current view of the {getProductName()}</p>
             </TooltipContent>
           </Tooltip>
         </TooltipProvider>
@@ -226,12 +243,12 @@ const PreviewPanel = ({
             </div>
           )}
           
-          {/* Hoodie image from Supabase */}
+          {/* Product image */}
           <div className="absolute inset-0 pointer-events-none flex items-center justify-center">
             {imageUrl && (
               <img 
                 src={imageUrl} 
-                alt={`${currentView} view of ${selectedColor} hoodie`}
+                alt={`${currentView} view of ${selectedColor} ${getProductName()}`}
                 className="max-h-full max-w-full object-contain transition-opacity duration-300"
                 style={{ opacity: isLoading ? 0 : 1 }}
               />
@@ -251,14 +268,14 @@ const PreviewPanel = ({
               </div>
             </TooltipTrigger>
             <TooltipContent side="left">
-              <p>Click and drag to reposition elements on the hoodie</p>
+              <p>Click and drag to reposition elements on the {getProductName()}</p>
             </TooltipContent>
           </Tooltip>
         </div>
       </TooltipProvider>
       
       <div className="mt-4 text-center text-sm text-gray-500">
-        Click and drag to reposition elements on the hoodie
+        Click and drag to reposition elements on the {getProductName()}
       </div>
     </div>
   );
