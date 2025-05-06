@@ -21,7 +21,7 @@ serve(async (req) => {
     
     console.log("Email Configuration:", {
       from: "UniformConnect <onboarding@resend.dev>",
-      to: "premparsram@gmail.com",
+      to: "tanishqpremchand@gmail.com",
       sender_email: email,
       sender_name: name,
       formType
@@ -29,7 +29,7 @@ serve(async (req) => {
 
     const emailResponse = await resend.emails.send({
       from: "UniformConnect <onboarding@resend.dev>",
-      to: "premparsram@gmail.com",
+      to: "tanishqpremchand@gmail.com",
       subject: `New ${formType} Submission`,
       html: `
         <h1>New ${formType} Submission Received</h1>
