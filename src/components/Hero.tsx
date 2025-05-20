@@ -22,13 +22,13 @@ const Hero = ({ scrollToConsultation }: { scrollToConsultation: () => void }) =>
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Button 
-              className="bg-brand-red hover:bg-brand-red/90 text-white text-base md:text-lg px-6 md:px-8 py-5 md:py-6 w-full sm:w-auto"
+              className="bg-brand-red hover:bg-brand-red/90 text-white text-sm md:text-base px-4 py-2 h-auto"
               onClick={scrollToConsultation}
             >
               Get Enterprise Consultation
-              <ArrowRight className="ml-2 h-5 w-5" />
+              <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
-            <Button variant="outline" className="border-brand-blue text-brand-blue hover:bg-brand-blue/10 text-base md:text-lg px-6 md:px-8 py-5 md:py-6 w-full sm:w-auto">
+            <Button variant="outline" className="border-brand-blue text-brand-blue hover:bg-brand-blue/10 text-sm md:text-base px-4 py-2 h-auto">
               View Enterprise Case Studies
             </Button>
           </div>
