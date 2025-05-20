@@ -14,8 +14,8 @@ const Header = ({ scrollToConsultation }: HeaderProps) => {
         <div>
           <Link to="/">
             <img 
-              src={images.logo} 
-              alt="UniformConnect Logo" 
+              src={images.callToAction} 
+              alt="callToAction" 
               className="h-12 w-auto cursor-pointer"
               onError={(e) => {
                 console.error('Image failed to load:', e);
