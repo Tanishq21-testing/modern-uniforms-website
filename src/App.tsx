@@ -3,46 +3,96 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AuthProvider } from "@/hooks/useAuth";
-import { useEffect } from "react";
-import Index from "./pages/Index";
-import Landing from "./pages/Landing";
-import LandingPage2 from "./pages/LandingPage2";
-import AboutUs from "./pages/AboutUs";
-import CaseStudies from "./pages/CaseStudies";
-import ContactUs from "./pages/ContactUs";
-import Services from "./pages/Services";
-import Clients from "./pages/Clients";
-import School from "./pages/School";
-import Auth from "./pages/Auth";
-import Products from "./pages/Products";
-import DesignLab from "./pages/DesignLab";
-import NotFound from "./pages/NotFound";
-
-// Setup image mappings for easier reference
+import { useEffect, lazy, Suspense } from "react";
 import { images } from "@/assets/images";
 
-const queryClient = new QueryClient();
+// Import critical routes immediately
+import Index from "./pages/Index";
+import NotFound from "./pages/NotFound";
+
+// Lazily load non-critical routes for better performance
+const Landing = lazy(() => import("./pages/Landing"));
+const LandingPage2 = lazy(() => import("./pages/LandingPage2"));
+const AboutUs = lazy(() => import("./pages/AboutUs"));
+const CaseStudies = lazy(() => import("./pages/CaseStudies"));
+const ContactUs = lazy(() => import("./pages/ContactUs"));
+const Services = lazy(() => import("./pages/Services"));
+const Clients = lazy(() => import("./pages/Clients"));
+const School = lazy(() => import("./pages/School"));
+const Auth = lazy(() => import("./pages/Auth"));
+const Products = lazy(() => import("./pages/Products"));
+const DesignLab = lazy(() => import("./pages/DesignLab"));
+
+// Loading fallback
+const PageLoader = () => (
+  <div className="flex items-center justify-center min-h-screen">
+    <div className="text-center">
+      <div className="w-16 h-16 border-4 border-brand-blue border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+      <p className="text-gray-600">Loading...</p>
+    </div>
+  </div>
+);
+
+// Google Analytics page view tracking
+function PageViewTracker() {
+  const location = useLocation();
+  
+  useEffect(() => {
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'page_view', {
+        page_title: document.title,
+        page_location: window.location.href,
+        page_path: location.pathname + location.search
+      });
+    }
+  }, [location]);
+  
+  return null;
+}
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 1000 * 60 * 5, // 5 minutes
+      refetchOnWindowFocus: false,
+      retry: 1
+    },
+  },
+});
 
 const App = () => {
-  // Pre-load images to ensure they're available in production
+  // Pre-load critical images to ensure they're available in production
   useEffect(() => {
-    // Create an array of all image paths to preload
-    const imageUrls = [
+    // Create an array of critical image paths to preload
+    const criticalImages = [
       images.logo,
       images.heroImage,
-      images.servicesHero,
-      images.uniformServices,
       images.callToAction,
-      ...Object.values(images.clientLogos)
     ];
 
-    // Preload all images
-    imageUrls.forEach(url => {
+    // Preload only critical images
+    criticalImages.forEach(url => {
       const img = new Image();
       img.src = url;
     });
+    
+    // Preload remaining images after a delay to prioritize critical content
+    const timer = setTimeout(() => {
+      const remainingImages = [
+        images.servicesHero,
+        images.uniformServices,
+        ...Object.values(images.clientLogos).slice(0, 5), // Only preload first 5 client logos
+      ];
+      
+      remainingImages.forEach(url => {
+        const img = new Image();
+        img.src = url;
+      });
+    }, 3000);
+    
+    return () => clearTimeout(timer);
   }, []);
 
   return (
@@ -52,19 +102,64 @@ const App = () => {
         <Sonner />
         <BrowserRouter>
           <AuthProvider>
+            <PageViewTracker />
             <Routes>
               <Route path="/" element={<Index />} />
-              <Route path="/landing" element={<Landing />} />
-              <Route path="/landing2" element={<LandingPage2 />} />
-              <Route path="/about-us" element={<AboutUs />} />
-              <Route path="/case-studies" element={<CaseStudies />} />
-              <Route path="/contact-us" element={<ContactUs />} />
-              <Route path="/services" element={<Services />} />
-              <Route path="/clients" element={<Clients />} />
-              <Route path="/school" element={<School />} />
-              <Route path="/auth" element={<Auth />} />
-              <Route path="/products" element={<Products />} />
-              <Route path="/design-lab" element={<DesignLab />} />
+              <Route path="/landing" element={
+                <Suspense fallback={<PageLoader />}>
+                  <Landing />
+                </Suspense>
+              } />
+              <Route path="/landing2" element={
+                <Suspense fallback={<PageLoader />}>
+                  <LandingPage2 />
+                </Suspense>
+              } />
+              <Route path="/about-us" element={
+                <Suspense fallback={<PageLoader />}>
+                  <AboutUs />
+                </Suspense>
+              } />
+              <Route path="/case-studies" element={
+                <Suspense fallback={<PageLoader />}>
+                  <CaseStudies />
+                </Suspense>
+              } />
+              <Route path="/contact-us" element={
+                <Suspense fallback={<PageLoader />}>
+                  <ContactUs />
+                </Suspense>
+              } />
+              <Route path="/services" element={
+                <Suspense fallback={<PageLoader />}>
+                  <Services />
+                </Suspense>
+              } />
+              <Route path="/clients" element={
+                <Suspense fallback={<PageLoader />}>
+                  <Clients />
+                </Suspense>
+              } />
+              <Route path="/school" element={
+                <Suspense fallback={<PageLoader />}>
+                  <School />
+                </Suspense>
+              } />
+              <Route path="/auth" element={
+                <Suspense fallback={<PageLoader />}>
+                  <Auth />
+                </Suspense>
+              } />
+              <Route path="/products" element={
+                <Suspense fallback={<PageLoader />}>
+                  <Products />
+                </Suspense>
+              } />
+              <Route path="/design-lab" element={
+                <Suspense fallback={<PageLoader />}>
+                  <DesignLab />
+                </Suspense>
+              } />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>

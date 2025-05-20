@@ -2,21 +2,27 @@
 import { Button } from '@/components/ui/button';
 import { images } from '@/assets/images';
 import { Link } from 'react-router-dom';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 interface HeaderProps {
   scrollToConsultation: () => void;
 }
 
 const Header = ({ scrollToConsultation }: HeaderProps) => {
+  const isMobile = useIsMobile();
+  
   return (
-    <header className="bg-white py-4 shadow-sm">
+    <header className="bg-white py-3 md:py-4 shadow-sm sticky top-0 z-50">
       <div className="container mx-auto px-4 flex justify-between items-center">
         <div>
           <Link to="/">
             <img 
               src={images.callToAction} 
-              alt="callToAction" 
-              className="h-12 w-auto cursor-pointer"
+              alt="UniformConnect Logo" 
+              className="h-10 md:h-12 w-auto cursor-pointer"
+              loading="eager" // Logo should load immediately
+              width="180"
+              height="48"
               onError={(e) => {
                 console.error('Image failed to load:', e);
                 // Fallback for logo if it fails to load
@@ -28,10 +34,10 @@ const Header = ({ scrollToConsultation }: HeaderProps) => {
           </Link>
         </div>
         <Button 
-          className="bg-brand-red hover:bg-brand-red/90 text-white"
+          className="bg-brand-red hover:bg-brand-red/90 text-white text-sm px-3 py-1.5 h-9"
           onClick={scrollToConsultation}
         >
-          Contact Us
+          {isMobile ? "Contact" : "Contact Us"}
         </Button>
       </div>
     </header>
