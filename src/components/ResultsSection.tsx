@@ -1,7 +1,9 @@
+
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { images } from '@/assets/images';
+import LazyImage from '@/components/LazyImage';
 
 const ResultsSection = () => {
   return (
@@ -38,10 +40,11 @@ const ResultsSection = () => {
               </Link>
             </div>
             <div className="rounded-lg overflow-hidden shadow-xl transform hover:scale-105 transition-transform duration-300">
-              <img 
+              <LazyImage 
                 src={images.aboutImage} 
-                alt="about Image" 
+                alt="About Image" 
                 className="w-full h-auto object-cover"
+                priority={true}
               />
             </div>
           </div>
@@ -49,30 +52,35 @@ const ResultsSection = () => {
           <div className="text-center mb-16">
             <h3 className="text-3xl font-bold mb-8">Trusted By Leading UAE Companies</h3>
             <div className="grid grid-cols-2 md:grid-cols-5 gap-8 items-center">
-              <img 
+              <LazyImage 
                 src={images.clientLogos.jonesTheGrocer} 
                 alt="Jones The Grocer" 
                 className="w-full max-h-32 object-contain hover:scale-105 transition-transform duration-300"
+                priority={true}
               />
-              <img 
+              <LazyImage 
                 src={images.clientLogos.littleBangkok} 
                 alt="Little Bangkok" 
                 className="w-full max-h-32 object-contain hover:scale-105 transition-transform duration-300"
+                priority={true}
               />
-              <img 
+              <LazyImage 
                 src={images.clientLogos.fairgreen} 
                 alt="Fairgreen School" 
                 className="w-full max-h-32 object-contain hover:scale-105 transition-transform duration-300"
+                priority={true}
               />
-              <img 
+              <LazyImage 
                 src={images.clientLogos.aud} 
                 alt="American University Dubai" 
                 className="w-full max-h-32 object-contain hover:scale-105 transition-transform duration-300"
+                priority={true}
               />
-              <img 
+              <LazyImage 
                 src={images.clientLogos.hilton} 
                 alt="Hilton Hotel" 
                 className="w-full max-h-32 object-contain hover:scale-105 transition-transform duration-300"
+                priority={true}
               />
             </div>
           </div>

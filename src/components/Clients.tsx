@@ -18,6 +18,14 @@ const Clients = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
+  // Preload client logo images as they're critical content
+  useEffect(() => {
+    clients.forEach(client => {
+      const img = new Image();
+      img.src = client.logo;
+    });
+  }, []);
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -64,13 +72,14 @@ const Clients = () => {
               className={`${isVisible ? 'animate-scale-in' : 'opacity-0'} bg-white rounded-xl shadow-lg p-6 md:p-8 flex flex-col items-center justify-center ${isMobile ? 'h-44' : 'h-56'} transition-transform hover:shadow-xl hover:-translate-y-2`}
               style={{ animationDelay: `${index * 150}ms` }}
             >
-              <div className="h-20 md:h-28 flex items-center justify-center mb-4">
+              <div className="h-20 md:h-28 flex items-center justify-center mb-4 overflow-visible">
                 <LazyImage 
                   src={client.logo} 
                   alt={client.name} 
                   className="max-w-full max-h-full object-contain"
-                  width="120"
-                  height="80"
+                  width={120}
+                  height={80}
+                  priority={true} // Mark client logos as priority to ensure immediate loading
                 />
               </div>
               <p className="text-center font-medium text-gray-700 text-base md:text-lg">{client.name}</p>
