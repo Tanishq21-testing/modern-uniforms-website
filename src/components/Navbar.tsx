@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { Menu, X, User, LogIn } from 'lucide-react';
@@ -59,6 +60,7 @@ const Navbar = () => {
       )}
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
+        {/* Logo */}
         <Link to="/" className="flex items-center space-x-2">
           <img 
             src="/lovable-uploads/7b06a816-98dc-4284-9f22-f5f23c2e2494.png" 
@@ -67,15 +69,21 @@ const Navbar = () => {
           />
         </Link>
 
-        {/* Desktop Menu */}
-        <nav className="hidden md:flex items-center space-x-8">
-          <Link to="/" className="text-gray-700 hover:text-brand-red transition-colors">Home</Link>
-          <Link to="/about-us" className="text-gray-700 hover:text-brand-blue transition-colors">About Us</Link>
-          <Link to="/case-studies" className="text-gray-700 hover:text-brand-green transition-colors">Case Studies</Link>
-          <Link to="/services" className="text-gray-700 hover:text-brand-blue transition-colors">Services</Link>
-          <Link to="/school" className="text-gray-700 hover:text-brand-red transition-colors">School</Link>
-          <Link to="/green-initiative" className="text-green-700 hover:text-green-600 transition-colors">Green Initiative</Link>
-          <Link to="/clients" className="text-gray-700 hover:text-brand-green transition-colors">Clients</Link>
+        {/* Desktop Menu - CENTERED */}
+        <nav className="hidden md:flex items-center justify-center flex-1 mx-4">
+          <div className="flex items-center space-x-8 justify-center">
+            <Link to="/" className="text-gray-700 hover:text-brand-red transition-colors">Home</Link>
+            <Link to="/about-us" className="text-gray-700 hover:text-brand-blue transition-colors">About Us</Link>
+            <Link to="/case-studies" className="text-gray-700 hover:text-brand-green transition-colors">Case Studies</Link>
+            <Link to="/services" className="text-gray-700 hover:text-brand-blue transition-colors">Services</Link>
+            <Link to="/school" className="text-gray-700 hover:text-brand-red transition-colors">School</Link>
+            <Link to="/green-initiative" className="text-green-700 hover:text-green-600 transition-colors">Green Initiative</Link>
+            <Link to="/clients" className="text-gray-700 hover:text-brand-green transition-colors">Clients</Link>
+          </div>
+        </nav>
+        
+        {/* Right side actions */}
+        <div className="hidden md:flex items-center space-x-4">
           <Link to="/contact-us">
             <Button className="bg-brand-red hover:bg-brand-red/90 text-white">
               Contact Us
@@ -107,7 +115,7 @@ const Navbar = () => {
               </Button>
             </Link>
           )}
-        </nav>
+        </div>
 
         {/* Mobile Menu Toggle */}
         <button 
