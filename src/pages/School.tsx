@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -237,11 +238,12 @@ const School = () => {
                 </ul>
               </div>
               
-              <div>
+              <div className="flex items-center justify-center">
                 <img
                   src={images.schoolHoodie}
                   alt="School hoodie example"
-                  className="rounded-lg shadow-md"
+                  className="rounded-lg shadow-md h-full object-contain"
+                  style={{ maxHeight: '300px' }}
                 />
               </div>
             </div>
