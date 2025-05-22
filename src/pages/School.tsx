@@ -41,7 +41,7 @@ const School = () => {
               <Button className="bg-brand-red hover:bg-brand-red/90 text-white text-lg px-8 py-6">
                 Request a Quote <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
-              <Button variant="outline" className="border-white text-white hover:bg-white/10 text-lg px-8 py-6">
+              <Button variant="outline" className="bg-brand-red hover:bg-brand-red/90 text white text -lg px-8 py-6">
                 Start Your Design
               </Button>
             </div>
