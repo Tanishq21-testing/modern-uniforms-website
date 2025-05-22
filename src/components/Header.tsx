@@ -1,128 +1,123 @@
 
 import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
+import { Menu, X } from 'lucide-react';
 import { images } from '@/assets/images';
 import { useIsMobile } from '@/hooks/use-mobile';
 
-const Header = () => {
-  const [isOpen, setIsOpen] = useState(false);
+interface HeaderProps {
+  scrollToConsultation?: () => void;
+}
+
+const Header = ({ scrollToConsultation }: HeaderProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const location = useLocation();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const isMobile = useIsMobile();
-
-  // Toggle menu
-  const toggleMenu = () => setIsOpen(!isOpen);
-
-  // Close menu when route changes
-  useEffect(() => {
-    setIsOpen(false);
-  }, [location.pathname]);
-
-  // Handle scroll events for header styling
+  
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+  
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+  
+  // Effect to handle scroll-based styling
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
+      if (window.scrollY > 10) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
       }
     };
-
+    
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
-
-  // Navigation items
-  const navItems = [
-    { name: 'Home', path: '/' },
-    { name: 'About Us', path: '/about-us' },
-    { name: 'Services', path: '/services' },
-    { name: 'School', path: '/school' },
-    { name: 'Clients', path: '/clients' },
-    { name: 'Green Initiative', path: '/green-initiative' },
-    { name: 'Contact Us', path: '/contact-us' },
-  ];
-
+  
+  const handleConsultationClick = () => {
+    if (scrollToConsultation) {
+      scrollToConsultation();
+      closeMenu();
+    }
+  };
+  
   return (
     <header
-      className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white shadow-md py-2' : 'bg-white/90 backdrop-blur-sm py-4'
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+        isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'
       }`}
     >
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <Link to="/" className="flex items-center">
-            <img
-              src={images.logo}
-              alt="Uniform Connect Logo"
-              className="h-10 md:h-12 w-auto"
-            />
-          </Link>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-1 lg:space-x-2">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                to={item.path}
-                className={`px-3 py-2 rounded-md text-sm lg:text-base font-medium transition-colors ${
-                  location.pathname === item.path
-                    ? 'text-brand-blue'
-                    : 'text-gray-700 hover:text-brand-blue hover:bg-gray-100'
-                }`}
+      <div className="container mx-auto px-4 flex justify-between items-center">
+        {/* Logo */}
+        <Link to="/" className="flex items-center">
+          <img 
+            src={images.logo} 
+            alt="UniformConnect" 
+            className="h-10 md:h-12"
+            loading="eager"
+          />
+        </Link>
+        
+        {/* Mobile Menu Button */}
+        {isMobile && (
+          <button 
+            className="text-gray-700 hover:text-brand-blue focus:outline-none" 
+            onClick={toggleMenu}
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+          >
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        )}
+        
+        {/* Desktop Navigation */}
+        {!isMobile && (
+          <nav className="hidden md:flex items-center space-x-6">
+            <Link to="/" className="text-gray-700 hover:text-brand-blue font-medium">Home</Link>
+            <Link to="/services" className="text-gray-700 hover:text-brand-blue font-medium">Services</Link>
+            <Link to="/clients" className="text-gray-700 hover:text-brand-blue font-medium">Clients</Link>
+            <Link to="/about" className="text-gray-700 hover:text-brand-blue font-medium">About</Link>
+            <Link to="/contact" className="text-gray-700 hover:text-brand-blue font-medium">Contact</Link>
+            <Link to="/green-initiative" className="text-green-700 hover:text-green-600 font-medium">Green Initiative</Link>
+            
+            {scrollToConsultation && (
+              <Button 
+                className="bg-brand-red hover:bg-brand-red/90 text-white"
+                onClick={handleConsultationClick}
               >
-                {item.name}
-              </Link>
-            ))}
-            <Link to="/contact-us">
-              <Button className="ml-2 bg-brand-blue hover:bg-brand-blue/90">Get Started</Button>
-            </Link>
+                Free Consultation
+              </Button>
+            )}
           </nav>
-
-          {/* Mobile menu button */}
-          <div className="md:hidden flex items-center">
-            <button
-              onClick={toggleMenu}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-brand-blue hover:bg-gray-100 focus:outline-none"
-              aria-expanded={isOpen}
-            >
-              <span className="sr-only">Open main menu</span>
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </button>
+        )}
+        
+        {/* Mobile Navigation */}
+        {isMobile && isMenuOpen && (
+          <div className="fixed inset-0 bg-white z-50 pt-20 px-6">
+            <nav className="flex flex-col space-y-6 items-center">
+              <Link to="/" className="text-gray-700 hover:text-brand-blue font-medium text-xl" onClick={closeMenu}>Home</Link>
+              <Link to="/services" className="text-gray-700 hover:text-brand-blue font-medium text-xl" onClick={closeMenu}>Services</Link>
+              <Link to="/clients" className="text-gray-700 hover:text-brand-blue font-medium text-xl" onClick={closeMenu}>Clients</Link>
+              <Link to="/about" className="text-gray-700 hover:text-brand-blue font-medium text-xl" onClick={closeMenu}>About</Link>
+              <Link to="/contact" className="text-gray-700 hover:text-brand-blue font-medium text-xl" onClick={closeMenu}>Contact</Link>
+              <Link to="/green-initiative" className="text-green-700 hover:text-green-600 font-medium text-xl" onClick={closeMenu}>Green Initiative</Link>
+              
+              {scrollToConsultation && (
+                <Button 
+                  className="bg-brand-red hover:bg-brand-red/90 text-white text-xl mt-4 w-full"
+                  onClick={handleConsultationClick}
+                >
+                  Free Consultation
+                </Button>
+              )}
+            </nav>
           </div>
-        </div>
+        )}
       </div>
-
-      {/* Mobile Navigation */}
-      {isOpen && (
-        <div className="md:hidden">
-          <div className="px-2 pt-2 pb-3 space-y-1 bg-white shadow-lg">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                to={item.path}
-                className={`block px-3 py-2 rounded-md text-base font-medium ${
-                  location.pathname === item.path
-                    ? 'text-brand-blue bg-gray-50'
-                    : 'text-gray-700 hover:text-brand-blue hover:bg-gray-100'
-                }`}
-              >
-                {item.name}
-              </Link>
-            ))}
-            <div className="pt-2 pb-3">
-              <Link to="/contact-us" className="block w-full">
-                <Button className="w-full bg-brand-blue hover:bg-brand-blue/90">Get Started</Button>
-              </Link>
-            </div>
-          </div>
-        </div>
-      )}
     </header>
   );
 };
