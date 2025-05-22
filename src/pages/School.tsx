@@ -314,7 +314,7 @@ const School = () => {
                 Request a Quote <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
               <Link to="/contact-us">
-                <Button variant="outline" className="border-white text-white hover:bg-white/10 text-lg px-8 py-6">
+                <Button variant="outline" className="bg-white text-brand-blue hover:bg-white/90 text-lg px-8 py-6">
                   Contact Us
                 </Button>
               </Link>
