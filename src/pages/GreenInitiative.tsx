@@ -7,8 +7,6 @@ import ReferralSection from '@/components/green-initiative/ReferralSection';
 import CharityPartners from '@/components/green-initiative/CharityPartners';
 import EcoFriendlyOptions from '@/components/green-initiative/EcoFriendlyOptions';
 import PlantTreeProgram from '@/components/green-initiative/PlantTreeProgram';
-import SchoolProgram from '@/components/green-initiative/SchoolProgram';
-import ImpactGallery from '@/components/green-initiative/ImpactGallery';
 import GreenFooterCTA from '@/components/green-initiative/GreenFooterCTA';
 
 const GreenInitiative = () => {
@@ -26,8 +24,6 @@ const GreenInitiative = () => {
         <CharityPartners />
         <EcoFriendlyOptions />
         <PlantTreeProgram />
-        <SchoolProgram />
-        <ImpactGallery />
         <GreenFooterCTA />
       </main>
       <Footer />

@@ -19,9 +19,11 @@ const GreenFooterCTA = () => {
           </h2>
           
           <div className="flex flex-wrap justify-center gap-4">
-            <Button className="bg-white text-emerald-800 hover:bg-emerald-50 text-lg px-6 py-6">
-              Refer a Client
-            </Button>
+            <a href="https://forms.gle/XxVRfrRruEbX4xnY6" target="_blank" rel="noopener noreferrer">
+              <Button className="bg-white text-emerald-800 hover:bg-emerald-50 text-lg px-6 py-6">
+                Refer a Client
+              </Button>
+            </a>
             <Button className="bg-transparent border-2 border-white text-white hover:bg-white/10 text-lg px-6 py-6">
               Contact Us About a Partnership
             </Button>
