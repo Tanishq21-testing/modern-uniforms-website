@@ -19,21 +19,30 @@ const School = () => {
     <div className="min-h-screen flex flex-col">
       <Navbar />
       
-      {/* Hero Section */}
-      <section className="pt-32 pb-16 bg-gradient-to-r from-brand-blue/10 to-brand-red/10">
-        <div className="container mx-auto px-4">
+      {/* Hero Section with Background Image */}
+      <section 
+        className="pt-32 pb-16 bg-gradient-to-r from-brand-blue/10 to-brand-red/10 relative"
+        style={{
+          backgroundImage: `url(${images.JCProducts})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+      >
+        <div className="absolute inset-0 bg-black/50"></div>
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-5xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight animate-fade-in">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight animate-fade-in text-white">
               Custom School Apparel for Institutions Across the UAE
             </h1>
-            <p className="text-xl md:text-2xl text-gray-700 mb-8 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+            <p className="text-xl md:text-2xl text-white mb-8 animate-fade-in" style={{ animationDelay: '0.2s' }}>
               Premium Hoodies, Jackets, T-Shirts & Sweaters for Students, Seniors, Teams, and Events
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in" style={{ animationDelay: '0.4s' }}>
               <Button className="bg-brand-red hover:bg-brand-red/90 text-white text-lg px-8 py-6">
                 Request a Quote <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
-              <Button variant="outline" className="border-brand-blue text-brand-blue hover:bg-brand-blue/10 text-lg px-8 py-6">
+              <Button variant="outline" className="border-white text-white hover:bg-white/10 text-lg px-8 py-6">
                 Start Your Design
               </Button>
             </div>

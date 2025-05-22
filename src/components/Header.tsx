@@ -83,6 +83,7 @@ const Header = ({ scrollToConsultation }: HeaderProps) => {
             <Link to="/about" className="text-gray-700 hover:text-brand-blue font-medium">About</Link>
             <Link to="/contact" className="text-gray-700 hover:text-brand-blue font-medium">Contact</Link>
             <Link to="/green-initiative" className="text-green-700 hover:text-green-600 font-medium">Green Initiative</Link>
+            <Link to="/school" className="text-blue-700 hover:text-blue-600 font-medium">School</Link>
             
             {scrollToConsultation && (
               <Button 
@@ -105,6 +106,7 @@ const Header = ({ scrollToConsultation }: HeaderProps) => {
               <Link to="/about" className="text-gray-700 hover:text-brand-blue font-medium text-xl" onClick={closeMenu}>About</Link>
               <Link to="/contact" className="text-gray-700 hover:text-brand-blue font-medium text-xl" onClick={closeMenu}>Contact</Link>
               <Link to="/green-initiative" className="text-green-700 hover:text-green-600 font-medium text-xl" onClick={closeMenu}>Green Initiative</Link>
+              <Link to="/school" className="text-blue-700 hover:text-blue-600 font-medium text-xl" onClick={closeMenu}>School</Link>
               
               {scrollToConsultation && (
                 <Button 

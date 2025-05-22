@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { Menu, X, User, LogIn } from 'lucide-react';
@@ -75,6 +74,7 @@ const Navbar = () => {
           <Link to="/case-studies" className="text-gray-700 hover:text-brand-green transition-colors">Case Studies</Link>
           <Link to="/services" className="text-gray-700 hover:text-brand-blue transition-colors">Services</Link>
           <Link to="/school" className="text-gray-700 hover:text-brand-red transition-colors">School</Link>
+          <Link to="/green-initiative" className="text-green-700 hover:text-green-600 transition-colors">Green Initiative</Link>
           <Link to="/clients" className="text-gray-700 hover:text-brand-green transition-colors">Clients</Link>
           <Link to="/contact-us">
             <Button className="bg-brand-red hover:bg-brand-red/90 text-white">
@@ -157,6 +157,13 @@ const Navbar = () => {
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   School
+                </Link>
+                <Link 
+                  to="/green-initiative"
+                  className="text-xl text-green-700 hover:text-green-600 transition-colors py-2"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Green Initiative
                 </Link>
                 <Link 
                   to="/clients"
