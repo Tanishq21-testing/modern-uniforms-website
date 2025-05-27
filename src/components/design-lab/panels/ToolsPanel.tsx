@@ -11,7 +11,7 @@ import {
   PlacementSelector,
   ArtworkSelector,
   ProductSelector,
-  ArtworkColorPicker
+  AdvancedArtworkColorPicker
 } from '../tools';
 import { ColorOption, DesignPlacement, DesignElement, ProductType, HoodieView } from '../types';
 
@@ -161,9 +161,9 @@ const ToolsPanel = ({
             <DesignUploader addImageElement={addImageElement} />
           </div>
 
-          {/* Show artwork color picker when an image is selected */}
+          {/* Show advanced artwork color picker when an image is selected */}
           {selectedElement?.type === 'image' && (
-            <ArtworkColorPicker 
+            <AdvancedArtworkColorPicker 
               selectedElement={selectedElement}
               updateElement={updateElement}
             />
@@ -180,9 +180,9 @@ const ToolsPanel = ({
             <ArtworkSelector addImageElement={addImageElement} />
           </div>
 
-          {/* Show artwork color picker in art tab too when an image is selected */}
+          {/* Show advanced artwork color picker in art tab too when an image is selected */}
           {selectedElement?.type === 'image' && (
-            <ArtworkColorPicker 
+            <AdvancedArtworkColorPicker 
               selectedElement={selectedElement}
               updateElement={updateElement}
             />
