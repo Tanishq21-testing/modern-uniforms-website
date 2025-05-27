@@ -1,3 +1,4 @@
+
 import { useState, useRef, useEffect } from 'react';
 import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from '@/components/ui/resizable';
 import ToolsPanel from './panels/ToolsPanel';
@@ -11,8 +12,9 @@ interface DesignEditorProps {
 }
 
 const DesignEditor = ({ isMobile }: DesignEditorProps) => {
+  // Set default values: Black Hoodie, Front view
   const [selectedProduct, setSelectedProduct] = useState<ProductType>('hoodie');
-  const [selectedColor, setSelectedColor] = useState<ColorOption>('black'); // Default black color
+  const [selectedColor, setSelectedColor] = useState<ColorOption>('black');
   const [customPartColor, setCustomPartColor] = useState<{
     body: string;
     sleeves: string;
@@ -23,7 +25,8 @@ const DesignEditor = ({ isMobile }: DesignEditorProps) => {
     hood: 'black',
   });
   
-  const [currentView, setCurrentView] = useState<HoodieView>('back'); // Start with back view
+  // Default to front view as requested
+  const [currentView, setCurrentView] = useState<HoodieView>('front');
   const [selectedSize, setSelectedSize] = useState<string>('M');
   const [quantity, setQuantity] = useState<number>(1);
   const [price, setPrice] = useState<number>(49.99);

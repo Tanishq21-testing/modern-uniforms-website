@@ -22,6 +22,7 @@ const LazyImage: React.FC<LazyImageProps> = ({
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isInView, setIsInView] = useState(priority);
+  const [imageSrc, setImageSrc] = useState<string | null>(priority ? src : null);
   const imgRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
 
@@ -30,6 +31,7 @@ const LazyImage: React.FC<LazyImageProps> = ({
     if (priority && src) {
       const img = new Image();
       img.src = src;
+      img.onload = () => setIsLoaded(true);
     }
   }, [priority, src]);
 
@@ -40,10 +42,11 @@ const LazyImage: React.FC<LazyImageProps> = ({
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsInView(true);
+          setImageSrc(src);
           observer.disconnect();
         }
       },
-      { threshold: 0.1, rootMargin: '200px' }
+      { threshold: 0.1, rootMargin: '100px' }
     );
 
     observer.observe(imgRef.current);
@@ -51,7 +54,7 @@ const LazyImage: React.FC<LazyImageProps> = ({
     return () => {
       if (imgRef.current) observer.disconnect();
     };
-  }, [priority]);
+  }, [priority, src]);
 
   // Fallback handler for image load errors
   const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
@@ -81,10 +84,15 @@ const LazyImage: React.FC<LazyImageProps> = ({
         aspectRatio: !height ? '16/9' : undefined
       }}
     >
-      {(isInView || priority) && (
+      {/* Low-res placeholder for instant display */}
+      {!isLoaded && (
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 animate-pulse" />
+      )}
+      
+      {(isInView || priority) && imageSrc && (
         <img
           ref={imageRef}
-          src={src}
+          src={imageSrc}
           alt={alt}
           className={`w-full h-full object-contain transition-opacity duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
           onLoad={() => setIsLoaded(true)}

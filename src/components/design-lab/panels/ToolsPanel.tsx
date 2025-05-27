@@ -10,7 +10,8 @@ import {
   DesignUploader,
   PlacementSelector,
   ArtworkSelector,
-  ProductSelector
+  ProductSelector,
+  ArtworkColorPicker
 } from '../tools';
 import { ColorOption, DesignPlacement, DesignElement, ProductType, HoodieView } from '../types';
 
@@ -159,6 +160,14 @@ const ToolsPanel = ({
             <h3 className="font-medium mb-2">Upload Design</h3>
             <DesignUploader addImageElement={addImageElement} />
           </div>
+
+          {/* Show artwork color picker when an image is selected */}
+          {selectedElement?.type === 'image' && (
+            <ArtworkColorPicker 
+              selectedElement={selectedElement}
+              updateElement={updateElement}
+            />
+          )}
         </TabsContent>
         
         <TabsContent value="art" className="space-y-4">
@@ -170,6 +179,14 @@ const ToolsPanel = ({
           <div>
             <ArtworkSelector addImageElement={addImageElement} />
           </div>
+
+          {/* Show artwork color picker in art tab too when an image is selected */}
+          {selectedElement?.type === 'image' && (
+            <ArtworkColorPicker 
+              selectedElement={selectedElement}
+              updateElement={updateElement}
+            />
+          )}
         </TabsContent>
       </Tabs>
     </div>

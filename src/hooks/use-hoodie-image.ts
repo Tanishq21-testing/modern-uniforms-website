@@ -3,10 +3,35 @@ import { useState, useEffect } from 'react';
 import { HoodieView, ProductType, ColorOption } from '@/components/design-lab/types';
 import images from '@/assets/images';
 
+// Preload all images for faster switching
+const preloadImages = () => {
+  const imagesToPreload = [
+    'Hoodieblack', 'Hoodiefrontblack', 'Hoodiebackblack',
+    'Hoodieblue', 'Hoodiefrontblue', 'Hoodiebackblue',
+    'Hoodiegray', 'Hoodiefrontgray', 'Hoodiebackgray',
+    'Hoodielightgray', 'Hoodiefrontlightgray', 'Hoodiebacklightgray',
+    'Hoodiered', 'Hoodiefrontred', 'Hoodiebackred',
+    'Hoodieorange', 'Hoodiefrontorange', 'Hoodiebackorange',
+    'Varsityjacket', 'Sweater', 'Tshirt'
+  ];
+
+  imagesToPreload.forEach(imagePath => {
+    if (images[imagePath]) {
+      const img = new Image();
+      img.src = images[imagePath];
+    }
+  });
+};
+
 export function useHoodieImage(productType: ProductType, color: ColorOption, view: HoodieView) {
   const [imageUrl, setImageUrl] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
+
+  // Preload images on first load
+  useEffect(() => {
+    preloadImages();
+  }, []);
 
   useEffect(() => {
     const fetchImage = async () => {
@@ -45,7 +70,8 @@ export function useHoodieImage(productType: ProductType, color: ColorOption, vie
         // Use a fallback image
         setImageUrl('/placeholder.svg');
       } finally {
-        setIsLoading(false);
+        // Reduce loading time for better UX
+        setTimeout(() => setIsLoading(false), 100);
       }
     };
 
