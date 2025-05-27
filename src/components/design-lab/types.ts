@@ -36,4 +36,8 @@ export type DesignElement = {
   placement: DesignPlacement;
   font?: Font;
   color?: string;
+  style?: {
+    filter?: string;
+    [key: string]: any;
+  };
 };
