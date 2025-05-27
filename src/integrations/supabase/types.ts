@@ -60,6 +60,68 @@ export type Database = {
         }
         Relationships: []
       }
+      design_categories: {
+        Row: {
+          created_at: string
+          display_order: number | null
+          id: string
+          name: string
+        }
+        Insert: {
+          created_at?: string
+          display_order?: number | null
+          id?: string
+          name: string
+        }
+        Update: {
+          created_at?: string
+          display_order?: number | null
+          id?: string
+          name?: string
+        }
+        Relationships: []
+      }
+      design_files: {
+        Row: {
+          category_id: string | null
+          created_at: string
+          display_order: number | null
+          file_path: string
+          id: string
+          name: string
+          storage_url: string
+          thumbnail_url: string | null
+        }
+        Insert: {
+          category_id?: string | null
+          created_at?: string
+          display_order?: number | null
+          file_path: string
+          id?: string
+          name: string
+          storage_url: string
+          thumbnail_url?: string | null
+        }
+        Update: {
+          category_id?: string | null
+          created_at?: string
+          display_order?: number | null
+          file_path?: string
+          id?: string
+          name?: string
+          storage_url?: string
+          thumbnail_url?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "design_files_category_id_fkey"
+            columns: ["category_id"]
+            isOneToOne: false
+            referencedRelation: "design_categories"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       products: {
         Row: {
           company_id: string | null
