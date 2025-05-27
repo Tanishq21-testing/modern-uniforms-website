@@ -1,3 +1,4 @@
+
 import { useState, useRef, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, ArrowRight } from "lucide-react";
@@ -7,6 +8,12 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { Badge } from "@/components/ui/badge";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import {
+  ContextMenu,
+  ContextMenuContent,
+  ContextMenuItem,
+  ContextMenuTrigger,
+} from "@/components/ui/context-menu";
 
 interface PreviewPanelProps {
   currentView: HoodieView;
@@ -15,6 +22,7 @@ interface PreviewPanelProps {
   selectedElement: string | null;
   setSelectedElement: (id: string | null) => void;
   updateElement: (id: string, updates: Partial<DesignElement>) => void;
+  removeElement: (id: string) => void;
   selectedColor: ColorOption;
   customPartColor: {
     body: string;
@@ -31,6 +39,7 @@ const PreviewPanel = ({
   selectedElement,
   setSelectedElement,
   updateElement,
+  removeElement,
   selectedColor,
   customPartColor,
   selectedProduct
@@ -53,6 +62,22 @@ const PreviewPanel = ({
     startY: 0,
     originalX: 0,
     originalY: 0
+  });
+
+  const [resizeInfo, setResizeInfo] = useState<{
+    isResizing: boolean;
+    elementId: string | null;
+    startX: number;
+    startY: number;
+    originalWidth: number;
+    originalHeight: number;
+  }>({
+    isResizing: false,
+    elementId: null,
+    startX: 0,
+    startY: 0,
+    originalWidth: 0,
+    originalHeight: 0
   });
 
   useEffect(() => {
@@ -104,18 +129,50 @@ const PreviewPanel = ({
     e.preventDefault();
   };
 
-  const handleDragMove = (e: React.MouseEvent) => {
-    if (!dragInfo.isDragging || !dragInfo.elementId) return;
-    
-    const deltaX = e.clientX - dragInfo.startX;
-    const deltaY = e.clientY - dragInfo.startY;
-    
-    updateElement(dragInfo.elementId, {
-      position: {
-        x: dragInfo.originalX + deltaX,
-        y: dragInfo.originalY + deltaY
-      }
+  const handleResizeStart = (e: React.MouseEvent, id: string) => {
+    const element = designElements.find(el => el.id === id);
+    if (!element) return;
+
+    setResizeInfo({
+      isResizing: true,
+      elementId: id,
+      startX: e.clientX,
+      startY: e.clientY,
+      originalWidth: element.size.width,
+      originalHeight: element.size.height
     });
+    
+    e.preventDefault();
+    e.stopPropagation();
+  };
+
+  const handleDragMove = (e: React.MouseEvent) => {
+    if (dragInfo.isDragging && dragInfo.elementId) {
+      const deltaX = e.clientX - dragInfo.startX;
+      const deltaY = e.clientY - dragInfo.startY;
+      
+      updateElement(dragInfo.elementId, {
+        position: {
+          x: dragInfo.originalX + deltaX,
+          y: dragInfo.originalY + deltaY
+        }
+      });
+    }
+
+    if (resizeInfo.isResizing && resizeInfo.elementId) {
+      const deltaX = e.clientX - resizeInfo.startX;
+      const deltaY = e.clientY - resizeInfo.startY;
+      
+      const newWidth = Math.max(50, resizeInfo.originalWidth + deltaX);
+      const newHeight = Math.max(30, resizeInfo.originalHeight + deltaY);
+      
+      updateElement(resizeInfo.elementId, {
+        size: {
+          width: newWidth,
+          height: newHeight
+        }
+      });
+    }
   };
 
   const handleDragEnd = () => {
@@ -127,6 +184,20 @@ const PreviewPanel = ({
       originalX: 0,
       originalY: 0
     });
+
+    setResizeInfo({
+      isResizing: false,
+      elementId: null,
+      startX: 0,
+      startY: 0,
+      originalWidth: 0,
+      originalHeight: 0
+    });
+  };
+
+  const handleDeleteElement = (id: string) => {
+    removeElement(id);
+    setSelectedElement(null);
   };
 
   const renderDesignElements = () => {
@@ -140,59 +211,74 @@ const PreviewPanel = ({
       .map(element => {
         const isSelected = element.id === selectedElement;
         
-        if (element.type === 'text') {
-          return (
-            <div
-              key={element.id}
-              className={`absolute cursor-move ${isSelected ? 'ring-2 ring-brand-blue' : ''}`}
-              style={{
-                left: element.position.x,
-                top: element.position.y,
-                width: element.size.width,
-                height: element.size.height,
-                color: element.color || 'black',
-                fontFamily: element.font?.family || 'Arial',
-                fontWeight: element.font?.weight || 'normal',
-                fontStyle: element.font?.style || 'normal',
-                fontSize: `${element.font?.size || 16}px`,
-                textAlign: element.font?.align || 'center',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: element.font?.align === 'left' ? 'flex-start' : 
-                               element.font?.align === 'right' ? 'flex-end' : 'center',
-              }}
-              onMouseDown={(e) => handleDragStart(e, element.id)}
-              onClick={() => setSelectedElement(element.id)}
-            >
-              {element.content}
-            </div>
-          );
-        }
-        
-        if (element.type === 'image') {
-          return (
-            <div
-              key={element.id}
-              className={`absolute cursor-move ${isSelected ? 'ring-2 ring-brand-blue' : ''}`}
-              style={{
-                left: element.position.x,
-                top: element.position.y,
-                width: element.size.width,
-                height: element.size.height,
-              }}
-              onMouseDown={(e) => handleDragStart(e, element.id)}
-              onClick={() => setSelectedElement(element.id)}
-            >
-              <img 
-                src={element.content} 
-                alt="Custom design" 
-                className="w-full h-full object-contain"
+        const elementComponent = element.type === 'text' ? (
+          <div
+            className={`absolute cursor-move ${isSelected ? 'ring-2 ring-brand-blue' : ''} group`}
+            style={{
+              left: element.position.x,
+              top: element.position.y,
+              width: element.size.width,
+              height: element.size.height,
+              color: element.color || 'black',
+              fontFamily: element.font?.family || 'Arial',
+              fontWeight: element.font?.weight || 'normal',
+              fontStyle: element.font?.style || 'normal',
+              fontSize: `${element.font?.size || 16}px`,
+              textAlign: element.font?.align || 'center',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: element.font?.align === 'left' ? 'flex-start' : 
+                             element.font?.align === 'right' ? 'flex-end' : 'center',
+            }}
+            onMouseDown={(e) => handleDragStart(e, element.id)}
+            onClick={() => setSelectedElement(element.id)}
+          >
+            {element.content}
+            {isSelected && (
+              <div 
+                className="absolute bottom-0 right-0 w-3 h-3 bg-brand-blue cursor-se-resize"
+                onMouseDown={(e) => handleResizeStart(e, element.id)}
               />
-            </div>
-          );
-        }
-        
-        return null;
+            )}
+          </div>
+        ) : (
+          <div
+            className={`absolute cursor-move ${isSelected ? 'ring-2 ring-brand-blue' : ''} group`}
+            style={{
+              left: element.position.x,
+              top: element.position.y,
+              width: element.size.width,
+              height: element.size.height,
+            }}
+            onMouseDown={(e) => handleDragStart(e, element.id)}
+            onClick={() => setSelectedElement(element.id)}
+          >
+            <img 
+              src={element.content} 
+              alt="Custom design" 
+              className="w-full h-full object-contain"
+            />
+            {isSelected && (
+              <div 
+                className="absolute bottom-0 right-0 w-3 h-3 bg-brand-blue cursor-se-resize"
+                onMouseDown={(e) => handleResizeStart(e, element.id)}
+              />
+            )}
+          </div>
+        );
+
+        return (
+          <ContextMenu key={element.id}>
+            <ContextMenuTrigger>
+              {elementComponent}
+            </ContextMenuTrigger>
+            <ContextMenuContent>
+              <ContextMenuItem onClick={() => handleDeleteElement(element.id)}>
+                Delete Element
+              </ContextMenuItem>
+            </ContextMenuContent>
+          </ContextMenu>
+        );
       });
   };
 
@@ -268,14 +354,14 @@ const PreviewPanel = ({
               </div>
             </TooltipTrigger>
             <TooltipContent side="left">
-              <p>Click and drag to reposition elements on the {getProductName()}</p>
+              <p>Click and drag to move, right-click to delete, drag corners to resize</p>
             </TooltipContent>
           </Tooltip>
         </div>
       </TooltipProvider>
       
       <div className="mt-4 text-center text-sm text-gray-500">
-        Click and drag to reposition elements on the {getProductName()}
+        Click and drag to move, right-click to delete, drag corners to resize
       </div>
     </div>
   );

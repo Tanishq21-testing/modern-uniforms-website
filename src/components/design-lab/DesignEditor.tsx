@@ -1,4 +1,3 @@
-
 import { useState, useRef, useEffect } from 'react';
 import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from '@/components/ui/resizable';
 import ToolsPanel from './panels/ToolsPanel';
@@ -143,6 +142,7 @@ const DesignEditor = ({ isMobile }: DesignEditorProps) => {
           selectedElement={selectedElement}
           setSelectedElement={setSelectedElement}
           updateElement={updateElement}
+          removeElement={removeElement}
           selectedColor={selectedColor}
           customPartColor={customPartColor}
           selectedProduct={selectedProduct}
@@ -162,6 +162,8 @@ const DesignEditor = ({ isMobile }: DesignEditorProps) => {
           removeElement={removeElement}
           selectedProduct={selectedProduct}
           onProductChange={handleProductChange}
+          currentView={currentView}
+          setCurrentView={handleViewChange}
         />
         
         <OrderPanel 
@@ -196,6 +198,8 @@ const DesignEditor = ({ isMobile }: DesignEditorProps) => {
           removeElement={removeElement}
           selectedProduct={selectedProduct}
           onProductChange={handleProductChange}
+          currentView={currentView}
+          setCurrentView={handleViewChange}
         />
       </ResizablePanel>
       
@@ -209,6 +213,7 @@ const DesignEditor = ({ isMobile }: DesignEditorProps) => {
           selectedElement={selectedElement}
           setSelectedElement={setSelectedElement}
           updateElement={updateElement}
+          removeElement={removeElement}
           selectedColor={selectedColor}
           customPartColor={customPartColor}
           selectedProduct={selectedProduct}

@@ -12,7 +12,7 @@ import {
   ArtworkSelector,
   ProductSelector
 } from '../tools';
-import { ColorOption, DesignPlacement, DesignElement, ProductType } from '../types';
+import { ColorOption, DesignPlacement, DesignElement, ProductType, HoodieView } from '../types';
 
 interface ToolsPanelProps {
   selectedColor: ColorOption;
@@ -32,6 +32,8 @@ interface ToolsPanelProps {
   removeElement: (id: string) => void;
   selectedProduct: ProductType;
   onProductChange: (product: ProductType) => void;
+  currentView?: HoodieView;
+  setCurrentView?: (view: HoodieView) => void;
 }
 
 const ToolsPanel = ({
@@ -47,7 +49,9 @@ const ToolsPanel = ({
   updateElement,
   removeElement,
   selectedProduct,
-  onProductChange
+  onProductChange,
+  currentView,
+  setCurrentView
 }: ToolsPanelProps) => {
   return (
     <div className="h-full overflow-auto p-4 border-r">
@@ -136,6 +140,8 @@ const ToolsPanel = ({
             <PlacementSelector 
               placement={placement}
               setPlacement={setPlacement}
+              currentView={currentView}
+              setCurrentView={setCurrentView}
             />
           </div>
           
@@ -157,12 +163,11 @@ const ToolsPanel = ({
         
         <TabsContent value="art" className="space-y-4">
           <div>
-            <h3 className="font-medium mb-2">Upload Artwork</h3>
+            <h3 className="font-medium mb-2">Upload Your Own Artwork</h3>
             <DesignUploader addImageElement={addImageElement} />
           </div>
           
           <div>
-            <h3 className="font-medium mb-2">Pre-loaded Designs</h3>
             <ArtworkSelector addImageElement={addImageElement} />
           </div>
         </TabsContent>
