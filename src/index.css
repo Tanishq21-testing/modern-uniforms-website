@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -198,7 +199,12 @@
   .landing-cta:hover::before {
     @apply opacity-10;
   }
-  
+
+  /* Product carousel scrolling animation */
+  .animate-scroll {
+    animation: scroll 30s linear infinite;
+  }
+
   /* Mobile-responsive components with improved touch targets */
   @media (max-width: 640px) {
     .mobile-full-width {
@@ -222,6 +228,16 @@
     .touch-target {
       @apply min-h-[44px] min-w-[44px];
     }
+  }
+}
+
+/* Add keyframes for product carousel scroll animation */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
   }
 }
 
