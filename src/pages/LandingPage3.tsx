@@ -54,17 +54,12 @@ const LandingPage3 = () => {
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div className="space-y-8">
-                <div className="flex items-center justify-between mb-8">
-                  <div>
-                    <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-                      Not Just Covering Your Team —<br />
-                      <span className="text-brand-blue">Reflecting Your Brand Identity</span>
-                    </h1>
-                    <p className="text-xl text-gray-600 mb-8">Trusted by Industry Leaders Across the UAE</p>
-                  </div>
-                  <div className="hidden lg:block">
-                    <img src={images.logo} alt="UniformConnect" className="h-16" />
-                  </div>
+                <div className="mb-8">
+                  <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+                    Not Just Covering Your Team —<br />
+                    <span className="text-brand-blue">Reflecting Your Brand Identity</span>
+                  </h1>
+                  <p className="text-xl text-gray-600 mb-8">Trusted by Industry Leaders Across the UAE</p>
                 </div>
                 
                 {/* Bullet Points */}
