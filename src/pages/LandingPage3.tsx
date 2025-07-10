@@ -5,46 +5,50 @@ import PageFooter from '@/components/PageFooter';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { 
-  ArrowRight, 
-  Check, 
-  Star, 
-  Shield, 
-  Clock, 
-  Users,
-  Award,
-  Building,
-  ChevronRight,
-  FileText,
-  Palette,
-  Settings,
-  HeartHandshake
-} from 'lucide-react';
+import { ArrowRight, Check, Star, Shield, Clock, Users, Award, Building, ChevronRight, FileText, Palette, Settings, HeartHandshake } from 'lucide-react';
 import { images } from '@/assets/images';
-
 const LandingPage3 = () => {
   const consultationFormRef = useRef<HTMLDivElement>(null);
-  
   const scrollToConsultation = () => {
-    consultationFormRef.current?.scrollIntoView({ behavior: 'smooth' });
+    consultationFormRef.current?.scrollIntoView({
+      behavior: 'smooth'
+    });
   };
-
-  const products = [
-    { name: 'T-shirts', image: images.Tshirt },
-    { name: 'Polo Shirts', image: images.Tshirt },
-    { name: 'Hoodies', image: images.Hoodieimage },
-    { name: 'Sweaters', image: images.Sweater },
-    { name: 'Jackets', image: images.Varsityjacket },
-    { name: 'Chef Coats', image: images.Tshirt },
-    { name: 'Aprons', image: images.Tshirt },
-    { name: 'Caps', image: images.Tshirt },
-    { name: 'Shirts', image: images.Tshirt },
-    { name: 'Trousers', image: images.Tshirt },
-    { name: 'Skirts', image: images.Tshirt }
-  ];
-
-  return (
-    <div className="min-h-screen flex flex-col">
+  const products = [{
+    name: 'T-shirts',
+    image: images.Tshirt
+  }, {
+    name: 'Polo Shirts',
+    image: images.Tshirt
+  }, {
+    name: 'Hoodies',
+    image: images.Hoodieimage
+  }, {
+    name: 'Sweaters',
+    image: images.Sweater
+  }, {
+    name: 'Jackets',
+    image: images.Varsityjacket
+  }, {
+    name: 'Chef Coats',
+    image: images.Tshirt
+  }, {
+    name: 'Aprons',
+    image: images.Tshirt
+  }, {
+    name: 'Caps',
+    image: images.Tshirt
+  }, {
+    name: 'Shirts',
+    image: images.Tshirt
+  }, {
+    name: 'Trousers',
+    image: images.Tshirt
+  }, {
+    name: 'Skirts',
+    image: images.Tshirt
+  }];
+  return <div className="min-h-screen flex flex-col">
       {/* Header */}
       <Header scrollToConsultation={scrollToConsultation} />
 
@@ -93,10 +97,7 @@ const LandingPage3 = () => {
                 {/* CTA Section */}
                 <div className="space-y-4 text-center lg:text-left">
                   <div className="text-2xl font-bold text-brand-red">From AED 300 for 100 pieces</div>
-                  <Button 
-                    className="bg-brand-red hover:bg-brand-red/90 text-white text-lg px-12 py-6 rounded-md"
-                    onClick={scrollToConsultation}
-                  >
+                  <Button className="bg-brand-red hover:bg-brand-red/90 text-white text-lg px-12 py-6 rounded-md" onClick={scrollToConsultation}>
                     Get Custom Uniforms
                   </Button>
                   <div className="text-sm text-gray-600">
@@ -108,28 +109,12 @@ const LandingPage3 = () => {
               {/* Right Side Images */}
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-4">
-                  <img 
-                    src={images.uniformServices} 
-                    alt="Chef uniforms" 
-                    className="rounded-lg w-full h-48 object-cover shadow-lg"
-                  />
-                  <img 
-                    src={images.Hoodieimage} 
-                    alt="Custom hoodies" 
-                    className="rounded-lg w-full h-32 object-cover shadow-lg"
-                  />
+                  <img src={images.uniformServices} alt="Chef uniforms" className="rounded-lg w-full h-48 object-cover shadow-lg" />
+                  <img src={images.Hoodieimage} alt="Custom hoodies" className="rounded-lg w-full h-32 object-cover shadow-lg" />
                 </div>
                 <div className="space-y-4 mt-8">
-                  <img 
-                    src={images.schoolHoodie} 
-                    alt="School uniforms" 
-                    className="rounded-lg w-full h-32 object-cover shadow-lg"
-                  />
-                  <img 
-                    src={images.JCProducts} 
-                    alt="Hospitality staff" 
-                    className="rounded-lg w-full h-48 object-cover shadow-lg"
-                  />
+                  <img src={images.schoolHoodie} alt="School uniforms" className="rounded-lg w-full h-32 object-cover shadow-lg" />
+                  <img src={images.JCProducts} alt="Hospitality staff" className="rounded-lg w-full h-48 object-cover shadow-lg" />
                 </div>
               </div>
             </div>
@@ -181,40 +166,28 @@ const LandingPage3 = () => {
       {/* Section 3: Product Carousel */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-4">Product Previews</h2>
+          <h2 className="text-4xl font-bold text-center mb-4">Product Options</h2>
           <p className="text-xl text-gray-600 text-center mb-12">Designed for Your Brand</p>
           <div className="overflow-hidden">
             <div className="flex animate-scroll space-x-8">
               {/* First set of products */}
-              {products.map((product, index) => (
-                <div key={index} className="flex-shrink-0 w-64">
+              {products.map((product, index) => <div key={index} className="flex-shrink-0 w-64">
                   <Card className="hover:shadow-lg transition-shadow">
                     <CardContent className="p-6">
-                      <img 
-                        src={product.image} 
-                        alt={product.name}
-                        className="w-full h-40 object-cover rounded-lg mb-4"
-                      />
+                      <img src={product.image} alt={product.name} className="w-full h-40 object-cover rounded-lg mb-4" />
                       <h3 className="font-semibold text-center text-lg">{product.name}</h3>
                     </CardContent>
                   </Card>
-                </div>
-              ))}
+                </div>)}
               {/* Duplicate for continuous scroll */}
-              {products.map((product, index) => (
-                <div key={`duplicate-${index}`} className="flex-shrink-0 w-64">
+              {products.map((product, index) => <div key={`duplicate-${index}`} className="flex-shrink-0 w-64">
                   <Card className="hover:shadow-lg transition-shadow">
                     <CardContent className="p-6">
-                      <img 
-                        src={product.image} 
-                        alt={product.name}
-                        className="w-full h-40 object-cover rounded-lg mb-4"
-                      />
+                      <img src={product.image} alt={product.name} className="w-full h-40 object-cover rounded-lg mb-4" />
                       <h3 className="font-semibold text-center text-lg">{product.name}</h3>
                     </CardContent>
                   </Card>
-                </div>
-              ))}
+                </div>)}
             </div>
           </div>
         </div>
@@ -289,11 +262,7 @@ const LandingPage3 = () => {
               </div>
               
               <div className="flex justify-center">
-                <img 
-                  src={images.Tshirt} 
-                  alt="Customizable uniform" 
-                  className="max-w-md w-full"
-                />
+                <img src={images.Tshirt} alt="Customizable uniform" className="max-w-md w-full" />
               </div>
             </div>
           </div>
@@ -310,18 +279,11 @@ const LandingPage3 = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
               <Card className="text-center hover:shadow-lg transition-shadow">
                 <CardContent className="p-6">
-                  <img 
-                    src={images.Hoodieimage} 
-                    alt="School hoodies" 
-                    className="w-full h-48 object-cover rounded-lg mb-4"
-                  />
+                  <img src={images.Hoodieimage} alt="School hoodies" className="w-full h-48 object-cover rounded-lg mb-4" />
                   <h3 className="text-2xl font-bold mb-2">Hoodies</h3>
                   <p className="text-brand-red font-bold text-xl mb-4">Starting from AED 100</p>
                   <p className="text-gray-600 mb-6">Soft fleece lining, custom school logos</p>
-                  <Button 
-                    className="bg-brand-red hover:bg-brand-red/90 text-white w-full"
-                    onClick={scrollToConsultation}
-                  >
+                  <Button className="bg-brand-red hover:bg-brand-red/90 text-white w-full" onClick={scrollToConsultation}>
                     Order Now
                   </Button>
                 </CardContent>
@@ -329,18 +291,11 @@ const LandingPage3 = () => {
               
               <Card className="text-center hover:shadow-lg transition-shadow">
                 <CardContent className="p-6">
-                  <img 
-                    src={images.Varsityjacket} 
-                    alt="School jackets" 
-                    className="w-full h-48 object-cover rounded-lg mb-4"
-                  />
+                  <img src={images.Varsityjacket} alt="School jackets" className="w-full h-48 object-cover rounded-lg mb-4" />
                   <h3 className="text-2xl font-bold mb-2">Jackets</h3>
                   <p className="text-brand-red font-bold text-xl mb-4">Starting from AED 150</p>
                   <p className="text-gray-600 mb-6">Premium materials, custom designs</p>
-                  <Button 
-                    className="bg-brand-red hover:bg-brand-red/90 text-white w-full"
-                    onClick={scrollToConsultation}
-                  >
+                  <Button className="bg-brand-red hover:bg-brand-red/90 text-white w-full" onClick={scrollToConsultation}>
                     Order Now
                   </Button>
                 </CardContent>
@@ -348,18 +303,11 @@ const LandingPage3 = () => {
               
               <Card className="text-center hover:shadow-lg transition-shadow">
                 <CardContent className="p-6">
-                  <img 
-                    src={images.Sweater} 
-                    alt="School sweaters" 
-                    className="w-full h-48 object-cover rounded-lg mb-4"
-                  />
+                  <img src={images.Sweater} alt="School sweaters" className="w-full h-48 object-cover rounded-lg mb-4" />
                   <h3 className="text-2xl font-bold mb-2">Sweaters</h3>
                   <p className="text-brand-red font-bold text-xl mb-4">Starting from AED 90</p>
                   <p className="text-gray-600 mb-6">Comfortable fit, durable materials</p>
-                  <Button 
-                    className="bg-brand-red hover:bg-brand-red/90 text-white w-full"
-                    onClick={scrollToConsultation}
-                  >
+                  <Button className="bg-brand-red hover:bg-brand-red/90 text-white w-full" onClick={scrollToConsultation}>
                     Order Now
                   </Button>
                 </CardContent>
@@ -513,10 +461,7 @@ const LandingPage3 = () => {
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-4xl font-bold mb-6">Ready to Elevate Your Brand?</h2>
           <p className="text-xl mb-8 opacity-90">Join hundreds of UAE businesses who trust us with their uniform needs</p>
-          <Button 
-            className="bg-white text-brand-red hover:bg-gray-100 text-lg px-8 py-6 rounded-md"
-            onClick={scrollToConsultation}
-          >
+          <Button className="bg-white text-brand-red hover:bg-gray-100 text-lg px-8 py-6 rounded-md" onClick={scrollToConsultation}>
             Get Custom Uniform
             <ChevronRight className="ml-2 h-5 w-5" />
           </Button>
@@ -533,28 +478,12 @@ const LandingPage3 = () => {
                 <h3 className="text-2xl font-bold text-center mb-6">Get Your Free Consultation</h3>
                 <form className="space-y-4">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <input 
-                      type="text" 
-                      placeholder="Full Name" 
-                      className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-blue"
-                    />
-                    <input 
-                      type="email" 
-                      placeholder="Email Address" 
-                      className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-blue"
-                    />
+                    <input type="text" placeholder="Full Name" className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-blue" />
+                    <input type="email" placeholder="Email Address" className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-blue" />
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <input 
-                      type="tel" 
-                      placeholder="Phone Number" 
-                      className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-blue"
-                    />
-                    <input 
-                      type="text" 
-                      placeholder="Company Name" 
-                      className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-blue"
-                    />
+                    <input type="tel" placeholder="Phone Number" className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-blue" />
+                    <input type="text" placeholder="Company Name" className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-blue" />
                   </div>
                   <select className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-blue">
                     <option>Number of Employees</option>
@@ -563,11 +492,7 @@ const LandingPage3 = () => {
                     <option>51-100</option>
                     <option>100+</option>
                   </select>
-                  <textarea 
-                    placeholder="Tell us about your uniform requirements..." 
-                    rows={4}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-blue"
-                  />
+                  <textarea placeholder="Tell us about your uniform requirements..." rows={4} className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-blue" />
                   <Button className="w-full bg-brand-red hover:bg-brand-red/90 text-white py-3">
                     Get My Free Consultation
                   </Button>
@@ -580,8 +505,6 @@ const LandingPage3 = () => {
 
       {/* Footer */}
       <PageFooter />
-    </div>
-  );
+    </div>;
 };
-
 export default LandingPage3;
