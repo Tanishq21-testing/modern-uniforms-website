@@ -167,7 +167,7 @@ const LandingPage3 = () => {
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-4">Product Options</h2>
-          <p className="text-xl text-gray-600 text-center mb-12">Designed for Your Brand</p>
+          <p className="text-gray-600 text-center mb-12 mx-0 text-2xl">Smart, Durable &amp; Designed for Brand Impact</p>
           <div className="overflow-hidden">
             <div className="flex animate-scroll space-x-8">
               {/* First set of products */}
