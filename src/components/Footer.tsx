@@ -66,9 +66,10 @@ const Footer = () => {
         </div>
         
         <div className="border-t border-gray-800 pt-6 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-400 text-sm mb-4 md:mb-0 text-center md:text-left">
-            &copy; {new Date().getFullYear()} UniformConnect. All Rights Reserved.
-          </p>
+          <div className="text-gray-400 text-sm mb-4 md:mb-0 text-center md:text-left">
+            <p>&copy; {new Date().getFullYear()} UniformConnect. All Rights Reserved.</p>
+            <p className="text-xs mt-1">A division of Beauty Fashion House Embroidery and Tailoring</p>
+          </div>
           
           <button 
             onClick={scrollToTop}
