@@ -57,9 +57,21 @@ export default {
 					foreground: 'hsl(var(--card-foreground))'
 				},
 				brand: {
-					red: "#FF1E1E",
-					blue: "#1FB5FF",
-					green: "#1FFF4B",
+					red: "hsl(0 84% 60%)",
+					blue: "hsl(203 89% 53%)",
+					green: "hsl(142 76% 55%)",
+				},
+				premium: {
+					50: "hsl(220 30% 98%)",
+					100: "hsl(220 25% 96%)",
+					200: "hsl(220 20% 90%)",
+					300: "hsl(220 15% 80%)",
+					400: "hsl(220 10% 60%)",
+					500: "hsl(220 10% 40%)",
+					600: "hsl(220 15% 25%)",
+					700: "hsl(220 20% 15%)",
+					800: "hsl(220 25% 10%)",
+					900: "hsl(220 30% 8%)",
 				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
