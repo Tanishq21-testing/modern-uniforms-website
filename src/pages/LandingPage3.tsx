@@ -341,6 +341,134 @@ const LandingPage3 = () => {
         </div>
       </section>
 
+      {/* Why UniformConnect Section */}
+      <section className="py-20 section-bg-3">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold mb-4">Why UniformConnect ?</h2>
+              <p className="text-xl text-premium-600">Now that you already know</p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
+              <div className="premium-card text-center">
+                <div className="w-16 h-16 bg-gradient-to-r from-brand-green to-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Check className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-xl font-bold mb-4">High satisfaction Rate</h3>
+                <p className="text-premium-600">100% Client satisfaction from over 200+ companies</p>
+              </div>
+              
+              <div className="premium-card text-center">
+                <div className="w-16 h-16 bg-gradient-to-r from-brand-blue to-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Settings className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-xl font-bold mb-4">Tailored to Your Brand</h3>
+                <p className="text-premium-600">Every uniform is built with your identity in mind</p>
+              </div>
+              
+              <div className="premium-card text-center">
+                <div className="w-16 h-16 bg-gradient-to-r from-brand-green to-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Clock className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-xl font-bold mb-4">Seamless Reorders</h3>
+                <p className="text-premium-600">&lt;24h reorder processing, always here for consistency</p>
+              </div>
+              
+              <div className="premium-card text-center">
+                <div className="w-16 h-16 bg-gradient-to-r from-brand-red to-red-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <MessageCircle className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-xl font-bold mb-4">One Dedicated Contact</h3>
+                <p className="text-premium-600">You'll never chase support. You have your Own Account manager</p>
+              </div>
+              
+              <div className="premium-card text-center">
+                <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Shield className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-xl font-bold mb-4">Trusted by Leaders</h3>
+                <p className="text-premium-600">Hilton, Radisson, Raffles, Gems and more</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Service Guarantee Section */}
+      <section className="py-20 section-bg-2">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+              <div className="premium-card">
+                <div className="flex items-center space-x-3 mb-8">
+                  <div className="w-12 h-12 bg-gradient-to-r from-brand-green to-green-600 rounded-full flex items-center justify-center">
+                    <Shield className="w-6 h-6 text-white" />
+                  </div>
+                  <h2 className="text-3xl font-bold">Our Service Guarantee</h2>
+                </div>
+                
+                <p className="text-premium-600 mb-8 italic">
+                  We stand behind the quality and craftsmanship of our uniform solutions with our comprehensive satisfaction guarantee.
+                </p>
+
+                <div className="space-y-6">
+                  <div>
+                    <div className="flex items-center space-x-3 mb-2">
+                      <Check className="w-5 h-5 text-brand-green" />
+                      <h3 className="text-xl font-bold">100% Satisfaction Guarantee</h3>
+                    </div>
+                    <p className="text-premium-600">If you're not completely satisfied with your uniforms, we'll make it right.</p>
+                  </div>
+                  
+                  <div>
+                    <div className="flex items-center space-x-3 mb-2">
+                      <Check className="w-5 h-5 text-brand-green" />
+                      <h3 className="text-xl font-bold">Quality Assurance</h3>
+                    </div>
+                    <p className="text-premium-600">Every uniform undergoes rigorous quality checks before delivery.</p>
+                  </div>
+                  
+                  <div>
+                    <div className="flex items-center space-x-3 mb-2">
+                      <Check className="w-5 h-5 text-brand-green" />
+                      <h3 className="text-xl font-bold">Timeliness Promise</h3>
+                    </div>
+                    <p className="text-premium-600">We deliver on schedule or we'll offer a discount on your order.</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="premium-card">
+                <h3 className="text-2xl font-bold mb-6">Our Guarantee Details</h3>
+                
+                <div className="space-y-6">
+                  <div>
+                    <h4 className="font-bold mb-2">Quality Guarantee</h4>
+                    <p className="text-sm text-premium-600">We guarantee the quality of our workmanship and materials for 90 days from delivery. If any manufacturing defects occur during this period, we'll repair or replace the items at no cost.</p>
+                  </div>
+                  
+                  <div>
+                    <h4 className="font-bold mb-2">Color Consistency</h4>
+                    <p className="text-sm text-premium-600">We guarantee color consistency across your entire uniform program. If colors don't match our approved samples, we'll replace the items free of charge.</p>
+                  </div>
+                  
+                  <div>
+                    <h4 className="font-bold mb-2">Sizing Satisfaction</h4>
+                    <p className="text-sm text-premium-600">If standard sizes don't fit properly, we offer size exchanges within 30 days of delivery, ensuring your team has comfortable, well-fitting uniforms.</p>
+                  </div>
+                  
+                  <div>
+                    <h4 className="font-bold mb-2">Long-Term Support</h4>
+                    <p className="text-sm text-premium-600">As your uniform provider, we're committed to your long-term satisfaction with ongoing support, reorder assistance, and program optimization.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Trusted by Industry Leaders */}
       <section className="py-20 section-bg-2">
         <div className="container mx-auto px-4">
