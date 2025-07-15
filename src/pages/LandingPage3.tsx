@@ -1,16 +1,52 @@
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import Header from '@/components/Header';
 import PageFooter from '@/components/PageFooter';
-import { ArrowRight, Check, Star, Shield, Clock, Users, Award, Building, FileText, Settings, MessageCircle, Scissors, Palette, Zap, Target, Factory, Sparkles, Heart, TrendingUp } from 'lucide-react';
+import { ArrowRight, Check, Star, Shield, Clock, Users, Award, Building, FileText, Settings, MessageCircle, Scissors, Palette, Zap, Target, Factory, Sparkles, Heart, TrendingUp, ChevronLeft, ChevronRight } from 'lucide-react';
 import { images } from '@/assets/images';
 
 const LandingPage3 = () => {
   const consultationFormRef = useRef<HTMLDivElement>(null);
+  const [currentShowcaseIndex, setCurrentShowcaseIndex] = useState(0);
+  
   const scrollToConsultation = () => {
     consultationFormRef.current?.scrollIntoView({
       behavior: 'smooth'
     });
   };
+
+  // Showcase images for 3D carousel
+  const showcaseImages = [
+    { src: images.uniformServices, alt: "Chef uniforms" },
+    { src: images.Hoodieimage, alt: "Custom hoodies" },
+    { src: images.schoolHoodie, alt: "School uniforms" },
+    { src: images.JCProducts, alt: "Hospitality staff" },
+    { src: images.Tshirt, alt: "Custom T-shirts" },
+    { src: images.Varsityjacket, alt: "Varsity jackets" }
+  ];
+
+  const nextShowcase = () => {
+    setCurrentShowcaseIndex((prev) => (prev + 1) % showcaseImages.length);
+  };
+
+  const prevShowcase = () => {
+    setCurrentShowcaseIndex((prev) => (prev - 1 + showcaseImages.length) % showcaseImages.length);
+  };
+
+  // Logo carousel data
+  const logoCarousel = [
+    images.clientLogos.hilton,
+    images.clientLogos.jonesTheGrocer,
+    images.clientLogos.radissonRed,
+    images.clientLogos.raffles,
+    images.clientLogos.gems,
+    images.clientLogos.khansaheb,
+    images.clientLogos.littleBangkok,
+    images.clientLogos.fairgreen,
+    images.clientLogos.mezzaHouse,
+    images.clientLogos.aud,
+    images.clientLogos.dubaiCreek,
+    images.clientLogos.jc,
+  ];
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -51,12 +87,19 @@ const LandingPage3 = () => {
                   
                   <div className="text-center lg:text-left">
                     <button 
-                      className="bg-gradient-to-r from-red-600 to-red-700 text-white font-bold text-xl px-12 py-5 rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-red-500/30" 
+                      className="relative bg-gradient-to-r from-red-600 to-red-700 text-white font-bold text-xl px-12 py-5 rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-red-500/30 overflow-hidden group" 
                       onClick={scrollToConsultation}
                     >
-                      Get Custom Uniform
+                      <span className="relative z-10">Get Custom Uniform</span>
+                      {/* Metallic shine animation */}
+                      <div className="absolute inset-0 -top-1 -bottom-1 w-6 bg-gradient-to-r from-transparent via-white/30 to-transparent transform -skew-x-12 group-hover:animate-[shimmer_1.5s_ease-in-out] translate-x-[-100%] group-hover:translate-x-[400%] transition-transform duration-1000"></div>
                     </button>
-                    <p className="text-sm text-gray-500 mt-3">Tailored to your brand identity • Free Design Consultation</p>
+                    
+                    {/* Two centered lines under button */}
+                    <div className="mt-6 space-y-2 text-center lg:text-left">
+                      <p className="text-lg font-semibold text-gray-700">Tailored to your brand identity</p>
+                      <p className="text-lg font-semibold text-gray-700">Free Design Consultation</p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -92,16 +135,28 @@ const LandingPage3 = () => {
               </div>
             </div>
             
-            {/* Client Logos - Grayscale */}
+            {/* Client Logos - Infinite Sliding Carousel */}
             <div className="mt-20 text-center">
               <p className="text-sm text-gray-500 mb-8 uppercase tracking-wider">Trusted by Industry Leaders</p>
-              <div className="grid grid-cols-3 md:grid-cols-6 gap-8 items-center opacity-70">
-                <img src={images.clientLogos.hilton} alt="Hilton" className="h-12 w-auto object-contain mx-auto filter grayscale hover:grayscale-0 transition-all duration-300 hover:scale-110" />
-                <img src={images.clientLogos.jonesTheGrocer} alt="Jones The Grocer" className="h-12 w-auto object-contain mx-auto filter grayscale hover:grayscale-0 transition-all duration-300 hover:scale-110" />
-                <img src={images.clientLogos.radissonRed} alt="Radisson Red" className="h-12 w-auto object-contain mx-auto filter grayscale hover:grayscale-0 transition-all duration-300 hover:scale-110" />
-                <img src={images.clientLogos.raffles} alt="Raffles" className="h-12 w-auto object-contain mx-auto filter grayscale hover:grayscale-0 transition-all duration-300 hover:scale-110" />
-                <img src={images.clientLogos.gems} alt="GEMS" className="h-12 w-auto object-contain mx-auto filter grayscale hover:grayscale-0 transition-all duration-300 hover:scale-110" />
-                <img src={images.clientLogos.khansaheb} alt="Khansaheb" className="h-12 w-auto object-contain mx-auto filter grayscale hover:grayscale-0 transition-all duration-300 hover:scale-110" />
+              <div className="relative overflow-hidden">
+                <div className="flex animate-[scroll_30s_linear_infinite] hover:pause">
+                  {/* First set of logos */}
+                  {logoCarousel.concat(logoCarousel).map((logo, index) => (
+                    <div 
+                      key={index} 
+                      className="flex-shrink-0 w-48 px-8 flex items-center justify-center"
+                    >
+                      <img 
+                        src={logo} 
+                        alt={`Client logo ${index}`} 
+                        className="h-12 w-auto object-contain filter grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-500 hover:scale-110" 
+                      />
+                    </div>
+                  ))}
+                </div>
+                {/* Fade edges */}
+                <div className="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-white to-transparent pointer-events-none"></div>
+                <div className="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-white to-transparent pointer-events-none"></div>
               </div>
             </div>
           </div>
@@ -159,15 +214,30 @@ const LandingPage3 = () => {
                 </div>
               </div>
               
-              {/* Right side - Premium sewing machine with glow */}
+              {/* Right side - Premium craftsmanship with sewing machine visual */}
               <div className="relative flex justify-center">
                 <div className="relative">
                   <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 via-purple-600/20 to-red-600/20 rounded-full blur-3xl animate-pulse"></div>
-                  <img 
-                    src={images.Tshirt} 
-                    alt="Premium Manufacturing" 
-                    className="relative w-96 h-96 object-cover rounded-3xl shadow-2xl transform hover:scale-105 transition-transform duration-500"
-                  />
+                  <div className="relative w-96 h-96 bg-gradient-to-br from-gray-800 to-gray-900 rounded-3xl shadow-2xl overflow-hidden group hover:scale-105 transition-transform duration-500">
+                    {/* Craftsmanship imagery */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="text-center text-white p-8">
+                        <Scissors className="w-20 h-20 mx-auto mb-4 text-blue-400" />
+                        <h3 className="text-2xl font-bold mb-2">Master Craftsmanship</h3>
+                        <p className="text-gray-300">Precision in every stitch</p>
+                        <div className="mt-6 grid grid-cols-2 gap-4 text-sm">
+                          <div className="bg-white/10 rounded-lg p-3">
+                            <Factory className="w-6 h-6 mx-auto mb-2 text-green-400" />
+                            <span>Premium Factory</span>
+                          </div>
+                          <div className="bg-white/10 rounded-lg p-3">
+                            <Award className="w-6 h-6 mx-auto mb-2 text-yellow-400" />
+                            <span>Quality Certified</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                   <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-white/20 rounded-3xl"></div>
                 </div>
               </div>
@@ -318,26 +388,117 @@ const LandingPage3 = () => {
         </div>
       </section>
 
-      {/* Trust Section - Light Background */}
-      <section className="py-20 bg-gradient-to-br from-white to-gray-50">
+      {/* Interactive Portfolio / Showcase Section - 3D Carousel */}
+      <section className="py-20 bg-gradient-to-br from-black via-gray-900 to-black text-white relative overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto text-center">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">Trusted By Industry Leaders</h2>
-            <p className="text-xl text-gray-600 mb-12">Join these prestigious organizations who trust us with their uniform needs</p>
+            <div className="mb-16">
+              <div className="flex items-center justify-center mb-6">
+                <Star className="w-8 h-8 text-yellow-400 fill-yellow-400 mr-3" />
+                <Star className="w-8 h-8 text-yellow-400 fill-yellow-400 mr-3" />
+                <Star className="w-8 h-8 text-yellow-400 fill-yellow-400 mr-3" />
+                <Star className="w-8 h-8 text-yellow-400 fill-yellow-400 mr-3" />
+                <Star className="w-8 h-8 text-yellow-400 fill-yellow-400" />
+              </div>
+              <h2 className="text-5xl md:text-6xl font-bold mb-6">
+                HIGH PERSONALISATION
+              </h2>
+              <div className="text-2xl font-bold mb-6">
+                <span className="text-blue-400">COLOR</span> & <span className="text-red-500">CUT</span> & <span className="text-green-400">DESIGN</span>
+              </div>
+            </div>
             
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center">
-              <img src={images.clientLogos.hilton} alt="Hilton" className="h-16 w-auto object-contain mx-auto filter grayscale hover:grayscale-0 transition-all duration-300 hover:scale-110" />
-              <img src={images.clientLogos.jonesTheGrocer} alt="Jones The Grocer" className="h-16 w-auto object-contain mx-auto filter grayscale hover:grayscale-0 transition-all duration-300 hover:scale-110" />
-              <img src={images.clientLogos.radissonRed} alt="Radisson Red" className="h-16 w-auto object-contain mx-auto filter grayscale hover:grayscale-0 transition-all duration-300 hover:scale-110" />
-              <img src={images.clientLogos.littleBangkok} alt="Little Bangkok" className="h-16 w-auto object-contain mx-auto filter grayscale hover:grayscale-0 transition-all duration-300 hover:scale-110" />
-              <img src={images.clientLogos.fairgreen} alt="Fairgreen" className="h-16 w-auto object-contain mx-auto filter grayscale hover:grayscale-0 transition-all duration-300 hover:scale-110" />
-              <img src={images.clientLogos.gems} alt="GEMS" className="h-16 w-auto object-contain mx-auto filter grayscale hover:grayscale-0 transition-all duration-300 hover:scale-110" />
-              <img src={images.clientLogos.raffles} alt="Raffles" className="h-16 w-auto object-contain mx-auto filter grayscale hover:grayscale-0 transition-all duration-300 hover:scale-110" />
-              <img src={images.clientLogos.mezzaHouse} alt="Mezza House" className="h-16 w-auto object-contain mx-auto filter grayscale hover:grayscale-0 transition-all duration-300 hover:scale-110" />
-              <img src={images.clientLogos.khansaheb} alt="Khansaheb" className="h-16 w-auto object-contain mx-auto filter grayscale hover:grayscale-0 transition-all duration-300 hover:scale-110" />
-              <img src={images.clientLogos.aud} alt="AUD" className="h-16 w-auto object-contain mx-auto filter grayscale hover:grayscale-0 transition-all duration-300 hover:scale-110" />
-              <img src={images.clientLogos.dubaiCreek} alt="Dubai Creek" className="h-16 w-auto object-contain mx-auto filter grayscale hover:grayscale-0 transition-all duration-300 hover:scale-110" />
-              <img src={images.clientLogos.jc} alt="JC" className="h-16 w-auto object-contain mx-auto filter grayscale hover:grayscale-0 transition-all duration-300 hover:scale-110" />
+            {/* 3D Carousel */}
+            <div className="relative flex items-center justify-center h-96 mb-8">
+              {/* Navigation Arrows */}
+              <button 
+                onClick={prevShowcase}
+                className="absolute left-4 z-20 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-4 transition-all duration-300 hover:scale-110 group"
+              >
+                <ChevronLeft className="w-8 h-8 text-white group-hover:text-blue-400 transition-colors duration-300" />
+              </button>
+              
+              <button 
+                onClick={nextShowcase}
+                className="absolute right-4 z-20 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-4 transition-all duration-300 hover:scale-110 group"
+              >
+                <ChevronRight className="w-8 h-8 text-white group-hover:text-blue-400 transition-colors duration-300" />
+              </button>
+              
+              {/* Carousel Images */}
+              <div className="relative w-full h-full flex items-center justify-center">
+                {showcaseImages.map((image, index) => {
+                  const isCenter = index === currentShowcaseIndex;
+                  const isLeft = index === (currentShowcaseIndex - 1 + showcaseImages.length) % showcaseImages.length;
+                  const isRight = index === (currentShowcaseIndex + 1) % showcaseImages.length;
+                  const isVisible = isCenter || isLeft || isRight;
+                  
+                  if (!isVisible) return null;
+                  
+                  let transformClass = '';
+                  let zIndex = 0;
+                  let scale = 'scale-75';
+                  let opacity = 'opacity-50';
+                  
+                  if (isCenter) {
+                    transformClass = 'translate-x-0';
+                    zIndex = 30;
+                    scale = 'scale-100';
+                    opacity = 'opacity-100';
+                  } else if (isLeft) {
+                    transformClass = '-translate-x-32 -rotate-y-12';
+                    zIndex = 20;
+                  } else if (isRight) {
+                    transformClass = 'translate-x-32 rotate-y-12';
+                    zIndex = 20;
+                  }
+                  
+                  return (
+                    <div
+                      key={index}
+                      className={`absolute transition-all duration-700 ease-in-out ${transformClass} ${scale} ${opacity} hover:scale-105 hover:opacity-100 cursor-pointer`}
+                      style={{ 
+                        zIndex,
+                        transform: `${transformClass} perspective(1000px)`,
+                        transformStyle: 'preserve-3d'
+                      }}
+                      onClick={() => setCurrentShowcaseIndex(index)}
+                    >
+                      <div className="relative">
+                        <img 
+                          src={image.src}
+                          alt={image.alt}
+                          className="w-80 h-80 object-cover rounded-2xl shadow-2xl border-4 border-white/20"
+                        />
+                        {isCenter && (
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent rounded-2xl flex items-end">
+                            <div className="p-6 text-center w-full">
+                              <h3 className="text-xl font-bold text-white drop-shadow-lg">{image.alt}</h3>
+                            </div>
+                          </div>
+                        )}
+                        {/* Hover glow effect */}
+                        <div className="absolute inset-0 rounded-2xl opacity-0 hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-red-500/20 blur-xl"></div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+            
+            {/* Carousel indicators */}
+            <div className="flex justify-center space-x-3 mb-8">
+              {showcaseImages.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentShowcaseIndex(index)}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    index === currentShowcaseIndex
+                      ? 'bg-white shadow-lg scale-125'
+                      : 'bg-white/40 hover:bg-white/70'
+                  }`}
+                />
+              ))}
             </div>
           </div>
         </div>
