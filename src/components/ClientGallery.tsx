@@ -79,39 +79,79 @@ const ClientGallery = () => {
           </p>
         </div>
 
-        <div className={`max-w-6xl mx-auto ${isVisible ? 'animate-fade-in' : 'opacity-0'}`} style={{ animationDelay: '0.3s' }}>
-          <div className="relative h-[500px] overflow-hidden">
+        <div className={`max-w-4xl mx-auto ${isVisible ? 'animate-fade-in' : 'opacity-0'}`} style={{ animationDelay: '0.3s' }}>
+          <div className="relative h-[600px] flex items-center justify-center overflow-hidden">
             <Carousel
               opts={{
                 align: "center",
                 loop: true,
               }}
-              className="w-full h-full"
+              className="w-full max-w-2xl"
             >
-              <CarouselContent className="h-full items-center">
+              <CarouselContent className="ml-0">
                 {galleryItems.map((item, index) => (
-                  <CarouselItem key={index} className="basis-full md:basis-1/3 lg:basis-1/5">
-                    <div className="flex justify-center items-center h-full px-2">
-                      <div className="carousel-item group cursor-pointer transform transition-all duration-500 ease-out hover:scale-105">
-                        <div className="rounded-2xl overflow-hidden bg-white shadow-2xl relative">
-                          <div className="h-80 relative overflow-hidden">
-                            <img
-                              src={item.image}
-                              alt={item.title}
-                              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                              <div className="absolute bottom-4 left-4 right-4 text-white">
-                                <div className="bg-white/20 backdrop-blur-sm px-3 py-2 rounded-lg border border-white/30">
-                                  <span className="text-sm font-medium">View Details</span>
-                                </div>
+                  <CarouselItem key={index} className="pl-0 basis-full">
+                    <div className="relative h-[500px] flex items-center justify-center">
+                      {/* Layered background images */}
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        {galleryItems.map((bgItem, bgIndex) => {
+                          const offset = Math.abs(bgIndex - index);
+                          if (offset === 0) return null; // Skip the main image
+                          
+                          const isLeft = bgIndex < index;
+                          const zIndex = 10 - offset;
+                          const scale = Math.max(0.6, 1 - (offset * 0.15));
+                          const translateX = isLeft ? -60 - (offset * 40) : 60 + (offset * 40);
+                          const translateY = offset * 20;
+                          const opacity = Math.max(0.3, 1 - (offset * 0.25));
+                          
+                          return (
+                            <div
+                              key={`bg-${bgIndex}`}
+                              className="absolute rounded-2xl overflow-hidden bg-white shadow-xl transition-all duration-500"
+                              style={{
+                                transform: `translate(${translateX}px, ${translateY}px) scale(${scale})`,
+                                zIndex,
+                                opacity,
+                                width: '300px',
+                                height: '400px'
+                              }}
+                            >
+                              <div className="h-80 relative">
+                                <img
+                                  src={bgItem.image}
+                                  alt={bgItem.title}
+                                  className="w-full h-full object-cover"
+                                />
+                              </div>
+                              <div className="p-4">
+                                <h3 className="font-bold text-lg mb-1 text-gray-900">{bgItem.title}</h3>
+                                <p className="text-gray-600 text-sm">{bgItem.description}</p>
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+
+                      {/* Main center image */}
+                      <div className="relative z-20 rounded-2xl overflow-hidden bg-white shadow-2xl transform hover:scale-105 transition-all duration-500 cursor-pointer group">
+                        <div className="h-96 relative overflow-hidden" style={{ width: '320px' }}>
+                          <img
+                            src={item.image}
+                            alt={item.title}
+                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div className="absolute bottom-4 left-4 right-4 text-white">
+                              <div className="bg-white/20 backdrop-blur-sm px-3 py-2 rounded-lg border border-white/30">
+                                <span className="text-sm font-medium">View Details</span>
                               </div>
                             </div>
                           </div>
-                          <div className="p-6">
-                            <h3 className="font-bold text-xl mb-2 text-gray-900">{item.title}</h3>
-                            <p className="text-gray-600 text-sm leading-relaxed">{item.description}</p>
-                          </div>
+                        </div>
+                        <div className="p-6">
+                          <h3 className="font-bold text-xl mb-2 text-gray-900">{item.title}</h3>
+                          <p className="text-gray-600 text-sm leading-relaxed">{item.description}</p>
                         </div>
                       </div>
                     </div>
@@ -119,15 +159,14 @@ const ClientGallery = () => {
                 ))}
               </CarouselContent>
               
-              {/* Custom positioned navigation */}
-              <div className="absolute left-4 top-1/2 -translate-y-1/2 z-10">
-                <CarouselPrevious className="bg-white/90 backdrop-blur-sm border-white/20 shadow-xl hover:bg-white hover:scale-110 transition-all duration-300" />
+              {/* Navigation arrows */}
+              <div className="absolute left-8 top-1/2 -translate-y-1/2 z-30">
+                <CarouselPrevious className="bg-white/90 backdrop-blur-sm border-white/20 shadow-xl hover:bg-white hover:scale-110 transition-all duration-300 w-12 h-12" />
               </div>
-              <div className="absolute right-4 top-1/2 -translate-y-1/2 z-10">
-                <CarouselNext className="bg-white/90 backdrop-blur-sm border-white/20 shadow-xl hover:bg-white hover:scale-110 transition-all duration-300" />
+              <div className="absolute right-8 top-1/2 -translate-y-1/2 z-30">
+                <CarouselNext className="bg-white/90 backdrop-blur-sm border-white/20 shadow-xl hover:bg-white hover:scale-110 transition-all duration-300 w-12 h-12" />
               </div>
             </Carousel>
-            
           </div>
         </div>
 
