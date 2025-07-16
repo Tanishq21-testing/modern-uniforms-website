@@ -266,6 +266,602 @@ const LandingPage3 = () => {
         </div>
       </section>
 
+      {/* 3️⃣ Customization Table Section - Seamless Black Background */}
+      <section className="py-16 sm:py-20 bg-black text-white relative overflow-hidden">
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-12 sm:mb-16">
+              <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6">CUSTOMIZATION</h2>
+              <p className="text-lg sm:text-xl text-gray-300">Make it uniquely yours</p>
+            </div>
+            
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-16 items-center">
+              {/* Left side - Customization table */}
+              <div className="space-y-8">
+                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-6 sm:p-8 hover:bg-white/10 transition-all duration-300">
+                  <h3 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 text-center">What Can I Customise?</h3>
+                  <div className="space-y-4 sm:space-y-6">
+                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center border-b border-white/20 pb-4 space-y-2 sm:space-y-0">
+                      <span className="font-bold text-base sm:text-lg">GARMENT TYPE</span>
+                      <span className="text-gray-300 text-sm sm:text-base">T-shirts, hoodies, chef coats, pants</span>
+                    </div>
+                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center border-b border-white/20 pb-4 space-y-2 sm:space-y-0">
+                      <span className="font-bold text-base sm:text-lg">FABRIC & COLOR</span>
+                      <span className="text-gray-300 text-sm sm:text-base">Wide range of materials and color tones</span>
+                    </div>
+                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center border-b border-white/20 pb-4 space-y-2 sm:space-y-0">
+                      <span className="font-bold text-base sm:text-lg">DECORATION</span>
+                      <span className="text-gray-300 text-sm sm:text-base">Embroidery or screen printing</span>
+                    </div>
+                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center border-b border-white/20 pb-4 space-y-2 sm:space-y-0">
+                      <span className="font-bold text-base sm:text-lg">FIT & CUT</span>
+                      <span className="text-gray-300 text-sm sm:text-base">Unisex, tailored, relaxed</span>
+                    </div>
+                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center space-y-2 sm:space-y-0">
+                      <span className="font-bold text-base sm:text-lg">YOUR DESIGN</span>
+                      <span className="text-gray-300 text-sm sm:text-base">Logos, slogans, patterns</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Right side - T-shirt mockup with color-coded callouts */}
+              <div className="flex justify-center">
+                <div className="relative max-w-md mx-auto">
+                  <img 
+                    src={images.Tshirt} 
+                    alt="Customizable uniform" 
+                    className="w-full max-w-lg rounded-3xl shadow-2xl transform hover:scale-105 transition-transform duration-500" 
+                  />
+                  
+                  <div className="absolute top-4 sm:top-6 right-4 sm:right-6 bg-green-600 text-white px-3 sm:px-4 py-2 sm:py-3 rounded-full font-bold text-xs sm:text-sm shadow-lg hover:scale-110 transition-transform duration-300">
+                    ✓ 100% Branded Clothes
+                  </div>
+                  
+                  <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 bg-blue-600 text-white px-3 sm:px-4 py-2 sm:py-3 rounded-full font-bold text-xs sm:text-sm shadow-lg hover:scale-110 transition-transform duration-300">
+                    ✓ Durable weave
+                  </div>
+                  
+                  <div className="absolute right-2 sm:right-6 top-1/2 transform -translate-y-1/2 bg-red-600 text-white px-3 sm:px-4 py-2 sm:py-3 rounded-full font-bold text-xs sm:text-sm shadow-lg hover:scale-110 transition-transform duration-300">
+                    ✓ Holds shape after 30+ washes
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4️⃣ Brand Identity Blocks Section - Seamless Black Background */}
+      <section className="py-16 sm:py-20 bg-black text-white relative overflow-hidden">
+        <div className="container mx-auto px-4">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-12 sm:mb-16">
+              <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6">BUILD YOUR BRAND</h2>
+              <p className="text-lg sm:text-xl text-gray-300">Three pillars of uniform excellence</p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+              {/* Brand Identity Block - Blue */}
+              <div className="bg-gradient-to-br from-blue-600 to-blue-700 rounded-3xl p-6 sm:p-8 text-center hover:scale-105 transition-all duration-300 group">
+                <Building className="w-12 sm:w-16 h-12 sm:h-16 mx-auto mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300" />
+                <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">Brand Identity</h3>
+                <p className="text-blue-100 text-sm sm:text-base leading-relaxed">
+                  Professional uniforms that reflect your company's values and create lasting impressions with clients and customers.
+                </p>
+                <div className="mt-4 sm:mt-6 space-y-2">
+                  <div className="flex items-center justify-center space-x-2">
+                    <Check className="w-4 h-4 text-blue-200" />
+                    <span className="text-blue-200 text-xs sm:text-sm">Custom Logo Integration</span>
+                  </div>
+                  <div className="flex items-center justify-center space-x-2">
+                    <Check className="w-4 h-4 text-blue-200" />
+                    <span className="text-blue-200 text-xs sm:text-sm">Brand Color Matching</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Team Culture Block - Red */}
+              <div className="bg-gradient-to-br from-red-600 to-red-700 rounded-3xl p-6 sm:p-8 text-center hover:scale-105 transition-all duration-300 group">
+                <Users className="w-12 sm:w-16 h-12 sm:h-16 mx-auto mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300" />
+                <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">Team Culture</h3>
+                <p className="text-red-100 text-sm sm:text-base leading-relaxed">
+                  Foster unity and pride among your team with matching uniforms that enhance collaboration and professional identity.
+                </p>
+                <div className="mt-4 sm:mt-6 space-y-2">
+                  <div className="flex items-center justify-center space-x-2">
+                    <Check className="w-4 h-4 text-red-200" />
+                    <span className="text-red-200 text-xs sm:text-sm">Team Unity</span>
+                  </div>
+                  <div className="flex items-center justify-center space-x-2">
+                    <Check className="w-4 h-4 text-red-200" />
+                    <span className="text-red-200 text-xs sm:text-sm">Professional Appearance</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Long-Term Growth Block - Green */}
+              <div className="bg-gradient-to-br from-green-600 to-green-700 rounded-3xl p-6 sm:p-8 text-center hover:scale-105 transition-all duration-300 group">
+                <TrendingUp className="w-12 sm:w-16 h-12 sm:h-16 mx-auto mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300" />
+                <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">Long-Term Growth</h3>
+                <p className="text-green-100 text-sm sm:text-base leading-relaxed">
+                  Invest in quality uniforms that grow with your business, offering durability and style that lasts for years.
+                </p>
+                <div className="mt-4 sm:mt-6 space-y-2">
+                  <div className="flex items-center justify-center space-x-2">
+                    <Check className="w-4 h-4 text-green-200" />
+                    <span className="text-green-200 text-xs sm:text-sm">Scalable Solutions</span>
+                  </div>
+                  <div className="flex items-center justify-center space-x-2">
+                    <Check className="w-4 h-4 text-green-200" />
+                    <span className="text-green-200 text-xs sm:text-sm">Future-Ready Design</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 5️⃣ Pricing Section - Light Background */}
+      <section className="py-16 sm:py-20 bg-gradient-to-br from-gray-50 to-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12 sm:mb-16">
+              <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6">PRICING</h2>
+              <p className="text-lg sm:text-xl text-gray-600">Premium quality, competitive pricing</p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mb-8 sm:mb-12">
+              <div className="bg-white rounded-3xl shadow-xl p-6 sm:p-8 text-center hover:shadow-2xl hover:scale-105 transition-all duration-300 border border-gray-100">
+                <img src={images.Hoodieimage} alt="Hoodies" className="w-full h-32 sm:h-48 object-cover rounded-2xl mb-4 sm:mb-6" />
+                <h3 className="text-xl sm:text-2xl font-bold mb-2">HOODIES</h3>
+                <div className="text-xs sm:text-sm text-gray-500 mb-2">FROM</div>
+                <div className="text-3xl sm:text-4xl font-bold text-red-600 mb-4">100 AED</div>
+                <p className="text-gray-600 mb-2 text-sm sm:text-base">Logo + Fabric Choice</p>
+                <p className="text-xs sm:text-sm text-gray-500">Popular for Teams</p>
+              </div>
+              
+              <div className="bg-white rounded-3xl shadow-xl p-6 sm:p-8 text-center hover:shadow-2xl hover:scale-105 transition-all duration-300 border border-gray-100">
+                <img src={images.Varsityjacket} alt="Jackets" className="w-full h-32 sm:h-48 object-cover rounded-2xl mb-4 sm:mb-6" />
+                <h3 className="text-xl sm:text-2xl font-bold mb-2">JACKETS</h3>
+                <div className="text-xs sm:text-sm text-gray-500 mb-2">FROM</div>
+                <div className="text-3xl sm:text-4xl font-bold text-red-600 mb-4">150 AED</div>
+                <p className="text-gray-600 mb-2 text-sm sm:text-base">Tailored Branding</p>
+                <p className="text-xs sm:text-sm text-gray-500">Great for Front Desk</p>
+              </div>
+              
+              <div className="bg-white rounded-3xl shadow-xl p-6 sm:p-8 text-center hover:shadow-2xl hover:scale-105 transition-all duration-300 border border-gray-100">
+                <img src={images.Tshirt} alt="T-Shirts" className="w-full h-32 sm:h-48 object-cover rounded-2xl mb-4 sm:mb-6" />
+                <h3 className="text-xl sm:text-2xl font-bold mb-2">T-SHIRTS</h3>
+                <div className="text-xs sm:text-sm text-gray-500 mb-2">FROM</div>
+                <div className="text-3xl sm:text-4xl font-bold text-red-600 mb-4">50 AED</div>
+                <p className="text-gray-600 mb-2 text-sm sm:text-base">Print or embroidery</p>
+                <p className="text-xs sm:text-sm text-gray-500">Fast Delivery Items</p>
+              </div>
+            </div>
+
+            <div className="text-center">
+              <button 
+                className="bg-gradient-to-r from-red-600 to-red-700 text-white font-bold text-lg sm:text-xl px-8 sm:px-12 py-4 sm:py-5 rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-red-500/30 w-full sm:w-auto" 
+                onClick={scrollToConsultation}
+              >
+                Order Now
+                <ArrowRight className="ml-2 h-5 sm:h-6 w-5 sm:w-6 inline" />
+              </button>
+              <p className="text-xs sm:text-sm text-gray-500 mt-3">Cut-Color-Decoration defined with you • we respond under 24H</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 6️⃣ Product Quality Section - Seamless Black Background */}
+      <section className="py-16 sm:py-20 bg-black text-white relative overflow-hidden">
+        <div className="container mx-auto px-4">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-12 sm:mb-16">
+              <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6">PREMIUM QUALITY</h2>
+              <p className="text-lg sm:text-xl text-gray-300">Craftsmanship that speaks for your brand</p>
+            </div>
+            
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-16 items-center">
+              {/* Left side - Quality icons */}
+              <div className="space-y-6 sm:space-y-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                  <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 sm:p-6 text-center hover:bg-white/10 transition-all duration-300 group">
+                    <Sparkles className="w-10 sm:w-12 h-10 sm:h-12 text-blue-400 mx-auto mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-300" />
+                    <h3 className="text-base sm:text-lg font-bold mb-2">Premium Fabrics</h3>
+                    <p className="text-gray-400 text-xs sm:text-sm">Highest quality materials sourced globally</p>
+                  </div>
+                  
+                  <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 sm:p-6 text-center hover:bg-white/10 transition-all duration-300 group">
+                    <Target className="w-10 sm:w-12 h-10 sm:h-12 text-green-400 mx-auto mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-300" />
+                    <h3 className="text-base sm:text-lg font-bold mb-2">Detail Finishing</h3>
+                    <p className="text-gray-400 text-xs sm:text-sm">Precision in every stitch and seam</p>
+                  </div>
+                  
+                  <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 sm:p-6 text-center hover:bg-white/10 transition-all duration-300 group">
+                    <Scissors className="w-10 sm:w-12 h-10 sm:h-12 text-red-400 mx-auto mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-300" />
+                    <h3 className="text-base sm:text-lg font-bold mb-2">Expert Stitching</h3>
+                    <p className="text-gray-400 text-xs sm:text-sm">Master craftsmen with decades of experience</p>
+                  </div>
+                  
+                  <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 sm:p-6 text-center hover:bg-white/10 transition-all duration-300 group">
+                    <Shield className="w-10 sm:w-12 h-10 sm:h-12 text-purple-400 mx-auto mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-300" />
+                    <h3 className="text-base sm:text-lg font-bold mb-2">Wash-Tested</h3>
+                    <p className="text-gray-400 text-xs sm:text-sm">Durability tested through 100+ wash cycles</p>
+                  </div>
+                  
+                  <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 sm:p-6 text-center hover:bg-white/10 transition-all duration-300 group">
+                    <Zap className="w-10 sm:w-12 h-10 sm:h-12 text-yellow-400 mx-auto mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-300" />
+                    <h3 className="text-base sm:text-lg font-bold mb-2">Perfect Fit Cutting</h3>
+                    <p className="text-gray-400 text-xs sm:text-sm">Tailored patterns for optimal comfort</p>
+                  </div>
+                  
+                  <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 sm:p-6 text-center hover:bg-white/10 transition-all duration-300 group">
+                    <Palette className="w-10 sm:w-12 h-10 sm:h-12 text-pink-400 mx-auto mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-300" />
+                    <h3 className="text-base sm:text-lg font-bold mb-2">Color Stability</h3>
+                    <p className="text-gray-400 text-xs sm:text-sm">Fade-resistant colors that last</p>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Right side - Premium craftsmanship visual */}
+              <div className="relative flex justify-center">
+                <div className="relative">
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 via-purple-600/20 to-red-600/20 rounded-full blur-3xl animate-pulse"></div>
+                  <div className="relative w-80 sm:w-96 h-80 sm:h-96 bg-gradient-to-br from-gray-800 to-gray-900 rounded-3xl shadow-2xl overflow-hidden group hover:scale-105 transition-transform duration-500">
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="text-center text-white p-6 sm:p-8">
+                        <Scissors className="w-16 sm:w-20 h-16 sm:h-20 mx-auto mb-3 sm:mb-4 text-blue-400" />
+                        <h3 className="text-xl sm:text-2xl font-bold mb-2">Master Craftsmanship</h3>
+                        <p className="text-gray-300 text-sm sm:text-base">Precision in every stitch</p>
+                        <div className="mt-4 sm:mt-6 grid grid-cols-2 gap-3 sm:gap-4 text-xs sm:text-sm">
+                          <div className="bg-white/10 rounded-lg p-2 sm:p-3">
+                            <Factory className="w-5 sm:w-6 h-5 sm:h-6 mx-auto mb-1 sm:mb-2 text-green-400" />
+                            <span>Premium Factory</span>
+                          </div>
+                          <div className="bg-white/10 rounded-lg p-2 sm:p-3">
+                            <Award className="w-5 sm:w-6 h-5 sm:h-6 mx-auto mb-1 sm:mb-2 text-yellow-400" />
+                            <span>Quality Certified</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-white/20 rounded-3xl"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 7️⃣ Trust Our Expertise Section - Seamless Black Background */}
+      <section className="py-16 sm:py-20 bg-black text-white relative overflow-hidden">
+        <div className="container mx-auto px-4">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-12 sm:mb-16">
+              <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6">TRUST OUR EXPERTISE</h2>
+              <p className="text-lg sm:text-xl text-gray-300">50+ years of uniform excellence in the UAE</p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+              <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-6 sm:p-8 text-center hover:bg-white/10 transition-all duration-300 group">
+                <Award className="w-12 sm:w-16 h-12 sm:h-16 text-yellow-400 mx-auto mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300" />
+                <h3 className="text-2xl sm:text-3xl font-bold mb-2">50+</h3>
+                <p className="text-gray-300 text-sm sm:text-base">Years Experience</p>
+              </div>
+              
+              <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-6 sm:p-8 text-center hover:bg-white/10 transition-all duration-300 group">
+                <Building className="w-12 sm:w-16 h-12 sm:h-16 text-blue-400 mx-auto mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300" />
+                <h3 className="text-2xl sm:text-3xl font-bold mb-2">500+</h3>
+                <p className="text-gray-300 text-sm sm:text-base">Companies Served</p>
+              </div>
+              
+              <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-6 sm:p-8 text-center hover:bg-white/10 transition-all duration-300 group">
+                <Truck className="w-12 sm:w-16 h-12 sm:h-16 text-green-400 mx-auto mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300" />
+                <h3 className="text-2xl sm:text-3xl font-bold mb-2">24H</h3>
+                <p className="text-gray-300 text-sm sm:text-base">Response Time</p>
+              </div>
+              
+              <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-6 sm:p-8 text-center hover:bg-white/10 transition-all duration-300 group">
+                <Shield className="w-12 sm:w-16 h-12 sm:h-16 text-red-400 mx-auto mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300" />
+                <h3 className="text-2xl sm:text-3xl font-bold mb-2">100%</h3>
+                <p className="text-gray-300 text-sm sm:text-base">Quality Guarantee</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 8️⃣ Our Expert Process Section - Seamless Black Background */}
+      <section className="py-16 sm:py-20 bg-black text-white relative overflow-hidden">
+        <div className="container mx-auto px-4">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-12 sm:mb-16">
+              <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6">OUR EXPERT PROCESS</h2>
+              <p className="text-lg sm:text-xl text-gray-300">From concept to delivery in 5 simple steps</p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-5 gap-6 sm:gap-8">
+              <div className="text-center group">
+                <div className="bg-gradient-to-br from-blue-600 to-blue-700 w-16 sm:w-20 h-16 sm:h-20 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <MessageCircle className="w-8 sm:w-10 h-8 sm:h-10 text-white" />
+                </div>
+                <h3 className="text-lg sm:text-xl font-bold mb-2">1. Consultation</h3>
+                <p className="text-gray-300 text-sm sm:text-base">Free design consultation to understand your needs</p>
+              </div>
+              
+              <div className="text-center group">
+                <div className="bg-gradient-to-br from-purple-600 to-purple-700 w-16 sm:w-20 h-16 sm:h-20 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <Palette className="w-8 sm:w-10 h-8 sm:h-10 text-white" />
+                </div>
+                <h3 className="text-lg sm:text-xl font-bold mb-2">2. Design</h3>
+                <p className="text-gray-300 text-sm sm:text-base">Custom design creation with your brand elements</p>
+              </div>
+              
+              <div className="text-center group">
+                <div className="bg-gradient-to-br from-green-600 to-green-700 w-16 sm:w-20 h-16 sm:h-20 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <Check className="w-8 sm:w-10 h-8 sm:h-10 text-white" />
+                </div>
+                <h3 className="text-lg sm:text-xl font-bold mb-2">3. Approval</h3>
+                <p className="text-gray-300 text-sm sm:text-base">Review and approve the final design mockup</p>
+              </div>
+              
+              <div className="text-center group">
+                <div className="bg-gradient-to-br from-red-600 to-red-700 w-16 sm:w-20 h-16 sm:h-20 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <Factory className="w-8 sm:w-10 h-8 sm:h-10 text-white" />
+                </div>
+                <h3 className="text-lg sm:text-xl font-bold mb-2">4. Production</h3>
+                <p className="text-gray-300 text-sm sm:text-base">Expert manufacturing with quality control</p>
+              </div>
+              
+              <div className="text-center group">
+                <div className="bg-gradient-to-br from-yellow-600 to-yellow-700 w-16 sm:w-20 h-16 sm:h-20 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <Truck className="w-8 sm:w-10 h-8 sm:h-10 text-white" />
+                </div>
+                <h3 className="text-lg sm:text-xl font-bold mb-2">5. Delivery</h3>
+                <p className="text-gray-300 text-sm sm:text-base">Fast delivery across UAE with quality guarantee</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 9️⃣ Trusted by Industry Leaders - Infinite Carousel */}
+      <section className="py-16 sm:py-20 bg-gradient-to-br from-gray-50 to-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-12 sm:mb-16">
+              <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6">TRUSTED BY INDUSTRY LEADERS</h2>
+              <p className="text-lg sm:text-xl text-gray-600">Premium brands that trust our quality</p>
+            </div>
+            
+            <div className="relative overflow-hidden">
+              <div className="flex animate-[scroll_30s_linear_infinite] hover:pause">
+                {logoCarousel.concat(logoCarousel, logoCarousel).map((logo, index) => (
+                  <div 
+                    key={index} 
+                    className="flex-shrink-0 w-32 sm:w-48 px-4 sm:px-8 flex items-center justify-center"
+                  >
+                    <img 
+                      src={logo} 
+                      alt={`Client logo ${index}`} 
+                      className="h-8 sm:h-12 w-auto object-contain filter grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-500 hover:scale-110" 
+                    />
+                  </div>
+                ))}
+              </div>
+              <div className="absolute inset-y-0 left-0 w-12 sm:w-20 bg-gradient-to-r from-white to-transparent pointer-events-none"></div>
+              <div className="absolute inset-y-0 right-0 w-12 sm:w-20 bg-gradient-to-l from-white to-transparent pointer-events-none"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 🔟 Why UniformConnect? Summary with Icons */}
+      <section className="py-16 sm:py-20 bg-black text-white relative overflow-hidden">
+        <div className="container mx-auto px-4">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-12 sm:mb-16">
+              <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6">WHY UNIFORMCONNECT?</h2>
+              <p className="text-lg sm:text-xl text-gray-300">Your trusted partner for uniform excellence</p>
+            </div>
+            
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
+              <div className="text-center group">
+                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 sm:p-6 hover:bg-white/20 transition-all duration-300">
+                  <Eye className="w-8 sm:w-12 h-8 sm:h-12 text-blue-400 mx-auto mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-300" />
+                  <h3 className="text-sm sm:text-lg font-bold mb-2">Premium Quality</h3>
+                  <p className="text-gray-400 text-xs sm:text-sm">Superior materials & craftsmanship</p>
+                </div>
+              </div>
+              
+              <div className="text-center group">
+                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 sm:p-6 hover:bg-white/20 transition-all duration-300">
+                  <Clock className="w-8 sm:w-12 h-8 sm:h-12 text-green-400 mx-auto mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-300" />
+                  <h3 className="text-sm sm:text-lg font-bold mb-2">Fast Delivery</h3>
+                  <p className="text-gray-400 text-xs sm:text-sm">Quick turnaround times</p>
+                </div>
+              </div>
+              
+              <div className="text-center group">
+                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 sm:p-6 hover:bg-white/20 transition-all duration-300">
+                  <Globe className="w-8 sm:w-12 h-8 sm:h-12 text-purple-400 mx-auto mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-300" />
+                  <h3 className="text-sm sm:text-lg font-bold mb-2">UAE Based</h3>
+                  <p className="text-gray-400 text-xs sm:text-sm">Local expertise & support</p>
+                </div>
+              </div>
+              
+              <div className="text-center group">
+                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 sm:p-6 hover:bg-white/20 transition-all duration-300">
+                  <HeartHandshake className="w-8 sm:w-12 h-8 sm:h-12 text-red-400 mx-auto mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-300" />
+                  <h3 className="text-sm sm:text-lg font-bold mb-2">Trusted Partner</h3>
+                  <p className="text-gray-400 text-xs sm:text-sm">50+ years of excellence</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 1️⃣1️⃣ Comparison Section - Seamless Black Background */}
+      <section className="py-16 sm:py-20 bg-black text-white relative overflow-hidden">
+        <div className="container mx-auto px-4">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-12 sm:mb-16">
+              <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6">WHY CHOOSE US?</h2>
+              <p className="text-lg sm:text-xl text-gray-300">See the UniformConnect difference</p>
+            </div>
+            
+            <div className="overflow-x-auto">
+              <table className="w-full bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl overflow-hidden">
+                <thead>
+                  <tr className="bg-white/10">
+                    <th className="p-4 sm:p-6 text-left text-sm sm:text-lg font-bold">Feature</th>
+                    <th className="p-4 sm:p-6 text-center text-sm sm:text-lg font-bold text-green-400">UniformConnect</th>
+                    <th className="p-4 sm:p-6 text-center text-sm sm:text-lg font-bold text-gray-400">Other Companies</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="border-t border-white/10">
+                    <td className="p-4 sm:p-6 text-sm sm:text-base font-medium">Free Design Consultation</td>
+                    <td className="p-4 sm:p-6 text-center">
+                      <Check className="w-5 sm:w-6 h-5 sm:h-6 text-green-400 mx-auto" />
+                    </td>
+                    <td className="p-4 sm:p-6 text-center">
+                      <span className="text-gray-400 text-sm sm:text-base">Extra Cost</span>
+                    </td>
+                  </tr>
+                  <tr className="border-t border-white/10">
+                    <td className="p-4 sm:p-6 text-sm sm:text-base font-medium">50+ Years Experience</td>
+                    <td className="p-4 sm:p-6 text-center">
+                      <Check className="w-5 sm:w-6 h-5 sm:h-6 text-green-400 mx-auto" />
+                    </td>
+                    <td className="p-4 sm:p-6 text-center">
+                      <span className="text-gray-400 text-sm sm:text-base">Limited</span>
+                    </td>
+                  </tr>
+                  <tr className="border-t border-white/10">
+                    <td className="p-4 sm:p-6 text-sm sm:text-base font-medium">24H Response Time</td>
+                    <td className="p-4 sm:p-6 text-center">
+                      <Check className="w-5 sm:w-6 h-5 sm:h-6 text-green-400 mx-auto" />
+                    </td>
+                    <td className="p-4 sm:p-6 text-center">
+                      <span className="text-gray-400 text-sm sm:text-base">3-5 Days</span>
+                    </td>
+                  </tr>
+                  <tr className="border-t border-white/10">
+                    <td className="p-4 sm:p-6 text-sm sm:text-base font-medium">Premium Quality Guarantee</td>
+                    <td className="p-4 sm:p-6 text-center">
+                      <Check className="w-5 sm:w-6 h-5 sm:h-6 text-green-400 mx-auto" />
+                    </td>
+                    <td className="p-4 sm:p-6 text-center">
+                      <span className="text-gray-400 text-sm sm:text-base">Basic</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 1️⃣2️⃣ Guarantee Section - Seamless Black Background */}
+      <section className="py-16 sm:py-20 bg-black text-white relative overflow-hidden">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="bg-gradient-to-br from-green-600/20 to-blue-600/20 backdrop-blur-sm border border-white/10 rounded-3xl p-8 sm:p-12">
+              <Shield className="w-16 sm:w-20 h-16 sm:h-20 text-green-400 mx-auto mb-6 sm:mb-8" />
+              <h2 className="text-3xl sm:text-5xl font-bold mb-4 sm:mb-6">OUR GUARANTEE</h2>
+              <p className="text-lg sm:text-xl text-gray-300 mb-6 sm:mb-8">
+                We stand behind every uniform we create with our 100% satisfaction guarantee
+              </p>
+              
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mb-8">
+                <div className="text-center">
+                  <Award className="w-8 sm:w-12 h-8 sm:h-12 text-yellow-400 mx-auto mb-3 sm:mb-4" />
+                  <h3 className="text-lg sm:text-xl font-bold mb-2">Quality Promise</h3>
+                  <p className="text-gray-300 text-sm sm:text-base">Premium materials guaranteed</p>
+                </div>
+                
+                <div className="text-center">
+                  <Clock className="w-8 sm:w-12 h-8 sm:h-12 text-blue-400 mx-auto mb-3 sm:mb-4" />
+                  <h3 className="text-lg sm:text-xl font-bold mb-2">On-Time Delivery</h3>
+                  <p className="text-gray-300 text-sm sm:text-base">Or your money back</p>
+                </div>
+                
+                <div className="text-center">
+                  <Heart className="w-8 sm:w-12 h-8 sm:h-12 text-red-400 mx-auto mb-3 sm:mb-4" />
+                  <h3 className="text-lg sm:text-xl font-bold mb-2">100% Satisfaction</h3>
+                  <p className="text-gray-300 text-sm sm:text-base">Love it or we'll make it right</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 1️⃣3️⃣ Reviews Section - Light Background */}
+      <section className="py-16 sm:py-20 bg-gradient-to-br from-gray-50 to-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-12 sm:mb-16">
+              <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6">CLIENT TESTIMONIALS</h2>
+              <p className="text-lg sm:text-xl text-gray-600">What our clients say about us</p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+              <div className="bg-white rounded-3xl shadow-xl p-6 sm:p-8 hover:shadow-2xl hover:scale-105 transition-all duration-300">
+                <div className="flex space-x-1 mb-4 sm:mb-6">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-4 sm:w-5 h-4 sm:h-5 text-yellow-400 fill-yellow-400" />
+                  ))}
+                </div>
+                <p className="text-gray-700 mb-4 sm:mb-6 text-sm sm:text-base italic">
+                  "Exceptional quality and service. Our hotel staff uniforms look professional and feel comfortable. Highly recommended!"
+                </p>
+                <div className="text-sm">
+                  <div className="font-bold text-gray-900">Sarah Al-Mansouri</div>
+                  <div className="text-gray-500">Hotel Manager, Luxury Resort Dubai</div>
+                </div>
+              </div>
+              
+              <div className="bg-white rounded-3xl shadow-xl p-6 sm:p-8 hover:shadow-2xl hover:scale-105 transition-all duration-300">
+                <div className="flex space-x-1 mb-4 sm:mb-6">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-4 sm:w-5 h-4 sm:h-5 text-yellow-400 fill-yellow-400" />
+                  ))}
+                </div>
+                <p className="text-gray-700 mb-4 sm:mb-6 text-sm sm:text-base italic">
+                  "Fast delivery and premium quality. Our team loves the new uniforms and they really enhance our brand image."
+                </p>
+                <div className="text-sm">
+                  <div className="font-bold text-gray-900">Ahmed Hassan</div>
+                  <div className="text-gray-500">Operations Director, Restaurant Chain</div>
+                </div>
+              </div>
+              
+              <div className="bg-white rounded-3xl shadow-xl p-6 sm:p-8 hover:shadow-2xl hover:scale-105 transition-all duration-300">
+                <div className="flex space-x-1 mb-4 sm:mb-6">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-4 sm:w-5 h-4 sm:h-5 text-yellow-400 fill-yellow-400" />
+                  ))}
+                </div>
+                <p className="text-gray-700 mb-4 sm:mb-6 text-sm sm:text-base italic">
+                  "Outstanding customer service and attention to detail. They understood our requirements perfectly and delivered beyond expectations."
+                </p>
+                <div className="text-sm">
+                  <div className="font-bold text-gray-900">Maria Rodriguez</div>
+                  <div className="text-gray-500">HR Manager, Corporate Office</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* 9️⃣ Trusted by Industry Leaders - Infinite Carousel */}
       <section className="py-16 sm:py-20 bg-gradient-to-br from-gray-50 to-white">
         <div className="container mx-auto px-4">
