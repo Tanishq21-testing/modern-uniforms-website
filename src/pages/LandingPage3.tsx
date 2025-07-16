@@ -14,6 +14,15 @@ const LandingPage3 = () => {
     });
   };
 
+  // Auto-advance carousel for infinite loop
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentShowcaseIndex((prev) => (prev + 1) % showcaseImages.length);
+    }, 4000); // Change image every 4 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
   // Showcase images for 3D carousel
   const showcaseImages = [
     { src: images.uniformServices, alt: "Chef uniforms" },
@@ -408,21 +417,21 @@ const LandingPage3 = () => {
               </div>
             </div>
             
-            {/* 3D Layered Carousel */}
-            <div className="relative flex items-center justify-center h-[600px] mb-8 perspective-1000">
+            {/* 3D Layered Carousel - Compact Phone-Screen Proportions */}
+            <div className="relative flex items-center justify-center h-[500px] mb-8 perspective-1000">
               {/* Navigation Arrows */}
               <button 
                 onClick={prevShowcase}
-                className="absolute left-8 z-50 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-4 transition-all duration-300 hover:scale-110 group"
+                className="absolute left-4 z-50 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-3 transition-all duration-300 hover:scale-110 group"
               >
-                <ChevronLeft className="w-8 h-8 text-white group-hover:text-blue-400 transition-colors duration-300" />
+                <ChevronLeft className="w-6 h-6 text-white group-hover:text-blue-400 transition-colors duration-300" />
               </button>
               
               <button 
                 onClick={nextShowcase}
-                className="absolute right-8 z-50 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-4 transition-all duration-300 hover:scale-110 group"
+                className="absolute right-4 z-50 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-3 transition-all duration-300 hover:scale-110 group"
               >
-                <ChevronRight className="w-8 h-8 text-white group-hover:text-blue-400 transition-colors duration-300" />
+                <ChevronRight className="w-6 h-6 text-white group-hover:text-blue-400 transition-colors duration-300" />
               </button>
               
               {/* Layered Carousel Images */}
@@ -431,51 +440,66 @@ const LandingPage3 = () => {
                   const offset = index - currentShowcaseIndex;
                   const absOffset = Math.abs(offset);
                   
-                  // Only show center image + 3-4 background layers on each side
-                  if (absOffset > 3) return null;
+                  // Only show center image + 2-3 background layers on each side for more compact view
+                  if (absOffset > 2) return null;
                   
-                  // Center image (main focus)
+                  // Center image (main focus) - Premium frame design
                   if (offset === 0) {
                     return (
                       <div
                         key={index}
                         className="absolute transition-all duration-700 ease-in-out cursor-pointer z-40"
                         style={{
-                          transform: 'translateX(0px) translateY(0px) scale(1.1)',
+                          transform: 'translateX(0px) translateY(0px) scale(1)',
                           opacity: 1
                         }}
                         onClick={() => setCurrentShowcaseIndex(index)}
                       >
-                        <div className="relative">
-                          <img 
-                            src={image.src}
-                            alt={image.alt}
-                            className="w-96 h-96 object-cover rounded-3xl shadow-2xl border-4 border-white/30"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent rounded-3xl flex items-end">
-                            <div className="p-6 text-center w-full">
-                              <h3 className="text-2xl font-bold text-white drop-shadow-lg">{image.alt}</h3>
+                        <div className="relative group">
+                          {/* Premium frame with multiple shadow layers */}
+                          <div className="absolute -inset-4 bg-gradient-to-br from-blue-500/20 via-purple-500/20 to-red-500/20 rounded-3xl blur-xl opacity-60 group-hover:opacity-80 transition-all duration-500"></div>
+                          <div className="absolute -inset-2 bg-gradient-to-br from-white/10 to-white/5 rounded-2xl backdrop-blur-sm"></div>
+                          
+                          {/* Main image with premium styling */}
+                          <div className="relative">
+                            <img 
+                              src={image.src}
+                              alt={image.alt}
+                              className="w-64 h-80 object-cover rounded-2xl shadow-2xl border border-white/20 group-hover:shadow-[0_0_40px_rgba(255,255,255,0.3)] transition-all duration-500"
+                              style={{
+                                aspectRatio: '3/4', // Phone screen proportions
+                                boxShadow: '0 25px 50px -12px rgba(0,0,0,0.5), 0 0 30px rgba(255,255,255,0.1)'
+                              }}
+                            />
+                            
+                            {/* Elegant overlay with title */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent rounded-2xl flex items-end">
+                              <div className="p-4 text-center w-full">
+                                <h3 className="text-lg font-bold text-white drop-shadow-lg">{image.alt}</h3>
+                              </div>
                             </div>
+                            
+                            {/* Premium glow effect */}
+                            <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/5 via-transparent to-transparent group-hover:from-white/10 transition-all duration-500"></div>
                           </div>
-                          <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-red-500/10"></div>
                         </div>
                       </div>
                     );
                   }
                   
-                  // Background layers
+                  // Background layers - more compact spacing
                   const isLeft = offset < 0;
                   const zIndex = 30 - absOffset;
-                  const scale = Math.max(0.5, 1 - (absOffset * 0.2));
-                  const opacity = Math.max(0.2, 1 - (absOffset * 0.3));
-                  const translateX = isLeft ? -80 - (absOffset * 60) : 80 + (absOffset * 60);
-                  const translateY = absOffset * 30;
-                  const rotateY = isLeft ? -15 - (absOffset * 5) : 15 + (absOffset * 5);
+                  const scale = Math.max(0.6, 1 - (absOffset * 0.25));
+                  const opacity = Math.max(0.3, 1 - (absOffset * 0.4));
+                  const translateX = isLeft ? -50 - (absOffset * 40) : 50 + (absOffset * 40);
+                  const translateY = absOffset * 20;
+                  const rotateY = isLeft ? -12 - (absOffset * 8) : 12 + (absOffset * 8);
                   
                   return (
                     <div
                       key={index}
-                      className="absolute transition-all duration-700 ease-in-out cursor-pointer hover:scale-105 hover:opacity-80"
+                      className="absolute transition-all duration-700 ease-in-out cursor-pointer hover:scale-105 hover:opacity-70"
                       style={{
                         transform: `translateX(${translateX}px) translateY(${translateY}px) scale(${scale}) perspective(1000px) rotateY(${rotateY}deg)`,
                         opacity,
@@ -488,9 +512,12 @@ const LandingPage3 = () => {
                         <img 
                           src={image.src}
                           alt={image.alt}
-                          className="w-80 h-80 object-cover rounded-2xl shadow-xl border-2 border-white/20"
+                          className="w-56 h-72 object-cover rounded-xl shadow-xl border border-white/10"
+                          style={{
+                            aspectRatio: '3/4', // Phone screen proportions
+                          }}
                         />
-                        <div className="absolute inset-0 bg-black/20 rounded-2xl"></div>
+                        <div className="absolute inset-0 bg-black/30 rounded-xl"></div>
                       </div>
                     </div>
                   );
