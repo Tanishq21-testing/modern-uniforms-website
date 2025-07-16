@@ -408,58 +408,78 @@ const LandingPage3 = () => {
               </div>
             </div>
             
-            {/* 3D Carousel */}
-            <div className="relative flex items-center justify-center h-96 mb-8">
+            {/* 3D Layered Carousel */}
+            <div className="relative flex items-center justify-center h-[600px] mb-8 perspective-1000">
               {/* Navigation Arrows */}
               <button 
                 onClick={prevShowcase}
-                className="absolute left-4 z-20 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-4 transition-all duration-300 hover:scale-110 group"
+                className="absolute left-8 z-50 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-4 transition-all duration-300 hover:scale-110 group"
               >
                 <ChevronLeft className="w-8 h-8 text-white group-hover:text-blue-400 transition-colors duration-300" />
               </button>
               
               <button 
                 onClick={nextShowcase}
-                className="absolute right-4 z-20 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-4 transition-all duration-300 hover:scale-110 group"
+                className="absolute right-8 z-50 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-4 transition-all duration-300 hover:scale-110 group"
               >
                 <ChevronRight className="w-8 h-8 text-white group-hover:text-blue-400 transition-colors duration-300" />
               </button>
               
-              {/* Carousel Images */}
+              {/* Layered Carousel Images */}
               <div className="relative w-full h-full flex items-center justify-center">
                 {showcaseImages.map((image, index) => {
-                  const isCenter = index === currentShowcaseIndex;
-                  const isLeft = index === (currentShowcaseIndex - 1 + showcaseImages.length) % showcaseImages.length;
-                  const isRight = index === (currentShowcaseIndex + 1) % showcaseImages.length;
-                  const isVisible = isCenter || isLeft || isRight;
+                  const offset = index - currentShowcaseIndex;
+                  const absOffset = Math.abs(offset);
                   
-                  if (!isVisible) return null;
+                  // Only show center image + 3-4 background layers on each side
+                  if (absOffset > 3) return null;
                   
-                  let transformClass = '';
-                  let zIndex = 0;
-                  let scale = 'scale-75';
-                  let opacity = 'opacity-50';
-                  
-                  if (isCenter) {
-                    transformClass = 'translate-x-0';
-                    zIndex = 30;
-                    scale = 'scale-100';
-                    opacity = 'opacity-100';
-                  } else if (isLeft) {
-                    transformClass = '-translate-x-32 -rotate-y-12';
-                    zIndex = 20;
-                  } else if (isRight) {
-                    transformClass = 'translate-x-32 rotate-y-12';
-                    zIndex = 20;
+                  // Center image (main focus)
+                  if (offset === 0) {
+                    return (
+                      <div
+                        key={index}
+                        className="absolute transition-all duration-700 ease-in-out cursor-pointer z-40"
+                        style={{
+                          transform: 'translateX(0px) translateY(0px) scale(1.1)',
+                          opacity: 1
+                        }}
+                        onClick={() => setCurrentShowcaseIndex(index)}
+                      >
+                        <div className="relative">
+                          <img 
+                            src={image.src}
+                            alt={image.alt}
+                            className="w-96 h-96 object-cover rounded-3xl shadow-2xl border-4 border-white/30"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent rounded-3xl flex items-end">
+                            <div className="p-6 text-center w-full">
+                              <h3 className="text-2xl font-bold text-white drop-shadow-lg">{image.alt}</h3>
+                            </div>
+                          </div>
+                          <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-red-500/10"></div>
+                        </div>
+                      </div>
+                    );
                   }
+                  
+                  // Background layers
+                  const isLeft = offset < 0;
+                  const zIndex = 30 - absOffset;
+                  const scale = Math.max(0.5, 1 - (absOffset * 0.2));
+                  const opacity = Math.max(0.2, 1 - (absOffset * 0.3));
+                  const translateX = isLeft ? -80 - (absOffset * 60) : 80 + (absOffset * 60);
+                  const translateY = absOffset * 30;
+                  const rotateY = isLeft ? -15 - (absOffset * 5) : 15 + (absOffset * 5);
                   
                   return (
                     <div
                       key={index}
-                      className={`absolute transition-all duration-700 ease-in-out ${transformClass} ${scale} ${opacity} hover:scale-105 hover:opacity-100 cursor-pointer`}
-                      style={{ 
+                      className="absolute transition-all duration-700 ease-in-out cursor-pointer hover:scale-105 hover:opacity-80"
+                      style={{
+                        transform: `translateX(${translateX}px) translateY(${translateY}px) scale(${scale}) perspective(1000px) rotateY(${rotateY}deg)`,
+                        opacity,
                         zIndex,
-                        transform: `${transformClass} perspective(1000px)`,
                         transformStyle: 'preserve-3d'
                       }}
                       onClick={() => setCurrentShowcaseIndex(index)}
@@ -468,17 +488,9 @@ const LandingPage3 = () => {
                         <img 
                           src={image.src}
                           alt={image.alt}
-                          className="w-80 h-80 object-cover rounded-2xl shadow-2xl border-4 border-white/20"
+                          className="w-80 h-80 object-cover rounded-2xl shadow-xl border-2 border-white/20"
                         />
-                        {isCenter && (
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent rounded-2xl flex items-end">
-                            <div className="p-6 text-center w-full">
-                              <h3 className="text-xl font-bold text-white drop-shadow-lg">{image.alt}</h3>
-                            </div>
-                          </div>
-                        )}
-                        {/* Hover glow effect */}
-                        <div className="absolute inset-0 rounded-2xl opacity-0 hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-red-500/20 blur-xl"></div>
+                        <div className="absolute inset-0 bg-black/20 rounded-2xl"></div>
                       </div>
                     </div>
                   );
