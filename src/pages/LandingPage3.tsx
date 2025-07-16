@@ -487,12 +487,12 @@ const LandingPage3 = () => {
                     );
                   }
                   
-                  // Background layers - more compact spacing
+                  // Background layers - more spread out spacing
                   const isLeft = offset < 0;
                   const zIndex = 30 - absOffset;
                   const scale = Math.max(0.6, 1 - (absOffset * 0.25));
                   const opacity = Math.max(0.3, 1 - (absOffset * 0.4));
-                  const translateX = isLeft ? -50 - (absOffset * 40) : 50 + (absOffset * 40);
+                  const translateX = isLeft ? -80 - (absOffset * 60) : 80 + (absOffset * 60);
                   const translateY = absOffset * 20;
                   const rotateY = isLeft ? -12 - (absOffset * 8) : 12 + (absOffset * 8);
                   
