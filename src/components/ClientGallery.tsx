@@ -79,43 +79,56 @@ const ClientGallery = () => {
           </p>
         </div>
 
-        <div className={`max-w-5xl mx-auto ${isVisible ? 'animate-fade-in' : 'opacity-0'}`} style={{ animationDelay: '0.3s' }}>
-          <Carousel
-            opts={{
-              align: "start",
-              loop: true,
-            }}
-            className="w-full"
-          >
-            <CarouselContent>
-              {galleryItems.map((item, index) => (
-                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                  <div className="p-2">
-                    <div className="rounded-xl overflow-hidden bg-white shadow-lg h-full">
-                      <div className="h-64 relative">
-                        <img
-                          src={item.image}
-                          alt={item.title}
-                          className="w-full h-full object-cover"
-                        />
-                        <div className="absolute inset-0 bg-black/50 opacity-0 hover:opacity-100 transition-opacity flex items-center justify-center">
-                          <div className="text-white px-4 py-2 rounded-lg bg-brand-blue/90">View Details</div>
+        <div className={`max-w-6xl mx-auto ${isVisible ? 'animate-fade-in' : 'opacity-0'}`} style={{ animationDelay: '0.3s' }}>
+          <div className="relative h-[500px] overflow-hidden">
+            <Carousel
+              opts={{
+                align: "center",
+                loop: true,
+              }}
+              className="w-full h-full"
+            >
+              <CarouselContent className="h-full items-center">
+                {galleryItems.map((item, index) => (
+                  <CarouselItem key={index} className="basis-full md:basis-1/3 lg:basis-1/5">
+                    <div className="flex justify-center items-center h-full px-2">
+                      <div className="carousel-item group cursor-pointer transform transition-all duration-500 ease-out hover:scale-105">
+                        <div className="rounded-2xl overflow-hidden bg-white shadow-2xl relative">
+                          <div className="h-80 relative overflow-hidden">
+                            <img
+                              src={item.image}
+                              alt={item.title}
+                              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                              <div className="absolute bottom-4 left-4 right-4 text-white">
+                                <div className="bg-white/20 backdrop-blur-sm px-3 py-2 rounded-lg border border-white/30">
+                                  <span className="text-sm font-medium">View Details</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="p-6">
+                            <h3 className="font-bold text-xl mb-2 text-gray-900">{item.title}</h3>
+                            <p className="text-gray-600 text-sm leading-relaxed">{item.description}</p>
+                          </div>
                         </div>
                       </div>
-                      <div className="p-4">
-                        <h3 className="font-bold text-lg mb-1">{item.title}</h3>
-                        <p className="text-gray-600 text-sm">{item.description}</p>
-                      </div>
                     </div>
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <div className="mt-4 flex justify-center gap-2">
-              <CarouselPrevious className="relative static" />
-              <CarouselNext className="relative static" />
-            </div>
-          </Carousel>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              
+              {/* Custom positioned navigation */}
+              <div className="absolute left-4 top-1/2 -translate-y-1/2 z-10">
+                <CarouselPrevious className="bg-white/90 backdrop-blur-sm border-white/20 shadow-xl hover:bg-white hover:scale-110 transition-all duration-300" />
+              </div>
+              <div className="absolute right-4 top-1/2 -translate-y-1/2 z-10">
+                <CarouselNext className="bg-white/90 backdrop-blur-sm border-white/20 shadow-xl hover:bg-white hover:scale-110 transition-all duration-300" />
+              </div>
+            </Carousel>
+            
+          </div>
         </div>
 
         <div className={`text-center mt-8 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`} style={{ animationDelay: '0.5s' }}>
