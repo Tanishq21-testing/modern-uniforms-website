@@ -71,12 +71,12 @@ const LandingPage3 = () => {
                 <div className="space-y-6">
                   <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
                     Not Covering Your Team<br />
-                    But <span className="bg-gradient-to-r from-red-600 via-blue-600 to-green-600 bg-clip-text text-transparent">Reflecting Your Brand</span>
+                    But <span className="bg-gradient-to-r from-red-600 via-blue-600 to-green-600 bg-clip-text text-transparent shine-effect">Reflecting Your Brand</span>
                   </h1>
                   <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-4 text-lg font-medium text-gray-700">
                     <div className="flex space-x-1">
                       {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="w-5 h-5 text-yellow-400 fill-yellow-400" />
+                        <Star key={i} className="w-5 h-5 text-yellow-400 fill-yellow-400 sparkle-effect" />
                       ))}
                     </div>
                     <span className="text-sm sm:text-lg">50+ Years Experience • GCC READY - Dubai Based</span>
@@ -140,37 +140,24 @@ const LandingPage3 = () => {
         </div>
       </section>
 
-      {/* 2️⃣ 3D Carousel Section */}
-      <section className="py-16 sm:py-20 bg-black text-white relative overflow-hidden">
+      {/* 2️⃣ 3D Carousel Section - Enhanced with larger carousel */}
+      <section className="py-16 sm:py-24 black-branded-bg text-white relative overflow-hidden black-bg-hover">
         <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto text-center">
-            <div className="mb-12 sm:mb-16">
-              <div className="flex items-center justify-center mb-6">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-6 sm:w-8 h-6 sm:h-8 text-yellow-400 fill-yellow-400 mr-2 sm:mr-3 last:mr-0" />
-                ))}
-              </div>
-              <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6">
-                HIGH PERSONALISATION
-              </h2>
-              <div className="text-lg sm:text-2xl font-bold mb-4 sm:mb-6">
-                <span className="text-blue-400">COLOR</span> & <span className="text-red-500">CUT</span> & <span className="text-green-400">DESIGN</span>
-              </div>
-            </div>
-            
-            <div className="relative flex items-center justify-center h-[400px] sm:h-[500px] mb-6 sm:mb-8 perspective-1000">
+          <div className="max-w-7xl mx-auto text-center">
+            {/* Make carousel the primary focus with larger size */}
+            <div className="relative flex items-center justify-center h-[500px] sm:h-[600px] lg:h-[700px] mb-8 sm:mb-12 perspective-1000">
               <button 
                 onClick={prevShowcase}
-                className="absolute left-2 sm:left-4 z-50 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-2 sm:p-3 transition-all duration-300 hover:scale-110 group"
+                className="absolute left-2 sm:left-4 z-50 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-3 sm:p-4 transition-all duration-300 hover:scale-110 group"
               >
-                <ChevronLeft className="w-5 sm:w-6 h-5 sm:h-6 text-white group-hover:text-blue-400 transition-colors duration-300" />
+                <ChevronLeft className="w-6 sm:w-7 h-6 sm:h-7 text-white group-hover:text-blue-400 transition-colors duration-300" />
               </button>
               
               <button 
                 onClick={nextShowcase}
-                className="absolute right-2 sm:right-4 z-50 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-2 sm:p-3 transition-all duration-300 hover:scale-110 group"
+                className="absolute right-2 sm:right-4 z-50 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-3 sm:p-4 transition-all duration-300 hover:scale-110 group"
               >
-                <ChevronRight className="w-5 sm:w-6 h-5 sm:h-6 text-white group-hover:text-blue-400 transition-colors duration-300" />
+                <ChevronRight className="w-6 sm:w-7 h-6 sm:h-7 text-white group-hover:text-blue-400 transition-colors duration-300" />
               </button>
               
               <div className="relative w-full h-full flex items-center justify-center">
@@ -188,22 +175,22 @@ const LandingPage3 = () => {
                         onClick={() => setCurrentShowcaseIndex(index)}
                       >
                         <div className="relative group">
-                          <div className="absolute -inset-4 bg-gradient-to-br from-blue-500/20 via-purple-500/20 to-red-500/20 rounded-3xl blur-xl opacity-60 group-hover:opacity-80 transition-all duration-500"></div>
-                          <div className="absolute -inset-2 bg-gradient-to-br from-white/10 to-white/5 rounded-2xl backdrop-blur-sm"></div>
+                          <div className="absolute -inset-6 bg-gradient-to-br from-blue-500/30 via-purple-500/25 to-red-500/30 rounded-3xl blur-2xl opacity-70 group-hover:opacity-90 transition-all duration-500"></div>
+                          <div className="absolute -inset-3 bg-gradient-to-br from-white/15 to-white/5 rounded-2xl backdrop-blur-sm"></div>
                           
                           <div className="relative">
                             <img 
                               src={image.src}
                               alt={image.alt}
-                              className="w-48 sm:w-64 h-60 sm:h-80 object-cover rounded-2xl shadow-2xl border border-white/20 group-hover:shadow-[0_0_40px_rgba(255,255,255,0.3)] transition-all duration-500"
+                              className="w-64 sm:w-80 lg:w-96 h-80 sm:h-96 lg:h-[480px] object-cover rounded-2xl shadow-2xl border border-white/20 group-hover:shadow-[0_0_60px_rgba(255,255,255,0.4)] transition-all duration-500"
                               style={{
                                 aspectRatio: '3/4'
                               }}
                             />
                             
                             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent rounded-2xl flex items-end">
-                              <div className="p-3 sm:p-4 text-center w-full">
-                                <h3 className="text-sm sm:text-lg font-bold text-white drop-shadow-lg">{image.alt}</h3>
+                              <div className="p-4 sm:p-6 text-center w-full">
+                                <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-white drop-shadow-lg">{image.alt}</h3>
                               </div>
                             </div>
                           </div>
@@ -214,16 +201,16 @@ const LandingPage3 = () => {
                   
                   const isLeft = offset < 0;
                   const zIndex = 30 - absOffset;
-                  const scale = Math.max(0.6, 1 - (absOffset * 0.25));
-                  const opacity = Math.max(0.3, 1 - (absOffset * 0.4));
-                  const translateX = isLeft ? -80 - (absOffset * 60) : 80 + (absOffset * 60);
-                  const translateY = absOffset * 20;
-                  const rotateY = isLeft ? -12 - (absOffset * 8) : 12 + (absOffset * 8);
+                  const scale = Math.max(0.65, 1 - (absOffset * 0.25));
+                  const opacity = Math.max(0.4, 1 - (absOffset * 0.35));
+                  const translateX = isLeft ? -100 - (absOffset * 70) : 100 + (absOffset * 70);
+                  const translateY = absOffset * 25;
+                  const rotateY = isLeft ? -15 - (absOffset * 10) : 15 + (absOffset * 10);
                   
                   return (
                     <div
                       key={index}
-                      className="absolute transition-all duration-700 ease-in-out cursor-pointer hover:scale-105 hover:opacity-70"
+                      className="absolute transition-all duration-700 ease-in-out cursor-pointer hover:scale-105 hover:opacity-80"
                       style={{
                         transform: `translateX(${translateX}px) translateY(${translateY}px) scale(${scale}) perspective(1000px) rotateY(${rotateY}deg)`,
                         opacity,
@@ -236,7 +223,7 @@ const LandingPage3 = () => {
                         <img 
                           src={image.src}
                           alt={image.alt}
-                          className="w-40 sm:w-56 h-52 sm:h-72 object-cover rounded-xl shadow-xl border border-white/10"
+                          className="w-48 sm:w-64 lg:w-72 h-64 sm:h-80 lg:h-96 object-cover rounded-xl shadow-xl border border-white/10"
                           style={{
                             aspectRatio: '3/4',
                           }}
@@ -249,12 +236,12 @@ const LandingPage3 = () => {
               </div>
             </div>
             
-            <div className="flex justify-center space-x-2 sm:space-x-3 mb-6 sm:mb-8">
+            <div className="flex justify-center space-x-3 sm:space-x-4 mb-8 sm:mb-10">
               {showcaseImages.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentShowcaseIndex(index)}
-                  className={`w-2 sm:w-3 h-2 sm:h-3 rounded-full transition-all duration-300 ${
+                  className={`w-3 sm:w-4 h-3 sm:h-4 rounded-full transition-all duration-300 ${
                     index === currentShowcaseIndex
                       ? 'bg-white shadow-lg scale-125'
                       : 'bg-white/40 hover:bg-white/70'
@@ -262,16 +249,31 @@ const LandingPage3 = () => {
                 />
               ))}
             </div>
+            
+            {/* Secondary branding elements with shine effect */}
+            <div className="space-y-6">
+              <div className="flex items-center justify-center mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-5 sm:w-6 h-5 sm:h-6 text-yellow-400 fill-yellow-400 mr-2 sm:mr-3 last:mr-0 sparkle-effect" />
+                ))}
+              </div>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 shine-effect">
+                HIGH PERSONALISATION
+              </h2>
+              <div className="text-base sm:text-lg font-bold">
+                <span className="text-blue-400 shine-effect">COLOR</span> & <span className="text-red-500 shine-effect">CUT</span> & <span className="text-green-400 shine-effect">DESIGN</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
-
-      {/* 3️⃣ Customization Table Section - Seamless Black Background */}
-      <section className="py-16 sm:py-20 bg-black text-white relative overflow-hidden">
+            
+      {/* 3️⃣ Customization Table Section - Enhanced black background */}
+      <section className="py-16 sm:py-20 black-branded-bg text-white relative overflow-hidden black-bg-hover">
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12 sm:mb-16">
-              <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6">CUSTOMIZATION</h2>
+              <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6 shine-effect">CUSTOMIZATION</h2>
               <p className="text-lg sm:text-xl text-gray-300">Make it uniquely yours</p>
             </div>
             
@@ -332,12 +334,12 @@ const LandingPage3 = () => {
         </div>
       </section>
 
-      {/* 4️⃣ Brand Identity Blocks Section - Seamless Black Background */}
-      <section className="py-16 sm:py-20 bg-black text-white relative overflow-hidden">
+      {/* 4️⃣ Brand Identity Blocks Section - Enhanced black background */}
+      <section className="py-16 sm:py-20 black-branded-bg text-white relative overflow-hidden black-bg-hover">
         <div className="container mx-auto px-4">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12 sm:mb-16">
-              <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6">BUILD YOUR BRAND</h2>
+              <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6 shine-effect">BUILD YOUR BRAND</h2>
               <p className="text-lg sm:text-xl text-gray-300">Three pillars of uniform excellence</p>
             </div>
             
@@ -455,12 +457,12 @@ const LandingPage3 = () => {
         </div>
       </section>
 
-      {/* 6️⃣ Product Quality Section - Seamless Black Background */}
-      <section className="py-16 sm:py-20 bg-black text-white relative overflow-hidden">
+      {/* 6️⃣ Product Quality Section - Enhanced black background */}
+      <section className="py-16 sm:py-20 black-branded-bg text-white relative overflow-hidden black-bg-hover">
         <div className="container mx-auto px-4">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12 sm:mb-16">
-              <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6">PREMIUM QUALITY</h2>
+              <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6 shine-effect">PREMIUM QUALITY</h2>
               <p className="text-lg sm:text-xl text-gray-300">Craftsmanship that speaks for your brand</p>
             </div>
             
@@ -537,12 +539,12 @@ const LandingPage3 = () => {
         </div>
       </section>
 
-      {/* 7️⃣ Trust Our Expertise Section - Seamless Black Background */}
-      <section className="py-16 sm:py-20 bg-black text-white relative overflow-hidden">
+      {/* 7️⃣ Trust Our Expertise Section - Enhanced black background */}
+      <section className="py-16 sm:py-20 black-branded-bg text-white relative overflow-hidden black-bg-hover">
         <div className="container mx-auto px-4">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12 sm:mb-16">
-              <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6">TRUST OUR EXPERTISE</h2>
+              <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6 shine-effect">TRUST OUR EXPERTISE</h2>
               <p className="text-lg sm:text-xl text-gray-300">50+ years of uniform excellence in the UAE</p>
             </div>
             
@@ -575,12 +577,12 @@ const LandingPage3 = () => {
         </div>
       </section>
 
-      {/* 8️⃣ Our Expert Process Section - Seamless Black Background */}
-      <section className="py-16 sm:py-20 bg-black text-white relative overflow-hidden">
+      {/* 8️⃣ Our Expert Process Section - Enhanced black background */}
+      <section className="py-16 sm:py-20 black-branded-bg text-white relative overflow-hidden black-bg-hover">
         <div className="container mx-auto px-4">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12 sm:mb-16">
-              <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6">OUR EXPERT PROCESS</h2>
+              <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6 shine-effect">OUR EXPERT PROCESS</h2>
               <p className="text-lg sm:text-xl text-gray-300">From concept to delivery in 5 simple steps</p>
             </div>
             
@@ -661,11 +663,11 @@ const LandingPage3 = () => {
       </section>
 
       {/* 🔟 Why UniformConnect? Summary with Icons */}
-      <section className="py-16 sm:py-20 bg-black text-white relative overflow-hidden">
+      <section className="py-16 sm:py-20 black-branded-bg text-white relative overflow-hidden black-bg-hover">
         <div className="container mx-auto px-4">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12 sm:mb-16">
-              <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6">WHY UNIFORMCONNECT?</h2>
+              <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6 shine-effect">WHY UNIFORMCONNECT?</h2>
               <p className="text-lg sm:text-xl text-gray-300">Your trusted partner for uniform excellence</p>
             </div>
             
@@ -706,12 +708,12 @@ const LandingPage3 = () => {
         </div>
       </section>
 
-      {/* 1️⃣1️⃣ Comparison Section - Seamless Black Background */}
-      <section className="py-16 sm:py-20 bg-black text-white relative overflow-hidden">
+      {/* 1️⃣1️⃣ Comparison Section - Enhanced black background */}
+      <section className="py-16 sm:py-20 black-branded-bg text-white relative overflow-hidden black-bg-hover">
         <div className="container mx-auto px-4">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12 sm:mb-16">
-              <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6">WHY CHOOSE US?</h2>
+              <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6 shine-effect">WHY CHOOSE US?</h2>
               <p className="text-lg sm:text-xl text-gray-300">See the UniformConnect difference</p>
             </div>
             
@@ -768,13 +770,13 @@ const LandingPage3 = () => {
         </div>
       </section>
 
-      {/* 1️⃣2️⃣ Guarantee Section - Seamless Black Background */}
-      <section className="py-16 sm:py-20 bg-black text-white relative overflow-hidden">
+      {/* 1️⃣2️⃣ Guarantee Section - Enhanced black background */}
+      <section className="py-16 sm:py-20 black-branded-bg text-white relative overflow-hidden black-bg-hover">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <div className="bg-gradient-to-br from-green-600/20 to-blue-600/20 backdrop-blur-sm border border-white/10 rounded-3xl p-8 sm:p-12">
               <Shield className="w-16 sm:w-20 h-16 sm:h-20 text-green-400 mx-auto mb-6 sm:mb-8" />
-              <h2 className="text-3xl sm:text-5xl font-bold mb-4 sm:mb-6">OUR GUARANTEE</h2>
+              <h2 className="text-3xl sm:text-5xl font-bold mb-4 sm:mb-6 shine-effect">OUR GUARANTEE</h2>
               <p className="text-lg sm:text-xl text-gray-300 mb-6 sm:mb-8">
                 We stand behind every uniform we create with our 100% satisfaction guarantee
               </p>
@@ -862,7 +864,7 @@ const LandingPage3 = () => {
         </div>
       </section>
 
-      {/* 9️⃣ Trusted by Industry Leaders - Infinite Carousel */}
+      {/* 9️⃣ Trusted by Industry Leaders - Infinite Carousel (Repeated for emphasis) */}
       <section className="py-16 sm:py-20 bg-gradient-to-br from-gray-50 to-white">
         <div className="container mx-auto px-4">
           <div className="max-w-7xl mx-auto">
@@ -894,11 +896,11 @@ const LandingPage3 = () => {
       </section>
 
       {/* 1️⃣4️⃣ Final Offer Section */}
-      <section className="py-16 sm:py-20 bg-black text-white relative overflow-hidden">
+      <section className="py-16 sm:py-20 black-branded-bg text-white relative overflow-hidden black-bg-hover">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <div className="mb-8 sm:mb-12">
-              <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6">
+              <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6 shine-effect">
                 READY TO TRANSFORM YOUR TEAM?
               </h2>
               <p className="text-lg sm:text-xl text-gray-300 mb-6 sm:mb-8">
