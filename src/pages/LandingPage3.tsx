@@ -233,21 +233,21 @@ const LandingPage3 = () => {
       <section className="py-16 sm:py-20 bg-black text-white relative overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto text-center">
-            <div className="mb-12 sm:mb-16">
-              <div className="flex items-center justify-center mb-6">
+            <div className="mb-4 sm:mb-6">
+              <div className="flex items-center justify-center mb-2 sm:mb-3">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-6 sm:w-8 h-6 sm:h-8 text-yellow-400 fill-yellow-400 mr-2 sm:mr-3 last:mr-0" />
+                  <Star key={i} className="w-4 sm:w-5 h-4 sm:h-5 text-yellow-400 fill-yellow-400 mr-1 sm:mr-2 last:mr-0" />
                 ))}
               </div>
-              <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6">
+              <h2 className="text-xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-3">
                 HIGH PERSONALISATION
               </h2>
-              <div className="text-lg sm:text-2xl font-bold mb-4 sm:mb-6">
+              <div className="text-sm sm:text-lg font-bold mb-2 sm:mb-4">
                 <span className="text-blue-400">COLOR</span> & <span className="text-red-500">CUT</span> & <span className="text-green-400">DESIGN</span>
               </div>
             </div>
             
-            <div className="relative flex items-center justify-center h-[400px] sm:h-[500px] mb-6 sm:mb-8 perspective-1000">
+            <div className="relative flex items-center justify-center h-[450px] sm:h-[550px] mb-6 sm:mb-8 perspective-1000">
               <button 
                 onClick={prevShowcase}
                 className="absolute left-2 sm:left-4 z-50 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-2 sm:p-3 transition-all duration-300 hover:scale-110 group"
