@@ -80,60 +80,121 @@ const LandingPage3 = () => {
                         <Star key={i} className="w-5 h-5 text-yellow-400 fill-yellow-400" />
                       ))}
                     </div>
-                    <span className="text-sm sm:text-lg">50+ Years Experience • GCC READY - Dubai Based</span>
+                    <span className="text-sm sm:text-lg">GCC READY - Dubai Based</span>
                   </div>
                 </div>
                 
-                <div className="space-y-6">
-                  <div className="bg-white/80 backdrop-blur-sm border border-gray-200 rounded-3xl p-6 sm:p-8 shadow-lg">
-                    <div className="text-center">
-                      <div className="text-3xl sm:text-4xl font-bold text-red-600 mb-2">300AED / 100pieces</div>
-                      <p className="text-gray-600 font-medium">Tailored to your brand identity</p>
+                {/* Service Awareness Icons */}
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 py-6">
+                  <div className="flex flex-col items-center text-center space-y-2">
+                    <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                      <Award className="w-6 h-6 text-blue-600" />
                     </div>
+                    <span className="text-xs font-medium text-gray-600">Premium Quality</span>
                   </div>
-                  
-                  <div className="text-center lg:text-left">
-                    <button 
-                      className="relative bg-gradient-to-r from-red-600 to-red-700 text-white font-bold text-lg sm:text-xl px-8 sm:px-12 py-4 sm:py-5 rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-red-500/30 overflow-hidden group w-full sm:w-auto" 
-                      onClick={scrollToConsultation}
-                    >
-                      <span className="relative z-10">Get Custom Uniform</span>
-                    </button>
-                    
-                    <div className="mt-6 space-y-2 text-center lg:text-left">
-                      <p className="text-lg font-semibold text-gray-700">Tailored to your brand identity</p>
-                      <p className="text-lg font-semibold text-gray-700">Free Design Consultation</p>
+                  <div className="flex flex-col items-center text-center space-y-2">
+                    <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                      <Users className="w-6 h-6 text-green-600" />
+                    </div>
+                    <span className="text-xs font-medium text-gray-600">Account Manager</span>
+                  </div>
+                  <div className="flex flex-col items-center text-center space-y-2">
+                    <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
+                      <Truck className="w-6 h-6 text-purple-600" />
+                    </div>
+                    <span className="text-xs font-medium text-gray-600">Fast Delivery</span>
+                  </div>
+                  <div className="flex flex-col items-center text-center space-y-2">
+                    <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center">
+                      <HeartHandshake className="w-6 h-6 text-red-600" />
+                    </div>
+                    <span className="text-xs font-medium text-gray-600">Ongoing Support</span>
+                  </div>
+                </div>
+
+                {/* Process Steps */}
+                <div className="bg-white/60 backdrop-blur-sm border border-gray-200 rounded-2xl p-6 shadow-lg">
+                  <div className="flex flex-col sm:flex-row items-center justify-between space-y-4 sm:space-y-0">
+                    <div className="flex items-center space-x-2">
+                      <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white text-sm font-bold">1</div>
+                      <span className="text-sm font-medium text-gray-700">Initial Consultation</span>
+                    </div>
+                    <ArrowRight className="w-4 h-4 text-gray-400 hidden sm:block" />
+                    <div className="flex items-center space-x-2">
+                      <div className="w-8 h-8 bg-green-600 rounded-full flex items-center justify-center text-white text-sm font-bold">2</div>
+                      <span className="text-sm font-medium text-gray-700">Customisation</span>
+                    </div>
+                    <ArrowRight className="w-4 h-4 text-gray-400 hidden sm:block" />
+                    <div className="flex items-center space-x-2">
+                      <div className="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center text-white text-sm font-bold">3</div>
+                      <span className="text-sm font-medium text-gray-700">Production</span>
+                    </div>
+                    <ArrowRight className="w-4 h-4 text-gray-400 hidden sm:block" />
+                    <div className="flex items-center space-x-2">
+                      <div className="w-8 h-8 bg-red-600 rounded-full flex items-center justify-center text-white text-sm font-bold">4</div>
+                      <span className="text-sm font-medium text-gray-700">Ongoing Program</span>
                     </div>
                   </div>
                 </div>
               </div>
 
               <div className="relative animate-fade-in mt-8 lg:mt-0">
-                <div className="grid grid-cols-2 gap-4 sm:gap-6">
+                <div className="grid grid-cols-2 gap-4 sm:gap-6 relative">
                   <div className="space-y-4 sm:space-y-6">
                     <img 
                       src={images.uniformServices} 
                       alt="Chef uniforms" 
-                      className="rounded-2xl sm:rounded-3xl w-full h-32 sm:h-48 object-cover shadow-2xl transform transition-transform duration-500 hover:scale-105" 
+                      className="rounded-2xl sm:rounded-3xl w-full h-32 sm:h-48 object-cover shadow-2xl transform transition-all duration-500 hover:scale-105 hover:shadow-[0_0_30px_rgba(0,0,0,0.3)]" 
                     />
                     <img 
                       src={images.Hoodieimage} 
                       alt="Custom hoodies" 
-                      className="rounded-2xl sm:rounded-3xl w-full h-24 sm:h-32 object-cover shadow-xl transform transition-transform duration-500 hover:scale-105" 
+                      className="rounded-2xl sm:rounded-3xl w-full h-24 sm:h-32 object-cover shadow-xl transform transition-all duration-500 hover:scale-105 hover:shadow-[0_0_20px_rgba(0,0,0,0.2)]" 
                     />
                   </div>
                   <div className="space-y-4 sm:space-y-6 mt-6 sm:mt-8">
                     <img 
                       src={images.schoolHoodie} 
                       alt="School uniforms" 
-                      className="rounded-2xl sm:rounded-3xl w-full h-24 sm:h-32 object-cover shadow-xl transform transition-transform duration-500 hover:scale-105" 
+                      className="rounded-2xl sm:rounded-3xl w-full h-24 sm:h-32 object-cover shadow-xl transform transition-all duration-500 hover:scale-105 hover:shadow-[0_0_20px_rgba(0,0,0,0.2)]" 
                     />
                     <img 
                       src={images.JCProducts} 
                       alt="Hospitality staff" 
-                      className="rounded-2xl sm:rounded-3xl w-full h-32 sm:h-48 object-cover shadow-2xl transform transition-transform duration-500 hover:scale-105" 
+                      className="rounded-2xl sm:rounded-3xl w-full h-32 sm:h-48 object-cover shadow-2xl transform transition-all duration-500 hover:scale-105 hover:shadow-[0_0_30px_rgba(0,0,0,0.3)]" 
                     />
                   </div>
+                  
+                  {/* 50+ Years Experience - Positioned under pictures */}
+                  <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 bg-white/90 backdrop-blur-sm border border-gray-200 rounded-full px-4 py-2 shadow-lg">
+                    <span className="text-sm font-bold text-gray-700">50+ Years Experience</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            {/* Centered CTA Section */}
+            <div className="mt-16 text-center">
+              <div className="space-y-6">
+                {/* Smaller, elegant price */}
+                <div className="inline-block bg-white/80 backdrop-blur-sm border border-gray-200 rounded-2xl px-6 py-3 shadow-lg">
+                  <div className="text-lg font-bold text-red-600">300 AED / 100 pieces</div>
+                </div>
+                
+                {/* Centered CTA Button */}
+                <div>
+                  <button 
+                    className="relative bg-gradient-to-r from-red-600 to-red-700 text-white font-bold text-lg sm:text-xl px-8 sm:px-12 py-4 sm:py-5 rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-red-500/30 overflow-hidden group" 
+                    onClick={scrollToConsultation}
+                  >
+                    <span className="relative z-10">Get Custom Uniform</span>
+                  </button>
+                </div>
+                
+                {/* Lighter supporting text */}
+                <div className="space-y-1">
+                  <p className="text-sm text-gray-500 font-medium">Tailored to your brand identity</p>
+                  <p className="text-sm text-gray-500 font-medium">Free Design Consultation</p>
                 </div>
               </div>
             </div>
