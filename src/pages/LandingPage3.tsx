@@ -576,8 +576,16 @@ const LandingPage3 = () => {
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12 sm:mb-16">
               <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6">PREMIUM QUALITY</h2>
-              <div className="w-24 h-1 bg-gradient-to-r from-white/30 to-white/60 mx-auto mb-6"></div>
+              <div className="w-32 h-1 bg-gradient-to-r from-yellow-600 via-yellow-400 to-yellow-600 mx-auto mb-6"></div>
               <p className="text-lg sm:text-xl text-gray-300">Craftsmanship that speaks for your brand</p>
+              {/* Gold divider dots */}
+              <div className="flex justify-center items-center space-x-2 mt-4">
+                <div className="w-1 h-1 bg-yellow-400 rounded-full"></div>
+                <div className="w-6 h-px bg-gradient-to-r from-transparent via-yellow-400/60 to-transparent"></div>
+                <div className="w-1.5 h-1.5 bg-yellow-400 rounded-full"></div>
+                <div className="w-6 h-px bg-gradient-to-r from-transparent via-yellow-400/60 to-transparent"></div>
+                <div className="w-1 h-1 bg-yellow-400 rounded-full"></div>
+              </div>
             </div>
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-start">
@@ -585,8 +593,8 @@ const LandingPage3 = () => {
               <div className="space-y-4 sm:space-y-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                   {/* Premium Fabrics */}
-                  <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 sm:p-5 hover:bg-white/10 transition-all duration-300 group">
-                    <div className="aspect-[4/3] mb-3 overflow-hidden rounded-xl">
+                  <div className="bg-white/5 backdrop-blur-sm border border-yellow-400/20 rounded-2xl p-4 sm:p-5 hover:bg-white/10 hover:border-yellow-400/40 transition-all duration-300 group">
+                    <div className="aspect-[4/3] mb-3 overflow-hidden rounded-xl border border-yellow-400/30">
                       <img 
                         src={images.premiumFabricTexture} 
                         alt="Premium fabric texture close-up" 
@@ -678,7 +686,8 @@ const LandingPage3 = () => {
                 <div className="relative flex justify-center mb-4 sm:mb-6">
                   <div className="relative">
                     <div className="absolute inset-0 bg-white/10 rounded-full blur-3xl opacity-50"></div>
-                    <div className="relative w-80 sm:w-96 h-[420px] sm:h-[520px] rounded-3xl shadow-2xl overflow-hidden group hover:scale-105 transition-transform duration-500">
+                    {/* Gold border around the main image */}
+                    <div className="relative w-80 sm:w-96 h-[420px] sm:h-[520px] rounded-3xl shadow-2xl overflow-hidden group hover:scale-105 transition-transform duration-500 border-2 border-yellow-400/30">
                       <img 
                         src={images.masterCraftsman} 
                         alt="Master craftsman at work" 
@@ -691,13 +700,13 @@ const LandingPage3 = () => {
                           <h3 className="text-xl sm:text-2xl font-bold mb-2">Master Craftsmanship</h3>
                           <p className="text-gray-300 text-sm sm:text-base mb-4">Precision in every stitch</p>
                           <div className="grid grid-cols-2 gap-3 sm:gap-4 text-xs sm:text-sm">
-                            <div className="bg-white/10 rounded-lg p-2 sm:p-3 backdrop-blur-sm">
+                            <div className="bg-white/10 rounded-lg p-2 sm:p-3 backdrop-blur-sm border border-white/20">
                               <Factory className="w-5 sm:w-6 h-5 sm:h-6 mx-auto mb-1 sm:mb-2 text-white" />
                               <span>Premium Factory</span>
                             </div>
-                            <div className="bg-white/10 rounded-lg p-2 sm:p-3 backdrop-blur-sm">
-                              <Award className="w-5 sm:w-6 h-5 sm:h-6 mx-auto mb-1 sm:mb-2 text-white" />
-                              <span>Quality Certified</span>
+                            <div className="bg-white/10 rounded-lg p-2 sm:p-3 backdrop-blur-sm border border-yellow-400/40">
+                              <Award className="w-5 sm:w-6 h-5 sm:h-6 mx-auto mb-1 sm:mb-2 text-yellow-400" />
+                              <span className="text-yellow-300">Quality Certified</span>
                             </div>
                           </div>
                         </div>
@@ -708,14 +717,20 @@ const LandingPage3 = () => {
                 </div>
                 
                 {/* Quality guarantee footer to fill bottom space */}
-                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 sm:p-6 text-center">
+                <div className="bg-white/5 backdrop-blur-sm border border-yellow-400/20 rounded-2xl p-4 sm:p-6 text-center hover:border-yellow-400/40 transition-all duration-300">
                   <div className="flex items-center justify-center mb-3">
-                    <div className="w-6 h-0.5 bg-gradient-to-r from-transparent to-white/30 mr-2"></div>
-                    <Award className="w-5 h-5 text-white/80" />
-                    <div className="w-6 h-0.5 bg-gradient-to-l from-transparent to-white/30 ml-2"></div>
+                    <div className="w-6 h-0.5 bg-gradient-to-r from-transparent to-yellow-400/60 mr-2"></div>
+                    <Award className="w-5 h-5 text-yellow-400" />
+                    <div className="w-6 h-0.5 bg-gradient-to-l from-transparent to-yellow-400/60 ml-2"></div>
                   </div>
                   <h4 className="text-base sm:text-lg font-bold mb-2 text-white">Quality Guarantee</h4>
                   <p className="text-gray-400 text-xs sm:text-sm">Every uniform crafted to perfection with our 45+ years of expertise</p>
+                  {/* Gold accent dots */}
+                  <div className="flex justify-center items-center space-x-1 mt-3">
+                    <div className="w-1 h-1 bg-yellow-400 rounded-full opacity-60"></div>
+                    <div className="w-1 h-1 bg-yellow-400 rounded-full"></div>
+                    <div className="w-1 h-1 bg-yellow-400 rounded-full opacity-60"></div>
+                  </div>
                 </div>
               </div>
             </div>
