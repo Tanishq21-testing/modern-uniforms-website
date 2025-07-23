@@ -112,18 +112,32 @@ const LandingPage3 = () => {
                 </div>
                 
                 {/* Clean Process Text Block - Before service icons */}
-                <div className="max-w-md mx-auto text-left py-4 mt-8">
-                  <div className="space-y-2">
-                    <p className="text-sm font-semibold text-gray-800 mb-3">Our Process</p>
-                    <p className="text-sm font-medium text-gray-700">1) Initial Consultation</p>
-                    <p className="text-sm font-medium text-gray-700">2) Customisation</p>
-                    <p className="text-sm font-medium text-gray-700">3) Production</p>
-                    <p className="text-sm font-medium text-gray-700">4) Ongoing Program</p>
+                <div className="max-w-md mx-auto text-left py-3 mt-6">
+                  <div className="space-y-3">
+                    <p className="text-base font-bold text-gray-800 mb-2">Our Process</p>
+                    <div className="space-y-2">
+                      <div className="flex items-center space-x-3">
+                        <div className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center text-white text-xs font-bold">1</div>
+                        <p className="text-sm font-medium text-gray-700">Initial Consultation</p>
+                      </div>
+                      <div className="flex items-center space-x-3">
+                        <div className="w-6 h-6 bg-green-600 rounded-full flex items-center justify-center text-white text-xs font-bold">2</div>
+                        <p className="text-sm font-medium text-gray-700">Customisation</p>
+                      </div>
+                      <div className="flex items-center space-x-3">
+                        <div className="w-6 h-6 bg-purple-600 rounded-full flex items-center justify-center text-white text-xs font-bold">3</div>
+                        <p className="text-sm font-medium text-gray-700">Production</p>
+                      </div>
+                      <div className="flex items-center space-x-3">
+                        <div className="w-6 h-6 bg-red-600 rounded-full flex items-center justify-center text-white text-xs font-bold">4</div>
+                        <p className="text-sm font-medium text-gray-700">Ongoing Program</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 
                 {/* Service Awareness Icons - Sharper text */}
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 py-6 mt-8">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 py-4 mt-4">
                   <div className="flex flex-col items-center text-center space-y-2">
                     <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
                       <Award className="w-6 h-6 text-blue-600" />
