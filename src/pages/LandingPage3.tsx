@@ -697,6 +697,18 @@ const LandingPage3 = () => {
                 </div>
               </div>
             </div>
+            
+            {/* Closing element to balance the section */}
+            <div className="text-center mt-12 sm:mt-16 pt-8 sm:pt-12 border-t border-white/10">
+              <div className="flex items-center justify-center space-x-4 mb-4 sm:mb-6">
+                <div className="w-8 sm:w-12 h-0.5 bg-gradient-to-r from-transparent to-white/30"></div>
+                <Award className="w-6 sm:w-8 h-6 sm:h-8 text-white/60" />
+                <div className="w-8 sm:w-12 h-0.5 bg-gradient-to-l from-transparent to-white/30"></div>
+              </div>
+              <p className="text-base sm:text-lg text-gray-300 font-medium max-w-2xl mx-auto">
+                Every uniform tells your brand's story with uncompromising quality
+              </p>
+            </div>
           </div>
         </div>
       </section>
