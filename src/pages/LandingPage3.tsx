@@ -576,6 +576,7 @@ const LandingPage3 = () => {
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12 sm:mb-16">
               <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6">PREMIUM QUALITY</h2>
+              <div className="w-24 h-1 bg-gradient-to-r from-white/30 to-white/60 mx-auto mb-6"></div>
               <p className="text-lg sm:text-xl text-gray-300">Craftsmanship that speaks for your brand</p>
             </div>
             
@@ -592,7 +593,7 @@ const LandingPage3 = () => {
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                       />
                     </div>
-                    <h3 className="text-base sm:text-lg font-bold mb-2 text-blue-400">Premium Fabrics</h3>
+                    <h3 className="text-base sm:text-lg font-bold mb-2 text-white">Premium Fabrics</h3>
                     <p className="text-gray-400 text-xs sm:text-sm">Highest quality materials sourced globally</p>
                   </div>
                   
@@ -605,7 +606,7 @@ const LandingPage3 = () => {
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                       />
                     </div>
-                    <h3 className="text-base sm:text-lg font-bold mb-2 text-green-400">Detail Finishing</h3>
+                    <h3 className="text-base sm:text-lg font-bold mb-2 text-white">Detail Finishing</h3>
                     <p className="text-gray-400 text-xs sm:text-sm">Precision in every stitch and seam</p>
                   </div>
                   
@@ -618,7 +619,7 @@ const LandingPage3 = () => {
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                       />
                     </div>
-                    <h3 className="text-base sm:text-lg font-bold mb-2 text-red-400">Expert Stitching</h3>
+                    <h3 className="text-base sm:text-lg font-bold mb-2 text-white">Expert Stitching</h3>
                     <p className="text-gray-400 text-xs sm:text-sm">Master craftsmen with decades of experience</p>
                   </div>
                   
@@ -631,7 +632,7 @@ const LandingPage3 = () => {
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                       />
                     </div>
-                    <h3 className="text-base sm:text-lg font-bold mb-2 text-purple-400">Wash-Tested</h3>
+                    <h3 className="text-base sm:text-lg font-bold mb-2 text-white">Wash-Tested</h3>
                     <p className="text-gray-400 text-xs sm:text-sm">Durability tested through 100+ wash cycles</p>
                   </div>
                   
@@ -644,7 +645,7 @@ const LandingPage3 = () => {
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                       />
                     </div>
-                    <h3 className="text-base sm:text-lg font-bold mb-2 text-yellow-400">Perfect Fit Cutting</h3>
+                    <h3 className="text-base sm:text-lg font-bold mb-2 text-white">Perfect Fit Cutting</h3>
                     <p className="text-gray-400 text-xs sm:text-sm">Tailored patterns for optimal comfort</p>
                   </div>
                   
@@ -657,7 +658,7 @@ const LandingPage3 = () => {
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                       />
                     </div>
-                    <h3 className="text-base sm:text-lg font-bold mb-2 text-pink-400">Color Stability</h3>
+                    <h3 className="text-base sm:text-lg font-bold mb-2 text-white">Color Stability</h3>
                     <p className="text-gray-400 text-xs sm:text-sm">Fade-resistant colors that last</p>
                   </div>
                 </div>
@@ -666,7 +667,7 @@ const LandingPage3 = () => {
               {/* Right side - Master craftsmanship hero image */}
               <div className="relative flex justify-center">
                 <div className="relative">
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 via-purple-600/20 to-red-600/20 rounded-full blur-3xl animate-pulse"></div>
+                  <div className="absolute inset-0 bg-white/10 rounded-full blur-3xl opacity-50"></div>
                   <div className="relative w-80 sm:w-96 h-96 sm:h-[500px] rounded-3xl shadow-2xl overflow-hidden group hover:scale-105 transition-transform duration-500">
                     <img 
                       src={images.masterCraftsman} 
@@ -681,11 +682,11 @@ const LandingPage3 = () => {
                         <p className="text-gray-300 text-sm sm:text-base mb-4">Precision in every stitch</p>
                         <div className="grid grid-cols-2 gap-3 sm:gap-4 text-xs sm:text-sm">
                           <div className="bg-white/10 rounded-lg p-2 sm:p-3 backdrop-blur-sm">
-                            <Factory className="w-5 sm:w-6 h-5 sm:h-6 mx-auto mb-1 sm:mb-2 text-green-400" />
+                            <Factory className="w-5 sm:w-6 h-5 sm:h-6 mx-auto mb-1 sm:mb-2 text-white" />
                             <span>Premium Factory</span>
                           </div>
                           <div className="bg-white/10 rounded-lg p-2 sm:p-3 backdrop-blur-sm">
-                            <Award className="w-5 sm:w-6 h-5 sm:h-6 mx-auto mb-1 sm:mb-2 text-yellow-400" />
+                            <Award className="w-5 sm:w-6 h-5 sm:h-6 mx-auto mb-1 sm:mb-2 text-white" />
                             <span>Quality Certified</span>
                           </div>
                         </div>
