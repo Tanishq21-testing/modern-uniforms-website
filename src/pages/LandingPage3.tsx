@@ -68,7 +68,7 @@ const LandingPage3 = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-center">
-              <div className="space-y-4 sm:space-y-6 animate-fade-in order-2 lg:order-1">
+              <div className="space-y-4 sm:space-y-6 animate-fade-in order-1 lg:order-1">
                 <div className="space-y-6">
                   <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
                     Not Covering Your Team<br />
@@ -177,7 +177,7 @@ const LandingPage3 = () => {
                 </div>
               </div>
 
-              <div className="relative animate-fade-in mt-8 lg:mt-0 order-1 lg:order-2">
+              <div className="relative animate-fade-in mt-8 lg:mt-0 order-2 lg:order-2">
                 <div className="grid grid-cols-2 gap-3 sm:gap-4 md:gap-6 relative">
                   <div className="space-y-3 sm:space-y-4 md:space-y-6">
                     <img 
