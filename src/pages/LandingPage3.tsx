@@ -955,16 +955,16 @@ const LandingPage3 = () => {
       </section>
 
       {/* 🔥 PREMIUM COMPARISON SECTION - UniformConnect vs Competitors */}
-      <section className="py-16 sm:py-24 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
+      <section className="py-16 sm:py-24 bg-black text-white relative overflow-hidden">
         <div className="container mx-auto px-4 relative">
           <div className="max-w-6xl mx-auto">
             
             {/* Section Header */}
             <div className="text-center mb-12 sm:mb-16">
-              <h2 className="text-3xl sm:text-5xl font-bold mb-4 text-gray-900">
+              <h2 className="text-3xl sm:text-5xl font-bold mb-4 text-white">
                 Why Choose UniformConnect?
               </h2>
-              <p className="text-lg sm:text-xl text-gray-600">
+              <p className="text-lg sm:text-xl text-gray-300">
                 See the clear difference
               </p>
             </div>
@@ -974,13 +974,13 @@ const LandingPage3 = () => {
               
               {/* LEFT: Standard Providers */}
               <div className="relative">
-                <div className="bg-gray-50 border border-gray-200 rounded-2xl p-6 h-full">
+                <div className="bg-gray-800/50 border border-gray-700 rounded-2xl p-6 h-full backdrop-blur-sm">
                   <div className="text-center mb-6">
-                    <div className="inline-block px-3 py-1 bg-gray-200 text-gray-600 rounded-lg text-xs font-medium mb-3">
+                    <div className="inline-block px-3 py-1 bg-gray-700 text-gray-300 rounded-lg text-xs font-medium mb-3">
                       Standard Providers
                     </div>
-                    <h3 className="text-xl font-bold text-gray-700 mb-1">Basic Options</h3>
-                    <p className="text-sm text-gray-500">Limited solutions</p>
+                    <h3 className="text-xl font-bold text-gray-300 mb-1">Basic Options</h3>
+                    <p className="text-sm text-gray-400">Limited solutions</p>
                   </div>
                   
                   <div className="space-y-3">
@@ -992,10 +992,10 @@ const LandingPage3 = () => {
                       'Minimal support'
                     ].map((item, index) => (
                       <div key={index} className="flex items-center space-x-3">
-                        <div className="w-5 h-5 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0">
-                          <X className="w-3 h-3 text-red-500" />
+                        <div className="w-5 h-5 bg-red-900/50 border border-red-500/30 rounded-full flex items-center justify-center flex-shrink-0">
+                          <X className="w-3 h-3 text-red-400" />
                         </div>
-                        <span className="text-gray-600 text-sm leading-tight">{item}</span>
+                        <span className="text-gray-400 text-sm leading-tight">{item}</span>
                       </div>
                     ))}
                   </div>
@@ -1014,7 +1014,7 @@ const LandingPage3 = () => {
                   </div>
                 </div>
 
-                <div className="bg-white border-2 border-yellow-400 rounded-2xl p-6 h-full shadow-xl relative overflow-hidden">
+                <div className="bg-white/10 backdrop-blur-sm border-2 border-yellow-400 rounded-2xl p-6 h-full shadow-xl relative overflow-hidden">
                   {/* Premium accent */}
                   <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-400"></div>
                   
@@ -1022,10 +1022,10 @@ const LandingPage3 = () => {
                     <div className="inline-block px-4 py-2 bg-gradient-to-r from-red-600 to-red-700 text-white rounded-lg text-xs font-bold mb-3">
                       UNIFORMCONNECT
                     </div>
-                    <h3 className="text-2xl font-bold text-gray-900 mb-1">
+                    <h3 className="text-2xl font-bold text-white mb-1">
                       Premium Solution
                     </h3>
-                    <p className="text-sm text-gray-600 font-medium">Complete excellence</p>
+                    <p className="text-sm text-gray-300 font-medium">Complete excellence</p>
                   </div>
                   
                   <div className="space-y-3">
@@ -1042,16 +1042,16 @@ const LandingPage3 = () => {
                         <div className="w-5 h-5 bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-full flex items-center justify-center flex-shrink-0">
                           <Check className="w-3 h-3 text-black font-bold" />
                         </div>
-                        <span className="text-gray-900 font-medium text-sm leading-tight">{item}</span>
+                        <span className="text-white font-medium text-sm leading-tight">{item}</span>
                       </div>
                     ))}
                   </div>
 
                   {/* Bottom accent */}
-                  <div className="mt-6 pt-4 border-t border-yellow-200">
+                  <div className="mt-6 pt-4 border-t border-yellow-400/30">
                     <div className="flex items-center justify-center space-x-2">
-                      <Award className="w-4 h-4 text-yellow-600" />
-                      <span className="font-bold text-yellow-800 text-xs">24H RESPONSE • UAE BASED</span>
+                      <Award className="w-4 h-4 text-yellow-400" />
+                      <span className="font-bold text-yellow-300 text-xs">24H RESPONSE • UAE BASED</span>
                     </div>
                   </div>
                 </div>
@@ -1059,13 +1059,13 @@ const LandingPage3 = () => {
 
               {/* RIGHT: Large Global Providers */}
               <div className="relative">
-                <div className="bg-gray-50 border border-gray-200 rounded-2xl p-6 h-full">
+                <div className="bg-gray-800/50 border border-gray-700 rounded-2xl p-6 h-full backdrop-blur-sm">
                   <div className="text-center mb-6">
-                    <div className="inline-block px-3 py-1 bg-gray-200 text-gray-600 rounded-lg text-xs font-medium mb-3">
+                    <div className="inline-block px-3 py-1 bg-gray-700 text-gray-300 rounded-lg text-xs font-medium mb-3">
                       Global Providers
                     </div>
-                    <h3 className="text-xl font-bold text-gray-700 mb-1">Corporate Scale</h3>
-                    <p className="text-sm text-gray-500">Less personal</p>
+                    <h3 className="text-xl font-bold text-gray-300 mb-1">Corporate Scale</h3>
+                    <p className="text-sm text-gray-400">Less personal</p>
                   </div>
                   
                   <div className="space-y-3">
@@ -1077,10 +1077,10 @@ const LandingPage3 = () => {
                       'Complex processes'
                     ].map((item, index) => (
                       <div key={index} className="flex items-center space-x-3">
-                        <div className="w-5 h-5 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0">
-                          <X className="w-3 h-3 text-red-500" />
+                        <div className="w-5 h-5 bg-red-900/50 border border-red-500/30 rounded-full flex items-center justify-center flex-shrink-0">
+                          <X className="w-3 h-3 text-red-400" />
                         </div>
-                        <span className="text-gray-600 text-sm leading-tight">{item}</span>
+                        <span className="text-gray-400 text-sm leading-tight">{item}</span>
                       </div>
                     ))}
                   </div>
@@ -1098,6 +1098,7 @@ const LandingPage3 = () => {
                 Get Premium Consultation
                 <ArrowRight className="ml-2 h-5 w-5 inline" />
               </button>
+              <p className="text-xs sm:text-sm text-gray-400 mt-3">No commitment • Just a quick intro with Specialists</p>
             </div>
           </div>
         </div>
