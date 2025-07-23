@@ -5,6 +5,11 @@ import { ArrowRight, Check, Star, Shield, Clock, Users, Award, Building, FileTex
 import { images } from '@/assets/images';
 import OptimizedConsultationForm from '@/components/OptimizedConsultationForm';
 import StickyOrderButton from '@/components/StickyOrderButton';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from '@/components/ui/carousel';
 
 const LandingPage3 = () => {
   const consultationFormRef = useRef<HTMLDivElement>(null);
@@ -1137,61 +1142,319 @@ const LandingPage3 = () => {
         </div>
       </section>
 
-      {/* 1️⃣3️⃣ Reviews Section - Light Background */}
-      <section className="py-16 sm:py-20 bg-gradient-to-br from-gray-50 to-white">
+      {/* 1️⃣3️⃣ Premium Testimonials Section */}
+      <section className="py-24 bg-black relative overflow-hidden">
         <div className="container mx-auto px-4">
+          {/* Header */}
+          <div className="text-center max-w-4xl mx-auto mb-20">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
+              Trusted by Industry Leaders
+            </h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-transparent via-[#FFD700] to-transparent mx-auto mb-8"></div>
+            <p className="text-xl text-gray-300 font-light">
+              What our most exclusive partners say about the UniformConnect experience
+            </p>
+          </div>
+
+          {/* Testimonials Carousel */}
           <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-12 sm:mb-16">
-              <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6">CLIENT TESTIMONIALS</h2>
-              <p className="text-lg sm:text-xl text-gray-600">What our clients say about us</p>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-              <div className="bg-white rounded-3xl shadow-xl p-6 sm:p-8 hover:shadow-2xl hover:scale-105 transition-all duration-300">
-                <div className="flex space-x-1 mb-4 sm:mb-6">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 sm:w-5 h-4 sm:h-5 text-yellow-400 fill-yellow-400" />
-                  ))}
-                </div>
-                <p className="text-gray-700 mb-4 sm:mb-6 text-sm sm:text-base italic">
-                  "Exceptional quality and service. Our hotel staff uniforms look professional and feel comfortable. Highly recommended!"
-                </p>
-                <div className="text-sm">
-                  <div className="font-bold text-gray-900">Sarah Al-Mansouri</div>
-                  <div className="text-gray-500">Hotel Manager, Luxury Resort Dubai</div>
-                </div>
-              </div>
-              
-              <div className="bg-white rounded-3xl shadow-xl p-6 sm:p-8 hover:shadow-2xl hover:scale-105 transition-all duration-300">
-                <div className="flex space-x-1 mb-4 sm:mb-6">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 sm:w-5 h-4 sm:h-5 text-yellow-400 fill-yellow-400" />
-                  ))}
-                </div>
-                <p className="text-gray-700 mb-4 sm:mb-6 text-sm sm:text-base italic">
-                  "Fast delivery and premium quality. Our team loves the new uniforms and they really enhance our brand image."
-                </p>
-                <div className="text-sm">
-                  <div className="font-bold text-gray-900">Ahmed Hassan</div>
-                  <div className="text-gray-500">Operations Director, Restaurant Chain</div>
-                </div>
-              </div>
-              
-              <div className="bg-white rounded-3xl shadow-xl p-6 sm:p-8 hover:shadow-2xl hover:scale-105 transition-all duration-300">
-                <div className="flex space-x-1 mb-4 sm:mb-6">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 sm:w-5 h-4 sm:h-5 text-yellow-400 fill-yellow-400" />
-                  ))}
-                </div>
-                <p className="text-gray-700 mb-4 sm:mb-6 text-sm sm:text-base italic">
-                  "Outstanding customer service and attention to detail. They understood our requirements perfectly and delivered beyond expectations."
-                </p>
-                <div className="text-sm">
-                  <div className="font-bold text-gray-900">Maria Rodriguez</div>
-                  <div className="text-gray-500">HR Manager, Corporate Office</div>
-                </div>
-              </div>
-            </div>
+            <Carousel
+              opts={{
+                align: "start",
+                loop: true,
+                dragFree: true,
+                containScroll: "trimSnaps",
+                slidesToScroll: 1,
+              }}
+              className="w-full"
+            >
+              <CarouselContent className="-ml-6">
+                <CarouselItem key={0} className="pl-6 md:basis-1/2 lg:basis-1/3">
+                  <div className="group h-full">
+                    <div className="bg-gray-900 rounded-xl p-8 h-full shadow-2xl border border-gray-800 transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_25px_50px_-12px_rgba(255,215,0,0.25)] cursor-pointer">
+                      {/* Gold Stars */}
+                      <div className="flex justify-center mb-6">
+                        {[...Array(5)].map((_, i) => (
+                          <Star 
+                            key={i} 
+                            size={20} 
+                            className="text-[#FFD700] fill-[#FFD700] mx-0.5" 
+                          />
+                        ))}
+                      </div>
+
+                      {/* Review Text */}
+                      <blockquote className="text-white text-lg leading-relaxed mb-8 italic font-light min-h-[120px]">
+                        "We've worked with multiple suppliers in the past, including some big international names, but none matched the precision and reliability of UniformConnect. Even our regional Hilton partners noticed the upgrade immediately—it's on another level."
+                      </blockquote>
+
+                      {/* Gold Divider */}
+                      <div className="w-12 h-0.5 bg-[#FFD700] mx-auto mb-6"></div>
+
+                      {/* Author Info */}
+                      <div className="text-center">
+                        <p className="text-white font-semibold text-lg mb-1">
+                          Khaled Bin Rashid
+                        </p>
+                        <p className="text-gray-400 text-sm font-light">
+                          General Manager, Hilton Regional GCC
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </CarouselItem>
+
+                <CarouselItem key={1} className="pl-6 md:basis-1/2 lg:basis-1/3">
+                  <div className="group h-full">
+                    <div className="bg-gray-900 rounded-xl p-8 h-full shadow-2xl border border-gray-800 transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_25px_50px_-12px_rgba(255,215,0,0.25)] cursor-pointer">
+                      {/* Gold Stars */}
+                      <div className="flex justify-center mb-6">
+                        {[...Array(5)].map((_, i) => (
+                          <Star 
+                            key={i} 
+                            size={20} 
+                            className="text-[#FFD700] fill-[#FFD700] mx-0.5" 
+                          />
+                        ))}
+                      </div>
+
+                      {/* Review Text */}
+                      <blockquote className="text-white text-lg leading-relaxed mb-8 italic font-light min-h-[120px]">
+                        "At first, I hesitated because I thought a premium service like this would be beyond our budget. But once we saw the durability and how it saved us from constant reordering, it was clear—this is an investment, not an expense."
+                      </blockquote>
+
+                      {/* Gold Divider */}
+                      <div className="w-12 h-0.5 bg-[#FFD700] mx-auto mb-6"></div>
+
+                      {/* Author Info */}
+                      <div className="text-center">
+                        <p className="text-white font-semibold text-lg mb-1">
+                          Lara Thompson
+                        </p>
+                        <p className="text-gray-400 text-sm font-light">
+                          Event Director, Luxury Events GCC
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </CarouselItem>
+
+                <CarouselItem key={2} className="pl-6 md:basis-1/2 lg:basis-1/3">
+                  <div className="group h-full">
+                    <div className="bg-gray-900 rounded-xl p-8 h-full shadow-2xl border border-gray-800 transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_25px_50px_-12px_rgba(255,215,0,0.25)] cursor-pointer">
+                      {/* Gold Stars */}
+                      <div className="flex justify-center mb-6">
+                        {[...Array(5)].map((_, i) => (
+                          <Star 
+                            key={i} 
+                            size={20} 
+                            className="text-[#FFD700] fill-[#FFD700] mx-0.5" 
+                          />
+                        ))}
+                      </div>
+
+                      {/* Review Text */}
+                      <blockquote className="text-white text-lg leading-relaxed mb-8 italic font-light min-h-[120px]">
+                        "From the very first call, they understood exactly what we wanted without endless back-and-forth. It felt like they were part of our own team. The process was so seamless, I barely had to follow up."
+                      </blockquote>
+
+                      {/* Gold Divider */}
+                      <div className="w-12 h-0.5 bg-[#FFD700] mx-auto mb-6"></div>
+
+                      {/* Author Info */}
+                      <div className="text-center">
+                        <p className="text-white font-semibold text-lg mb-1">
+                          Ahmed Hassan
+                        </p>
+                        <p className="text-gray-400 text-sm font-light">
+                          Operations Director, High-End Restaurant Chain
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </CarouselItem>
+
+                <CarouselItem key={3} className="pl-6 md:basis-1/2 lg:basis-1/3">
+                  <div className="group h-full">
+                    <div className="bg-gray-900 rounded-xl p-8 h-full shadow-2xl border border-gray-800 transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_25px_50px_-12px_rgba(255,215,0,0.25)] cursor-pointer">
+                      {/* Gold Stars */}
+                      <div className="flex justify-center mb-6">
+                        {[...Array(5)].map((_, i) => (
+                          <Star 
+                            key={i} 
+                            size={20} 
+                            className="text-[#FFD700] fill-[#FFD700] mx-0.5" 
+                          />
+                        ))}
+                      </div>
+
+                      {/* Review Text */}
+                      <blockquote className="text-white text-lg leading-relaxed mb-8 italic font-light min-h-[120px]">
+                        "We constantly get compliments from clients about our team's new look. It feels like we're setting a new standard in the industry. Honestly, it's the little details that make us stand out—and UniformConnect delivered all of them."
+                      </blockquote>
+
+                      {/* Gold Divider */}
+                      <div className="w-12 h-0.5 bg-[#FFD700] mx-auto mb-6"></div>
+
+                      {/* Author Info */}
+                      <div className="text-center">
+                        <p className="text-white font-semibold text-lg mb-1">
+                          Sarah Al-Mansouri
+                        </p>
+                        <p className="text-gray-400 text-sm font-light">
+                          Hotel Manager, Luxury Resort Dubai
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </CarouselItem>
+
+                <CarouselItem key={4} className="pl-6 md:basis-1/2 lg:basis-1/3">
+                  <div className="group h-full">
+                    <div className="bg-gray-900 rounded-xl p-8 h-full shadow-2xl border border-gray-800 transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_25px_50px_-12px_rgba(255,215,0,0.25)] cursor-pointer">
+                      {/* Gold Stars */}
+                      <div className="flex justify-center mb-6">
+                        {[...Array(5)].map((_, i) => (
+                          <Star 
+                            key={i} 
+                            size={20} 
+                            className="text-[#FFD700] fill-[#FFD700] mx-0.5" 
+                          />
+                        ))}
+                      </div>
+
+                      {/* Review Text */}
+                      <blockquote className="text-white text-lg leading-relaxed mb-8 italic font-light min-h-[120px]">
+                        "We had an urgent launch event and needed uniforms in record time—without compromising quality. UniformConnect not only delivered on time but exceeded expectations. They proved premium can also be fast."
+                      </blockquote>
+
+                      {/* Gold Divider */}
+                      <div className="w-12 h-0.5 bg-[#FFD700] mx-auto mb-6"></div>
+
+                      {/* Author Info */}
+                      <div className="text-center">
+                        <p className="text-white font-semibold text-lg mb-1">
+                          Omar El-Khatib
+                        </p>
+                        <p className="text-gray-400 text-sm font-light">
+                          Managing Partner, Corporate Towers Dubai
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </CarouselItem>
+
+                <CarouselItem key={5} className="pl-6 md:basis-1/2 lg:basis-1/3">
+                  <div className="group h-full">
+                    <div className="bg-gray-900 rounded-xl p-8 h-full shadow-2xl border border-gray-800 transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_25px_50px_-12px_rgba(255,215,0,0.25)] cursor-pointer">
+                      {/* Gold Stars */}
+                      <div className="flex justify-center mb-6">
+                        {[...Array(5)].map((_, i) => (
+                          <Star 
+                            key={i} 
+                            size={20} 
+                            className="text-[#FFD700] fill-[#FFD700] mx-0.5" 
+                          />
+                        ))}
+                      </div>
+
+                      {/* Review Text */}
+                      <blockquote className="text-white text-lg leading-relaxed mb-8 italic font-light min-h-[120px]">
+                        "We tried working with global suppliers before, but the long lead times and lack of personal attention were frustrating. With UniformConnect, it's the opposite—fast responses, tailored designs, and actual people who care about the result."
+                      </blockquote>
+
+                      {/* Gold Divider */}
+                      <div className="w-12 h-0.5 bg-[#FFD700] mx-auto mb-6"></div>
+
+                      {/* Author Info */}
+                      <div className="text-center">
+                        <p className="text-white font-semibold text-lg mb-1">
+                          Maria Rodriguez
+                        </p>
+                        <p className="text-gray-400 text-sm font-light">
+                          HR Director, Raffles Corporate Office
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </CarouselItem>
+
+                <CarouselItem key={6} className="pl-6 md:basis-1/2 lg:basis-1/3">
+                  <div className="group h-full">
+                    <div className="bg-gray-900 rounded-xl p-8 h-full shadow-2xl border border-gray-800 transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_25px_50px_-12px_rgba(255,215,0,0.25)] cursor-pointer">
+                      {/* Gold Stars */}
+                      <div className="flex justify-center mb-6">
+                        {[...Array(5)].map((_, i) => (
+                          <Star 
+                            key={i} 
+                            size={20} 
+                            className="text-[#FFD700] fill-[#FFD700] mx-0.5" 
+                          />
+                        ))}
+                      </div>
+
+                      {/* Review Text */}
+                      <blockquote className="text-white text-lg leading-relaxed mb-8 italic font-light min-h-[120px]">
+                        "It's rare to find a supplier who thinks beyond just the order. They checked in even after delivery to make sure everything was perfect. That's why they're not just a supplier for us—they're a long-term partner."
+                      </blockquote>
+
+                      {/* Gold Divider */}
+                      <div className="w-12 h-0.5 bg-[#FFD700] mx-auto mb-6"></div>
+
+                      {/* Author Info */}
+                      <div className="text-center">
+                        <p className="text-white font-semibold text-lg mb-1">
+                          David Campbell
+                        </p>
+                        <p className="text-gray-400 text-sm font-light">
+                          CEO, Corporate Solutions MENA
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </CarouselItem>
+
+                <CarouselItem key={7} className="pl-6 md:basis-1/2 lg:basis-1/3">
+                  <div className="group h-full">
+                    <div className="bg-gray-900 rounded-xl p-8 h-full shadow-2xl border border-gray-800 transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_25px_50px_-12px_rgba(255,215,0,0.25)] cursor-pointer">
+                      {/* Gold Stars */}
+                      <div className="flex justify-center mb-6">
+                        {[...Array(5)].map((_, i) => (
+                          <Star 
+                            key={i} 
+                            size={20} 
+                            className="text-[#FFD700] fill-[#FFD700] mx-0.5" 
+                          />
+                        ))}
+                      </div>
+
+                      {/* Review Text */}
+                      <blockquote className="text-white text-lg leading-relaxed mb-8 italic font-light min-h-[120px]">
+                        "You can feel the difference even in how our staff carries themselves. When they wear something that fits well and looks great, their confidence goes up, and it shows in customer interactions."
+                      </blockquote>
+
+                      {/* Gold Divider */}
+                      <div className="w-12 h-0.5 bg-[#FFD700] mx-auto mb-6"></div>
+
+                      {/* Author Info */}
+                      <div className="text-center">
+                        <p className="text-white font-semibold text-lg mb-1">
+                          Fatima Al-Harbi
+                        </p>
+                        <p className="text-gray-400 text-sm font-light">
+                          Operations Supervisor, Luxury Spa Group UAE
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </CarouselItem>
+              </CarouselContent>
+            </Carousel>
+          </div>
+
+          {/* Bottom accent */}
+          <div className="flex justify-center mt-16">
+            <div className="w-32 h-0.5 bg-gradient-to-r from-transparent via-[#FFD700] to-transparent"></div>
           </div>
         </div>
       </section>
