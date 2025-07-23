@@ -580,13 +580,13 @@ const LandingPage3 = () => {
               <p className="text-lg sm:text-xl text-gray-300">Craftsmanship that speaks for your brand</p>
             </div>
             
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-16 items-start">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-start">
               {/* Left side - Quality visuals with real product evidence */}
-              <div className="space-y-6 sm:space-y-8">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+              <div className="space-y-4 sm:space-y-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                   {/* Premium Fabrics */}
-                  <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 sm:p-6 hover:bg-white/10 transition-all duration-300 group">
-                    <div className="aspect-[4/3] mb-3 sm:mb-4 overflow-hidden rounded-xl">
+                  <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 sm:p-5 hover:bg-white/10 transition-all duration-300 group">
+                    <div className="aspect-[4/3] mb-3 overflow-hidden rounded-xl">
                       <img 
                         src={images.premiumFabricTexture} 
                         alt="Premium fabric texture close-up" 
@@ -598,8 +598,8 @@ const LandingPage3 = () => {
                   </div>
                   
                   {/* Detail Finishing */}
-                  <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 sm:p-6 hover:bg-white/10 transition-all duration-300 group">
-                    <div className="aspect-[4/3] mb-3 sm:mb-4 overflow-hidden rounded-xl">
+                  <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 sm:p-5 hover:bg-white/10 transition-all duration-300 group">
+                    <div className="aspect-[4/3] mb-3 overflow-hidden rounded-xl">
                       <img 
                         src={images.sewingMachineProduction} 
                         alt="Industrial sewing machine precision" 
@@ -611,8 +611,8 @@ const LandingPage3 = () => {
                   </div>
                   
                   {/* Expert Stitching */}
-                  <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 sm:p-6 hover:bg-white/10 transition-all duration-300 group">
-                    <div className="aspect-[4/3] mb-3 sm:mb-4 overflow-hidden rounded-xl">
+                  <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 sm:p-5 hover:bg-white/10 transition-all duration-300 group">
+                    <div className="aspect-[4/3] mb-3 overflow-hidden rounded-xl">
                       <img 
                         src={images.expertStitching} 
                         alt="Expert stitching detail" 
@@ -624,8 +624,8 @@ const LandingPage3 = () => {
                   </div>
                   
                   {/* Wash-Tested */}
-                  <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 sm:p-6 hover:bg-white/10 transition-all duration-300 group">
-                    <div className="aspect-[4/3] mb-3 sm:mb-4 overflow-hidden rounded-xl">
+                  <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 sm:p-5 hover:bg-white/10 transition-all duration-300 group">
+                    <div className="aspect-[4/3] mb-3 overflow-hidden rounded-xl">
                       <img 
                         src={images.washTest} 
                         alt="Wash testing for durability" 
@@ -637,8 +637,8 @@ const LandingPage3 = () => {
                   </div>
                   
                   {/* Perfect Fit Cutting */}
-                  <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 sm:p-6 hover:bg-white/10 transition-all duration-300 group">
-                    <div className="aspect-[4/3] mb-3 sm:mb-4 overflow-hidden rounded-xl">
+                  <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 sm:p-5 hover:bg-white/10 transition-all duration-300 group">
+                    <div className="aspect-[4/3] mb-3 overflow-hidden rounded-xl">
                       <img 
                         src={images.precisionCutting} 
                         alt="Precision pattern cutting" 
@@ -650,8 +650,8 @@ const LandingPage3 = () => {
                   </div>
                   
                   {/* Color Stability */}
-                  <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 sm:p-6 hover:bg-white/10 transition-all duration-300 group">
-                    <div className="aspect-[4/3] mb-3 sm:mb-4 overflow-hidden rounded-xl">
+                  <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 sm:p-5 hover:bg-white/10 transition-all duration-300 group">
+                    <div className="aspect-[4/3] mb-3 overflow-hidden rounded-xl">
                       <img 
                         src={images.colorSamples} 
                         alt="Color stability samples" 
@@ -666,17 +666,19 @@ const LandingPage3 = () => {
               
               {/* Right side - Master craftsmanship hero image with additional content */}
               <div className="relative flex flex-col justify-between h-full">
-                {/* Stars decoration */}
-                <div className="flex justify-center mb-4 sm:mb-6 space-x-2">
-                  <div className="w-1 h-1 bg-white/60 rounded-full animate-pulse"></div>
-                  <div className="w-1.5 h-1.5 bg-white/80 rounded-full animate-pulse" style={{animationDelay: '0.5s'}}></div>
-                  <div className="w-1 h-1 bg-white/60 rounded-full animate-pulse" style={{animationDelay: '1s'}}></div>
+                {/* Gold stars decoration */}
+                <div className="flex justify-center mb-6 sm:mb-8 space-x-3">
+                  <div className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></div>
+                  <div className="w-2.5 h-2.5 bg-yellow-300 rounded-full animate-pulse" style={{animationDelay: '0.5s'}}></div>
+                  <div className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse" style={{animationDelay: '1s'}}></div>
+                  <div className="w-1.5 h-1.5 bg-yellow-500 rounded-full animate-pulse" style={{animationDelay: '1.5s'}}></div>
+                  <div className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse" style={{animationDelay: '2s'}}></div>
                 </div>
                 
-                <div className="relative flex justify-center mb-6 sm:mb-8">
+                <div className="relative flex justify-center mb-4 sm:mb-6">
                   <div className="relative">
                     <div className="absolute inset-0 bg-white/10 rounded-full blur-3xl opacity-50"></div>
-                    <div className="relative w-80 sm:w-96 h-96 sm:h-[450px] rounded-3xl shadow-2xl overflow-hidden group hover:scale-105 transition-transform duration-500">
+                    <div className="relative w-80 sm:w-96 h-[420px] sm:h-[520px] rounded-3xl shadow-2xl overflow-hidden group hover:scale-105 transition-transform duration-500">
                       <img 
                         src={images.masterCraftsman} 
                         alt="Master craftsman at work" 
@@ -706,14 +708,14 @@ const LandingPage3 = () => {
                 </div>
                 
                 {/* Quality guarantee footer to fill bottom space */}
-                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 sm:p-8 text-center">
-                  <div className="flex items-center justify-center mb-4">
-                    <div className="w-8 h-0.5 bg-gradient-to-r from-transparent to-white/30 mr-3"></div>
-                    <Award className="w-6 h-6 text-white/80" />
-                    <div className="w-8 h-0.5 bg-gradient-to-l from-transparent to-white/30 ml-3"></div>
+                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 sm:p-6 text-center">
+                  <div className="flex items-center justify-center mb-3">
+                    <div className="w-6 h-0.5 bg-gradient-to-r from-transparent to-white/30 mr-2"></div>
+                    <Award className="w-5 h-5 text-white/80" />
+                    <div className="w-6 h-0.5 bg-gradient-to-l from-transparent to-white/30 ml-2"></div>
                   </div>
-                  <h4 className="text-lg sm:text-xl font-bold mb-2 text-white">Quality Guarantee</h4>
-                  <p className="text-gray-400 text-sm sm:text-base">Every uniform crafted to perfection with our 45+ years of expertise</p>
+                  <h4 className="text-base sm:text-lg font-bold mb-2 text-white">Quality Guarantee</h4>
+                  <p className="text-gray-400 text-xs sm:text-sm">Every uniform crafted to perfection with our 45+ years of expertise</p>
                 </div>
               </div>
             </div>
