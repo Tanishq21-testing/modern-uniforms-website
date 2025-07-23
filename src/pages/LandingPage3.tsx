@@ -33,11 +33,11 @@ const LandingPage3 = () => {
 
   // Showcase images for 3D carousel
   const showcaseImages = [
-    { src: images.Jonesapron1, alt: "Resturant uniforms" },
-    { src: images.schoolHoodie, alt: "Custom hoodies" },
-    { src: images.JCProducts, alt: "School uniforms" },
-    { src: images.Chefcaps2, alt: "Chef Uniforms" },
-    { src: images.Tshirt2, alt: "Custom T-shirts" },
+    { src: images.uniformServices, alt: "Chef uniforms" },
+    { src: images.Hoodieimage, alt: "Custom hoodies" },
+    { src: images.schoolHoodie, alt: "School uniforms" },
+    { src: images.JCProducts, alt: "Hospitality staff" },
+    { src: images.Tshirt, alt: "Custom T-shirts" },
     { src: images.Varsityjacket, alt: "Varsity jackets" }
   ];
 
@@ -90,8 +90,8 @@ const LandingPage3 = () => {
                           className="rounded-xl sm:rounded-2xl w-full h-28 sm:h-32 object-cover shadow-2xl transform transition-all duration-500 hover:scale-105 hover:shadow-[0_0_30px_rgba(0,0,0,0.3)]" 
                         />
                         <img 
-                          src={images.Tshirt2} 
-                          alt="Tshirt 2" 
+                          src={images.Hoodieimage} 
+                          alt="Custom hoodies" 
                           className="rounded-xl sm:rounded-2xl w-full h-20 sm:h-24 object-cover shadow-xl transform transition-all duration-500 hover:scale-105 hover:shadow-[0_0_20px_rgba(0,0,0,0.2)]" 
                         />
                       </div>
@@ -102,8 +102,8 @@ const LandingPage3 = () => {
                           className="rounded-xl sm:rounded-2xl w-full h-20 sm:h-24 object-cover shadow-xl transform transition-all duration-500 hover:scale-105 hover:shadow-[0_0_20px_rgba(0,0,0,0.2)]" 
                         />
                         <img 
-                          src={images.Jonesapron1} 
-                          alt="Jones the Grocer apron" 
+                          src={images.JCProducts} 
+                          alt="Hospitality staff" 
                           className="rounded-xl sm:rounded-2xl w-full h-28 sm:h-32 object-cover shadow-2xl transform transition-all duration-500 hover:scale-105 hover:shadow-[0_0_30px_rgba(0,0,0,0.3)]" 
                         />
                       </div>
@@ -419,7 +419,7 @@ const LandingPage3 = () => {
               <div className="flex justify-center">
                 <div className="relative max-w-md mx-auto">
                   <img 
-                    src={images.Tshirt2} 
+                    src={images.Tshirt} 
                     alt="Customizable uniform" 
                     className="w-full max-w-lg rounded-3xl shadow-2xl transform hover:scale-105 transition-transform duration-500" 
                   />
@@ -543,7 +543,7 @@ const LandingPage3 = () => {
               </div>
               
               <div className="bg-white rounded-3xl shadow-xl p-6 sm:p-8 text-center hover:shadow-2xl hover:scale-105 transition-all duration-300 border border-gray-100">
-                <img src={images.Tshirt2} alt="T-Shirts" className="w-full h-32 sm:h-48 object-cover rounded-2xl mb-4 sm:mb-6" />
+                <img src={images.Tshirt} alt="T-Shirts" className="w-full h-32 sm:h-48 object-cover rounded-2xl mb-4 sm:mb-6" />
                 <h3 className="text-xl sm:text-2xl font-bold mb-2">T-SHIRTS</h3>
                 <div className="text-xs sm:text-sm text-gray-500 mb-2">FROM</div>
                 <div className="text-3xl sm:text-4xl font-bold text-red-600 mb-4">50 AED</div>
