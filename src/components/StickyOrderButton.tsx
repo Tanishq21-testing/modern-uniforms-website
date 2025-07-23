@@ -4,45 +4,58 @@ import { ShoppingBag, ArrowRight } from 'lucide-react';
 const StickyOrderButton = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [hasScrolled, setHasScrolled] = useState(false);
+  const [delayTimeout, setDelayTimeout] = useState<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
       
+      // Clear any existing timeout
+      if (delayTimeout) {
+        clearTimeout(delayTimeout);
+        setDelayTimeout(null);
+      }
+      
       // Show after scrolling past hero section (approximately 800px)
       if (scrollY > 800) {
         setHasScrolled(true);
+        
+        // Check if any CTA buttons or the consultation form are currently visible
+        const ctaButtons = document.querySelectorAll('[data-cta-button]');
+        const consultationForm = document.querySelector('[data-consultation-form]');
+        let anyCtaOrFormVisible = false;
+
+        // Check CTA buttons
+        ctaButtons.forEach((button) => {
+          const rect = button.getBoundingClientRect();
+          const isInViewport = rect.top >= 0 && rect.bottom <= window.innerHeight;
+          if (isInViewport) {
+            anyCtaOrFormVisible = true;
+          }
+        });
+
+        // Check consultation form
+        if (consultationForm) {
+          const rect = consultationForm.getBoundingClientRect();
+          const isInViewport = rect.top < window.innerHeight && rect.bottom >= 0;
+          if (isInViewport) {
+            anyCtaOrFormVisible = true;
+          }
+        }
+
+        // If no CTA or form is visible, set delay before showing button
+        if (!anyCtaOrFormVisible) {
+          const timeout = setTimeout(() => {
+            setIsVisible(true);
+          }, 2500); // 2.5 second delay
+          setDelayTimeout(timeout);
+        } else {
+          setIsVisible(false);
+        }
       } else {
         setHasScrolled(false);
         setIsVisible(false);
-        return;
       }
-
-      // Check if any CTA buttons or the consultation form are currently visible
-      const ctaButtons = document.querySelectorAll('[data-cta-button]');
-      const consultationForm = document.querySelector('[data-consultation-form]');
-      let anyCtaOrFormVisible = false;
-
-      // Check CTA buttons
-      ctaButtons.forEach((button) => {
-        const rect = button.getBoundingClientRect();
-        const isInViewport = rect.top >= 0 && rect.bottom <= window.innerHeight;
-        if (isInViewport) {
-          anyCtaOrFormVisible = true;
-        }
-      });
-
-      // Check consultation form
-      if (consultationForm) {
-        const rect = consultationForm.getBoundingClientRect();
-        const isInViewport = rect.top < window.innerHeight && rect.bottom >= 0;
-        if (isInViewport) {
-          anyCtaOrFormVisible = true;
-        }
-      }
-
-      // Show sticky button only if no CTA or form is visible and user has scrolled
-      setIsVisible(hasScrolled && !anyCtaOrFormVisible);
     };
 
     // Initial check
@@ -64,8 +77,11 @@ const StickyOrderButton = () => {
     
     return () => {
       window.removeEventListener('scroll', throttledScroll);
+      if (delayTimeout) {
+        clearTimeout(delayTimeout);
+      }
     };
-  }, [hasScrolled]);
+  }, [delayTimeout]);
 
   const handleClick = () => {
     // Scroll to consultation form section
