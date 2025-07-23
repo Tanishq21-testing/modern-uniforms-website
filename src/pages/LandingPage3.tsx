@@ -204,10 +204,10 @@ const LandingPage3 = () => {
                     />
                   </div>
                   
-                  {/* Clean text block under pictures */}
-                  <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 text-center">
-                    <div className="text-sm font-bold text-gray-700">50+ Years Experience</div>
-                    <div className="text-xs text-gray-500 font-medium mt-1">GCC READY - Dubai Based</div>
+                  {/* Enhanced text block with better positioning */}
+                  <div className="absolute -bottom-10 left-1/2 transform -translate-x-1/2 text-center">
+                    <div className="text-base font-bold text-gray-800">50+ Years Experience</div>
+                    <div className="text-xs text-gray-500 font-normal mt-1">GCC READY - Dubai Based</div>
                   </div>
                 </div>
               </div>
