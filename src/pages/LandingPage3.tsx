@@ -910,6 +910,94 @@ const LandingPage3 = () => {
         </div>
       </section>
 
+      {/* 1️⃣1️⃣ Why UniformConnect? Section - Rich Marketing Points */}
+      <section className="py-16 sm:py-20 bg-black text-white relative overflow-hidden">
+        <div className="container mx-auto px-4">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-12 sm:mb-16">
+              <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6">Why UniformConnect?</h2>
+              <p className="text-lg sm:text-xl text-gray-300">Now that you already know</p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-6">
+              {/* High Satisfaction Rate */}
+              <div className="text-center group">
+                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 sm:p-6 hover:bg-white/20 transition-all duration-300 border border-white/10 h-80 flex flex-col justify-center">
+                  <div className="flex-1 flex flex-col justify-center space-y-4">
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                      <Check className="w-6 h-6 sm:w-8 sm:h-8 text-black font-bold" />
+                    </div>
+                    <h3 className="text-lg sm:text-xl font-bold text-yellow-400 leading-tight">High<br />Satisfaction<br />Rate</h3>
+                    <p className="text-gray-300 text-xs sm:text-sm leading-relaxed px-1">
+                      100% Client satisfaction from over 200+ companies
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Tailored to Your Brand */}
+              <div className="text-center group">
+                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 sm:p-6 hover:bg-white/20 transition-all duration-300 border border-white/10 h-80 flex flex-col justify-center">
+                  <div className="flex-1 flex flex-col justify-center space-y-4">
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                      <Palette className="w-6 h-6 sm:w-8 sm:h-8 text-black" />
+                    </div>
+                    <h3 className="text-lg sm:text-xl font-bold text-yellow-400 leading-tight">Tailored<br />to Your<br />Brand</h3>
+                    <p className="text-gray-300 text-xs sm:text-sm leading-relaxed px-1">
+                      Every uniform is built with your identity in mind
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Seamless Reorders */}
+              <div className="text-center group">
+                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 sm:p-6 hover:bg-white/20 transition-all duration-300 border border-white/10 h-80 flex flex-col justify-center">
+                  <div className="flex-1 flex flex-col justify-center space-y-4">
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                      <RefreshCw className="w-6 h-6 sm:w-8 sm:h-8 text-black" />
+                    </div>
+                    <h3 className="text-lg sm:text-xl font-bold text-yellow-400 leading-tight">Seamless<br />Reorders</h3>
+                    <p className="text-gray-300 text-xs sm:text-sm leading-relaxed px-1">
+                      &lt;24h reorder processing, always here for consistency
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* One Dedicated Contact */}
+              <div className="text-center group">
+                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 sm:p-6 hover:bg-white/20 transition-all duration-300 border border-white/10 h-80 flex flex-col justify-center">
+                  <div className="flex-1 flex flex-col justify-center space-y-4">
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                      <MessageCircle className="w-6 h-6 sm:w-8 sm:h-8 text-black" />
+                    </div>
+                    <h3 className="text-lg sm:text-xl font-bold text-yellow-400 leading-tight">One<br />Dedicated<br />Contact</h3>
+                    <p className="text-gray-300 text-xs sm:text-sm leading-relaxed px-1">
+                      You'll never chase support. You have your Own Account manager
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Trusted by Leaders */}
+              <div className="text-center group">
+                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 sm:p-6 hover:bg-white/20 transition-all duration-300 border border-white/10 h-80 flex flex-col justify-center">
+                  <div className="flex-1 flex flex-col justify-center space-y-4">
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                      <Shield className="w-6 h-6 sm:w-8 sm:h-8 text-black" />
+                    </div>
+                    <h3 className="text-lg sm:text-xl font-bold text-yellow-400 leading-tight">Trusted<br />by<br />Leaders</h3>
+                    <p className="text-gray-300 text-xs sm:text-sm leading-relaxed px-1">
+                      Hilton, Radisson, Raffles, Gems and more
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* 1️⃣2️⃣ Guarantee Section - Seamless Black Background */}
       <section className="py-16 sm:py-20 bg-black text-white relative overflow-hidden">
