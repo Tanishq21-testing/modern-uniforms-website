@@ -579,64 +579,112 @@ const LandingPage3 = () => {
               <p className="text-lg sm:text-xl text-gray-300">Craftsmanship that speaks for your brand</p>
             </div>
             
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-16 items-center">
-              {/* Left side - Quality icons */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-16 items-start">
+              {/* Left side - Quality visuals with real product evidence */}
               <div className="space-y-6 sm:space-y-8">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-                  <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 sm:p-6 text-center hover:bg-white/10 transition-all duration-300 group">
-                    <Sparkles className="w-10 sm:w-12 h-10 sm:h-12 text-blue-400 mx-auto mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-300" />
-                    <h3 className="text-base sm:text-lg font-bold mb-2">Premium Fabrics</h3>
+                  {/* Premium Fabrics */}
+                  <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 sm:p-6 hover:bg-white/10 transition-all duration-300 group">
+                    <div className="aspect-[4/3] mb-3 sm:mb-4 overflow-hidden rounded-xl">
+                      <img 
+                        src={images.premiumFabricTexture} 
+                        alt="Premium fabric texture close-up" 
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      />
+                    </div>
+                    <h3 className="text-base sm:text-lg font-bold mb-2 text-blue-400">Premium Fabrics</h3>
                     <p className="text-gray-400 text-xs sm:text-sm">Highest quality materials sourced globally</p>
                   </div>
                   
-                  <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 sm:p-6 text-center hover:bg-white/10 transition-all duration-300 group">
-                    <Target className="w-10 sm:w-12 h-10 sm:h-12 text-green-400 mx-auto mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-300" />
-                    <h3 className="text-base sm:text-lg font-bold mb-2">Detail Finishing</h3>
+                  {/* Detail Finishing */}
+                  <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 sm:p-6 hover:bg-white/10 transition-all duration-300 group">
+                    <div className="aspect-[4/3] mb-3 sm:mb-4 overflow-hidden rounded-xl">
+                      <img 
+                        src={images.sewingMachineProduction} 
+                        alt="Industrial sewing machine precision" 
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      />
+                    </div>
+                    <h3 className="text-base sm:text-lg font-bold mb-2 text-green-400">Detail Finishing</h3>
                     <p className="text-gray-400 text-xs sm:text-sm">Precision in every stitch and seam</p>
                   </div>
                   
-                  <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 sm:p-6 text-center hover:bg-white/10 transition-all duration-300 group">
-                    <Scissors className="w-10 sm:w-12 h-10 sm:h-12 text-red-400 mx-auto mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-300" />
-                    <h3 className="text-base sm:text-lg font-bold mb-2">Expert Stitching</h3>
+                  {/* Expert Stitching */}
+                  <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 sm:p-6 hover:bg-white/10 transition-all duration-300 group">
+                    <div className="aspect-[4/3] mb-3 sm:mb-4 overflow-hidden rounded-xl">
+                      <img 
+                        src={images.expertStitching} 
+                        alt="Expert stitching detail" 
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      />
+                    </div>
+                    <h3 className="text-base sm:text-lg font-bold mb-2 text-red-400">Expert Stitching</h3>
                     <p className="text-gray-400 text-xs sm:text-sm">Master craftsmen with decades of experience</p>
                   </div>
                   
-                  <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 sm:p-6 text-center hover:bg-white/10 transition-all duration-300 group">
-                    <Shield className="w-10 sm:w-12 h-10 sm:h-12 text-purple-400 mx-auto mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-300" />
-                    <h3 className="text-base sm:text-lg font-bold mb-2">Wash-Tested</h3>
+                  {/* Wash-Tested */}
+                  <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 sm:p-6 hover:bg-white/10 transition-all duration-300 group">
+                    <div className="aspect-[4/3] mb-3 sm:mb-4 overflow-hidden rounded-xl">
+                      <img 
+                        src={images.washTest} 
+                        alt="Wash testing for durability" 
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      />
+                    </div>
+                    <h3 className="text-base sm:text-lg font-bold mb-2 text-purple-400">Wash-Tested</h3>
                     <p className="text-gray-400 text-xs sm:text-sm">Durability tested through 100+ wash cycles</p>
                   </div>
                   
-                  <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 sm:p-6 text-center hover:bg-white/10 transition-all duration-300 group">
-                    <Zap className="w-10 sm:w-12 h-10 sm:h-12 text-yellow-400 mx-auto mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-300" />
-                    <h3 className="text-base sm:text-lg font-bold mb-2">Perfect Fit Cutting</h3>
+                  {/* Perfect Fit Cutting */}
+                  <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 sm:p-6 hover:bg-white/10 transition-all duration-300 group">
+                    <div className="aspect-[4/3] mb-3 sm:mb-4 overflow-hidden rounded-xl">
+                      <img 
+                        src={images.precisionCutting} 
+                        alt="Precision pattern cutting" 
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      />
+                    </div>
+                    <h3 className="text-base sm:text-lg font-bold mb-2 text-yellow-400">Perfect Fit Cutting</h3>
                     <p className="text-gray-400 text-xs sm:text-sm">Tailored patterns for optimal comfort</p>
                   </div>
                   
-                  <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 sm:p-6 text-center hover:bg-white/10 transition-all duration-300 group">
-                    <Palette className="w-10 sm:w-12 h-10 sm:h-12 text-pink-400 mx-auto mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-300" />
-                    <h3 className="text-base sm:text-lg font-bold mb-2">Color Stability</h3>
+                  {/* Color Stability */}
+                  <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 sm:p-6 hover:bg-white/10 transition-all duration-300 group">
+                    <div className="aspect-[4/3] mb-3 sm:mb-4 overflow-hidden rounded-xl">
+                      <img 
+                        src={images.colorSamples} 
+                        alt="Color stability samples" 
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      />
+                    </div>
+                    <h3 className="text-base sm:text-lg font-bold mb-2 text-pink-400">Color Stability</h3>
                     <p className="text-gray-400 text-xs sm:text-sm">Fade-resistant colors that last</p>
                   </div>
                 </div>
               </div>
               
-              {/* Right side - Premium craftsmanship visual */}
+              {/* Right side - Master craftsmanship hero image */}
               <div className="relative flex justify-center">
                 <div className="relative">
                   <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 via-purple-600/20 to-red-600/20 rounded-full blur-3xl animate-pulse"></div>
-                  <div className="relative w-80 sm:w-96 h-80 sm:h-96 bg-gradient-to-br from-gray-800 to-gray-900 rounded-3xl shadow-2xl overflow-hidden group hover:scale-105 transition-transform duration-500">
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="text-center text-white p-6 sm:p-8">
-                        <Scissors className="w-16 sm:w-20 h-16 sm:h-20 mx-auto mb-3 sm:mb-4 text-blue-400" />
+                  <div className="relative w-80 sm:w-96 h-96 sm:h-[500px] rounded-3xl shadow-2xl overflow-hidden group hover:scale-105 transition-transform duration-500">
+                    <img 
+                      src={images.masterCraftsman} 
+                      alt="Master craftsman at work" 
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    />
+                    
+                    {/* Overlay with craftsmanship details */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end">
+                      <div className="p-4 sm:p-6 text-center w-full text-white">
                         <h3 className="text-xl sm:text-2xl font-bold mb-2">Master Craftsmanship</h3>
-                        <p className="text-gray-300 text-sm sm:text-base">Precision in every stitch</p>
-                        <div className="mt-4 sm:mt-6 grid grid-cols-2 gap-3 sm:gap-4 text-xs sm:text-sm">
-                          <div className="bg-white/10 rounded-lg p-2 sm:p-3">
+                        <p className="text-gray-300 text-sm sm:text-base mb-4">Precision in every stitch</p>
+                        <div className="grid grid-cols-2 gap-3 sm:gap-4 text-xs sm:text-sm">
+                          <div className="bg-white/10 rounded-lg p-2 sm:p-3 backdrop-blur-sm">
                             <Factory className="w-5 sm:w-6 h-5 sm:h-6 mx-auto mb-1 sm:mb-2 text-green-400" />
                             <span>Premium Factory</span>
                           </div>
-                          <div className="bg-white/10 rounded-lg p-2 sm:p-3">
+                          <div className="bg-white/10 rounded-lg p-2 sm:p-3 backdrop-blur-sm">
                             <Award className="w-5 sm:w-6 h-5 sm:h-6 mx-auto mb-1 sm:mb-2 text-yellow-400" />
                             <span>Quality Certified</span>
                           </div>
@@ -644,7 +692,7 @@ const LandingPage3 = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-white/20 rounded-3xl"></div>
+                  <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-white/20 rounded-3xl pointer-events-none"></div>
                 </div>
               </div>
             </div>

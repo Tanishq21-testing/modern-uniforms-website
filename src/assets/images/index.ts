@@ -1,4 +1,13 @@
 
+// Import quality craftsmanship images
+import premiumFabricTexture from './premium-fabric-texture.jpg';
+import expertStitching from './expert-stitching.jpg';
+import sewingMachineProduction from './sewing-machine-production.jpg';
+import colorSamples from './color-samples.jpg';
+import washTest from './wash-test.jpg';
+import precisionCutting from './precision-cutting.jpg';
+import masterCraftsman from './master-craftsman.jpg';
+
 // Export all images from this file for easy imports
 export const images = {
   // Logos
@@ -53,6 +62,15 @@ Varsityjacket: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/publi
 Hoodieimage: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/Products/98677ED1-800F-446D-8043-37459187D776.JPG',
 Sweater: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/Products/Screenshot%202025-04-21%20at%206.24.54%20PM.png',
 Tshirt: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/Products/tshirt.jpeg',
+
+// Quality craftsmanship images
+premiumFabricTexture,
+expertStitching,
+sewingMachineProduction,
+colorSamples,
+washTest,
+precisionCutting,
+masterCraftsman,
 };
 
 
