@@ -70,7 +70,7 @@ Chefcaps1: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/un
 Chefcaps2: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/types%20of%20products/Chef%20Caps%202.jpg',
 Jonesapron1: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/types%20of%20products/Jones%20the%20Grocer%20-%20Apron%202%20.png',
 Jonescoat1: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/types%20of%20products/Jones%20the%20grocer%20-%20Apron.jpg',
-Sweater: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/types%20of%20products/sweater%20product%20image.jpg',
+SweaterProduct: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/types%20of%20products/sweater%20product%20image.jpg',
 
 // Quality craftsmanship images
 premiumFabricTexture,

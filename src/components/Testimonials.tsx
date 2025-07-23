@@ -1,134 +1,133 @@
-
-import { useEffect, useState, useRef } from 'react';
-import { ArrowLeft, ArrowRight, Star, Building } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { useRef } from 'react';
+import { Star } from 'lucide-react';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from '@/components/ui/carousel';
 
 const Testimonials = () => {
   const testimonials = [
     {
-      name: "Sarah Johnson",
-      position: "Head of Operations, Hilton Hotel Group UAE",
-      text: "As a hotel chain with over 200 staff members across multiple properties, consistency is critical. UniformConnect delivered perfectly matched uniforms for all our locations, maintaining our brand standards while accommodating different regional requirements.",
-      rating: 5,
-      organization: "Hospitality Chain"
+      name: "Khaled Bin Rashid",
+      position: "General Manager, Hilton Regional GCC",
+      text: "We've worked with multiple suppliers in the past, including some big international names, but none matched the precision and reliability of UniformConnect. Even our regional Hilton partners noticed the upgrade immediately—it's on another level.",
+      rating: 5
     },
     {
-      name: "Ahmed Al Falasi",
-      position: "Director of Corporate Services, Dubai Golf",
-      text: "Managing uniforms for 120 staff across our golf clubs used to be a logistical challenge. UniformConnect's account management system and quality control processes have simplified our uniform program while elevating our professional appearance.",
-      rating: 5,
-      organization: "Sports & Recreation"
+      name: "Lara Thompson",
+      position: "Event Director, Luxury Events GCC",
+      text: "At first, I hesitated because I thought a premium service like this would be beyond our budget. But once we saw the durability and how it saved us from constant reordering, it was clear—this is an investment, not an expense.",
+      rating: 5
+    },
+    {
+      name: "Ahmed Hassan",
+      position: "Operations Director, High-End Restaurant Chain",
+      text: "From the very first call, they understood exactly what we wanted without endless back-and-forth. It felt like they were part of our own team. The process was so seamless, I barely had to follow up.",
+      rating: 5
+    },
+    {
+      name: "Sarah Al-Mansouri",
+      position: "Hotel Manager, Luxury Resort Dubai",
+      text: "We constantly get compliments from clients about our team's new look. It feels like we're setting a new standard in the industry. Honestly, it's the little details that make us stand out—and UniformConnect delivered all of them.",
+      rating: 5
+    },
+    {
+      name: "Omar El-Khatib",
+      position: "Managing Partner, Corporate Towers Dubai",
+      text: "We had an urgent launch event and needed uniforms in record time—without compromising quality. UniformConnect not only delivered on time but exceeded expectations. They proved premium can also be fast.",
+      rating: 5
     },
     {
       name: "Maria Rodriguez",
-      position: "Executive Principal, Fairgreen International School Network",
-      text: "With three campuses and over 150 staff members, we needed a uniform partner who understood our educational environment and brand values. UniformConnect provided a solution that works for our administrative staff, teachers, and support personnel.",
-      rating: 5,
-      organization: "Educational Institution"
+      position: "HR Director, Raffles Corporate Office",
+      text: "We tried working with global suppliers before, but the long lead times and lack of personal attention were frustrating. With UniformConnect, it's the opposite—fast responses, tailored designs, and actual people who care about the result.",
+      rating: 5
+    },
+    {
+      name: "David Campbell",
+      position: "CEO, Corporate Solutions MENA",
+      text: "It's rare to find a supplier who thinks beyond just the order. They checked in even after delivery to make sure everything was perfect. That's why they're not just a supplier for us—they're a long-term partner.",
+      rating: 5
+    },
+    {
+      name: "Fatima Al-Harbi",
+      position: "Operations Supervisor, Luxury Spa Group UAE",
+      text: "You can feel the difference even in how our staff carries themselves. When they wear something that fits well and looks great, their confidence goes up, and it shows in customer interactions.",
+      rating: 5
     },
   ];
 
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false);
-  const testimonialRef = useRef<HTMLDivElement>(null);
-
-  const nextTestimonial = () => {
-    if (isAnimating) return;
-    setIsAnimating(true);
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
-    setTimeout(() => setIsAnimating(false), 500);
-  };
-
-  const prevTestimonial = () => {
-    if (isAnimating) return;
-    setIsAnimating(true);
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + testimonials.length) % testimonials.length);
-    setTimeout(() => setIsAnimating(false), 500);
-  };
-
-  useEffect(() => {
-    if (testimonialRef.current) {
-      testimonialRef.current.classList.remove('animate-fade-in');
-      void testimonialRef.current.offsetWidth; // Force reflow
-      testimonialRef.current.classList.add('animate-fade-in');
-    }
-  }, [currentIndex]);
-
   return (
-    <section className="py-20 bg-gray-50 relative overflow-hidden">
-      {/* Decorative elements */}
-      <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-white to-transparent"></div>
-      <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-white to-transparent"></div>
-      
+    <section className="py-24 bg-black relative overflow-hidden">
       <div className="container mx-auto px-4">
-        <div className="text-center max-w-3xl mx-auto mb-16 opacity-0 animate-fade-in">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Trusted by Enterprise Clients</h2>
-          <div className="w-20 h-1 bg-brand-blue mx-auto mb-6"></div>
-          <p className="text-gray-600 text-lg">
-            See how we've helped organizations with 50+ employees solve their uniform challenges with tailored solutions.
+        {/* Header */}
+        <div className="text-center max-w-4xl mx-auto mb-20">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
+            Trusted by Industry Leaders
+          </h2>
+          <div className="w-24 h-1 bg-gradient-to-r from-transparent via-[#FFD700] to-transparent mx-auto mb-8"></div>
+          <p className="text-xl text-gray-300 font-light">
+            What our most exclusive partners say about the UniformConnect experience
           </p>
         </div>
-        
-        <div className="max-w-4xl mx-auto">
-          <div 
-            ref={testimonialRef} 
-            className="bg-white rounded-xl shadow-xl p-8 md:p-12 text-center animate-fade-in"
+
+        {/* Testimonials Carousel */}
+        <div className="max-w-7xl mx-auto">
+          <Carousel
+            opts={{
+              align: "start",
+              loop: true,
+              dragFree: true,
+              containScroll: "trimSnaps",
+              slidesToScroll: 1,
+            }}
+            className="w-full"
           >
-            <div className="inline-flex items-center justify-center bg-gray-100 p-3 rounded-full mb-6">
-              <Building size={28} className="text-brand-blue" />
-              <span className="ml-2 font-semibold text-gray-700">{testimonials[currentIndex].organization}</span>
-            </div>
-            
-            <div className="flex justify-center mb-6">
-              {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
-                <Star key={i} size={24} className="text-yellow-400 fill-yellow-400" />
+            <CarouselContent className="-ml-6">
+              {testimonials.map((testimonial, index) => (
+                <CarouselItem key={index} className="pl-6 md:basis-1/2 lg:basis-1/3">
+                  <div className="group h-full">
+                    <div className="bg-gray-900 rounded-xl p-8 h-full shadow-2xl border border-gray-800 transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_25px_50px_-12px_rgba(255,215,0,0.25)] cursor-pointer">
+                      {/* Gold Stars */}
+                      <div className="flex justify-center mb-6">
+                        {[...Array(testimonial.rating)].map((_, i) => (
+                          <Star 
+                            key={i} 
+                            size={20} 
+                            className="text-[#FFD700] fill-[#FFD700] mx-0.5" 
+                          />
+                        ))}
+                      </div>
+
+                      {/* Review Text */}
+                      <blockquote className="text-white text-lg leading-relaxed mb-8 italic font-light min-h-[120px]">
+                        "{testimonial.text}"
+                      </blockquote>
+
+                      {/* Gold Divider */}
+                      <div className="w-12 h-0.5 bg-[#FFD700] mx-auto mb-6"></div>
+
+                      {/* Author Info */}
+                      <div className="text-center">
+                        <p className="text-white font-semibold text-lg mb-1">
+                          {testimonial.name}
+                        </p>
+                        <p className="text-gray-400 text-sm font-light">
+                          {testimonial.position}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </CarouselItem>
               ))}
-              {[...Array(5 - testimonials[currentIndex].rating)].map((_, i) => (
-                <Star key={i} size={24} className="text-gray-300" />
-              ))}
-            </div>
-            
-            <blockquote className="text-lg md:text-xl text-gray-700 italic mb-8">
-              "{testimonials[currentIndex].text}"
-            </blockquote>
-            
-            <div className="flex flex-col items-center">
-              <p className="font-semibold text-lg">{testimonials[currentIndex].name}</p>
-              <p className="text-gray-500">{testimonials[currentIndex].position}</p>
-            </div>
-          </div>
-          
-          <div className="flex justify-center mt-8 space-x-4">
-            <Button 
-              variant="outline" 
-              size="icon" 
-              onClick={prevTestimonial}
-              className="rounded-full border-gray-300 text-gray-500 hover:text-brand-blue hover:border-brand-blue"
-              disabled={isAnimating}
-            >
-              <ArrowLeft size={20} />
-            </Button>
-            {testimonials.map((_, index) => (
-              <Button 
-                key={index} 
-                variant="ghost" 
-                size="sm" 
-                onClick={() => setCurrentIndex(index)}
-                className={`w-3 h-3 p-0 rounded-full ${
-                  currentIndex === index ? 'bg-brand-blue' : 'bg-gray-300'
-                }`}
-              />
-            ))}
-            <Button 
-              variant="outline" 
-              size="icon" 
-              onClick={nextTestimonial}
-              className="rounded-full border-gray-300 text-gray-500 hover:text-brand-blue hover:border-brand-blue"
-              disabled={isAnimating}
-            >
-              <ArrowRight size={20} />
-            </Button>
-          </div>
+            </CarouselContent>
+          </Carousel>
+        </div>
+
+        {/* Bottom accent */}
+        <div className="flex justify-center mt-16">
+          <div className="w-32 h-0.5 bg-gradient-to-r from-transparent via-[#FFD700] to-transparent"></div>
         </div>
       </div>
     </section>
