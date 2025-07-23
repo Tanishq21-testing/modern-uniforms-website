@@ -62,6 +62,15 @@ Varsityjacket: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/publi
 Hoodieimage: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/Products/98677ED1-800F-446D-8043-37459187D776.JPG',
 Sweater: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/Products/Screenshot%202025-04-21%20at%206.24.54%20PM.png',
 Tshirt: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/Products/tshirt.jpeg',
+Tshirt2: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/types%20of%20products/Black%20Tshirt.webp',
+HeatPrint: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/types%20of%20products/Untitled%20design.png',
+Embroideryprocess: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/types%20of%20products/Embroidery%20Process.jpg',
+Embossing: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/types%20of%20products/Embossing%20.webp',
+Chefcaps1: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/types%20of%20products/Chef%20Caps.jpeg',
+Chefcaps2: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/types%20of%20products/Chef%20Caps%202.jpg',
+Jonesapron1: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/types%20of%20products/Jones%20the%20Grocer%20-%20Apron%202%20.png',
+Jonescoat1: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/types%20of%20products/Jones%20the%20grocer%20-%20Apron.jpg',
+Sweater: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/types%20of%20products/sweater%20product%20image.jpg',
 
 // Quality craftsmanship images
 premiumFabricTexture,
