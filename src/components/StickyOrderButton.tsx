@@ -66,24 +66,21 @@ const StickyOrderButton = () => {
 
   return (
     <div 
-      className={`fixed bottom-6 right-6 z-50 transition-all duration-500 ease-in-out transform ${
-        isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-4 scale-95 pointer-events-none'
+      className={`fixed bottom-6 right-6 z-50 transition-all duration-700 ease-out transform ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2 pointer-events-none'
       }`}
     >
       <button
         onClick={handleClick}
-        className="group bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-black font-bold py-4 px-6 rounded-full shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300 flex items-center space-x-3 border border-yellow-400/20"
+        className="group bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-black font-bold py-3 px-5 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center space-x-2 border border-yellow-400/20"
       >
-        <ShoppingBag className="w-5 h-5 group-hover:scale-110 transition-transform duration-300" />
-        <span className="text-sm sm:text-base">Order Now</span>
-        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+        <ShoppingBag className="w-4 h-4 transition-transform duration-200" />
+        <span className="text-sm">Order Now</span>
+        <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform duration-200" />
         
-        {/* Animated glow effect */}
-        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-yellow-400 to-yellow-500 opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-lg"></div>
+        {/* Subtle glow effect */}
+        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-yellow-400 to-yellow-500 opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
       </button>
-      
-      {/* Subtle pulse animation */}
-      <div className="absolute inset-0 rounded-full bg-yellow-400 opacity-30 animate-ping"></div>
     </div>
   );
 };
