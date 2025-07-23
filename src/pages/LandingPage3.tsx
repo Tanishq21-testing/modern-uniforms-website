@@ -112,26 +112,68 @@ const LandingPage3 = () => {
                   </div>
                 </div>
 
-                {/* Process Steps - Clean without background box */}
-                <div className="flex flex-col sm:flex-row items-center justify-between space-y-4 sm:space-y-0">
-                  <div className="flex items-center space-x-2">
-                    <div className="w-8 h-8 bg-black rounded-full flex items-center justify-center text-white text-sm font-bold">1</div>
-                    <span className="text-sm font-medium text-gray-700">Initial Consultation</span>
-                  </div>
-                  <ArrowRight className="w-4 h-4 text-gray-400 hidden sm:block" />
-                  <div className="flex items-center space-x-2">
-                    <div className="w-8 h-8 bg-black rounded-full flex items-center justify-center text-white text-sm font-bold">2</div>
-                    <span className="text-sm font-medium text-gray-700">Customisation</span>
-                  </div>
-                  <ArrowRight className="w-4 h-4 text-gray-400 hidden sm:block" />
-                  <div className="flex items-center space-x-2">
-                    <div className="w-8 h-8 bg-black rounded-full flex items-center justify-center text-white text-sm font-bold">3</div>
-                    <span className="text-sm font-medium text-gray-700">Production</span>
-                  </div>
-                  <ArrowRight className="w-4 h-4 text-gray-400 hidden sm:block" />
-                  <div className="flex items-center space-x-2">
-                    <div className="w-8 h-8 bg-black rounded-full flex items-center justify-center text-white text-sm font-bold">4</div>
-                    <span className="text-sm font-medium text-gray-700">Ongoing Program</span>
+                {/* Process Steps - Exact replica of example with flowing arrows */}
+                <div className="relative py-8">
+                  <div className="flex items-center justify-between max-w-lg mx-auto">
+                    {/* Step 1 */}
+                    <div className="flex flex-col items-center text-center">
+                      <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center text-white text-lg font-bold mb-2">1</div>
+                      <span className="text-xs font-medium text-gray-700 max-w-16 leading-tight">Initial Consultation</span>
+                    </div>
+                    
+                    {/* Curved Arrow 1 */}
+                    <div className="flex-1 flex justify-center items-center px-2">
+                      <svg width="60" height="40" viewBox="0 0 60 40" className="text-gray-600">
+                        <path d="M5 20 Q 30 5 55 20" stroke="currentColor" strokeWidth="2" fill="none" markerEnd="url(#arrowhead1)"/>
+                        <defs>
+                          <marker id="arrowhead1" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                            <polygon points="0 0, 10 3.5, 0 7" fill="currentColor" />
+                          </marker>
+                        </defs>
+                      </svg>
+                    </div>
+                    
+                    {/* Step 2 */}
+                    <div className="flex flex-col items-center text-center">
+                      <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center text-white text-lg font-bold mb-2">2</div>
+                      <span className="text-xs font-medium text-gray-700 max-w-16 leading-tight">Customisation</span>
+                    </div>
+                    
+                    {/* Curved Arrow 2 */}
+                    <div className="flex-1 flex justify-center items-center px-2">
+                      <svg width="60" height="40" viewBox="0 0 60 40" className="text-gray-600">
+                        <path d="M5 20 Q 30 35 55 20" stroke="currentColor" strokeWidth="2" fill="none" markerEnd="url(#arrowhead2)"/>
+                        <defs>
+                          <marker id="arrowhead2" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                            <polygon points="0 0, 10 3.5, 0 7" fill="currentColor" />
+                          </marker>
+                        </defs>
+                      </svg>
+                    </div>
+                    
+                    {/* Step 3 */}
+                    <div className="flex flex-col items-center text-center">
+                      <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center text-white text-lg font-bold mb-2">3</div>
+                      <span className="text-xs font-medium text-gray-700 max-w-16 leading-tight">Production</span>
+                    </div>
+                    
+                    {/* Curved Arrow 3 */}
+                    <div className="flex-1 flex justify-center items-center px-2">
+                      <svg width="60" height="40" viewBox="0 0 60 40" className="text-gray-600">
+                        <path d="M5 20 Q 30 5 55 20" stroke="currentColor" strokeWidth="2" fill="none" markerEnd="url(#arrowhead3)"/>
+                        <defs>
+                          <marker id="arrowhead3" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                            <polygon points="0 0, 10 3.5, 0 7" fill="currentColor" />
+                          </marker>
+                        </defs>
+                      </svg>
+                    </div>
+                    
+                    {/* Step 4 */}
+                    <div className="flex flex-col items-center text-center">
+                      <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center text-white text-lg font-bold mb-2">4</div>
+                      <span className="text-xs font-medium text-gray-700 max-w-16 leading-tight">Ongoing Program</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -187,10 +229,9 @@ const LandingPage3 = () => {
                   </button>
                 </div>
                 
-                {/* Lighter supporting text */}
-                <div className="space-y-1">
-                  <p className="text-sm text-gray-500 font-medium">Tailored to your brand identity</p>
-                  <p className="text-sm text-gray-500 font-medium">Free Design Consultation</p>
+                {/* Subtle supporting text on one line */}
+                <div className="text-center">
+                  <p className="text-xs text-gray-500 font-light">Tailored to your brand identity • Free Design Consultation</p>
                 </div>
               </div>
             </div>
