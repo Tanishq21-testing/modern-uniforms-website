@@ -2,9 +2,17 @@
 import { images } from '@/assets/images';
 import { MapPin, Phone, Mail, Clock, Award, Shield, Globe } from 'lucide-react';
 
-const PageFooter = () => {
+interface PageFooterProps {
+  backgroundColor?: 'default' | 'black';
+}
+
+const PageFooter = ({ backgroundColor = 'default' }: PageFooterProps) => {
+  const bgClass = backgroundColor === 'black' 
+    ? 'bg-black' 
+    : 'bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900';
+
   return (
-    <footer className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white overflow-hidden">
+    <footer className={`relative ${bgClass} text-white overflow-hidden`}>
       {/* Subtle background pattern */}
       <div className="absolute inset-0 opacity-50">
         <div className="w-full h-full bg-repeat" 

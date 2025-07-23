@@ -1543,7 +1543,7 @@ const LandingPage3 = () => {
         <OptimizedConsultationForm />
       </div>
 
-      <PageFooter />
+      <PageFooter backgroundColor="black" />
       
       {/* Sticky Order Button */}
       <StickyOrderButton />
