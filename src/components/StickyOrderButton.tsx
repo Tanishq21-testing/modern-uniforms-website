@@ -83,7 +83,7 @@ const StickyOrderButton = () => {
       </button>
       
       {/* Gentle pulse every 10 seconds */}
-      <div className="absolute inset-0 rounded-full bg-yellow-400 opacity-20 animate-[pulse_10s_ease-in-out_infinite]"></div>
+      <div className="absolute inset-0 rounded-full bg-yellow-400 opacity-0 animate-[pulse_1s_ease-out_infinite] [animation-duration:10s]"></div>
     </div>
   );
 };
