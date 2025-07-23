@@ -80,7 +80,6 @@ const LandingPage3 = () => {
                         <Star key={i} className="w-5 h-5 text-yellow-400 fill-yellow-400" />
                       ))}
                     </div>
-                    <span className="text-sm sm:text-lg">GCC READY - Dubai Based</span>
                   </div>
                 </div>
                 
@@ -112,22 +111,22 @@ const LandingPage3 = () => {
                   </div>
                 </div>
 
-                {/* Process Steps - Exact replica of example with flowing arrows */}
-                <div className="relative py-8">
-                  <div className="flex items-center justify-between max-w-lg mx-auto">
+                {/* Process Steps - Perfect curved arrows matching reference */}
+                <div className="relative py-6">
+                  <div className="flex items-center justify-center max-w-2xl mx-auto">
                     {/* Step 1 */}
                     <div className="flex flex-col items-center text-center">
-                      <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center text-white text-lg font-bold mb-2">1</div>
-                      <span className="text-xs font-medium text-gray-700 max-w-16 leading-tight">Initial Consultation</span>
+                      <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center text-white text-lg font-bold mb-3">1</div>
+                      <span className="text-xs font-medium text-gray-700 max-w-20 leading-tight">Initial Consultation</span>
                     </div>
                     
-                    {/* Curved Arrow 1 */}
-                    <div className="flex-1 flex justify-center items-center px-2">
-                      <svg width="60" height="40" viewBox="0 0 60 40" className="text-gray-600">
-                        <path d="M5 20 Q 30 5 55 20" stroke="currentColor" strokeWidth="2" fill="none" markerEnd="url(#arrowhead1)"/>
+                    {/* Smooth Curved Arrow 1 */}
+                    <div className="flex items-center justify-center mx-3">
+                      <svg width="80" height="24" viewBox="0 0 80 24" className="text-gray-500">
+                        <path d="M8 12 Q 40 4 72 12" stroke="currentColor" strokeWidth="1.5" fill="none" markerEnd="url(#arrow1)"/>
                         <defs>
-                          <marker id="arrowhead1" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-                            <polygon points="0 0, 10 3.5, 0 7" fill="currentColor" />
+                          <marker id="arrow1" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+                            <polygon points="0 0, 8 3, 0 6" fill="currentColor" />
                           </marker>
                         </defs>
                       </svg>
@@ -135,17 +134,17 @@ const LandingPage3 = () => {
                     
                     {/* Step 2 */}
                     <div className="flex flex-col items-center text-center">
-                      <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center text-white text-lg font-bold mb-2">2</div>
-                      <span className="text-xs font-medium text-gray-700 max-w-16 leading-tight">Customisation</span>
+                      <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center text-white text-lg font-bold mb-3">2</div>
+                      <span className="text-xs font-medium text-gray-700 max-w-20 leading-tight">Customisation</span>
                     </div>
                     
-                    {/* Curved Arrow 2 */}
-                    <div className="flex-1 flex justify-center items-center px-2">
-                      <svg width="60" height="40" viewBox="0 0 60 40" className="text-gray-600">
-                        <path d="M5 20 Q 30 35 55 20" stroke="currentColor" strokeWidth="2" fill="none" markerEnd="url(#arrowhead2)"/>
+                    {/* Smooth Curved Arrow 2 */}
+                    <div className="flex items-center justify-center mx-3">
+                      <svg width="80" height="24" viewBox="0 0 80 24" className="text-gray-500">
+                        <path d="M8 12 Q 40 20 72 12" stroke="currentColor" strokeWidth="1.5" fill="none" markerEnd="url(#arrow2)"/>
                         <defs>
-                          <marker id="arrowhead2" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-                            <polygon points="0 0, 10 3.5, 0 7" fill="currentColor" />
+                          <marker id="arrow2" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+                            <polygon points="0 0, 8 3, 0 6" fill="currentColor" />
                           </marker>
                         </defs>
                       </svg>
@@ -153,17 +152,17 @@ const LandingPage3 = () => {
                     
                     {/* Step 3 */}
                     <div className="flex flex-col items-center text-center">
-                      <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center text-white text-lg font-bold mb-2">3</div>
-                      <span className="text-xs font-medium text-gray-700 max-w-16 leading-tight">Production</span>
+                      <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center text-white text-lg font-bold mb-3">3</div>
+                      <span className="text-xs font-medium text-gray-700 max-w-20 leading-tight">Production</span>
                     </div>
                     
-                    {/* Curved Arrow 3 */}
-                    <div className="flex-1 flex justify-center items-center px-2">
-                      <svg width="60" height="40" viewBox="0 0 60 40" className="text-gray-600">
-                        <path d="M5 20 Q 30 5 55 20" stroke="currentColor" strokeWidth="2" fill="none" markerEnd="url(#arrowhead3)"/>
+                    {/* Smooth Curved Arrow 3 */}
+                    <div className="flex items-center justify-center mx-3">
+                      <svg width="80" height="24" viewBox="0 0 80 24" className="text-gray-500">
+                        <path d="M8 12 Q 40 4 72 12" stroke="currentColor" strokeWidth="1.5" fill="none" markerEnd="url(#arrow3)"/>
                         <defs>
-                          <marker id="arrowhead3" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-                            <polygon points="0 0, 10 3.5, 0 7" fill="currentColor" />
+                          <marker id="arrow3" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+                            <polygon points="0 0, 8 3, 0 6" fill="currentColor" />
                           </marker>
                         </defs>
                       </svg>
@@ -171,8 +170,8 @@ const LandingPage3 = () => {
                     
                     {/* Step 4 */}
                     <div className="flex flex-col items-center text-center">
-                      <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center text-white text-lg font-bold mb-2">4</div>
-                      <span className="text-xs font-medium text-gray-700 max-w-16 leading-tight">Ongoing Program</span>
+                      <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center text-white text-lg font-bold mb-3">4</div>
+                      <span className="text-xs font-medium text-gray-700 max-w-20 leading-tight">Ongoing Program</span>
                     </div>
                   </div>
                 </div>
@@ -205,9 +204,10 @@ const LandingPage3 = () => {
                     />
                   </div>
                   
-                  {/* 50+ Years Experience - Positioned under pictures */}
-                  <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 bg-white/90 backdrop-blur-sm border border-gray-200 rounded-full px-4 py-2 shadow-lg">
-                    <span className="text-sm font-bold text-gray-700">50+ Years Experience</span>
+                  {/* Clean text block under pictures */}
+                  <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 text-center">
+                    <div className="text-sm font-bold text-gray-700">50+ Years Experience</div>
+                    <div className="text-xs text-gray-500 font-medium mt-1">GCC READY - Dubai Based</div>
                   </div>
                 </div>
               </div>
