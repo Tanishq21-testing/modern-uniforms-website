@@ -74,7 +74,44 @@ const LandingPage3 = () => {
                     Not Covering Your Team<br />
                     But <span className="bg-gradient-to-r from-red-600 via-blue-600 to-green-600 bg-clip-text text-transparent">Reflecting Your Brand</span>
                   </h1>
-                  <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-4 text-lg font-medium text-gray-700">
+                  
+                  {/* Mobile Images - Show after headline on mobile only */}
+                  <div className="lg:hidden relative animate-fade-in mt-6">
+                    <div className="grid grid-cols-2 gap-3 sm:gap-4 relative">
+                      <div className="space-y-3 sm:space-y-4">
+                        <img 
+                          src={images.uniformServices} 
+                          alt="Chef uniforms" 
+                          className="rounded-xl sm:rounded-2xl w-full h-28 sm:h-32 object-cover shadow-2xl transform transition-all duration-500 hover:scale-105 hover:shadow-[0_0_30px_rgba(0,0,0,0.3)]" 
+                        />
+                        <img 
+                          src={images.Hoodieimage} 
+                          alt="Custom hoodies" 
+                          className="rounded-xl sm:rounded-2xl w-full h-20 sm:h-24 object-cover shadow-xl transform transition-all duration-500 hover:scale-105 hover:shadow-[0_0_20px_rgba(0,0,0,0.2)]" 
+                        />
+                      </div>
+                      <div className="space-y-3 sm:space-y-4 mt-4 sm:mt-6">
+                        <img 
+                          src={images.schoolHoodie} 
+                          alt="School uniforms" 
+                          className="rounded-xl sm:rounded-2xl w-full h-20 sm:h-24 object-cover shadow-xl transform transition-all duration-500 hover:scale-105 hover:shadow-[0_0_20px_rgba(0,0,0,0.2)]" 
+                        />
+                        <img 
+                          src={images.JCProducts} 
+                          alt="Hospitality staff" 
+                          className="rounded-xl sm:rounded-2xl w-full h-28 sm:h-32 object-cover shadow-2xl transform transition-all duration-500 hover:scale-105 hover:shadow-[0_0_30px_rgba(0,0,0,0.3)]" 
+                        />
+                      </div>
+                      
+                      {/* Mobile text block under pictures */}
+                      <div className="absolute -bottom-10 left-1/2 transform -translate-x-1/2 text-center">
+                        <div className="text-base font-extrabold text-gray-800">50+ Years Experience</div>
+                        <div className="text-xs text-gray-500 font-normal mt-1">GCC READY - Dubai Based</div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-4 text-lg font-medium text-gray-700 mt-8 lg:mt-6">
                     <div className="flex space-x-1">
                       {[...Array(5)].map((_, i) => (
                         <Star key={i} className="w-5 h-5 text-yellow-400 fill-yellow-400" />
@@ -177,7 +214,8 @@ const LandingPage3 = () => {
                 </div>
               </div>
 
-              <div className="relative animate-fade-in mt-8 lg:mt-0 order-2 lg:order-2">
+              {/* Desktop Images - Hidden on mobile, shown on desktop */}
+              <div className="hidden lg:block relative animate-fade-in mt-8 lg:mt-0 order-2 lg:order-2">
                 <div className="grid grid-cols-2 gap-3 sm:gap-4 md:gap-6 relative">
                   <div className="space-y-3 sm:space-y-4 md:space-y-6">
                     <img 
