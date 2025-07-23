@@ -52,9 +52,9 @@ const Header = ({ scrollToConsultation }: HeaderProps) => {
         isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'
       }`}
     >
-      <div className="container mx-auto px-4 flex justify-between items-center">
+      <div className="container mx-auto px-6 lg:px-8 flex justify-between items-center">
         {/* Logo */}
-        <Link to="/" className="flex items-center">
+        <Link to="/" className="flex items-center mr-8 lg:mr-12">
           <img 
             src={images.logo} 
             alt="UniformConnect" 
@@ -76,7 +76,7 @@ const Header = ({ scrollToConsultation }: HeaderProps) => {
         
         {/* Desktop Navigation */}
         {!isMobile && (
-          <nav className="hidden md:flex items-center space-x-6">
+          <nav className="hidden md:flex items-center space-x-8 lg:space-x-10">
             <Link to="/" className="text-gray-700 hover:text-brand-blue font-medium">Home</Link>
             <Link to="/services" className="text-gray-700 hover:text-brand-blue font-medium">Services</Link>
             <Link to="/clients" className="text-gray-700 hover:text-brand-blue font-medium">Clients</Link>
