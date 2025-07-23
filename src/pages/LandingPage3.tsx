@@ -74,8 +74,6 @@ const LandingPage3 = () => {
                     Not Covering Your Team<br />
                     But <span className="bg-gradient-to-r from-red-600 via-blue-600 to-green-600 bg-clip-text text-transparent">Reflecting Your Brand</span>
                   </h1>
-                  
-                  {/* Mobile Images - Show after headline on mobile only */}
                   <div className="lg:hidden relative animate-fade-in mt-6">
                     <div className="grid grid-cols-2 gap-3 sm:gap-4 relative">
                       <div className="space-y-3 sm:space-y-4">
@@ -111,18 +109,10 @@ const LandingPage3 = () => {
                     </div>
                   </div>
                   
-                  {/* Stars moved below text on mobile for clarity */}
-                  <div className="flex flex-col sm:flex-row items-center sm:items-center justify-center sm:justify-start space-y-2 sm:space-y-0 sm:space-x-4 text-lg font-medium text-gray-700 mt-12 lg:mt-6">
-                    <div className="flex space-x-1">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="w-5 h-5 text-yellow-400 fill-yellow-400" />
-                      ))}
-                    </div>
-                  </div>
                 </div>
                 
                 {/* Service Awareness Icons - Sharper text */}
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 py-6">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 py-6 mt-8">
                   <div className="flex flex-col items-center text-center space-y-2">
                     <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
                       <Award className="w-6 h-6 text-blue-600" />
@@ -149,69 +139,11 @@ const LandingPage3 = () => {
                   </div>
                 </div>
 
-                {/* Process Steps - Clean straight arrows with full responsiveness */}
-                <div className="relative py-6">
-                  <div className="flex flex-col sm:flex-row items-center justify-center max-w-4xl mx-auto space-y-6 sm:space-y-0">
-                    {/* Step 1 */}
-                    <div className="flex flex-col items-center text-center">
-                      <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center text-white text-lg font-bold mb-3">1</div>
-                      <span className="text-xs font-semibold text-gray-800 max-w-20 leading-tight">Initial Consultation</span>
-                    </div>
-                    
-                    {/* Straight Arrow 1 */}
-                    <div className="flex items-center justify-center mx-4 sm:mx-6 rotate-90 sm:rotate-0">
-                      <svg width="60" height="20" viewBox="0 0 60 20" className="text-gray-700">
-                        <path d="M5 10 L50 10" stroke="currentColor" strokeWidth="2.5" fill="none" markerEnd="url(#straightArrow1)"/>
-                        <defs>
-                          <marker id="straightArrow1" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="strokeWidth">
-                            <polygon points="0 0, 10 4, 0 8" fill="currentColor" />
-                          </marker>
-                        </defs>
-                      </svg>
-                    </div>
-                    
-                    {/* Step 2 */}
-                    <div className="flex flex-col items-center text-center">
-                      <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center text-white text-lg font-bold mb-3">2</div>
-                      <span className="text-xs font-semibold text-gray-800 max-w-20 leading-tight">Customisation</span>
-                    </div>
-                    
-                    {/* Straight Arrow 2 */}
-                    <div className="flex items-center justify-center mx-4 sm:mx-6 rotate-90 sm:rotate-0">
-                      <svg width="60" height="20" viewBox="0 0 60 20" className="text-gray-700">
-                        <path d="M5 10 L50 10" stroke="currentColor" strokeWidth="2.5" fill="none" markerEnd="url(#straightArrow2)"/>
-                        <defs>
-                          <marker id="straightArrow2" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="strokeWidth">
-                            <polygon points="0 0, 10 4, 0 8" fill="currentColor" />
-                          </marker>
-                        </defs>
-                      </svg>
-                    </div>
-                    
-                    {/* Step 3 */}
-                    <div className="flex flex-col items-center text-center">
-                      <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center text-white text-lg font-bold mb-3">3</div>
-                      <span className="text-xs font-semibold text-gray-800 max-w-20 leading-tight">Production</span>
-                    </div>
-                    
-                    {/* Straight Arrow 3 */}
-                    <div className="flex items-center justify-center mx-4 sm:mx-6 rotate-90 sm:rotate-0">
-                      <svg width="60" height="20" viewBox="0 0 60 20" className="text-gray-700">
-                        <path d="M5 10 L50 10" stroke="currentColor" strokeWidth="2.5" fill="none" markerEnd="url(#straightArrow3)"/>
-                        <defs>
-                          <marker id="straightArrow3" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="strokeWidth">
-                            <polygon points="0 0, 10 4, 0 8" fill="currentColor" />
-                          </marker>
-                        </defs>
-                      </svg>
-                    </div>
-                    
-                    {/* Step 4 */}
-                    <div className="flex flex-col items-center text-center">
-                      <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center text-white text-lg font-bold mb-3">4</div>
-                      <span className="text-xs font-semibold text-gray-800 max-w-20 leading-tight">Ongoing Program</span>
-                    </div>
-                  </div>
+                {/* Simple Process Text */}
+                <div className="text-center py-4">
+                  <p className="text-sm font-medium text-gray-700">
+                    <span className="font-semibold">Our Process:</span> Initial Consultation → Customisation → Production → Ongoing Program
+                  </p>
                 </div>
               </div>
 
