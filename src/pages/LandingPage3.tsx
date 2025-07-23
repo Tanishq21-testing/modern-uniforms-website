@@ -3,6 +3,7 @@ import Header from '@/components/Header';
 import PageFooter from '@/components/PageFooter';
 import { ArrowRight, Check, Star, Shield, Clock, Users, Award, Building, FileText, Settings, MessageCircle, Scissors, Palette, Zap, Target, Factory, Sparkles, Heart, TrendingUp, ChevronLeft, ChevronRight, Truck, Eye, Globe, HeartHandshake } from 'lucide-react';
 import { images } from '@/assets/images';
+import OptimizedConsultationForm from '@/components/OptimizedConsultationForm';
 
 const LandingPage3 = () => {
   const consultationFormRef = useRef<HTMLDivElement>(null);
@@ -932,34 +933,10 @@ const LandingPage3 = () => {
         </div>
       </section>
 
-      {/* Consultation Form Section */}
-      <section ref={consultationFormRef} className="py-16 sm:py-20 bg-gradient-to-br from-gray-50 to-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-2xl mx-auto">
-            <div className="bg-white/80 backdrop-blur-sm border border-gray-200 rounded-3xl p-8 sm:p-12 shadow-2xl">
-              <h3 className="text-3xl sm:text-4xl font-bold text-center mb-3 sm:mb-4">Get Your Free Consultation</h3>
-              <p className="text-center text-gray-600 mb-8 sm:mb-10 text-base sm:text-lg">We'll create a custom proposal tailored to your needs</p>
-              <form className="space-y-4 sm:space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-                  <input 
-                    type="text" 
-                    placeholder="Full Name" 
-                    className="w-full px-4 sm:px-6 py-3 sm:py-4 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-300 bg-white/50" 
-                  />
-                  <input 
-                    type="email" 
-                    placeholder="Email Address" 
-                    className="w-full px-4 sm:px-6 py-3 sm:py-4 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-300 bg-white/50" 
-                  />
-                </div>
-                <button className="bg-gradient-to-r from-red-600 to-red-700 text-white font-bold text-lg sm:text-xl px-8 sm:px-12 py-4 sm:py-5 rounded-2xl w-full transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-red-500/30">
-                  Get My Free Consultation
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Optimized Consultation Form Section */}
+      <div ref={consultationFormRef}>
+        <OptimizedConsultationForm />
+      </div>
 
       <PageFooter />
     </div>
