@@ -666,10 +666,17 @@ const LandingPage3 = () => {
               
               {/* Right side - Master craftsmanship hero image with additional content */}
               <div className="relative flex flex-col justify-between h-full">
+                {/* Stars decoration */}
+                <div className="flex justify-center mb-4 sm:mb-6 space-x-2">
+                  <div className="w-1 h-1 bg-white/60 rounded-full animate-pulse"></div>
+                  <div className="w-1.5 h-1.5 bg-white/80 rounded-full animate-pulse" style={{animationDelay: '0.5s'}}></div>
+                  <div className="w-1 h-1 bg-white/60 rounded-full animate-pulse" style={{animationDelay: '1s'}}></div>
+                </div>
+                
                 <div className="relative flex justify-center mb-6 sm:mb-8">
                   <div className="relative">
                     <div className="absolute inset-0 bg-white/10 rounded-full blur-3xl opacity-50"></div>
-                    <div className="relative w-80 sm:w-96 h-80 sm:h-96 rounded-3xl shadow-2xl overflow-hidden group hover:scale-105 transition-transform duration-500">
+                    <div className="relative w-80 sm:w-96 h-96 sm:h-[450px] rounded-3xl shadow-2xl overflow-hidden group hover:scale-105 transition-transform duration-500">
                       <img 
                         src={images.masterCraftsman} 
                         alt="Master craftsman at work" 
@@ -709,18 +716,6 @@ const LandingPage3 = () => {
                   <p className="text-gray-400 text-sm sm:text-base">Every uniform crafted to perfection with our 45+ years of expertise</p>
                 </div>
               </div>
-            </div>
-            
-            {/* Closing element to balance the section */}
-            <div className="text-center mt-12 sm:mt-16 pt-8 sm:pt-12 border-t border-white/10">
-              <div className="flex items-center justify-center space-x-4 mb-4 sm:mb-6">
-                <div className="w-8 sm:w-12 h-0.5 bg-gradient-to-r from-transparent to-white/30"></div>
-                <Award className="w-6 sm:w-8 h-6 sm:h-8 text-white/60" />
-                <div className="w-8 sm:w-12 h-0.5 bg-gradient-to-l from-transparent to-white/30"></div>
-              </div>
-              <p className="text-base sm:text-lg text-gray-300 font-medium max-w-2xl mx-auto">
-                Every uniform tells your brand's story with uncompromising quality
-              </p>
             </div>
           </div>
         </div>
