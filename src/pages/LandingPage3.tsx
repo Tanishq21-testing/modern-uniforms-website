@@ -10,6 +10,7 @@ import {
   CarouselContent,
   CarouselItem,
 } from '@/components/ui/carousel';
+import Autoplay from 'embla-carousel-autoplay';
 
 const LandingPage3 = () => {
   const consultationFormRef = useRef<HTMLDivElement>(null);
@@ -1159,6 +1160,13 @@ const LandingPage3 = () => {
           {/* Testimonials Carousel */}
           <div className="max-w-7xl mx-auto">
             <Carousel
+              plugins={[
+                Autoplay({
+                  delay: 4000,
+                  stopOnInteraction: false,
+                  stopOnMouseEnter: true,
+                })
+              ]}
               opts={{
                 align: "start",
                 loop: true,
