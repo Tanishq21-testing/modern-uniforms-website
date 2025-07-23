@@ -67,8 +67,8 @@ const LandingPage3 = () => {
       <section className="relative pt-20 pb-16 bg-gradient-to-br from-white to-gray-50 overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-              <div className="space-y-6 animate-fade-in">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-center">
+              <div className="space-y-4 sm:space-y-6 animate-fade-in order-2 lg:order-1">
                 <div className="space-y-6">
                   <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
                     Not Covering Your Team<br />
@@ -111,22 +111,22 @@ const LandingPage3 = () => {
                   </div>
                 </div>
 
-                {/* Process Steps - Perfect curved arrows matching reference */}
+                {/* Process Steps - Clean straight arrows with full responsiveness */}
                 <div className="relative py-6">
-                  <div className="flex items-center justify-center max-w-4xl mx-auto">
+                  <div className="flex flex-col sm:flex-row items-center justify-center max-w-4xl mx-auto space-y-6 sm:space-y-0">
                     {/* Step 1 */}
                     <div className="flex flex-col items-center text-center">
                       <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center text-white text-lg font-bold mb-3">1</div>
                       <span className="text-xs font-semibold text-gray-800 max-w-20 leading-tight">Initial Consultation</span>
                     </div>
                     
-                    {/* Elegant Curved Arrow 1 */}
-                    <div className="flex items-center justify-center mx-6">
-                      <svg width="120" height="50" viewBox="0 0 120 50" className="text-gray-700">
-                        <path d="M15 25 Q 60 10 105 25" stroke="currentColor" strokeWidth="3" fill="none" markerEnd="url(#elegantArrow1)"/>
+                    {/* Straight Arrow 1 */}
+                    <div className="flex items-center justify-center mx-4 sm:mx-6 rotate-90 sm:rotate-0">
+                      <svg width="60" height="20" viewBox="0 0 60 20" className="text-gray-700">
+                        <path d="M5 10 L50 10" stroke="currentColor" strokeWidth="2.5" fill="none" markerEnd="url(#straightArrow1)"/>
                         <defs>
-                          <marker id="elegantArrow1" markerWidth="12" markerHeight="10" refX="11" refY="5" orient="auto" markerUnits="strokeWidth">
-                            <polygon points="0 0, 12 5, 0 10" fill="currentColor" />
+                          <marker id="straightArrow1" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="strokeWidth">
+                            <polygon points="0 0, 10 4, 0 8" fill="currentColor" />
                           </marker>
                         </defs>
                       </svg>
@@ -138,13 +138,13 @@ const LandingPage3 = () => {
                       <span className="text-xs font-semibold text-gray-800 max-w-20 leading-tight">Customisation</span>
                     </div>
                     
-                    {/* Elegant Curved Arrow 2 */}
-                    <div className="flex items-center justify-center mx-6">
-                      <svg width="120" height="50" viewBox="0 0 120 50" className="text-gray-700">
-                        <path d="M15 25 Q 60 40 105 25" stroke="currentColor" strokeWidth="3" fill="none" markerEnd="url(#elegantArrow2)"/>
+                    {/* Straight Arrow 2 */}
+                    <div className="flex items-center justify-center mx-4 sm:mx-6 rotate-90 sm:rotate-0">
+                      <svg width="60" height="20" viewBox="0 0 60 20" className="text-gray-700">
+                        <path d="M5 10 L50 10" stroke="currentColor" strokeWidth="2.5" fill="none" markerEnd="url(#straightArrow2)"/>
                         <defs>
-                          <marker id="elegantArrow2" markerWidth="12" markerHeight="10" refX="11" refY="5" orient="auto" markerUnits="strokeWidth">
-                            <polygon points="0 0, 12 5, 0 10" fill="currentColor" />
+                          <marker id="straightArrow2" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="strokeWidth">
+                            <polygon points="0 0, 10 4, 0 8" fill="currentColor" />
                           </marker>
                         </defs>
                       </svg>
@@ -156,13 +156,13 @@ const LandingPage3 = () => {
                       <span className="text-xs font-semibold text-gray-800 max-w-20 leading-tight">Production</span>
                     </div>
                     
-                    {/* Elegant Curved Arrow 3 */}
-                    <div className="flex items-center justify-center mx-6">
-                      <svg width="120" height="50" viewBox="0 0 120 50" className="text-gray-700">
-                        <path d="M15 25 Q 60 10 105 25" stroke="currentColor" strokeWidth="3" fill="none" markerEnd="url(#elegantArrow3)"/>
+                    {/* Straight Arrow 3 */}
+                    <div className="flex items-center justify-center mx-4 sm:mx-6 rotate-90 sm:rotate-0">
+                      <svg width="60" height="20" viewBox="0 0 60 20" className="text-gray-700">
+                        <path d="M5 10 L50 10" stroke="currentColor" strokeWidth="2.5" fill="none" markerEnd="url(#straightArrow3)"/>
                         <defs>
-                          <marker id="elegantArrow3" markerWidth="12" markerHeight="10" refX="11" refY="5" orient="auto" markerUnits="strokeWidth">
-                            <polygon points="0 0, 12 5, 0 10" fill="currentColor" />
+                          <marker id="straightArrow3" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="strokeWidth">
+                            <polygon points="0 0, 10 4, 0 8" fill="currentColor" />
                           </marker>
                         </defs>
                       </svg>
@@ -177,30 +177,30 @@ const LandingPage3 = () => {
                 </div>
               </div>
 
-              <div className="relative animate-fade-in mt-8 lg:mt-0">
-                <div className="grid grid-cols-2 gap-4 sm:gap-6 relative">
-                  <div className="space-y-4 sm:space-y-6">
+              <div className="relative animate-fade-in mt-8 lg:mt-0 order-1 lg:order-2">
+                <div className="grid grid-cols-2 gap-3 sm:gap-4 md:gap-6 relative">
+                  <div className="space-y-3 sm:space-y-4 md:space-y-6">
                     <img 
                       src={images.uniformServices} 
                       alt="Chef uniforms" 
-                      className="rounded-2xl sm:rounded-3xl w-full h-32 sm:h-48 object-cover shadow-2xl transform transition-all duration-500 hover:scale-105 hover:shadow-[0_0_30px_rgba(0,0,0,0.3)]" 
+                      className="rounded-xl sm:rounded-2xl md:rounded-3xl w-full h-28 sm:h-32 md:h-48 object-cover shadow-2xl transform transition-all duration-500 hover:scale-105 hover:shadow-[0_0_30px_rgba(0,0,0,0.3)]" 
                     />
                     <img 
                       src={images.Hoodieimage} 
                       alt="Custom hoodies" 
-                      className="rounded-2xl sm:rounded-3xl w-full h-24 sm:h-32 object-cover shadow-xl transform transition-all duration-500 hover:scale-105 hover:shadow-[0_0_20px_rgba(0,0,0,0.2)]" 
+                      className="rounded-xl sm:rounded-2xl md:rounded-3xl w-full h-20 sm:h-24 md:h-32 object-cover shadow-xl transform transition-all duration-500 hover:scale-105 hover:shadow-[0_0_20px_rgba(0,0,0,0.2)]" 
                     />
                   </div>
-                  <div className="space-y-4 sm:space-y-6 mt-6 sm:mt-8">
+                  <div className="space-y-3 sm:space-y-4 md:space-y-6 mt-4 sm:mt-6 md:mt-8">
                     <img 
                       src={images.schoolHoodie} 
                       alt="School uniforms" 
-                      className="rounded-2xl sm:rounded-3xl w-full h-24 sm:h-32 object-cover shadow-xl transform transition-all duration-500 hover:scale-105 hover:shadow-[0_0_20px_rgba(0,0,0,0.2)]" 
+                      className="rounded-xl sm:rounded-2xl md:rounded-3xl w-full h-20 sm:h-24 md:h-32 object-cover shadow-xl transform transition-all duration-500 hover:scale-105 hover:shadow-[0_0_20px_rgba(0,0,0,0.2)]" 
                     />
                     <img 
                       src={images.JCProducts} 
                       alt="Hospitality staff" 
-                      className="rounded-2xl sm:rounded-3xl w-full h-32 sm:h-48 object-cover shadow-2xl transform transition-all duration-500 hover:scale-105 hover:shadow-[0_0_30px_rgba(0,0,0,0.3)]" 
+                      className="rounded-xl sm:rounded-2xl md:rounded-3xl w-full h-28 sm:h-32 md:h-48 object-cover shadow-2xl transform transition-all duration-500 hover:scale-105 hover:shadow-[0_0_30px_rgba(0,0,0,0.3)]" 
                     />
                   </div>
                   
@@ -213,16 +213,16 @@ const LandingPage3 = () => {
               </div>
             </div>
             
-            {/* Centered CTA Section - Tighter spacing */}
-            <div className="mt-12 text-center">
-              <div className="space-y-4">
+            {/* Centered CTA Section - Mobile responsive */}
+            <div className="mt-8 sm:mt-12 text-center">
+              <div className="space-y-3 sm:space-y-4">
                 {/* Clean price text without box */}
-                <div className="text-base font-bold text-red-600">300 AED / 100 pieces</div>
+                <div className="text-sm sm:text-base font-bold text-red-600">300 AED / 100 pieces</div>
                 
-                {/* Centered CTA Button */}
+                {/* Mobile responsive CTA Button */}
                 <div>
                   <button 
-                    className="relative bg-gradient-to-r from-red-600 to-red-700 text-white font-bold text-lg sm:text-xl px-8 sm:px-12 py-4 sm:py-5 rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-red-500/30 overflow-hidden group" 
+                    className="relative bg-gradient-to-r from-red-600 to-red-700 text-white font-bold text-base sm:text-lg lg:text-xl px-6 sm:px-8 lg:px-12 py-3 sm:py-4 lg:py-5 rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-red-500/30 overflow-hidden group" 
                     onClick={scrollToConsultation}
                   >
                     <span className="relative z-10">Get Custom Uniform</span>
