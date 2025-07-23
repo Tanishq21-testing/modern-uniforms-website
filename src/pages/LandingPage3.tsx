@@ -64,11 +64,11 @@ const LandingPage3 = () => {
       <Header scrollToConsultation={scrollToConsultation} />
 
       {/* 1️⃣ Hero Section */}
-      <section className="relative pt-20 pb-20 bg-gradient-to-br from-white to-gray-50 overflow-hidden">
+      <section className="relative pt-20 pb-16 bg-gradient-to-br from-white to-gray-50 overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div className="space-y-8 animate-fade-in">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+              <div className="space-y-6 animate-fade-in">
                 <div className="space-y-6">
                   <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
                     Not Covering Your Team<br />
@@ -112,28 +112,26 @@ const LandingPage3 = () => {
                   </div>
                 </div>
 
-                {/* Process Steps */}
-                <div className="bg-white/60 backdrop-blur-sm border border-gray-200 rounded-2xl p-6 shadow-lg">
-                  <div className="flex flex-col sm:flex-row items-center justify-between space-y-4 sm:space-y-0">
-                    <div className="flex items-center space-x-2">
-                      <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white text-sm font-bold">1</div>
-                      <span className="text-sm font-medium text-gray-700">Initial Consultation</span>
-                    </div>
-                    <ArrowRight className="w-4 h-4 text-gray-400 hidden sm:block" />
-                    <div className="flex items-center space-x-2">
-                      <div className="w-8 h-8 bg-green-600 rounded-full flex items-center justify-center text-white text-sm font-bold">2</div>
-                      <span className="text-sm font-medium text-gray-700">Customisation</span>
-                    </div>
-                    <ArrowRight className="w-4 h-4 text-gray-400 hidden sm:block" />
-                    <div className="flex items-center space-x-2">
-                      <div className="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center text-white text-sm font-bold">3</div>
-                      <span className="text-sm font-medium text-gray-700">Production</span>
-                    </div>
-                    <ArrowRight className="w-4 h-4 text-gray-400 hidden sm:block" />
-                    <div className="flex items-center space-x-2">
-                      <div className="w-8 h-8 bg-red-600 rounded-full flex items-center justify-center text-white text-sm font-bold">4</div>
-                      <span className="text-sm font-medium text-gray-700">Ongoing Program</span>
-                    </div>
+                {/* Process Steps - Clean without background box */}
+                <div className="flex flex-col sm:flex-row items-center justify-between space-y-4 sm:space-y-0">
+                  <div className="flex items-center space-x-2">
+                    <div className="w-8 h-8 bg-black rounded-full flex items-center justify-center text-white text-sm font-bold">1</div>
+                    <span className="text-sm font-medium text-gray-700">Initial Consultation</span>
+                  </div>
+                  <ArrowRight className="w-4 h-4 text-gray-400 hidden sm:block" />
+                  <div className="flex items-center space-x-2">
+                    <div className="w-8 h-8 bg-black rounded-full flex items-center justify-center text-white text-sm font-bold">2</div>
+                    <span className="text-sm font-medium text-gray-700">Customisation</span>
+                  </div>
+                  <ArrowRight className="w-4 h-4 text-gray-400 hidden sm:block" />
+                  <div className="flex items-center space-x-2">
+                    <div className="w-8 h-8 bg-black rounded-full flex items-center justify-center text-white text-sm font-bold">3</div>
+                    <span className="text-sm font-medium text-gray-700">Production</span>
+                  </div>
+                  <ArrowRight className="w-4 h-4 text-gray-400 hidden sm:block" />
+                  <div className="flex items-center space-x-2">
+                    <div className="w-8 h-8 bg-black rounded-full flex items-center justify-center text-white text-sm font-bold">4</div>
+                    <span className="text-sm font-medium text-gray-700">Ongoing Program</span>
                   </div>
                 </div>
               </div>
@@ -173,13 +171,11 @@ const LandingPage3 = () => {
               </div>
             </div>
             
-            {/* Centered CTA Section */}
-            <div className="mt-16 text-center">
-              <div className="space-y-6">
-                {/* Smaller, elegant price */}
-                <div className="inline-block bg-white/80 backdrop-blur-sm border border-gray-200 rounded-2xl px-6 py-3 shadow-lg">
-                  <div className="text-lg font-bold text-red-600">300 AED / 100 pieces</div>
-                </div>
+            {/* Centered CTA Section - Tighter spacing */}
+            <div className="mt-12 text-center">
+              <div className="space-y-4">
+                {/* Clean price text without box */}
+                <div className="text-base font-bold text-red-600">300 AED / 100 pieces</div>
                 
                 {/* Centered CTA Button */}
                 <div>
