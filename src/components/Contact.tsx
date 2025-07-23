@@ -58,10 +58,11 @@ const Contact = () => {
         (window as any).gtagSendEvent();
       }
 
-      toast({
-        title: "Message sent!",
-        description: "We've received your message and will get back to you soon.",
-      });
+      // Set session storage flag for thank you page
+      sessionStorage.setItem('formSubmitted', 'true');
+      
+      // Redirect to thank you page
+      window.location.href = '/thank-you';
 
       setFormData({
         name: '',

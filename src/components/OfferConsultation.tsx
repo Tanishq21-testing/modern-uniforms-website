@@ -59,10 +59,11 @@ const OfferConsultation = forwardRef<HTMLDivElement, OfferConsultationProps>(
           (window as any).gtagSendEvent();
         }
         
-        toast({
-          title: "Consultation Request Received!",
-          description: "We'll contact you within 24 hours to schedule your free consultation.",
-        });
+        // Set session storage flag for thank you page
+        sessionStorage.setItem('formSubmitted', 'true');
+        
+        // Redirect to thank you page
+        window.location.href = '/thank-you';
         
         // Reset form
         setFormData({

@@ -186,11 +186,11 @@ export default function OptimizedConsultationForm() {
         });
       }
 
-      toast({
-        title: "Thank you for your interest!",
-        description: "We'll contact you within 24 hours with a custom proposal.",
-        duration: 5000,
-      });
+      // Set session storage flag for thank you page
+      sessionStorage.setItem('formSubmitted', 'true');
+      
+      // Redirect to thank you page
+      window.location.href = '/thank-you';
 
       // Reset form
       setFormData({

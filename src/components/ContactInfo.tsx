@@ -73,10 +73,11 @@ const ContactInfo = () => {
         (window as any).gtagSendEvent();
       }
 
-      toast({
-        title: "Message Sent!",
-        description: "Thank you for contacting UniformConnect. We'll get back to you soon.",
-      });
+      // Set session storage flag for thank you page
+      sessionStorage.setItem('formSubmitted', 'true');
+      
+      // Redirect to thank you page
+      window.location.href = '/thank-you';
       
       setFormData({ name: '', email: '', phone: '', company: '', message: '' });
     } catch (error) {

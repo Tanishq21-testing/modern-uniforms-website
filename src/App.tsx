@@ -26,6 +26,7 @@ const Auth = lazy(() => import("./pages/Auth"));
 const Products = lazy(() => import("./pages/Products"));
 const DesignLab = lazy(() => import("./pages/DesignLab"));
 const GreenInitiative = lazy(() => import("./pages/GreenInitiative"));
+const ThankYou = lazy(() => import("./pages/ThankYou"));
 
 // Loading fallback
 const PageLoader = () => (
@@ -171,6 +172,11 @@ const App = () => {
               <Route path="/green-initiative" element={
                 <Suspense fallback={<PageLoader />}>
                   <GreenInitiative />
+                </Suspense>
+              } />
+              <Route path="/thank-you" element={
+                <Suspense fallback={<PageLoader />}>
+                  <ThankYou />
                 </Suspense>
               } />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
