@@ -236,13 +236,13 @@ const LandingPage3 = () => {
             <div className="mb-2 sm:mb-4">
               <div className="flex items-center justify-center mb-1 sm:mb-2">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-4 sm:w-5 h-4 sm:h-5 text-yellow-400 fill-yellow-400 mr-1 sm:mr-2 last:mr-0" />
+                  <Star key={i} className="w-5 sm:w-6 h-5 sm:h-6 text-yellow-400 fill-yellow-400 mr-1 sm:mr-2 last:mr-0" />
                 ))}
               </div>
-              <h2 className="text-xl sm:text-3xl md:text-4xl font-bold mb-1 sm:mb-2">
+              <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold mb-1 sm:mb-2">
                 HIGH PERSONALISATION
               </h2>
-              <div className="text-sm sm:text-lg font-bold mb-1 sm:mb-2">
+              <div className="text-base sm:text-xl font-bold mb-1 sm:mb-2">
                 <span className="text-blue-400">COLOR</span> & <span className="text-red-500">CUT</span> & <span className="text-green-400">DESIGN</span>
               </div>
             </div>
