@@ -100,12 +100,12 @@ const LandingPage3 = () => {
                           className="rounded-xl sm:rounded-2xl w-full h-28 sm:h-32 object-cover shadow-2xl transform transition-all duration-500 hover:scale-105 hover:shadow-[0_0_30px_rgba(0,0,0,0.3)]" 
                         />
                       </div>
-                      
-                      {/* Mobile text block with better spacing and hierarchy */}
-                      <div className="absolute -bottom-16 left-1/2 transform -translate-x-1/2 text-center">
-                        <div className="text-lg font-extrabold text-gray-800 mb-1">50+ Years Experience</div>
-                        <div className="text-sm text-gray-600 font-normal">GCC READY - Dubai Based</div>
-                      </div>
+                    </div>
+                    
+                    {/* Mobile text block - Below images with proper spacing */}
+                    <div className="text-center mt-6 mb-4">
+                      <div className="text-lg font-extrabold text-gray-800 mb-1">50+ Years Experience</div>
+                      <div className="text-sm text-gray-600 font-normal">GCC READY - Dubai Based</div>
                     </div>
                   </div>
                   
