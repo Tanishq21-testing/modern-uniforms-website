@@ -922,11 +922,13 @@ const LandingPage3 = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 sm:gap-8">
               {/* High Satisfaction Rate */}
               <div className="text-center group">
-                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 sm:p-8 hover:bg-white/20 transition-all duration-300 border border-white/10">
-                  <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <Check className="w-8 h-8 text-white" />
+                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 sm:p-8 hover:bg-white/20 transition-all duration-300 border border-white/10 h-72 flex flex-col justify-between">
+                  <div>
+                    <div className="w-16 h-16 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                      <Check className="w-8 h-8 text-black font-bold" />
+                    </div>
+                    <h3 className="text-xl font-bold mb-4 text-yellow-400">High Satisfaction Rate</h3>
                   </div>
-                  <h3 className="text-xl font-bold mb-4 text-green-400">High Satisfaction Rate</h3>
                   <p className="text-gray-300 text-sm leading-relaxed">
                     100% Client satisfaction from over 200+ companies
                   </p>
@@ -935,11 +937,13 @@ const LandingPage3 = () => {
 
               {/* Tailored to Your Brand */}
               <div className="text-center group">
-                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 sm:p-8 hover:bg-white/20 transition-all duration-300 border border-white/10">
-                  <div className="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <Palette className="w-8 h-8 text-white" />
+                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 sm:p-8 hover:bg-white/20 transition-all duration-300 border border-white/10 h-72 flex flex-col justify-between">
+                  <div>
+                    <div className="w-16 h-16 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                      <Palette className="w-8 h-8 text-black" />
+                    </div>
+                    <h3 className="text-xl font-bold mb-4 text-yellow-400">Tailored to Your Brand</h3>
                   </div>
-                  <h3 className="text-xl font-bold mb-4 text-blue-400">Tailored to Your Brand</h3>
                   <p className="text-gray-300 text-sm leading-relaxed">
                     Every uniform is built with your identity in mind
                   </p>
@@ -948,11 +952,13 @@ const LandingPage3 = () => {
 
               {/* Seamless Reorders */}
               <div className="text-center group">
-                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 sm:p-8 hover:bg-white/20 transition-all duration-300 border border-white/10">
-                  <div className="w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <RefreshCw className="w-8 h-8 text-white" />
+                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 sm:p-8 hover:bg-white/20 transition-all duration-300 border border-white/10 h-72 flex flex-col justify-between">
+                  <div>
+                    <div className="w-16 h-16 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                      <RefreshCw className="w-8 h-8 text-black" />
+                    </div>
+                    <h3 className="text-xl font-bold mb-4 text-yellow-400">Seamless Reorders</h3>
                   </div>
-                  <h3 className="text-xl font-bold mb-4 text-purple-400">Seamless Reorders</h3>
                   <p className="text-gray-300 text-sm leading-relaxed">
                     &lt;24h reorder processing, always here for consistency
                   </p>
@@ -961,11 +967,13 @@ const LandingPage3 = () => {
 
               {/* One Dedicated Contact */}
               <div className="text-center group">
-                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 sm:p-8 hover:bg-white/20 transition-all duration-300 border border-white/10">
-                  <div className="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <MessageCircle className="w-8 h-8 text-white" />
+                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 sm:p-8 hover:bg-white/20 transition-all duration-300 border border-white/10 h-72 flex flex-col justify-between">
+                  <div>
+                    <div className="w-16 h-16 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                      <MessageCircle className="w-8 h-8 text-black" />
+                    </div>
+                    <h3 className="text-xl font-bold mb-4 text-yellow-400">One Dedicated Contact</h3>
                   </div>
-                  <h3 className="text-xl font-bold mb-4 text-orange-400">One Dedicated Contact</h3>
                   <p className="text-gray-300 text-sm leading-relaxed">
                     You'll never chase support. You have your Own Account manager
                   </p>
@@ -974,11 +982,13 @@ const LandingPage3 = () => {
 
               {/* Trusted by Leaders */}
               <div className="text-center group">
-                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 sm:p-8 hover:bg-white/20 transition-all duration-300 border border-white/10">
-                  <div className="w-16 h-16 bg-red-500 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <Shield className="w-8 h-8 text-white" />
+                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 sm:p-8 hover:bg-white/20 transition-all duration-300 border border-white/10 h-72 flex flex-col justify-between">
+                  <div>
+                    <div className="w-16 h-16 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                      <Shield className="w-8 h-8 text-black" />
+                    </div>
+                    <h3 className="text-xl font-bold mb-4 text-yellow-400">Trusted by Leaders</h3>
                   </div>
-                  <h3 className="text-xl font-bold mb-4 text-red-400">Trusted by Leaders</h3>
                   <p className="text-gray-300 text-sm leading-relaxed">
                     Hilton, Radisson, Raffles, Gems and more
                   </p>
