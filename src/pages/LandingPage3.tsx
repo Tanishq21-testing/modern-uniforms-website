@@ -83,50 +83,50 @@ const LandingPage3 = () => {
                   </div>
                 </div>
                 
-                {/* Service Awareness Icons */}
+                {/* Service Awareness Icons - Sharper text */}
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 py-6">
                   <div className="flex flex-col items-center text-center space-y-2">
                     <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
                       <Award className="w-6 h-6 text-blue-600" />
                     </div>
-                    <span className="text-xs font-medium text-gray-600">Premium Quality</span>
+                    <span className="text-xs font-semibold text-gray-800">Premium Quality</span>
                   </div>
                   <div className="flex flex-col items-center text-center space-y-2">
                     <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
                       <Users className="w-6 h-6 text-green-600" />
                     </div>
-                    <span className="text-xs font-medium text-gray-600">Account Manager</span>
+                    <span className="text-xs font-semibold text-gray-800">Account Manager</span>
                   </div>
                   <div className="flex flex-col items-center text-center space-y-2">
                     <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
                       <Truck className="w-6 h-6 text-purple-600" />
                     </div>
-                    <span className="text-xs font-medium text-gray-600">Fast Delivery</span>
+                    <span className="text-xs font-semibold text-gray-800">Fast Delivery</span>
                   </div>
                   <div className="flex flex-col items-center text-center space-y-2">
                     <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center">
                       <HeartHandshake className="w-6 h-6 text-red-600" />
                     </div>
-                    <span className="text-xs font-medium text-gray-600">Ongoing Support</span>
+                    <span className="text-xs font-semibold text-gray-800">Ongoing Support</span>
                   </div>
                 </div>
 
-                {/* Process Steps - Perfect curved arrows matching reference */}
+                {/* Process Steps - Exact smooth curved arrows from reference */}
                 <div className="relative py-6">
-                  <div className="flex items-center justify-center max-w-2xl mx-auto">
+                  <div className="flex items-center justify-center max-w-3xl mx-auto">
                     {/* Step 1 */}
                     <div className="flex flex-col items-center text-center">
                       <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center text-white text-lg font-bold mb-3">1</div>
-                      <span className="text-xs font-medium text-gray-700 max-w-20 leading-tight">Initial Consultation</span>
+                      <span className="text-xs font-semibold text-gray-800 max-w-20 leading-tight">Initial Consultation</span>
                     </div>
                     
-                    {/* Smooth Curved Arrow 1 */}
-                    <div className="flex items-center justify-center mx-3">
-                      <svg width="80" height="24" viewBox="0 0 80 24" className="text-gray-500">
-                        <path d="M8 12 Q 40 4 72 12" stroke="currentColor" strokeWidth="1.5" fill="none" markerEnd="url(#arrow1)"/>
+                    {/* Premium Curved Arrow 1 - Upward curve */}
+                    <div className="flex items-center justify-center mx-4">
+                      <svg width="100" height="40" viewBox="0 0 100 40" className="text-gray-700">
+                        <path d="M10 20 Q 50 8 90 20" stroke="currentColor" strokeWidth="2.5" fill="none" markerEnd="url(#premiumArrow1)"/>
                         <defs>
-                          <marker id="arrow1" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
-                            <polygon points="0 0, 8 3, 0 6" fill="currentColor" />
+                          <marker id="premiumArrow1" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="strokeWidth">
+                            <polygon points="0 0, 10 4, 0 8" fill="currentColor" />
                           </marker>
                         </defs>
                       </svg>
@@ -135,16 +135,16 @@ const LandingPage3 = () => {
                     {/* Step 2 */}
                     <div className="flex flex-col items-center text-center">
                       <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center text-white text-lg font-bold mb-3">2</div>
-                      <span className="text-xs font-medium text-gray-700 max-w-20 leading-tight">Customisation</span>
+                      <span className="text-xs font-semibold text-gray-800 max-w-20 leading-tight">Customisation</span>
                     </div>
                     
-                    {/* Smooth Curved Arrow 2 */}
-                    <div className="flex items-center justify-center mx-3">
-                      <svg width="80" height="24" viewBox="0 0 80 24" className="text-gray-500">
-                        <path d="M8 12 Q 40 20 72 12" stroke="currentColor" strokeWidth="1.5" fill="none" markerEnd="url(#arrow2)"/>
+                    {/* Premium Curved Arrow 2 - Downward curve */}
+                    <div className="flex items-center justify-center mx-4">
+                      <svg width="100" height="40" viewBox="0 0 100 40" className="text-gray-700">
+                        <path d="M10 20 Q 50 32 90 20" stroke="currentColor" strokeWidth="2.5" fill="none" markerEnd="url(#premiumArrow2)"/>
                         <defs>
-                          <marker id="arrow2" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
-                            <polygon points="0 0, 8 3, 0 6" fill="currentColor" />
+                          <marker id="premiumArrow2" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="strokeWidth">
+                            <polygon points="0 0, 10 4, 0 8" fill="currentColor" />
                           </marker>
                         </defs>
                       </svg>
@@ -153,16 +153,16 @@ const LandingPage3 = () => {
                     {/* Step 3 */}
                     <div className="flex flex-col items-center text-center">
                       <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center text-white text-lg font-bold mb-3">3</div>
-                      <span className="text-xs font-medium text-gray-700 max-w-20 leading-tight">Production</span>
+                      <span className="text-xs font-semibold text-gray-800 max-w-20 leading-tight">Production</span>
                     </div>
                     
-                    {/* Smooth Curved Arrow 3 */}
-                    <div className="flex items-center justify-center mx-3">
-                      <svg width="80" height="24" viewBox="0 0 80 24" className="text-gray-500">
-                        <path d="M8 12 Q 40 4 72 12" stroke="currentColor" strokeWidth="1.5" fill="none" markerEnd="url(#arrow3)"/>
+                    {/* Premium Curved Arrow 3 - Upward curve */}
+                    <div className="flex items-center justify-center mx-4">
+                      <svg width="100" height="40" viewBox="0 0 100 40" className="text-gray-700">
+                        <path d="M10 20 Q 50 8 90 20" stroke="currentColor" strokeWidth="2.5" fill="none" markerEnd="url(#premiumArrow3)"/>
                         <defs>
-                          <marker id="arrow3" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
-                            <polygon points="0 0, 8 3, 0 6" fill="currentColor" />
+                          <marker id="premiumArrow3" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="strokeWidth">
+                            <polygon points="0 0, 10 4, 0 8" fill="currentColor" />
                           </marker>
                         </defs>
                       </svg>
@@ -171,7 +171,7 @@ const LandingPage3 = () => {
                     {/* Step 4 */}
                     <div className="flex flex-col items-center text-center">
                       <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center text-white text-lg font-bold mb-3">4</div>
-                      <span className="text-xs font-medium text-gray-700 max-w-20 leading-tight">Ongoing Program</span>
+                      <span className="text-xs font-semibold text-gray-800 max-w-20 leading-tight">Ongoing Program</span>
                     </div>
                   </div>
                 </div>
