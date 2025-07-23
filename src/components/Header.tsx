@@ -12,6 +12,8 @@ interface HeaderProps {
 
 const Header = ({ scrollToConsultation }: HeaderProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const isMobile = useIsMobile();
   
@@ -23,21 +25,31 @@ const Header = ({ scrollToConsultation }: HeaderProps) => {
     setIsMenuOpen(false);
   };
   
-  // Effect to handle scroll-based styling
+  // Effect to handle scroll-based styling and visibility
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 10) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
+      const currentScrollY = window.scrollY;
+      
+      // Set scrolled state for background styling
+      setIsScrolled(currentScrollY > 10);
+      
+      // Handle visibility - hide when scrolling down, show when scrolling up
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        // Scrolling down and past initial scroll threshold
+        setIsVisible(false);
+      } else if (currentScrollY < lastScrollY || currentScrollY <= 100) {
+        // Scrolling up or near the top
+        setIsVisible(true);
       }
+      
+      setLastScrollY(currentScrollY);
     };
     
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [lastScrollY]);
   
   const handleConsultationClick = () => {
     if (scrollToConsultation) {
@@ -48,7 +60,9 @@ const Header = ({ scrollToConsultation }: HeaderProps) => {
   
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-in-out transform ${
+        isVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
+      } ${
         isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'
       }`}
     >
