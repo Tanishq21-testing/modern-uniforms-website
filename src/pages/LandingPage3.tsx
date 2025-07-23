@@ -103,15 +103,16 @@ const LandingPage3 = () => {
                         />
                       </div>
                       
-                      {/* Mobile text block under pictures */}
-                      <div className="absolute -bottom-10 left-1/2 transform -translate-x-1/2 text-center">
-                        <div className="text-base font-extrabold text-gray-800">50+ Years Experience</div>
-                        <div className="text-xs text-gray-500 font-normal mt-1">GCC READY - Dubai Based</div>
+                      {/* Mobile text block with better spacing and hierarchy */}
+                      <div className="absolute -bottom-16 left-1/2 transform -translate-x-1/2 text-center">
+                        <div className="text-lg font-extrabold text-gray-800 mb-1">50+ Years Experience</div>
+                        <div className="text-sm text-gray-600 font-normal">GCC READY - Dubai Based</div>
                       </div>
                     </div>
                   </div>
                   
-                  <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-4 text-lg font-medium text-gray-700 mt-8 lg:mt-6">
+                  {/* Stars moved below text on mobile for clarity */}
+                  <div className="flex flex-col sm:flex-row items-center sm:items-center justify-center sm:justify-start space-y-2 sm:space-y-0 sm:space-x-4 text-lg font-medium text-gray-700 mt-12 lg:mt-6">
                     <div className="flex space-x-1">
                       {[...Array(5)].map((_, i) => (
                         <Star key={i} className="w-5 h-5 text-yellow-400 fill-yellow-400" />
