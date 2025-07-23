@@ -72,7 +72,7 @@ const StickyOrderButton = () => {
     >
       <button
         onClick={handleClick}
-        className="group bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-black font-bold py-3 px-5 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center space-x-2 border border-yellow-400/20"
+        className="group bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-black font-bold py-3 px-5 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center space-x-2 border border-yellow-400/20 relative"
       >
         <ShoppingBag className="w-4 h-4 transition-transform duration-200" />
         <span className="text-sm">Order Now</span>
@@ -81,6 +81,9 @@ const StickyOrderButton = () => {
         {/* Subtle glow effect */}
         <div className="absolute inset-0 rounded-full bg-gradient-to-r from-yellow-400 to-yellow-500 opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
       </button>
+      
+      {/* Gentle pulse every 10 seconds */}
+      <div className="absolute inset-0 rounded-full bg-yellow-400 opacity-20 animate-[pulse_10s_ease-in-out_infinite]"></div>
     </div>
   );
 };
