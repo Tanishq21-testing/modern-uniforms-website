@@ -4,6 +4,7 @@ import PageFooter from '@/components/PageFooter';
 import { ArrowRight, Check, Star, Shield, Clock, Users, Award, Building, FileText, Settings, MessageCircle, Scissors, Palette, Zap, Target, Factory, Sparkles, Heart, TrendingUp, ChevronLeft, ChevronRight, Truck, Eye, Globe, HeartHandshake } from 'lucide-react';
 import { images } from '@/assets/images';
 import OptimizedConsultationForm from '@/components/OptimizedConsultationForm';
+import StickyOrderButton from '@/components/StickyOrderButton';
 
 const LandingPage3 = () => {
   const consultationFormRef = useRef<HTMLDivElement>(null);
@@ -212,6 +213,7 @@ const LandingPage3 = () => {
                 {/* Mobile responsive CTA Button */}
                 <div>
                   <button 
+                    data-cta-button
                     className="relative bg-gradient-to-r from-red-600 to-red-700 text-white font-bold text-base sm:text-lg lg:text-xl px-6 sm:px-8 lg:px-12 py-3 sm:py-4 lg:py-5 rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-red-500/30 overflow-hidden group" 
                     onClick={scrollToConsultation}
                   >
@@ -507,7 +509,7 @@ const LandingPage3 = () => {
       </section>
 
       {/* 5️⃣ Pricing Section - Light Background */}
-      <section className="py-16 sm:py-20 bg-gradient-to-br from-gray-50 to-white">
+      <section className="py-16 sm:py-20 bg-gradient-to-br from-gray-50 to-white" data-section="pricing">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12 sm:mb-16">
@@ -558,6 +560,7 @@ const LandingPage3 = () => {
 
             <div className="text-center">
               <button 
+                data-cta-button
                 className="bg-gradient-to-r from-red-600 to-red-700 text-white font-bold text-lg sm:text-xl px-8 sm:px-12 py-4 sm:py-5 rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-red-500/30 w-full sm:w-auto" 
                 onClick={scrollToConsultation}
               >
@@ -1139,6 +1142,9 @@ const LandingPage3 = () => {
       </div>
 
       <PageFooter />
+      
+      {/* Sticky Order Button */}
+      <StickyOrderButton />
     </div>
   );
 };
