@@ -111,6 +111,17 @@ const LandingPage3 = () => {
                   
                 </div>
                 
+                {/* Clean Process Text Block - Before service icons */}
+                <div className="max-w-md mx-auto text-left py-4 mt-8">
+                  <div className="space-y-2">
+                    <p className="text-sm font-semibold text-gray-800 mb-3">Our Process</p>
+                    <p className="text-sm font-medium text-gray-700">1) Initial Consultation</p>
+                    <p className="text-sm font-medium text-gray-700">2) Customisation</p>
+                    <p className="text-sm font-medium text-gray-700">3) Production</p>
+                    <p className="text-sm font-medium text-gray-700">4) Ongoing Program</p>
+                  </div>
+                </div>
+                
                 {/* Service Awareness Icons - Sharper text */}
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 py-6 mt-8">
                   <div className="flex flex-col items-center text-center space-y-2">
@@ -139,16 +150,6 @@ const LandingPage3 = () => {
                   </div>
                 </div>
 
-                {/* Clean Process Text Block */}
-                <div className="text-center py-4">
-                  <div className="space-y-2">
-                    <p className="text-sm font-semibold text-gray-800">Our Process</p>
-                    <p className="text-sm font-medium text-gray-700">Initial Consultation</p>
-                    <p className="text-sm font-medium text-gray-700">Customisation</p>
-                    <p className="text-sm font-medium text-gray-700">Production</p>
-                    <p className="text-sm font-medium text-gray-700">Ongoing Program</p>
-                  </div>
-                </div>
               </div>
 
               {/* Desktop Images - Hidden on mobile, shown on desktop */}
