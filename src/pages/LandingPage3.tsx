@@ -864,51 +864,6 @@ const LandingPage3 = () => {
         </div>
       </section>
 
-      {/* 🔟 Why UniformConnect? Summary with Icons */}
-      <section className="py-16 sm:py-20 bg-black text-white relative overflow-hidden">
-        <div className="container mx-auto px-4">
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-12 sm:mb-16">
-              <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6">WHY UNIFORMCONNECT?</h2>
-              <p className="text-lg sm:text-xl text-gray-300">Your trusted partner for uniform excellence</p>
-            </div>
-            
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
-              <div className="text-center group">
-                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 sm:p-6 hover:bg-white/20 transition-all duration-300">
-                  <Eye className="w-8 sm:w-12 h-8 sm:h-12 text-blue-400 mx-auto mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-300" />
-                  <h3 className="text-sm sm:text-lg font-bold mb-2">Premium Quality</h3>
-                  <p className="text-gray-400 text-xs sm:text-sm">Superior materials & craftsmanship</p>
-                </div>
-              </div>
-              
-              <div className="text-center group">
-                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 sm:p-6 hover:bg-white/20 transition-all duration-300">
-                  <Clock className="w-8 sm:w-12 h-8 sm:h-12 text-green-400 mx-auto mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-300" />
-                  <h3 className="text-sm sm:text-lg font-bold mb-2">Fast Delivery</h3>
-                  <p className="text-gray-400 text-xs sm:text-sm">Quick turnaround times</p>
-                </div>
-              </div>
-              
-              <div className="text-center group">
-                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 sm:p-6 hover:bg-white/20 transition-all duration-300">
-                  <Globe className="w-8 sm:w-12 h-8 sm:h-12 text-purple-400 mx-auto mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-300" />
-                  <h3 className="text-sm sm:text-lg font-bold mb-2">UAE Based</h3>
-                  <p className="text-gray-400 text-xs sm:text-sm">Local expertise & support</p>
-                </div>
-              </div>
-              
-              <div className="text-center group">
-                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 sm:p-6 hover:bg-white/20 transition-all duration-300">
-                  <HeartHandshake className="w-8 sm:w-12 h-8 sm:h-12 text-red-400 mx-auto mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-300" />
-                  <h3 className="text-sm sm:text-lg font-bold mb-2">Trusted Partner</h3>
-                  <p className="text-gray-400 text-xs sm:text-sm">50+ years of excellence</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* 1️⃣1️⃣ Why UniformConnect? Section - Rich Marketing Points */}
       <section className="py-16 sm:py-20 bg-black text-white relative overflow-hidden">
