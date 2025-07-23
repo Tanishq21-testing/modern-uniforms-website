@@ -664,36 +664,49 @@ const LandingPage3 = () => {
                 </div>
               </div>
               
-              {/* Right side - Master craftsmanship hero image */}
-              <div className="relative flex justify-center">
-                <div className="relative">
-                  <div className="absolute inset-0 bg-white/10 rounded-full blur-3xl opacity-50"></div>
-                  <div className="relative w-80 sm:w-96 h-96 sm:h-[500px] rounded-3xl shadow-2xl overflow-hidden group hover:scale-105 transition-transform duration-500">
-                    <img 
-                      src={images.masterCraftsman} 
-                      alt="Master craftsman at work" 
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                    />
-                    
-                    {/* Overlay with craftsmanship details */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end">
-                      <div className="p-4 sm:p-6 text-center w-full text-white">
-                        <h3 className="text-xl sm:text-2xl font-bold mb-2">Master Craftsmanship</h3>
-                        <p className="text-gray-300 text-sm sm:text-base mb-4">Precision in every stitch</p>
-                        <div className="grid grid-cols-2 gap-3 sm:gap-4 text-xs sm:text-sm">
-                          <div className="bg-white/10 rounded-lg p-2 sm:p-3 backdrop-blur-sm">
-                            <Factory className="w-5 sm:w-6 h-5 sm:h-6 mx-auto mb-1 sm:mb-2 text-white" />
-                            <span>Premium Factory</span>
-                          </div>
-                          <div className="bg-white/10 rounded-lg p-2 sm:p-3 backdrop-blur-sm">
-                            <Award className="w-5 sm:w-6 h-5 sm:h-6 mx-auto mb-1 sm:mb-2 text-white" />
-                            <span>Quality Certified</span>
+              {/* Right side - Master craftsmanship hero image with additional content */}
+              <div className="relative flex flex-col justify-between h-full">
+                <div className="relative flex justify-center mb-6 sm:mb-8">
+                  <div className="relative">
+                    <div className="absolute inset-0 bg-white/10 rounded-full blur-3xl opacity-50"></div>
+                    <div className="relative w-80 sm:w-96 h-80 sm:h-96 rounded-3xl shadow-2xl overflow-hidden group hover:scale-105 transition-transform duration-500">
+                      <img 
+                        src={images.masterCraftsman} 
+                        alt="Master craftsman at work" 
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      />
+                      
+                      {/* Overlay with craftsmanship details */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end">
+                        <div className="p-4 sm:p-6 text-center w-full text-white">
+                          <h3 className="text-xl sm:text-2xl font-bold mb-2">Master Craftsmanship</h3>
+                          <p className="text-gray-300 text-sm sm:text-base mb-4">Precision in every stitch</p>
+                          <div className="grid grid-cols-2 gap-3 sm:gap-4 text-xs sm:text-sm">
+                            <div className="bg-white/10 rounded-lg p-2 sm:p-3 backdrop-blur-sm">
+                              <Factory className="w-5 sm:w-6 h-5 sm:h-6 mx-auto mb-1 sm:mb-2 text-white" />
+                              <span>Premium Factory</span>
+                            </div>
+                            <div className="bg-white/10 rounded-lg p-2 sm:p-3 backdrop-blur-sm">
+                              <Award className="w-5 sm:w-6 h-5 sm:h-6 mx-auto mb-1 sm:mb-2 text-white" />
+                              <span>Quality Certified</span>
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
+                    <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-white/20 rounded-3xl pointer-events-none"></div>
                   </div>
-                  <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-white/20 rounded-3xl pointer-events-none"></div>
+                </div>
+                
+                {/* Quality guarantee footer to fill bottom space */}
+                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 sm:p-8 text-center">
+                  <div className="flex items-center justify-center mb-4">
+                    <div className="w-8 h-0.5 bg-gradient-to-r from-transparent to-white/30 mr-3"></div>
+                    <Award className="w-6 h-6 text-white/80" />
+                    <div className="w-8 h-0.5 bg-gradient-to-l from-transparent to-white/30 ml-3"></div>
+                  </div>
+                  <h4 className="text-lg sm:text-xl font-bold mb-2 text-white">Quality Guarantee</h4>
+                  <p className="text-gray-400 text-sm sm:text-base">Every uniform crafted to perfection with our 45+ years of expertise</p>
                 </div>
               </div>
             </div>
