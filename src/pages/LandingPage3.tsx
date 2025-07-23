@@ -111,22 +111,22 @@ const LandingPage3 = () => {
                   </div>
                 </div>
 
-                {/* Process Steps - Exact smooth curved arrows from reference */}
+                {/* Process Steps - Perfect curved arrows matching reference */}
                 <div className="relative py-6">
-                  <div className="flex items-center justify-center max-w-3xl mx-auto">
+                  <div className="flex items-center justify-center max-w-4xl mx-auto">
                     {/* Step 1 */}
                     <div className="flex flex-col items-center text-center">
                       <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center text-white text-lg font-bold mb-3">1</div>
                       <span className="text-xs font-semibold text-gray-800 max-w-20 leading-tight">Initial Consultation</span>
                     </div>
                     
-                    {/* Premium Curved Arrow 1 - Upward curve */}
-                    <div className="flex items-center justify-center mx-4">
-                      <svg width="100" height="40" viewBox="0 0 100 40" className="text-gray-700">
-                        <path d="M10 20 Q 50 8 90 20" stroke="currentColor" strokeWidth="2.5" fill="none" markerEnd="url(#premiumArrow1)"/>
+                    {/* Elegant Curved Arrow 1 */}
+                    <div className="flex items-center justify-center mx-6">
+                      <svg width="120" height="50" viewBox="0 0 120 50" className="text-gray-700">
+                        <path d="M15 25 Q 60 10 105 25" stroke="currentColor" strokeWidth="3" fill="none" markerEnd="url(#elegantArrow1)"/>
                         <defs>
-                          <marker id="premiumArrow1" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="strokeWidth">
-                            <polygon points="0 0, 10 4, 0 8" fill="currentColor" />
+                          <marker id="elegantArrow1" markerWidth="12" markerHeight="10" refX="11" refY="5" orient="auto" markerUnits="strokeWidth">
+                            <polygon points="0 0, 12 5, 0 10" fill="currentColor" />
                           </marker>
                         </defs>
                       </svg>
@@ -138,13 +138,13 @@ const LandingPage3 = () => {
                       <span className="text-xs font-semibold text-gray-800 max-w-20 leading-tight">Customisation</span>
                     </div>
                     
-                    {/* Premium Curved Arrow 2 - Downward curve */}
-                    <div className="flex items-center justify-center mx-4">
-                      <svg width="100" height="40" viewBox="0 0 100 40" className="text-gray-700">
-                        <path d="M10 20 Q 50 32 90 20" stroke="currentColor" strokeWidth="2.5" fill="none" markerEnd="url(#premiumArrow2)"/>
+                    {/* Elegant Curved Arrow 2 */}
+                    <div className="flex items-center justify-center mx-6">
+                      <svg width="120" height="50" viewBox="0 0 120 50" className="text-gray-700">
+                        <path d="M15 25 Q 60 40 105 25" stroke="currentColor" strokeWidth="3" fill="none" markerEnd="url(#elegantArrow2)"/>
                         <defs>
-                          <marker id="premiumArrow2" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="strokeWidth">
-                            <polygon points="0 0, 10 4, 0 8" fill="currentColor" />
+                          <marker id="elegantArrow2" markerWidth="12" markerHeight="10" refX="11" refY="5" orient="auto" markerUnits="strokeWidth">
+                            <polygon points="0 0, 12 5, 0 10" fill="currentColor" />
                           </marker>
                         </defs>
                       </svg>
@@ -156,13 +156,13 @@ const LandingPage3 = () => {
                       <span className="text-xs font-semibold text-gray-800 max-w-20 leading-tight">Production</span>
                     </div>
                     
-                    {/* Premium Curved Arrow 3 - Upward curve */}
-                    <div className="flex items-center justify-center mx-4">
-                      <svg width="100" height="40" viewBox="0 0 100 40" className="text-gray-700">
-                        <path d="M10 20 Q 50 8 90 20" stroke="currentColor" strokeWidth="2.5" fill="none" markerEnd="url(#premiumArrow3)"/>
+                    {/* Elegant Curved Arrow 3 */}
+                    <div className="flex items-center justify-center mx-6">
+                      <svg width="120" height="50" viewBox="0 0 120 50" className="text-gray-700">
+                        <path d="M15 25 Q 60 10 105 25" stroke="currentColor" strokeWidth="3" fill="none" markerEnd="url(#elegantArrow3)"/>
                         <defs>
-                          <marker id="premiumArrow3" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="strokeWidth">
-                            <polygon points="0 0, 10 4, 0 8" fill="currentColor" />
+                          <marker id="elegantArrow3" markerWidth="12" markerHeight="10" refX="11" refY="5" orient="auto" markerUnits="strokeWidth">
+                            <polygon points="0 0, 12 5, 0 10" fill="currentColor" />
                           </marker>
                         </defs>
                       </svg>
