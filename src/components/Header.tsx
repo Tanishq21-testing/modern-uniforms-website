@@ -87,6 +87,7 @@ const Header = ({ scrollToConsultation }: HeaderProps) => {
             
             {scrollToConsultation && (
               <Button 
+                data-cta-button
                 className="bg-brand-red hover:bg-brand-red/90 text-white"
                 onClick={handleConsultationClick}
               >
@@ -110,6 +111,7 @@ const Header = ({ scrollToConsultation }: HeaderProps) => {
               
               {scrollToConsultation && (
                 <Button 
+                  data-cta-button
                   className="bg-brand-red hover:bg-brand-red/90 text-white text-xl mt-4 w-full"
                   onClick={handleConsultationClick}
                 >

@@ -1112,6 +1112,7 @@ const LandingPage3 = () => {
             
             <div className="space-y-6 sm:space-y-8">
               <button 
+                data-cta-button
                 className="relative bg-gradient-to-r from-red-600 to-red-700 text-white font-bold text-lg sm:text-xl px-10 sm:px-16 py-5 sm:py-6 rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-red-500/30 overflow-hidden group w-full sm:w-auto"
                 onClick={scrollToConsultation}
               >
