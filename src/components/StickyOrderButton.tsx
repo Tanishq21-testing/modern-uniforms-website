@@ -18,20 +18,31 @@ const StickyOrderButton = () => {
         return;
       }
 
-      // Check if any CTA buttons are currently visible
+      // Check if any CTA buttons or the consultation form are currently visible
       const ctaButtons = document.querySelectorAll('[data-cta-button]');
-      let anyCtaVisible = false;
+      const consultationForm = document.querySelector('[data-consultation-form]');
+      let anyCtaOrFormVisible = false;
 
+      // Check CTA buttons
       ctaButtons.forEach((button) => {
         const rect = button.getBoundingClientRect();
         const isInViewport = rect.top >= 0 && rect.bottom <= window.innerHeight;
         if (isInViewport) {
-          anyCtaVisible = true;
+          anyCtaOrFormVisible = true;
         }
       });
 
-      // Show sticky button only if no CTA is visible and user has scrolled
-      setIsVisible(hasScrolled && !anyCtaVisible);
+      // Check consultation form
+      if (consultationForm) {
+        const rect = consultationForm.getBoundingClientRect();
+        const isInViewport = rect.top < window.innerHeight && rect.bottom >= 0;
+        if (isInViewport) {
+          anyCtaOrFormVisible = true;
+        }
+      }
+
+      // Show sticky button only if no CTA or form is visible and user has scrolled
+      setIsVisible(hasScrolled && !anyCtaOrFormVisible);
     };
 
     // Initial check
@@ -57,10 +68,10 @@ const StickyOrderButton = () => {
   }, [hasScrolled]);
 
   const handleClick = () => {
-    // Scroll to pricing section or open contact form
-    const pricingSection = document.querySelector('[data-section="pricing"]');
-    if (pricingSection) {
-      pricingSection.scrollIntoView({ behavior: 'smooth' });
+    // Scroll to consultation form section
+    const consultationForm = document.querySelector('[data-consultation-form]');
+    if (consultationForm) {
+      consultationForm.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
