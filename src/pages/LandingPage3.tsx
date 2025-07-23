@@ -233,7 +233,7 @@ const LandingPage3 = () => {
       <section className="py-12 sm:py-16 bg-black text-white relative overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto text-center">
-            <div className="mb-2 sm:mb-4">
+            <div className="mb-1 sm:mb-2">
               <div className="flex items-center justify-center mb-1 sm:mb-2">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="w-5 sm:w-6 h-5 sm:h-6 text-yellow-400 fill-yellow-400 mr-1 sm:mr-2 last:mr-0" />
