@@ -52,9 +52,9 @@ const Header = ({ scrollToConsultation }: HeaderProps) => {
         isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'
       }`}
     >
-      <div className="container mx-auto px-6 lg:px-8 flex justify-between items-center">
+      <div className="container mx-auto px-2 lg:px-4 flex justify-between items-center">
         {/* Logo */}
-        <Link to="/" className="flex items-center mr-8 lg:mr-12">
+        <Link to="/" className="flex items-center mr-12 lg:mr-16">
           <img 
             src={images.logo} 
             alt="UniformConnect" 
