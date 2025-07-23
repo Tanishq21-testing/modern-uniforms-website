@@ -955,54 +955,47 @@ const LandingPage3 = () => {
       </section>
 
       {/* 🔥 PREMIUM COMPARISON SECTION - UniformConnect vs Competitors */}
-      <section className="py-20 sm:py-32 bg-gradient-to-b from-slate-50 to-white relative overflow-hidden">
-        {/* Background Elements */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-transparent to-red-50/50"></div>
-        <div className="absolute top-10 right-10 w-32 h-32 bg-gradient-to-br from-blue-100 to-red-100 rounded-full opacity-20 blur-3xl"></div>
-        <div className="absolute bottom-10 left-10 w-40 h-40 bg-gradient-to-br from-yellow-100 to-orange-100 rounded-full opacity-20 blur-3xl"></div>
-
+      <section className="py-16 sm:py-24 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
         <div className="container mx-auto px-4 relative">
-          <div className="max-w-7xl mx-auto">
+          <div className="max-w-6xl mx-auto">
             
             {/* Section Header */}
-            <div className="text-center mb-16 sm:mb-20">
-              <h2 className="text-4xl sm:text-6xl font-bold mb-6 bg-gradient-to-r from-gray-900 via-blue-900 to-red-900 bg-clip-text text-transparent">
+            <div className="text-center mb-12 sm:mb-16">
+              <h2 className="text-3xl sm:text-5xl font-bold mb-4 text-gray-900">
                 Why Choose UniformConnect?
               </h2>
-              <p className="text-xl sm:text-2xl text-gray-600 max-w-3xl mx-auto">
-                See the clear difference between us and the competition
+              <p className="text-lg sm:text-xl text-gray-600">
+                See the clear difference
               </p>
             </div>
 
             {/* Comparison Grid */}
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
               
               {/* LEFT: Standard Providers */}
               <div className="relative">
-                <div className="bg-gray-100 border-2 border-gray-200 rounded-3xl p-8 h-full shadow-sm">
-                  <div className="text-center mb-8">
-                    <div className="inline-block px-4 py-2 bg-gray-200 text-gray-600 rounded-full text-sm font-medium mb-4">
+                <div className="bg-gray-50 border border-gray-200 rounded-2xl p-6 h-full">
+                  <div className="text-center mb-6">
+                    <div className="inline-block px-3 py-1 bg-gray-200 text-gray-600 rounded-lg text-xs font-medium mb-3">
                       Standard Providers
                     </div>
-                    <h3 className="text-2xl font-bold text-gray-700 mb-2">Basic Options</h3>
-                    <p className="text-gray-500">Limited customization</p>
+                    <h3 className="text-xl font-bold text-gray-700 mb-1">Basic Options</h3>
+                    <p className="text-sm text-gray-500">Limited solutions</p>
                   </div>
                   
-                  <div className="space-y-4">
+                  <div className="space-y-3">
                     {[
                       'Basic uniform options',
                       'Limited customization',
                       'Standard fabrics only',
-                      'Fixed production timelines',
-                      'Minimal post-sale support',
-                      'No brand integration',
-                      'Generic designs only'
+                      'Fixed timelines',
+                      'Minimal support'
                     ].map((item, index) => (
                       <div key={index} className="flex items-center space-x-3">
-                        <div className="w-6 h-6 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0">
-                          <X className="w-4 h-4 text-red-500" />
+                        <div className="w-5 h-5 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0">
+                          <X className="w-3 h-3 text-red-500" />
                         </div>
-                        <span className="text-gray-600 text-sm">{item}</span>
+                        <span className="text-gray-600 text-sm leading-tight">{item}</span>
                       </div>
                     ))}
                   </div>
@@ -1010,90 +1003,84 @@ const LandingPage3 = () => {
               </div>
 
               {/* CENTER: UniformConnect (Premium) */}
-              <div className="relative lg:-mt-8 lg:mb-8">
-                {/* Popular Choice Badge */}
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
-                  <div className="bg-gradient-to-r from-blue-600 to-red-600 text-white px-6 py-2 rounded-full shadow-lg">
-                    <div className="flex items-center space-x-2">
-                      <Star className="w-4 h-4 fill-current" />
-                      <span className="font-bold text-sm">PREFERRED BY INDUSTRY LEADERS</span>
+              <div className="relative">
+                {/* Elegant Badge */}
+                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-10">
+                  <div className="bg-gradient-to-r from-yellow-400 to-yellow-500 text-black px-4 py-1 rounded-full shadow-lg">
+                    <div className="flex items-center space-x-1">
+                      <Star className="w-3 h-3 fill-current" />
+                      <span className="font-bold text-xs">INDUSTRY CHOICE</span>
                     </div>
                   </div>
                 </div>
 
-                <div className="bg-white border-4 border-gradient-to-r from-blue-500 to-red-500 rounded-3xl p-8 h-full shadow-2xl relative overflow-hidden">
-                  {/* Premium background gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-50/30 via-white to-red-50/30 rounded-3xl"></div>
+                <div className="bg-white border-2 border-yellow-400 rounded-2xl p-6 h-full shadow-xl relative overflow-hidden">
+                  {/* Premium accent */}
+                  <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-400"></div>
                   
-                  <div className="relative text-center mb-8">
-                    <div className="inline-block px-6 py-3 bg-gradient-to-r from-blue-600 to-red-600 text-white rounded-full text-sm font-bold mb-4 shadow-lg">
+                  <div className="text-center mb-6 mt-2">
+                    <div className="inline-block px-4 py-2 bg-gradient-to-r from-red-600 to-red-700 text-white rounded-lg text-xs font-bold mb-3">
                       UNIFORMCONNECT
                     </div>
-                    <h3 className="text-3xl font-bold bg-gradient-to-r from-blue-700 to-red-700 bg-clip-text text-transparent mb-2">
+                    <h3 className="text-2xl font-bold text-gray-900 mb-1">
                       Premium Solution
                     </h3>
-                    <p className="text-gray-600 font-medium">Complete customization & excellence</p>
+                    <p className="text-sm text-gray-600 font-medium">Complete excellence</p>
                   </div>
                   
-                  <div className="space-y-4">
+                  <div className="space-y-3">
                     {[
-                      'Premium custom uniform design',
-                      'Full brand alignment & identity integration',
-                      'Premium global fabrics selection',
-                      'Flexible production & rush options',
-                      'Dedicated account management',
-                      'Free consultation & design services',
-                      'Ongoing maintenance program',
-                      '50+ years craftsmanship expertise'
+                      'Premium custom designs',
+                      'Full brand integration',
+                      'Global premium fabrics',
+                      'Rush options available',
+                      'Dedicated support team',
+                      'Free design consultation',
+                      '50+ years expertise'
                     ].map((item, index) => (
                       <div key={index} className="flex items-center space-x-3">
-                        <div className="w-6 h-6 bg-gradient-to-r from-blue-500 to-red-500 rounded-full flex items-center justify-center flex-shrink-0">
-                          <Check className="w-4 h-4 text-white" />
+                        <div className="w-5 h-5 bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-full flex items-center justify-center flex-shrink-0">
+                          <Check className="w-3 h-3 text-black font-bold" />
                         </div>
-                        <span className="text-gray-800 font-medium text-sm">{item}</span>
+                        <span className="text-gray-900 font-medium text-sm leading-tight">{item}</span>
                       </div>
                     ))}
                   </div>
 
-                  {/* Premium Features Badge */}
-                  <div className="mt-8 p-4 bg-gradient-to-r from-yellow-50 to-orange-50 rounded-2xl border border-yellow-200">
-                    <div className="flex items-center justify-center space-x-2 mb-2">
-                      <Award className="w-5 h-5 text-yellow-600" />
-                      <span className="font-bold text-yellow-800 text-sm">PREMIUM ADVANTAGES</span>
+                  {/* Bottom accent */}
+                  <div className="mt-6 pt-4 border-t border-yellow-200">
+                    <div className="flex items-center justify-center space-x-2">
+                      <Award className="w-4 h-4 text-yellow-600" />
+                      <span className="font-bold text-yellow-800 text-xs">24H RESPONSE • UAE BASED</span>
                     </div>
-                    <p className="text-yellow-700 text-xs text-center">
-                      24H response • UAE based • Quality guarantee
-                    </p>
                   </div>
                 </div>
               </div>
 
               {/* RIGHT: Large Global Providers */}
               <div className="relative">
-                <div className="bg-gray-100 border-2 border-gray-200 rounded-3xl p-8 h-full shadow-sm">
-                  <div className="text-center mb-8">
-                    <div className="inline-block px-4 py-2 bg-gray-200 text-gray-600 rounded-full text-sm font-medium mb-4">
-                      Large Global Providers
+                <div className="bg-gray-50 border border-gray-200 rounded-2xl p-6 h-full">
+                  <div className="text-center mb-6">
+                    <div className="inline-block px-3 py-1 bg-gray-200 text-gray-600 rounded-lg text-xs font-medium mb-3">
+                      Global Providers
                     </div>
-                    <h3 className="text-2xl font-bold text-gray-700 mb-2">Corporate Scale</h3>
-                    <p className="text-gray-500">Less personalized service</p>
+                    <h3 className="text-xl font-bold text-gray-700 mb-1">Corporate Scale</h3>
+                    <p className="text-sm text-gray-500">Less personal</p>
                   </div>
                   
-                  <div className="space-y-4">
+                  <div className="space-y-3">
                     {[
-                      'Advanced uniform options',
-                      'Some customization available',
-                      'High minimum order quantities',
+                      'Advanced options',
+                      'Some customization',
+                      'High minimums',
                       'Long lead times',
-                      'Less personalized service',
-                      'Complex approval processes',
-                      'Limited local support'
+                      'Complex processes'
                     ].map((item, index) => (
                       <div key={index} className="flex items-center space-x-3">
-                        <div className="w-6 h-6 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0">
-                          <X className="w-4 h-4 text-red-500" />
+                        <div className="w-5 h-5 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0">
+                          <X className="w-3 h-3 text-red-500" />
                         </div>
-                        <span className="text-gray-600 text-sm">{item}</span>
+                        <span className="text-gray-600 text-sm leading-tight">{item}</span>
                       </div>
                     ))}
                   </div>
@@ -1102,16 +1089,13 @@ const LandingPage3 = () => {
             </div>
 
             {/* Bottom CTA */}
-            <div className="text-center mt-16 sm:mt-20">
-              <p className="text-lg text-gray-600 mb-6">
-                Ready to experience the UniformConnect difference?
-              </p>
+            <div className="text-center mt-12">
               <button 
                 data-cta-button
-                className="bg-gradient-to-r from-blue-600 to-red-600 text-white font-bold text-lg px-12 py-4 rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25"
+                className="bg-gradient-to-r from-red-600 to-red-700 text-white font-bold text-lg px-10 py-4 rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-red-500/30"
                 onClick={scrollToConsultation}
               >
-                Get Your Premium Consultation
+                Get Premium Consultation
                 <ArrowRight className="ml-2 h-5 w-5 inline" />
               </button>
             </div>
