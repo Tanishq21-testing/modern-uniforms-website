@@ -544,6 +544,18 @@ const LandingPage3 = () => {
               </div>
             </div>
 
+            {/* Subtle "Other Items?" section */}
+            <div className="mt-8 mb-8">
+              <div className="flex justify-center">
+                <div className="w-24 h-px bg-gray-300"></div>
+              </div>
+              <div className="text-center mt-4">
+                <p className="text-sm text-gray-600 font-medium italic leading-relaxed max-w-2xl mx-auto">
+                  Other items? We also produce chef coats, school uniforms, security outfits, and custom sets. Prices vary by quantity & customization.
+                </p>
+              </div>
+            </div>
+
             <div className="text-center">
               <button 
                 className="bg-gradient-to-r from-red-600 to-red-700 text-white font-bold text-lg sm:text-xl px-8 sm:px-12 py-4 sm:py-5 rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-red-500/30 w-full sm:w-auto" 
