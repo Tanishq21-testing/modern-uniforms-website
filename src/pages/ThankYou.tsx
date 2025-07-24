@@ -94,13 +94,13 @@ const ThankYou = () => {
                   href="tel:+971123456789" 
                   className="text-primary hover:text-primary/80 font-medium transition-colors story-link"
                 >
-                  📞 +971 12 345 6789
+                  📞 +971 50 759 9245
                 </a>
                 <a 
                   href="mailto:info@uniformconnect.com" 
                   className="text-primary hover:text-primary/80 font-medium transition-colors story-link"
                 >
-                  📧 info@uniformconnect.com
+                  📧 Premparsram@gmail.com
                 </a>
               </div>
             </div>
