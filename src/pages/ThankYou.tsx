@@ -69,7 +69,7 @@ const ThankYou = () => {
               <h2 className="text-xl font-semibold text-foreground">What happens next?</h2>
               <p className="text-muted-foreground">
                 One of our specialists will contact you via email or phone to confirm your needs 
-                and provide a customized quote tailored to your business requirements.
+                and provide a customized quote.
               </p>
             </div>
 
