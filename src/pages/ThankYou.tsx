@@ -73,22 +73,14 @@ const ThankYou = () => {
               </p>
             </div>
 
-            {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in">
+            {/* Action Button */}
+            <div className="flex justify-center animate-fade-in">
               <Button 
                 onClick={handleBackToHome}
                 size="lg"
                 className="px-8 py-3 text-lg font-semibold hover-scale"
               >
                 Back to Homepage
-              </Button>
-              <Button 
-                onClick={() => navigate('/services')}
-                variant="outline"
-                size="lg"
-                className="px-8 py-3 text-lg hover-scale"
-              >
-                Browse Services
               </Button>
             </div>
 
