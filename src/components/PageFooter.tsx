@@ -71,8 +71,8 @@ const PageFooter = ({ backgroundColor = 'default' }: PageFooterProps) => {
               
               <div className="flex items-center space-x-3">
                 <Phone className="w-4 h-4 text-yellow-400 flex-shrink-0" />
-                <a href="tel:+971XXXXXXXXX" className="text-sm text-gray-300 hover:text-white transition-colors">
-                  +971 XX XXX XXXX
+                <a href="tel:+971507599245" className="text-sm text-gray-300 hover:text-white transition-colors">
+                  +971 50 759 9245
                 </a>
               </div>
               
