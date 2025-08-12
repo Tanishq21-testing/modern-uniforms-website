@@ -78,8 +78,8 @@ const PageFooter = ({ backgroundColor = 'default' }: PageFooterProps) => {
               
               <div className="flex items-center space-x-3">
                 <Mail className="w-4 h-4 text-yellow-400 flex-shrink-0" />
-                <a href="mailto:info@uniformconnect.ae" className="text-sm text-gray-300 hover:text-white transition-colors">
-                  info@uniformconnect.ae
+                <a href="mailto:premparsram@gmail.com" className="text-sm text-gray-300 hover:text-white transition-colors">
+                  premparsram@gmail.com
                 </a>
               </div>
               
