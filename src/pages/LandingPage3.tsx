@@ -214,7 +214,7 @@ const LandingPage3 = () => {
             <div className="mt-8 sm:mt-12 text-center">
               <div className="space-y-3 sm:space-y-4">
                 {/* Clean price text without box */}
-                <div className="text-sm sm:text-base font-bold text-red-600">300 AED / 100 pieces</div>
+                <div className="text-sm sm:text-base font-bold text-red-600 font-mono">300 AED / 100 pieces</div>
                 
                 {/* Mobile responsive CTA Button */}
                 <div>
@@ -528,7 +528,7 @@ const LandingPage3 = () => {
                 <img src={images.Hoodieimage} alt="Hoodies" className="w-full h-32 sm:h-48 object-cover rounded-2xl mb-4 sm:mb-6" />
                 <h3 className="text-xl sm:text-2xl font-bold mb-2">HOODIES</h3>
                 <div className="text-xs sm:text-sm text-gray-500 mb-2">FROM</div>
-                <div className="text-3xl sm:text-4xl font-bold text-red-600 mb-4">100 AED</div>
+                <div className="text-3xl sm:text-4xl font-bold text-red-600 mb-4 font-mono">100 AED</div>
                 <p className="text-gray-600 mb-2 text-sm sm:text-base">Logo + Fabric Choice</p>
                 <p className="text-xs sm:text-sm text-gray-500">Popular for Teams</p>
               </div>
@@ -537,7 +537,7 @@ const LandingPage3 = () => {
                 <img src={images.Varsityjacket} alt="Jackets" className="w-full h-32 sm:h-48 object-cover rounded-2xl mb-4 sm:mb-6" />
                 <h3 className="text-xl sm:text-2xl font-bold mb-2">JACKETS</h3>
                 <div className="text-xs sm:text-sm text-gray-500 mb-2">FROM</div>
-                <div className="text-3xl sm:text-4xl font-bold text-red-600 mb-4">150 AED</div>
+                <div className="text-3xl sm:text-4xl font-bold text-red-600 mb-4 font-mono">150 AED</div>
                 <p className="text-gray-600 mb-2 text-sm sm:text-base">Tailored Branding</p>
                 <p className="text-xs sm:text-sm text-gray-500">Great for Front Desk</p>
               </div>
@@ -546,7 +546,7 @@ const LandingPage3 = () => {
                 <img src={images.Tshirt2} alt="T-Shirts" className="w-full h-32 sm:h-48 object-cover rounded-2xl mb-4 sm:mb-6" />
                 <h3 className="text-xl sm:text-2xl font-bold mb-2">T-SHIRTS</h3>
                 <div className="text-xs sm:text-sm text-gray-500 mb-2">FROM</div>
-                <div className="text-3xl sm:text-4xl font-bold text-red-600 mb-4">50 AED</div>
+                <div className="text-3xl sm:text-4xl font-bold text-red-600 mb-4 font-mono">50 AED</div>
                 <p className="text-gray-600 mb-2 text-sm sm:text-base">Print or embroidery</p>
                 <p className="text-xs sm:text-sm text-gray-500">Fast Delivery Items</p>
               </div>
