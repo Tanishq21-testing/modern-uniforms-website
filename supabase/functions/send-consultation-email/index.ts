@@ -27,8 +27,11 @@ serve(async (req) => {
       formType
     });
 
+    const fromEmail = Deno.env.get("RESEND_FROM_EMAIL") || "onboarding@resend.dev";
+    const fromName = Deno.env.get("RESEND_FROM_NAME") || "UniformConnect";
+
     const emailResponse = await resend.emails.send({
-      from: "UniformConnect <onboarding@resend.dev>",
+      from: `${fromName} <${fromEmail}>`,
       to: "tanishqpremchand@gmail.com",
       subject: `New ${formType} Submission`,
       html: `
@@ -40,6 +43,7 @@ serve(async (req) => {
         <p><strong>Employee Count:</strong> ${employeeCount || 'Not specified'}</p>
         <p><strong>Message:</strong> ${message}</p>
       `,
+      reply_to: email ? [email] : undefined,
     });
 
     console.log("Email sent successfully:", emailResponse);
