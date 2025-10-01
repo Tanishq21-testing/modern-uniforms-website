@@ -158,17 +158,16 @@ export default function OptimizedConsultationForm() {
       };
 
       // Save to Supabase
-      const { data, error } = await supabase
+      const { error } = await supabase
         .from('consultation_submissions')
-        .insert([submissionData])
-        .select();
+        .insert([submissionData]);
 
       if (error) {
         console.error('Supabase insert error:', error);
         throw error;
       }
 
-      console.log('Form submitted successfully to Supabase:', data);
+      console.log('Form submitted successfully to Supabase');
 
       // Send email notification (don't fail if email fails)
       try {

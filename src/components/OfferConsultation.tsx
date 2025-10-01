@@ -34,7 +34,7 @@ const OfferConsultation = forwardRef<HTMLDivElement, OfferConsultationProps>(
       
       try {
         // Save to Supabase
-        const { data, error: dbError } = await supabase
+        const { error: dbError } = await supabase
           .from('consultation_submissions')
           .insert({
             name: formData.name,
@@ -43,15 +43,14 @@ const OfferConsultation = forwardRef<HTMLDivElement, OfferConsultationProps>(
             phone: formData.phone,
             employee_count: formData.employeeCount,
             message: formData.message
-          })
-          .select();
+          });
 
         if (dbError) {
           console.error('Supabase insert error:', dbError);
           throw dbError;
         }
 
-        console.log('Form submitted successfully to Supabase:', data);
+        console.log('Form submitted successfully to Supabase');
 
         // Send email notification (don't fail if email fails)
         try {
