@@ -158,24 +158,37 @@ export default function OptimizedConsultationForm() {
       };
 
       // Save to Supabase
-      const { error } = await supabase
+      const { data, error } = await supabase
         .from('consultation_submissions')
-        .insert([submissionData]);
+        .insert([submissionData])
+        .select();
 
-      if (error) throw error;
+      if (error) {
+        console.error('Supabase insert error:', error);
+        throw error;
+      }
 
-      // Send email notification
-      await supabase.functions.invoke('send-consultation-email', {
-        body: {
-          name: formData.fullName,
-          email: formData.email,
-          company: formData.companyName || 'Not provided',
-          phone: submissionData.phone,
-          employeeCount: 'Not specified',
-          message: `Uniform Type: ${formData.uniformType === 'Other' ? formData.customUniformType : formData.uniformType}\nCountry: ${formData.country}`,
-          formType: 'High-Ticket Consultation Form'
+      console.log('Form submitted successfully to Supabase:', data);
+
+      // Send email notification (don't fail if email fails)
+      try {
+        const { error: emailError } = await supabase.functions.invoke('send-consultation-email', {
+          body: {
+            name: formData.fullName,
+            email: formData.email,
+            company: formData.companyName || 'Not provided',
+            phone: submissionData.phone,
+            employeeCount: 'Not specified',
+            message: `Uniform Type: ${formData.uniformType === 'Other' ? formData.customUniformType : formData.uniformType}\nCountry: ${formData.country}`,
+            formType: 'High-Ticket Consultation Form'
+          }
+        });
+        if (emailError) {
+          console.error('Email notification failed:', emailError);
         }
-      });
+      } catch (emailError) {
+        console.error('Email notification error:', emailError);
+      }
 
       // Track conversion
       if (typeof window !== 'undefined' && window.gtag) {

@@ -34,7 +34,7 @@ const OfferConsultation = forwardRef<HTMLDivElement, OfferConsultationProps>(
       
       try {
         // Save to Supabase
-        const { error: dbError } = await supabase
+        const { data, error: dbError } = await supabase
           .from('consultation_submissions')
           .insert({
             name: formData.name,
@@ -43,16 +43,27 @@ const OfferConsultation = forwardRef<HTMLDivElement, OfferConsultationProps>(
             phone: formData.phone,
             employee_count: formData.employeeCount,
             message: formData.message
+          })
+          .select();
+
+        if (dbError) {
+          console.error('Supabase insert error:', dbError);
+          throw dbError;
+        }
+
+        console.log('Form submitted successfully to Supabase:', data);
+
+        // Send email notification (don't fail if email fails)
+        try {
+          const { error: emailError } = await supabase.functions.invoke('send-consultation-email', {
+            body: formData
           });
-
-        if (dbError) throw dbError;
-
-        // Send email notification
-        const { error: emailError } = await supabase.functions.invoke('send-consultation-email', {
-          body: formData
-        });
-
-        if (emailError) throw emailError;
+          if (emailError) {
+            console.error('Email notification failed:', emailError);
+          }
+        } catch (emailError) {
+          console.error('Email notification error:', emailError);
+        }
 
         // Track conversion with Google Ads
         if (typeof window !== 'undefined' && (window as any).gtag && (window as any).gtagSendEvent) {
