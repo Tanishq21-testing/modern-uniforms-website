@@ -16,6 +16,7 @@ import NotFound from "./pages/NotFound";
 const Landing = lazy(() => import("./pages/Landing"));
 const LandingPage2 = lazy(() => import("./pages/LandingPage2"));
 const LandingPage3 = lazy(() => import("./pages/LandingPage3"));
+const LandingPage4 = lazy(() => import("./pages/LandingPage4"));
 const AboutUs = lazy(() => import("./pages/AboutUs"));
 const CaseStudies = lazy(() => import("./pages/CaseStudies"));
 const ContactUs = lazy(() => import("./pages/ContactUs"));
@@ -122,6 +123,11 @@ const App = () => {
               <Route path="/landing3" element={
                 <Suspense fallback={<PageLoader />}>
                   <LandingPage3 />
+                </Suspense>
+              } />
+              <Route path="/landing4" element={
+                <Suspense fallback={<PageLoader />}>
+                  <LandingPage4 />
                 </Suspense>
               } />
               <Route path="/about-us" element={
