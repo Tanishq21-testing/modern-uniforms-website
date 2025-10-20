@@ -64,7 +64,7 @@ const LandingPage4 = () => {
 
   const schoolProjects = [
     { name: 'Raffles School', type: 'Hoodies', image: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/Raffle%20Hoodie.jpg' },
-    { name: 'DIA', type: 'Hoodies', image: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/DIA%20Hoodie%202' },
+    { name: 'DIA', type: 'Hoodies', image: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/DIA%20Hoodie%202.jpg' },
     { name: 'Winchester School', type: 'Varsity Jacket', image: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/WinchesterJacket.jpg' },
     { name: 'Al Salam Community School', type: 'Varsity Jacket', image: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/ASCS%20Jacket.jpg' },
   ];
@@ -203,6 +203,7 @@ const LandingPage4 = () => {
                     <img 
                       src={product.image} 
                       alt={product.name}
+                      loading="lazy"
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     />
                   </div>
@@ -234,6 +235,7 @@ const LandingPage4 = () => {
                     <img 
                       src={project.image} 
                       alt={project.name}
+                      loading="lazy"
                       className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500 p-8"
                     />
                   </div>
