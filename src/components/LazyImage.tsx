@@ -9,7 +9,8 @@ interface LazyImageProps {
   height?: string | number;
   placeholderColor?: string;
   priority?: boolean;
-  fallbackSources?: string[]; // Additional URLs to try if the main one fails
+  fallbackSources?: string[];
+  fetchPriority?: 'high' | 'low' | 'auto';
 }
 
 const LazyImage: React.FC<LazyImageProps> = ({
@@ -20,7 +21,8 @@ const LazyImage: React.FC<LazyImageProps> = ({
   height,
   placeholderColor = '#f3f4f6',
   priority = false,
-  fallbackSources = []
+  fallbackSources = [],
+  fetchPriority = 'auto'
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isInView, setIsInView] = useState(priority);
@@ -49,7 +51,7 @@ const LazyImage: React.FC<LazyImageProps> = ({
           observer.disconnect();
         }
       },
-      { threshold: 0.1, rootMargin: '100px' }
+      { threshold: 0.1, rootMargin: '300px' }
     );
 
     observer.observe(imgRef.current);
@@ -60,31 +62,16 @@ const LazyImage: React.FC<LazyImageProps> = ({
   }, [priority, src]);
 
   // Fallback handler for image load errors
-  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
-    const target = e.target as HTMLImageElement;
-
+  const handleImageError = () => {
     // Try next fallback source if available
     if (fallbackIndexRef.current < fallbackSources.length) {
       const nextSrc = fallbackSources[fallbackIndexRef.current];
       fallbackIndexRef.current += 1;
       setImageSrc(nextSrc);
-      target.onerror = null; // prevent multiple triggers for same image element
-      // Re-attach error handler after src changes (browser does this automatically)
       return;
     }
 
     console.error('Image failed to load and no fallbacks left:', src);
-    target.onerror = null; // Prevent infinite error loop
-    
-    // Create a simple visual placeholder
-    if (target.parentElement) {
-      target.style.display = 'none';
-      const fallback = document.createElement('div');
-      fallback.className = 'flex items-center justify-center w-full h-full bg-gray-200 text-gray-600';
-      fallback.style.minHeight = '80px';
-      fallback.innerHTML = `<span class="text-2xl font-bold">${alt.charAt(0)}</span>`;
-      target.parentElement.appendChild(fallback);
-    }
   };
 
   return (
@@ -112,6 +99,8 @@ const LazyImage: React.FC<LazyImageProps> = ({
           onLoad={() => setIsLoaded(true)}
           onError={handleImageError}
           loading={priority ? 'eager' : 'lazy'}
+          decoding="async"
+          fetchPriority={fetchPriority}
           width={typeof width === 'number' ? width : undefined}
           height={typeof height === 'number' ? height : undefined}
         />
