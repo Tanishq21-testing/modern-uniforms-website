@@ -58,7 +58,7 @@ const LandingPage4 = () => {
   
   const products = [
     { name: 'Hoodies', price: 'from AED 100', image: `${SUPABASE_STORAGE_URL}/DIA Hoodie.JPG` },
-    { name: 'Varsity Jackets', price: 'from AED 150', image: `${SUPABASE_STORAGE_URL}/DIA Hoodie.JPG` },
+    { name: 'Varsity Jackets', price: 'from AED 150', image: `${SUPABASE_STORAGE_URL}/Varsity Jacket.jpg` },
     { name: 'Sweaters', price: 'from AED 100', image: `${SUPABASE_STORAGE_URL}/Sweater.png` },
     { name: 'Graduation Gowns', price: 'from AED 90', image: `${SUPABASE_STORAGE_URL}/Graduation Gowns.jpg` },
     { name: 'Graduation Hats', price: 'from AED 75', image: `${SUPABASE_STORAGE_URL}/Graduation Caps.jpg` },
@@ -201,11 +201,11 @@ const LandingPage4 = () => {
             {products.map((product, index) => (
               <Card key={index} className="premium-card group cursor-pointer">
                 <CardContent className="p-4 space-y-4">
-                  <div className="h-[500px] bg-gradient-to-br from-brand-blue/5 to-brand-red/5 rounded-lg flex items-center justify-center overflow-hidden">
+                  <div className="h-[500px] bg-gradient-to-br from-brand-blue/5 to-brand-red/5 rounded-lg flex items-center justify-center overflow-hidden p-2">
                     <img 
                       src={product.image} 
                       alt={product.name}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
                   <div className="text-center">
