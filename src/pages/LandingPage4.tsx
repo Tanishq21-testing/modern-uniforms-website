@@ -55,11 +55,11 @@ const LandingPage4 = () => {
   };
 
   const products = [
-    { name: 'Hoodies', price: 'from AED 100', image: '/assets/Fairgreen school hoodie.png' },
-    { name: 'Varsity Jackets', price: 'from AED 150', image: '/assets/Fairgreen school hoodie.png' },
-    { name: 'Sweaters', price: 'from AED 100', image: '/assets/Fairgreen school hoodie.png' },
-    { name: 'Graduation Gowns', price: 'from AED 90', image: '/assets/Fairgreen school hoodie.png' },
-    { name: 'Graduation Hats', price: 'from AED 75', image: '/assets/Fairgreen school hoodie.png' },
+    { name: 'Hoodies', price: 'from AED 100', image: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/Products/Hoodie%20Mockup.png' },
+    { name: 'Varsity Jackets', price: 'from AED 150', image: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/jackets/Varsity%20Jacket%20Mockup.JPG' },
+    { name: 'Sweaters', price: 'from AED 100', image: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/Products/Sweater%20Mockup.jpg' },
+    { name: 'Graduation Gowns', price: 'from AED 90', image: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/Products/Graduation%20Gown%20Mockup.jpg' },
+    { name: 'Graduation Hats', price: 'from AED 75', image: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/Products/Graduation%20Caps.jpg' },
   ];
 
   const schoolProjects = [
