@@ -68,6 +68,20 @@ const LandingPage4 = () => {
   
   const products = [
     { 
+      name: 'T-Shirts', 
+      price: 'from AED 75', 
+      image: `${baseUrl}Tshirt%20Mockup.png`,
+      fallbacks: [
+        `${baseUrl}Tshirt%20Mockup.jpg`,
+        `${baseUrl}Tshirt%20Mockup.JPG`,
+        `${baseUrl}T-Shirt%20Mockup.png`,
+        `${baseUrl}T-Shirt%20Mockup.jpg`,
+        `${baseUrl}Tshirt_Mockup.png`,
+        `${baseUrl}tshirt%20mockup.png`,
+        `${baseUrl}tshirt%20mockup.jpg`,
+      ]
+    },
+    { 
       name: 'Hoodies', 
       price: 'from AED 100', 
       image: `${baseUrl}Hoodie%20Mockup.png`,
@@ -316,14 +330,14 @@ const LandingPage4 = () => {
             <p className="text-xl text-muted-foreground">Premium quality uniforms for your school</p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 md:gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-6 gap-4 md:gap-6">
             {products.map((product, index) => (
               <Card key={index} className="premium-card group cursor-pointer overflow-hidden">
                 <div className="aspect-[4/5] bg-gradient-to-br from-brand-blue/5 to-brand-red/5 flex items-center justify-center overflow-hidden">
                   <LazyImage 
                     src={product.image}
                     alt={product.name}
-                    className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     fallbackSources={product.fallbacks as string[]}
                     priority={index < 2}
                     fetchPriority={index < 2 ? 'high' : 'auto'}
@@ -356,14 +370,14 @@ const LandingPage4 = () => {
             <p className="text-xl text-muted-foreground">Trusted by leading schools across Dubai & the UAE</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             {schoolProjects.map((project, index) => (
               <Card key={index} className="premium-card group overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105">
-                <div className="aspect-[4/5] bg-white flex items-center justify-center overflow-hidden p-2">
+                <div className="aspect-[4/5] bg-white flex items-center justify-center overflow-hidden">
                   <LazyImage 
                     src={project.image}
                     alt={project.name}
-                    className="w-full h-full object-cover rounded-sm group-hover:scale-110 transition-transform duration-500"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     fallbackSources={project.fallbacks as string[]}
                     priority={index === 0}
                     fetchPriority={index === 0 ? 'high' : 'auto'}
