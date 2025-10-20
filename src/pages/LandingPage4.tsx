@@ -200,12 +200,12 @@ const LandingPage4 = () => {
           <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-6">
             {products.map((product, index) => (
               <Card key={index} className="premium-card group cursor-pointer">
-                <CardContent className="p-6 space-y-4">
-                  <div className="h-96 bg-gradient-to-br from-brand-blue/5 to-brand-red/5 rounded-lg flex items-center justify-center overflow-hidden">
+                <CardContent className="p-4 space-y-4">
+                  <div className="h-[500px] bg-gradient-to-br from-brand-blue/5 to-brand-red/5 rounded-lg flex items-center justify-center overflow-hidden">
                     <img 
                       src={product.image} 
                       alt={product.name}
-                      className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500"
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     />
                   </div>
                   <div className="text-center">
