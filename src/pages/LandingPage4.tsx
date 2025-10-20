@@ -63,7 +63,7 @@ const LandingPage4 = () => {
   ];
 
   const schoolProjects = [
-    { name: 'Repton School', type: 'Hoodies', image: '/assets/Fairgreen school hoodie.png' },
+    { name: 'Fairgreen International School', type: 'Hoodies', image: '/assets/Fairgreen school hoodie.png' },
     { name: 'GEMS Founders', type: 'Hoodies', image: '/assets/fairgreen logo.png' },
     { name: 'Dubai International Academy', type: 'Graduation Gowns', image: '/assets/DIA LOGO.png' },
     { name: 'Emirates International School', type: 'Sweaters', image: '/assets/EIS Logo.jpg' },
