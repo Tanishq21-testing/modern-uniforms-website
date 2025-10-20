@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -10,6 +11,7 @@ import PageFooter from '@/components/PageFooter';
 import LazyImage from '@/components/LazyImage';
 
 const LandingPage4 = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     fullName: '',
     schoolName: '',
@@ -18,6 +20,13 @@ const LandingPage4 = () => {
   });
   const [file, setFile] = useState<File | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const scrollToForm = () => {
+    document.getElementById('lead-form')?.scrollIntoView({ 
+      behavior: 'smooth', 
+      block: 'center' 
+    });
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -231,7 +240,7 @@ const LandingPage4 = () => {
             </div>
 
             {/* Lead Form */}
-            <Card className="shadow-2xl border-2 animate-slide-in-right">
+            <Card id="lead-form" className="shadow-2xl border-2 animate-slide-in-right">
               <CardContent className="p-8">
                 <h3 className="text-2xl font-bold mb-6 text-center">Bring My Design to Life</h3>
                 <form onSubmit={handleSubmit} className="space-y-4">
@@ -307,25 +316,31 @@ const LandingPage4 = () => {
             <p className="text-xl text-muted-foreground">Premium quality uniforms for your school</p>
           </div>
 
-          <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 md:gap-6">
             {products.map((product, index) => (
-              <Card key={index} className="premium-card group cursor-pointer">
-                <CardContent className="p-6 space-y-4">
-                  <div className="aspect-square bg-gradient-to-br from-brand-blue/5 to-brand-red/5 rounded-lg flex items-center justify-center overflow-hidden">
-                    <LazyImage 
-                      src={product.image}
-                      alt={product.name}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                      fallbackSources={product.fallbacks as string[]}
-                      priority={index < 2}
-                      fetchPriority={index < 2 ? 'high' : 'auto'}
-                    />
-                  </div>
+              <Card key={index} className="premium-card group cursor-pointer overflow-hidden">
+                <div className="aspect-[4/5] bg-gradient-to-br from-brand-blue/5 to-brand-red/5 flex items-center justify-center overflow-hidden">
+                  <LazyImage 
+                    src={product.image}
+                    alt={product.name}
+                    className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500"
+                    fallbackSources={product.fallbacks as string[]}
+                    priority={index < 2}
+                    fetchPriority={index < 2 ? 'high' : 'auto'}
+                  />
+                </div>
+                <CardContent className="p-4 space-y-3">
                   <div className="text-center">
-                    <h3 className="font-bold text-lg mb-2">{product.name}</h3>
-                    <p className="text-brand-red font-semibold">{product.price}</p>
+                    <h3 className="font-bold text-base md:text-lg mb-1">{product.name}</h3>
+                    <p className="text-brand-red font-semibold text-sm">{product.price}</p>
                   </div>
-                  <Button variant="outline" className="w-full">Quick Quote</Button>
+                  <Button 
+                    variant="outline" 
+                    className="w-full text-xs"
+                    onClick={scrollToForm}
+                  >
+                    Quick Quote
+                  </Button>
                 </CardContent>
               </Card>
             ))}
@@ -341,24 +356,22 @@ const LandingPage4 = () => {
             <p className="text-xl text-muted-foreground">Trusted by leading schools across Dubai & the UAE</p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
             {schoolProjects.map((project, index) => (
-              <Card key={index} className="premium-card group overflow-hidden">
-                <CardContent className="p-0">
-                  <div className="aspect-square bg-gradient-to-br from-brand-blue/5 to-brand-green/5 flex items-center justify-center overflow-hidden">
-                    <LazyImage 
-                      src={project.image}
-                      alt={project.name}
-                      className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500 p-8"
-                      fallbackSources={project.fallbacks as string[]}
-                      priority={index === 0}
-                      fetchPriority={index === 0 ? 'high' : 'auto'}
-                    />
-                  </div>
-                  <div className="p-4 bg-white/50 backdrop-blur-sm">
-                    <h3 className="text-[13px] md:text-sm font-semibold leading-tight whitespace-normal break-words">{project.name}</h3>
-                    <p className="text-[11px] md:text-xs text-muted-foreground">{project.type}</p>
-                  </div>
+              <Card key={index} className="premium-card group overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105">
+                <div className="aspect-[4/5] bg-white flex items-center justify-center overflow-hidden p-2">
+                  <LazyImage 
+                    src={project.image}
+                    alt={project.name}
+                    className="w-full h-full object-cover rounded-sm group-hover:scale-110 transition-transform duration-500"
+                    fallbackSources={project.fallbacks as string[]}
+                    priority={index === 0}
+                    fetchPriority={index === 0 ? 'high' : 'auto'}
+                  />
+                </div>
+                <CardContent className="p-4 bg-gradient-to-br from-background to-muted/50">
+                  <h3 className="text-[13px] md:text-sm font-semibold leading-tight whitespace-normal break-words mb-1">{project.name}</h3>
+                  <p className="text-[11px] md:text-xs text-muted-foreground">{project.type}</p>
                 </CardContent>
               </Card>
             ))}
@@ -375,7 +388,12 @@ const LandingPage4 = () => {
             <p className="text-xl text-muted-foreground mb-8">
               Know a school that needs new uniforms or graduation outfits? Help us connect and earn a reward when they order!
             </p>
-            <Button className="premium-button">Refer a School</Button>
+            <Button 
+              className="premium-button"
+              onClick={() => navigate('/refer-school')}
+            >
+              Refer a School
+            </Button>
             <p className="text-sm text-muted-foreground mt-4">
               We'll reach out and thank you personally when it turns into an order.
             </p>
