@@ -9,6 +9,7 @@ interface LazyImageProps {
   height?: string | number;
   placeholderColor?: string;
   priority?: boolean;
+  fallbackSources?: string[]; // Additional URLs to try if the main one fails
 }
 
 const LazyImage: React.FC<LazyImageProps> = ({
@@ -18,13 +19,15 @@ const LazyImage: React.FC<LazyImageProps> = ({
   width,
   height,
   placeholderColor = '#f3f4f6',
-  priority = false
+  priority = false,
+  fallbackSources = []
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isInView, setIsInView] = useState(priority);
   const [imageSrc, setImageSrc] = useState<string | null>(priority ? src : null);
   const imgRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
+  const fallbackIndexRef = useRef(0);
 
   // Preload image if priority is true
   useEffect(() => {
@@ -58,11 +61,22 @@ const LazyImage: React.FC<LazyImageProps> = ({
 
   // Fallback handler for image load errors
   const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
-    console.error('Image failed to load:', src);
     const target = e.target as HTMLImageElement;
+
+    // Try next fallback source if available
+    if (fallbackIndexRef.current < fallbackSources.length) {
+      const nextSrc = fallbackSources[fallbackIndexRef.current];
+      fallbackIndexRef.current += 1;
+      setImageSrc(nextSrc);
+      target.onerror = null; // prevent multiple triggers for same image element
+      // Re-attach error handler after src changes (browser does this automatically)
+      return;
+    }
+
+    console.error('Image failed to load and no fallbacks left:', src);
     target.onerror = null; // Prevent infinite error loop
     
-    // Create a fallback with the first letter of alt text
+    // Create a simple visual placeholder
     if (target.parentElement) {
       target.style.display = 'none';
       const fallback = document.createElement('div');

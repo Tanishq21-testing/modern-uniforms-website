@@ -7,6 +7,7 @@ import { Upload, Users, CheckCircle, Award, Star, Phone, Mail, Instagram } from 
 import { toast } from 'sonner';
 import { supabase } from '@/integrations/supabase/client';
 import PageFooter from '@/components/PageFooter';
+import LazyImage from '@/components/LazyImage';
 
 const LandingPage4 = () => {
   const [formData, setFormData] = useState({
@@ -55,18 +56,41 @@ const LandingPage4 = () => {
   };
 
   const products = [
-    { name: 'Hoodies', price: 'from AED 100', image: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/Products/Hoodie%20Mockup.png' },
-    { name: 'Varsity Jackets', price: 'from AED 150', image: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/jackets/Varsity%20Jacket%20Mockup.JPG' },
-    { name: 'Sweaters', price: 'from AED 100', image: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/Products/Sweater%20Mockup.jpg' },
-    { name: 'Graduation Gowns', price: 'from AED 90', image: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/Products/Graduation%20Gown%20Mockup.jpg' },
-    { name: 'Graduation Hats', price: 'from AED 75', image: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/Products/Graduation%20Caps.jpg' },
+    { name: 'Hoodies', price: 'from AED 100', image: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/Products/Hoodie%20Mockup.png', fallbacks: [
+      'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/Products/Hoodie%20Mockup.jpg',
+      'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/Products/Hoodie%20Mockup.JPG'
+    ] },
+    { name: 'Varsity Jackets', price: 'from AED 150', image: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/Products/Varsity%20Jacket%20Mockup.jpg', fallbacks: [
+      'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/Products/Varsity%20Jacket%20Mockup.JPG',
+      'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/jackets/Varsity%20Jacket%20Mockup.JPG'
+    ] },
+    { name: 'Sweaters', price: 'from AED 100', image: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/Products/Sweater%20Mockup.jpg', fallbacks: [
+      'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/Products/Sweater%20Mockup.JPG',
+      'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/Products/Sweater%20Mockup.png'
+    ] },
+    { name: 'Graduation Gowns', price: 'from AED 90', image: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/Products/Graduation%20Gown%20Mockup.jpg', fallbacks: [
+      'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/Products/Graduation%20Gown%20Mockup.JPG',
+      'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/Products/Graduation%20Gown%20Mockup.png'
+    ] },
+    { name: 'Graduation Hats', price: 'from AED 75', image: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/Products/Graduation%20Caps.jpg', fallbacks: [
+      'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/Products/Graduation%20Caps.JPG'
+    ] },
   ];
 
   const schoolProjects = [
-    { name: 'Raffles School', type: 'Hoodies', image: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/Raffle%20Hoodie.jpg' },
-    { name: 'DIA', type: 'Hoodies', image: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/DIA%20Hoodie%202.jpg' },
-    { name: 'Winchester School', type: 'Varsity Jacket', image: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/WinchesterJacket.jpg' },
-    { name: 'Al Salam Community School', type: 'Varsity Jacket', image: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/ASCS%20Jacket.jpg' },
+    { name: 'Raffles School', type: 'Hoodies', image: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/Raffle%20Hoodie.jpg', fallbacks: [
+      'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/Raffle%20Hoodie.JPG'
+    ] },
+    { name: 'DIA', type: 'Hoodies', image: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/DIA%20Hoodie%202.jpg', fallbacks: [
+      'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/DIA%20Hoodie%202.JPG',
+      'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/DIA%20Hoodie%202'
+    ] },
+    { name: 'Winchester School', type: 'Varsity Jacket', image: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/WinchesterJacket.jpg', fallbacks: [
+      'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/WinchesterJacket.JPG'
+    ] },
+    { name: 'Al Salam Community School', type: 'Varsity Jacket', image: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/ASCS%20Jacket.jpg', fallbacks: [
+      'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/ASCS%20Jacket.JPG'
+    ] },
   ];
 
   const howItWorks = [
@@ -200,11 +224,11 @@ const LandingPage4 = () => {
               <Card key={index} className="premium-card group cursor-pointer">
                 <CardContent className="p-6 space-y-4">
                   <div className="aspect-square bg-gradient-to-br from-brand-blue/5 to-brand-red/5 rounded-lg flex items-center justify-center overflow-hidden">
-                    <img 
-                      src={product.image} 
+                    <LazyImage 
+                      src={product.image}
                       alt={product.name}
-                      loading="lazy"
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      fallbackSources={product.fallbacks as string[]}
                     />
                   </div>
                   <div className="text-center">
@@ -232,11 +256,11 @@ const LandingPage4 = () => {
               <Card key={index} className="premium-card group overflow-hidden">
                 <CardContent className="p-0">
                   <div className="aspect-square bg-gradient-to-br from-brand-blue/5 to-brand-green/5 flex items-center justify-center overflow-hidden">
-                    <img 
-                      src={project.image} 
+                    <LazyImage 
+                      src={project.image}
                       alt={project.name}
-                      loading="lazy"
                       className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500 p-8"
+                      fallbackSources={project.fallbacks as string[]}
                     />
                   </div>
                   <div className="p-4 bg-white/50 backdrop-blur-sm">
