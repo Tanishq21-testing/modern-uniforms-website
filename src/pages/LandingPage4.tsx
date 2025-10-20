@@ -333,11 +333,11 @@ const LandingPage4 = () => {
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-6 gap-4 md:gap-6">
             {products.map((product, index) => (
               <Card key={index} className="premium-card group cursor-pointer overflow-hidden">
-                <div className="aspect-[4/5] bg-gradient-to-br from-brand-blue/5 to-brand-red/5 flex items-center justify-center overflow-hidden">
+                <div className="aspect-square bg-white flex items-center justify-center overflow-hidden p-6">
                   <LazyImage 
                     src={product.image}
                     alt={product.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500"
                     fallbackSources={product.fallbacks as string[]}
                     priority={index < 2}
                     fetchPriority={index < 2 ? 'high' : 'auto'}
