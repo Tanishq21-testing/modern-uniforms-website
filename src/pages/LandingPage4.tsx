@@ -63,10 +63,10 @@ const LandingPage4 = () => {
   ];
 
   const schoolProjects = [
-    { name: 'Repton School', type: 'Varsity Jackets', image: '/assets/Fairgreen school hoodie.png' },
-    { name: 'GEMS Founders', type: 'Hoodies', image: '/assets/fairgreen logo.png' },
-    { name: 'Dubai International Academy', type: 'Graduation Gowns', image: '/assets/DIA LOGO.png' },
-    { name: 'Emirates International School', type: 'Sweaters', image: '/assets/EIS Logo.jpg' },
+    { name: 'Raffles School', type: 'Hoodies', image: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/Raffle%20Hoodie.jpg' },
+    { name: 'DIA', type: 'Hoodies', image: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/DIA%20Hoodie%202' },
+    { name: 'Winchester School', type: 'Varsity Jacket', image: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/WinchesterJacket.jpg' },
+    { name: 'Al Salam Community School', type: 'Varsity Jacket', image: 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/ASCS%20Jacket.jpg' },
   ];
 
   const howItWorks = [
@@ -238,8 +238,8 @@ const LandingPage4 = () => {
                     />
                   </div>
                   <div className="p-4 bg-white/50 backdrop-blur-sm">
-                    <h3 className="font-bold">{project.name}</h3>
-                    <p className="text-sm text-muted-foreground">{project.type}</p>
+                    <h3 className="font-bold text-sm">{project.name}</h3>
+                    <p className="text-xs text-muted-foreground">{project.type}</p>
                   </div>
                 </CardContent>
               </Card>
