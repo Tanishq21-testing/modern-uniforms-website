@@ -364,7 +364,7 @@ const LandingPage4 = () => {
             </a>
             <a href="https://instagram.com/uniformconnect" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:scale-105 transition-transform">
               <Instagram className="h-6 w-6" />
-              <span className="text-lg">@uniformconnect</span>
+              <span className="text-lg">@uniformconnectdxb</span>
             </a>
           </div>
 
