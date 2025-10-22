@@ -481,9 +481,9 @@ const LandingPage4 = () => {
           </p>
           
           <div className="flex flex-wrap justify-center gap-6 mb-12">
-            <a href="tel:+971501234567" className="flex items-center gap-2 hover:scale-105 transition-transform">
+            <a href="tel:+971550759245" className="flex items-center gap-2 hover:scale-105 transition-transform">
               <Phone className="h-6 w-6" />
-              <span className="text-lg">+971 50 123 4567</span>
+              <span className="text-lg">+9715 50 759 9245</span>
             </a>
             <a href="mailto:schools@uniformconnect.ae" className="flex items-center gap-2 hover:scale-105 transition-transform">
               <Mail className="h-6 w-6" />
