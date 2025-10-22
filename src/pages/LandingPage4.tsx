@@ -373,19 +373,19 @@ const LandingPage4 = () => {
           <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             {schoolProjects.map((project, index) => (
               <Card key={index} className="premium-card group overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105">
-                <div className="aspect-[4/5] bg-white flex items-center justify-center overflow-hidden">
+                <div className="aspect-[3/4] bg-white overflow-hidden">
                   <LazyImage 
                     src={project.image}
                     alt={project.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     fallbackSources={project.fallbacks as string[]}
                     priority={index === 0}
                     fetchPriority={index === 0 ? 'high' : 'auto'}
                   />
                 </div>
-                <CardContent className="p-4 bg-gradient-to-br from-background to-muted/50">
-                  <h3 className="text-[13px] md:text-sm font-semibold leading-tight whitespace-normal break-words mb-1">{project.name}</h3>
-                  <p className="text-[11px] md:text-xs text-muted-foreground">{project.type}</p>
+                <CardContent className="p-3 bg-gradient-to-br from-background to-muted/50">
+                  <h3 className="text-sm md:text-base font-semibold leading-tight mb-1">{project.name}</h3>
+                  <p className="text-xs md:text-sm text-muted-foreground">{project.type}</p>
                 </CardContent>
               </Card>
             ))}
