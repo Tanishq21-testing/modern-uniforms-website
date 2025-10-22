@@ -373,7 +373,7 @@ const LandingPage4 = () => {
           <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             {schoolProjects.map((project, index) => (
               <Card key={index} className="premium-card group overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105">
-                <div className="aspect-[4/5] bg-white flex items-center justify-center overflow-hidden">
+                <div className="aspect-[7/8] bg-white flex items-center justify-center overflow-hidden">
                   <LazyImage 
                     src={project.image}
                     alt={project.name}
