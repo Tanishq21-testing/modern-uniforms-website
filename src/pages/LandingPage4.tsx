@@ -485,9 +485,9 @@ const LandingPage4 = () => {
               <Phone className="h-6 w-6" />
               <span className="text-lg">+9715 50 759 9245</span>
             </a>
-            <a href="mailto:schools@uniformconnect.ae" className="flex items-center gap-2 hover:scale-105 transition-transform">
+            <a href="mailto:premparsram@gmail.com" className="flex items-center gap-2 hover:scale-105 transition-transform">
               <Mail className="h-6 w-6" />
-              <span className="text-lg">schools@uniformconnect.ae</span>
+              <span className="text-lg">premparsram@gmail.com</span>
             </a>
             <a href="https://instagram.com/uniformconnect" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:scale-105 transition-transform">
               <Instagram className="h-6 w-6" />
