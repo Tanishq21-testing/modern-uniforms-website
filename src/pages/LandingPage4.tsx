@@ -377,7 +377,7 @@ const LandingPage4 = () => {
                   <LazyImage 
                     src={project.image}
                     alt={project.name}
-                    className="w-full h-full object-contain scale-[3] group-hover:scale-[3.1] transition-transform duration-500"
+                    className="w-full h-full object-contain scale-[3] -translate-y-8 group-hover:scale-[3.1] transition-transform duration-500"
                     fallbackSources={project.fallbacks as string[]}
                     priority={index === 0}
                     fetchPriority={index === 0 ? 'high' : 'auto'}
