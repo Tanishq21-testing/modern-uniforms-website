@@ -234,7 +234,7 @@ const LandingPage4 = () => {
             <p className="text-xl text-muted-foreground">Premium quality uniforms for your school</p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-6 gap-4 md:gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
             {products.map((product, index) => <Card key={index} className="premium-card group cursor-pointer overflow-hidden">
                 <div className="aspect-square bg-white overflow-hidden">
                   <LazyImage src={product.image} alt={product.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" fallbackSources={product.fallbacks as string[]} priority={index < 2} fetchPriority={index < 2 ? 'high' : 'auto'} />
@@ -262,13 +262,13 @@ const LandingPage4 = () => {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-            {schoolProjects.map((project, index) => <Card key={index} className="premium-card group overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105">
-                <div className="aspect-[7/8] bg-white flex items-center justify-center overflow-visible">
-                  <LazyImage src={project.image} alt={project.name} className="w-full h-full object-contain scale-[3] -translate-y-8 group-hover:scale-[3.1] transition-transform duration-500" fallbackSources={project.fallbacks as string[]} priority={index === 0} fetchPriority={index === 0 ? 'high' : 'auto'} />
+            {schoolProjects.map((project, index) => <Card key={index} className="premium-card group overflow-hidden hover:shadow-xl transition-all duration-300">
+                <div className="aspect-square bg-white flex items-center justify-center overflow-hidden">
+                  <LazyImage src={project.image} alt={project.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" fallbackSources={project.fallbacks as string[]} priority={index === 0} fetchPriority={index === 0 ? 'high' : 'auto'} />
                 </div>
                 <CardContent className="p-4 bg-gradient-to-br from-background to-muted/50">
-                  <h3 className="text-[13px] md:text-sm font-semibold leading-tight whitespace-normal break-words mb-1">{project.name}</h3>
-                  <p className="text-[11px] md:text-xs text-muted-foreground">{project.type}</p>
+                  <h3 className="text-sm md:text-base font-semibold leading-tight mb-1">{project.name}</h3>
+                  <p className="text-xs md:text-sm text-muted-foreground">{project.type}</p>
                 </CardContent>
               </Card>)}
           </div>
