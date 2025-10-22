@@ -256,14 +256,14 @@ const LandingPage4 = () => {
       {/* Gallery of School Projects */}
       <section className="py-20 section-bg-2">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
+          <div className="aspect-[7/8] bg-white flex items-center justify-center overflow-visible">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">See What Other Schools Designed</h2>
             <p className="text-xl text-muted-foreground">Trusted by leading schools across Dubai & the UAE</p>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             {schoolProjects.map((project, index) => <Card key={index} className="premium-card group overflow-hidden hover:shadow-xl transition-all duration-300">
-                <div className="aspect-[3/4] bg-white flex items-center justify-center overflow-hidden">
+                <className="w-full h-full object-contain scale-[3] group-hover:scale-[3.1] transition-transform duration-500">
                   <LazyImage src={project.image} alt={project.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" fallbackSources={project.fallbacks as string[]} priority={index === 0} fetchPriority={index === 0 ? 'high' : 'auto'} />
                 </div>
                 <CardContent className="p-4 bg-gradient-to-br from-background to-muted/50 space-y-1">
