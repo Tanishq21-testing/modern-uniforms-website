@@ -126,7 +126,7 @@ const App = () => {
                   <LandingPage3 />
                 </Suspense>
               } />
-              <Route path="/Graduation2026" element={
+              <Route path="/Graduation" element={
                 <Suspense fallback={<PageLoader />}>
                   <LandingPage4 />
                 </Suspense>
