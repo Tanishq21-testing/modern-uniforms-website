@@ -46,34 +46,34 @@ BEGIN
   INSERT INTO public.products (name, description, price, image_url, company_id, school_id)
   VALUES
     (
-      'School Shirt and Tie with Skirt',
+      'School Boys Set',
       'Complete uniform set with shirt, tie, and skirt',
       95.00,
-      'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/Ambassador School/School Shirt and tie with skirt.png',
+      'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/Ambassador%20School/Boys%20Uniform%20Set.png',
       bridge_education_id,
       ambassador_school_id
     ),
     (
       'School Shirt',
-      'Standard school shirt',
+      'Standard School shirt',
       45.00,
-      'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/Ambassador School/School Shirt.png',
+      'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/Ambassador%20School/Boys%20Primary%20Uniforms%20Sets.png',
       bridge_education_id,
       ambassador_school_id
     ),
     (
-      'School Skirt',
-      'Standard school skirt',
+      'School Primary T-shirt',
+      'Standard Primary School T-shirt',
       40.00,
       'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/Ambassador School/School Skirt.png',
       bridge_education_id,
       ambassador_school_id
     ),
     (
-      'School T-shirt',
+      'School Girls Set',
       'Casual school t-shirt',
       30.00,
-      'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/Ambassador School/School T-shirt.png',
+      'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/Ambassador%20School/Girls%20Uniform%20Set.png',
       bridge_education_id,
       ambassador_school_id
     ),
@@ -81,7 +81,7 @@ BEGIN
       'Student Uniform Set',
       'Complete student uniform package',
       120.00,
-      'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/Ambassador School/student picture.png',
+      'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/Ambassador%20School/Uniform%20Set%20all%20grades.png',
       bridge_education_id,
       ambassador_school_id
     );
