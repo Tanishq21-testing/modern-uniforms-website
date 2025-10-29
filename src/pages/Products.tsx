@@ -331,12 +331,12 @@ const Products = () => {
                 className="overflow-hidden cursor-pointer hover:shadow-lg transition-shadow"
                 onClick={() => handleProductClick(product)}
               >
-                <div className="h-48 bg-gray-200 relative">
+                <div className="h-48 bg-gray-200 relative overflow-hidden">
                   {product.image_url ? (
                     <img 
                       src={product.image_url} 
                       alt={product.name}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover object-top"
                     />
                   ) : (
                     <div className="flex items-center justify-center h-full text-gray-400">
