@@ -23,6 +23,7 @@ interface OrderInvoiceRequest {
   customer_email: string;
   customer_name: string;
   company_name: string;
+  school_name?: string;
   order_items: OrderItem[];
   total_amount: number;
 }
@@ -39,11 +40,12 @@ const handler = async (req: Request): Promise<Response> => {
       customer_email, 
       customer_name,
       company_name,
+      school_name,
       order_items, 
       total_amount 
     }: OrderInvoiceRequest = await req.json();
 
-    console.log('Processing order invoice:', { order_number, customer_email, company_name });
+    console.log('Processing order invoice:', { order_number, customer_email, company_name, school_name });
 
     // Generate invoice HTML
     const invoiceHtml = `
@@ -75,6 +77,7 @@ const handler = async (req: Request): Promise<Response> => {
               <p><strong>Order Number:</strong> ${order_number}</p>
               <p><strong>Customer:</strong> ${customer_name}</p>
               <p><strong>Company:</strong> ${company_name}</p>
+              ${school_name ? `<p><strong>School:</strong> ${school_name}</p>` : ''}
               <p><strong>Email:</strong> ${customer_email}</p>
               <p><strong>Date:</strong> ${new Date().toLocaleDateString()}</p>
             </div>

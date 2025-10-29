@@ -9,6 +9,7 @@ import { Navigate } from 'react-router-dom';
 import { ShoppingCart, Package } from 'lucide-react';
 import { OrderDialog } from '@/components/OrderDialog';
 import { CartSidebar } from '@/components/CartSidebar';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 interface Product {
   id: string;
@@ -16,6 +17,7 @@ interface Product {
   description: string | null;
   price: number;
   image_url: string | null;
+  school_id: string | null;
 }
 
 interface CartItem {
@@ -33,6 +35,12 @@ interface Profile {
   is_master: boolean | null;
 }
 
+interface School {
+  id: string;
+  name: string;
+  company_id: string;
+}
+
 const Products = () => {
   const { user } = useAuth();
   const [products, setProducts] = useState<Product[]>([]);
@@ -43,6 +51,9 @@ const Products = () => {
   const [cartOpen, setCartOpen] = useState(false);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [checkoutLoading, setCheckoutLoading] = useState(false);
+  const [schools, setSchools] = useState<School[]>([]);
+  const [selectedSchool, setSelectedSchool] = useState<string | null>(null);
+  const [companyName, setCompanyName] = useState<string>('');
   const { toast } = useToast();
 
   useEffect(() => {
@@ -65,6 +76,29 @@ const Products = () => {
           setLoading(false);
           return;
         }
+
+        // Fetch company name
+        const { data: companyData, error: companyError } = await supabase
+          .from('companies')
+          .select('name')
+          .eq('id', profileData.company_id)
+          .single();
+
+        if (companyError) throw companyError;
+        setCompanyName(companyData?.name || '');
+
+        // Fetch schools for the company
+        const { data: schoolsData, error: schoolsError } = await supabase
+          .from('schools')
+          .select('*')
+          .eq('company_id', profileData.company_id)
+          .order('name');
+
+        if (schoolsError && schoolsError.code !== 'PGRST116') {
+          throw schoolsError;
+        }
+
+        setSchools(schoolsData || []);
 
         // Fetch products for the user's company
         const { data: productsData, error: productsError } = await supabase
@@ -165,12 +199,17 @@ const Products = () => {
       if (itemsError) throw itemsError;
 
       // Send invoice email
+      const schoolName = selectedSchool 
+        ? schools.find(s => s.id === selectedSchool)?.name 
+        : '';
+
       const emailPayload = {
         order_id: orderData.id,
         order_number: orderData.order_number,
         customer_email: profile!.email,
         customer_name: profile!.email.split('@')[0],
-        company_name: 'Jones the Grocer', // You can fetch this from companies table
+        company_name: companyName,
+        school_name: schoolName,
         order_items: cartItems.map(item => ({
           product_name: item.name,
           quantity: item.quantity,
@@ -238,6 +277,25 @@ const Products = () => {
           )}
         </div>
 
+        {schools.length > 0 && (
+          <div className="mb-6">
+            <label className="block text-sm font-medium mb-2">Filter by School</label>
+            <Select value={selectedSchool || 'all'} onValueChange={(value) => setSelectedSchool(value === 'all' ? null : value)}>
+              <SelectTrigger className="w-full max-w-md bg-background">
+                <SelectValue placeholder="All Schools" />
+              </SelectTrigger>
+              <SelectContent className="bg-background z-50">
+                <SelectItem value="all">All Schools</SelectItem>
+                {schools.map((school) => (
+                  <SelectItem key={school.id} value={school.id}>
+                    {school.name}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+        )}
+
         {loading ? (
           <div className="flex justify-center items-center min-h-[300px]">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-brand-blue"></div>
@@ -256,7 +314,9 @@ const Products = () => {
           </Card>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {products.map((product) => (
+            {products
+              .filter(product => !selectedSchool || product.school_id === selectedSchool)
+              .map((product) => (
               <Card 
                 key={product.id} 
                 className="overflow-hidden cursor-pointer hover:shadow-lg transition-shadow"

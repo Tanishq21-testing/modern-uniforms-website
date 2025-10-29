@@ -222,6 +222,7 @@ export type Database = {
           image_url: string | null
           name: string
           price: number
+          school_id: string | null
         }
         Insert: {
           company_id?: string | null
@@ -231,6 +232,7 @@ export type Database = {
           image_url?: string | null
           name: string
           price: number
+          school_id?: string | null
         }
         Update: {
           company_id?: string | null
@@ -240,6 +242,7 @@ export type Database = {
           image_url?: string | null
           name?: string
           price?: number
+          school_id?: string | null
         }
         Relationships: [
           {
@@ -247,6 +250,13 @@ export type Database = {
             columns: ["company_id"]
             isOneToOne: false
             referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "products_school_id_fkey"
+            columns: ["school_id"]
+            isOneToOne: false
+            referencedRelation: "schools"
             referencedColumns: ["id"]
           },
         ]
@@ -283,15 +293,41 @@ export type Database = {
           },
         ]
       }
+      schools: {
+        Row: {
+          company_id: string
+          created_at: string | null
+          id: string
+          name: string
+        }
+        Insert: {
+          company_id: string
+          created_at?: string | null
+          id?: string
+          name: string
+        }
+        Update: {
+          company_id?: string
+          created_at?: string | null
+          id?: string
+          name?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "schools_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      generate_order_number: {
-        Args: Record<PropertyKey, never>
-        Returns: string
-      }
+      generate_order_number: { Args: never; Returns: string }
     }
     Enums: {
       [_ in never]: never
