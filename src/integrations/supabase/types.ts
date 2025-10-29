@@ -221,7 +221,7 @@ export type Database = {
           id: string
           image_url: string | null
           name: string
-          price: number
+          price: number | null
           school_id: string | null
         }
         Insert: {
@@ -231,7 +231,7 @@ export type Database = {
           id?: string
           image_url?: string | null
           name: string
-          price: number
+          price?: number | null
           school_id?: string | null
         }
         Update: {
@@ -241,7 +241,7 @@ export type Database = {
           id?: string
           image_url?: string | null
           name?: string
-          price?: number
+          price?: number | null
           school_id?: string | null
         }
         Relationships: [
@@ -321,6 +321,27 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      user_companies: {
+        Row: {
+          company_id: string
+          created_at: string | null
+          id: string
+          user_id: string
+        }
+        Insert: {
+          company_id: string
+          created_at?: string | null
+          id?: string
+          user_id: string
+        }
+        Update: {
+          company_id?: string
+          created_at?: string | null
+          id?: string
+          user_id?: string
+        }
+        Relationships: []
       }
     }
     Views: {

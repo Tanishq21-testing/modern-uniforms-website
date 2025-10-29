@@ -6,7 +6,7 @@ import { Trash2, ShoppingBag } from 'lucide-react';
 interface CartItem {
   id: string;
   name: string;
-  price: number;
+  price: number | null;
   quantity: number;
   image_url: string | null;
 }
@@ -20,7 +20,7 @@ interface CartSidebarProps {
 }
 
 export const CartSidebar = ({ open, onOpenChange, items, onRemoveItem, onCheckout }: CartSidebarProps) => {
-  const totalAmount = items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+  const totalAmount = items.reduce((sum, item) => sum + ((item.price || 0) * item.quantity), 0);
   const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
@@ -64,10 +64,10 @@ export const CartSidebar = ({ open, onOpenChange, items, onRemoveItem, onCheckou
                   <div className="flex-1 min-w-0">
                     <h4 className="font-semibold text-sm truncate">{item.name}</h4>
                     <p className="text-sm text-gray-600 mt-1">
-                      AED {item.price.toFixed(2)} × {item.quantity}
+                      {item.price !== null ? `AED ${item.price.toFixed(2)}` : 'Price TBD'} × {item.quantity}
                     </p>
                     <p className="font-semibold text-primary mt-1">
-                      AED {(item.price * item.quantity).toFixed(2)}
+                      {item.price !== null ? `AED ${(item.price * item.quantity).toFixed(2)}` : 'Price TBD'}
                     </p>
                   </div>
 

@@ -8,7 +8,7 @@ import { Minus, Plus, ShoppingCart } from 'lucide-react';
 interface Product {
   id: string;
   name: string;
-  price: number;
+  price: number | null;
   image_url: string | null;
 }
 
@@ -32,7 +32,7 @@ export const OrderDialog = ({ product, open, onOpenChange, onAddToCart }: OrderD
   const incrementQuantity = () => setQuantity(prev => prev + 1);
   const decrementQuantity = () => setQuantity(prev => Math.max(1, prev - 1));
 
-  const totalPrice = product.price * quantity;
+  const totalPrice = (product.price || 0) * quantity;
 
   const handleAddToCart = () => {
     onAddToCart(product, quantity);
@@ -64,7 +64,9 @@ export const OrderDialog = ({ product, open, onOpenChange, onAddToCart }: OrderD
           <div className="grid gap-4">
             <div className="flex items-center justify-between">
               <span className="text-lg font-semibold">Unit Price:</span>
-              <span className="text-xl text-primary">AED {product.price.toFixed(2)}</span>
+              <span className="text-xl text-primary">
+                {product.price !== null ? `AED ${product.price.toFixed(2)}` : 'Price TBD'}
+              </span>
             </div>
 
             <div className="grid gap-2">
@@ -100,7 +102,9 @@ export const OrderDialog = ({ product, open, onOpenChange, onAddToCart }: OrderD
 
             <div className="flex items-center justify-between pt-4 border-t">
               <span className="text-lg font-bold">Total Price:</span>
-              <span className="text-2xl font-bold text-primary">AED {totalPrice.toFixed(2)}</span>
+              <span className="text-2xl font-bold text-primary">
+                {product.price !== null ? `AED ${totalPrice.toFixed(2)}` : 'Price TBD'}
+              </span>
             </div>
           </div>
         </div>

@@ -15,7 +15,7 @@ interface Product {
   id: string;
   name: string;
   description: string | null;
-  price: number;
+  price: number | null;
   image_url: string | null;
   school_id: string | null;
   company_id: string | null;
@@ -24,7 +24,7 @@ interface Product {
 interface CartItem {
   id: string;
   name: string;
-  price: number;
+  price: number | null;
   quantity: number;
   image_url: string | null;
 }
@@ -174,7 +174,7 @@ const Products = () => {
     setCheckoutLoading(true);
     try {
       // Calculate total
-      const totalAmount = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+      const totalAmount = cartItems.reduce((sum, item) => sum + ((item.price || 0) * item.quantity), 0);
 
       // Create order
       const { data: orderData, error: orderError } = await supabase
@@ -196,8 +196,8 @@ const Products = () => {
         order_id: orderData.id,
         product_id: item.id,
         quantity: item.quantity,
-        unit_price: item.price,
-        total_price: item.price * item.quantity
+        unit_price: item.price || 0,
+        total_price: (item.price || 0) * item.quantity
       }));
 
       const { error: itemsError } = await supabase
@@ -221,8 +221,8 @@ const Products = () => {
         order_items: cartItems.map(item => ({
           product_name: item.name,
           quantity: item.quantity,
-          unit_price: item.price,
-          total_price: item.price * item.quantity
+          unit_price: item.price || 0,
+          total_price: (item.price || 0) * item.quantity
         })),
         total_amount: totalAmount
       };
@@ -347,7 +347,7 @@ const Products = () => {
                 <CardHeader>
                   <CardTitle className="line-clamp-2">{product.name}</CardTitle>
                   <CardDescription className="text-xl font-bold text-primary">
-                    AED {product.price.toFixed(2)}
+                    {product.price !== null ? `AED ${product.price.toFixed(2)}` : 'Price TBD'}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
