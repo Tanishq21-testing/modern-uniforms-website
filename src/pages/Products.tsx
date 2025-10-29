@@ -18,6 +18,7 @@ interface Product {
   price: number;
   image_url: string | null;
   school_id: string | null;
+  company_id: string | null;
 }
 
 interface CartItem {
@@ -55,6 +56,7 @@ const Products = () => {
   const [selectedSchool, setSelectedSchool] = useState<string | null>(null);
   const [companies, setCompanies] = useState<{ id: string; name: string }[]>([]);
   const [selectedCompany, setSelectedCompany] = useState<string | null>(null);
+  const [companyName, setCompanyName] = useState<string>('');
   const { toast } = useToast();
 
   useEffect(() => {
