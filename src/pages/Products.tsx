@@ -53,7 +53,8 @@ const Products = () => {
   const [checkoutLoading, setCheckoutLoading] = useState(false);
   const [schools, setSchools] = useState<School[]>([]);
   const [selectedSchool, setSelectedSchool] = useState<string | null>(null);
-  const [companyName, setCompanyName] = useState<string>('');
+  const [companies, setCompanies] = useState<{ id: string; name: string }[]>([]);
+  const [selectedCompany, setSelectedCompany] = useState<string | null>(null);
   const { toast } = useToast();
 
   useEffect(() => {
@@ -77,21 +78,27 @@ const Products = () => {
           return;
         }
 
-        // Fetch company name
-        const { data: companyData, error: companyError } = await supabase
+        // Fetch companies user can access
+        const { data: companiesData, error: companiesError } = await supabase
           .from('companies')
-          .select('name')
-          .eq('id', profileData.company_id)
-          .single();
+          .select('id, name')
+          .order('name');
 
-        if (companyError) throw companyError;
-        setCompanyName(companyData?.name || '');
+        if (companiesError) {
+          console.warn('Companies fetch restricted by RLS or not available:', companiesError.message);
+        }
 
-        // Fetch schools for the company
+        const companiesList = companiesData || [];
+        setCompanies(companiesList);
+
+        // Set default company name for invoices (if profile has company)
+        const defaultCompanyName = companiesList.find(c => c.id === profileData.company_id)?.name || '';
+        setCompanyName(defaultCompanyName);
+
+        // Fetch schools for accessible companies
         const { data: schoolsData, error: schoolsError } = await supabase
           .from('schools')
           .select('*')
-          .eq('company_id', profileData.company_id)
           .order('name');
 
         if (schoolsError && schoolsError.code !== 'PGRST116') {
@@ -100,11 +107,10 @@ const Products = () => {
 
         setSchools(schoolsData || []);
 
-        // Fetch products for the user's company
+        // Fetch products visible to the user (RLS limits by company)
         const { data: productsData, error: productsError } = await supabase
           .from('products')
-          .select('*')
-          .eq('company_id', profileData.company_id);
+          .select('*');
 
         if (productsError) throw productsError;
         
@@ -315,7 +321,8 @@ const Products = () => {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {products
-              .filter(product => !selectedSchool || product.school_id === selectedSchool)
+              .filter(product => (!selectedCompany || product.company_id === selectedCompany))
+              .filter(product => (!selectedSchool || product.school_id === selectedSchool))
               .map((product) => (
               <Card 
                 key={product.id} 
