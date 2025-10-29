@@ -322,27 +322,6 @@ export type Database = {
           },
         ]
       }
-      user_companies: {
-        Row: {
-          company_id: string
-          created_at: string | null
-          id: string
-          user_id: string
-        }
-        Insert: {
-          company_id: string
-          created_at?: string | null
-          id?: string
-          user_id: string
-        }
-        Update: {
-          company_id?: string
-          created_at?: string | null
-          id?: string
-          user_id?: string
-        }
-        Relationships: []
-      }
     }
     Views: {
       [_ in never]: never

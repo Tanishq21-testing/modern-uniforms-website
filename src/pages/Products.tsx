@@ -347,7 +347,7 @@ const Products = () => {
                 <CardHeader>
                   <CardTitle className="line-clamp-2">{product.name}</CardTitle>
                   <CardDescription className="text-xl font-bold text-primary">
-                    {product.price === 0 ? 'AED XXX' : `AED ${product.price.toFixed(2)}`}
+                    AED {product.price.toFixed(2)}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
