@@ -89,8 +89,17 @@ const DesignEditor = ({ isMobile }: DesignEditorProps) => {
   };
   
   const handleToggleBetaMode = () => {
-    setUseBetaLayerMode(!useBetaLayerMode);
-    if (!useBetaLayerMode) {
+    const newBetaMode = !useBetaLayerMode;
+    setUseBetaLayerMode(newBetaMode);
+    
+    if (newBetaMode) {
+      // When enabling beta mode, set all layers to black as default
+      setHoodieLayerColors({
+        body: 'black',
+        sleeves: 'black',
+        hood: 'black',
+      });
+      setSelectedColor('black');
       toast.success('Beta layer mode enabled! Select a part and choose its color.');
     } else {
       toast.info('Switched back to standard color mode');

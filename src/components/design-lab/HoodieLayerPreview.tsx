@@ -10,8 +10,8 @@ interface HoodieLayerPreviewProps {
   };
 }
 
-// Supabase storage bucket base URL for Design Lab assets
-const STORAGE_BASE_URL = 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/Design%20Lab';
+// Supabase storage bucket base URL for Design Lab assets - using "design lab" folder
+const STORAGE_BASE_URL = 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/Design%20Lab%20Assets/design%20lab';
 
 // Map layer colors to file names
 const getLayerImageUrl = (part: 'body' | 'sleeves' | 'hood', color: LayerColor): string => {
