@@ -6,7 +6,7 @@ import PreviewPanel from './panels/PreviewPanel';
 import OrderPanel from './panels/OrderPanel';
 import { ColorOption, DesignPlacement, HoodieView, DesignElement, Font, ProductType } from './types';
 import { toast } from "sonner";
-import type { HoodiePart, LayerColor } from './tools';
+import type { HoodiePart, LayerColors } from './tools';
 
 interface DesignEditorProps {
   isMobile: boolean;
@@ -26,17 +26,13 @@ const DesignEditor = ({ isMobile }: DesignEditorProps) => {
     hood: 'black',
   });
   
-  // Beta layer-based hoodie state
+  // Beta layer-based hoodie state (now using hex colors for canvas tinting)
   const [useBetaLayerMode, setUseBetaLayerMode] = useState<boolean>(false);
   const [selectedHoodiePart, setSelectedHoodiePart] = useState<HoodiePart>('body');
-  const [hoodieLayerColors, setHoodieLayerColors] = useState<{
-    body: LayerColor;
-    sleeves: LayerColor;
-    hood: LayerColor;
-  }>({
-    body: 'black',
-    sleeves: 'black',
-    hood: 'black',
+  const [hoodieLayerColors, setHoodieLayerColors] = useState<LayerColors>({
+    body: '#000000',
+    sleeves: '#000000',
+    hood: '#000000',
   });
   
   // Default to front view as requested
@@ -93,25 +89,28 @@ const DesignEditor = ({ isMobile }: DesignEditorProps) => {
     setUseBetaLayerMode(newBetaMode);
     
     if (newBetaMode) {
-      // When enabling beta mode, set all layers to black as default
+      // When enabling beta mode, set all layers to black (hex) as default
       setHoodieLayerColors({
-        body: 'black',
-        sleeves: 'black',
-        hood: 'black',
+        body: '#000000',
+        sleeves: '#000000',
+        hood: '#000000',
       });
       setSelectedColor('black');
+      console.log('[DesignEditor] Beta mode enabled with default black colors');
       toast.success('Beta layer mode enabled! Select a part and choose its color.');
     } else {
+      console.log('[DesignEditor] Beta mode disabled');
       toast.info('Switched back to standard color mode');
     }
   };
   
-  const handleHoodieLayerColorChange = (part: HoodiePart, color: LayerColor) => {
+  const handleHoodieLayerColorChange = (part: HoodiePart, color: string) => {
+    console.log(`[DesignEditor] Changing ${part} color to: ${color}`);
     setHoodieLayerColors(prev => ({
       ...prev,
       [part]: color
     }));
-    toast.success(`${part.charAt(0).toUpperCase() + part.slice(1)} color changed to ${color}`);
+    toast.success(`${part.charAt(0).toUpperCase() + part.slice(1)} color changed`);
   };
   
   const addTextElement = (text: string, font: Font, color: string) => {
