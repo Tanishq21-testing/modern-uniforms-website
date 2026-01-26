@@ -4,6 +4,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
+import { Badge } from "@/components/ui/badge";
 import { 
   ColorPicker,
   TextEditor,
@@ -11,8 +12,11 @@ import {
   PlacementSelector,
   ArtworkSelector,
   ProductSelector,
-  AdvancedArtworkColorPicker
+  AdvancedArtworkColorPicker,
+  HoodiePartSelector,
+  HoodieLayerColorPicker,
 } from '../tools';
+import type { HoodiePart, LayerColor } from '../tools';
 import { ColorOption, DesignPlacement, DesignElement, ProductType, HoodieView } from '../types';
 
 interface ToolsPanelProps {
@@ -35,6 +39,17 @@ interface ToolsPanelProps {
   onProductChange: (product: ProductType) => void;
   currentView?: HoodieView;
   setCurrentView?: (view: HoodieView) => void;
+  // Beta layer-based hoodie props
+  selectedHoodiePart: HoodiePart;
+  onHoodiePartChange: (part: HoodiePart) => void;
+  hoodieLayerColors: {
+    body: LayerColor;
+    sleeves: LayerColor;
+    hood: LayerColor;
+  };
+  onHoodieLayerColorChange: (part: HoodiePart, color: LayerColor) => void;
+  useBetaLayerMode: boolean;
+  onToggleBetaMode: () => void;
 }
 
 const ToolsPanel = ({
@@ -52,7 +67,14 @@ const ToolsPanel = ({
   selectedProduct,
   onProductChange,
   currentView,
-  setCurrentView
+  setCurrentView,
+  // Beta layer-based hoodie props
+  selectedHoodiePart,
+  onHoodiePartChange,
+  hoodieLayerColors,
+  onHoodieLayerColorChange,
+  useBetaLayerMode,
+  onToggleBetaMode
 }: ToolsPanelProps) => {
   return (
     <div className="h-full overflow-auto p-4 border-r">
@@ -71,13 +93,62 @@ const ToolsPanel = ({
         </TabsList>
         
         <TabsContent value="color" className="space-y-4">
-          <div>
-            <h3 className="font-medium mb-2">Product Color</h3>
-            <ColorPicker 
-              selectedColor={selectedColor} 
-              onColorChange={onColorChange} 
-            />
-          </div>
+          {/* Beta Layer Mode Toggle for Hoodie */}
+          {selectedProduct === 'hoodie' && (
+            <div className="p-3 bg-gradient-to-r from-purple-50 to-blue-50 border border-purple-200 rounded-lg">
+              <div className="flex items-center justify-between mb-2">
+                <div className="flex items-center gap-2">
+                  <Badge variant="secondary" className="bg-purple-100 text-purple-700">
+                    BETA
+                  </Badge>
+                  <span className="text-sm font-medium">Layer Mode</span>
+                </div>
+                <Button
+                  variant={useBetaLayerMode ? "default" : "outline"}
+                  size="sm"
+                  onClick={onToggleBetaMode}
+                  className="text-xs"
+                >
+                  {useBetaLayerMode ? "Enabled" : "Try it"}
+                </Button>
+              </div>
+              <p className="text-xs text-muted-foreground">
+                Customize body, sleeves, and hood colors separately
+              </p>
+            </div>
+          )}
+
+          {/* Beta Layer Controls - Only show when hoodie and beta mode enabled */}
+          {selectedProduct === 'hoodie' && useBetaLayerMode && (
+            <div className="space-y-4 p-3 bg-gray-50 rounded-lg border">
+              <div>
+                <h3 className="font-medium mb-3">Select Part to Customize</h3>
+                <HoodiePartSelector
+                  selectedPart={selectedHoodiePart}
+                  onPartChange={onHoodiePartChange}
+                />
+              </div>
+              
+              <div className="border-t pt-3">
+                <HoodieLayerColorPicker
+                  selectedPart={selectedHoodiePart}
+                  partColors={hoodieLayerColors}
+                  onColorChange={onHoodieLayerColorChange}
+                />
+              </div>
+            </div>
+          )}
+
+          {/* Standard Color Picker - Hide when beta mode is enabled for hoodie */}
+          {!(selectedProduct === 'hoodie' && useBetaLayerMode) && (
+            <div>
+              <h3 className="font-medium mb-2">Product Color</h3>
+              <ColorPicker 
+                selectedColor={selectedColor} 
+                onColorChange={onColorChange} 
+              />
+            </div>
+          )}
           
           {selectedProduct === 'varsityJacket' && (
             <div>
