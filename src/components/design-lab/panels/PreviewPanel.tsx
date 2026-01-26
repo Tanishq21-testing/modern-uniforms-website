@@ -14,8 +14,8 @@ import {
   ContextMenuItem,
   ContextMenuTrigger,
 } from "@/components/ui/context-menu";
-import HoodieLayerPreview from '../HoodieLayerPreview';
-import type { LayerColor } from '../tools';
+import HoodieCanvasPreview from '../HoodieCanvasPreview';
+import type { LayerColors } from '../tools/HoodieLayerColorPicker';
 
 interface PreviewPanelProps {
   currentView: HoodieView;
@@ -32,13 +32,9 @@ interface PreviewPanelProps {
     hood: string;
   };
   selectedProduct: ProductType;
-  // Beta layer mode props
+  // Beta layer mode props (now uses hex colors for canvas tinting)
   useBetaLayerMode?: boolean;
-  hoodieLayerColors?: {
-    body: LayerColor;
-    sleeves: LayerColor;
-    hood: LayerColor;
-  };
+  hoodieLayerColors?: LayerColors;
 }
 
 const PreviewPanel = ({
@@ -53,7 +49,7 @@ const PreviewPanel = ({
   customPartColor,
   selectedProduct,
   useBetaLayerMode = false,
-  hoodieLayerColors = { body: 'black', sleeves: 'black', hood: 'black' }
+  hoodieLayerColors = { body: '#000000', sleeves: '#000000', hood: '#000000' }
 }: PreviewPanelProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
@@ -340,10 +336,10 @@ const PreviewPanel = ({
             </div>
           )}
           
-          {/* Beta Layer Mode - Render stacked layers */}
+          {/* Beta Layer Mode - Canvas-based rendering with dynamic tinting */}
           {useBetaLayerMode && selectedProduct === 'hoodie' && currentView === 'front' && (
             <div className="absolute inset-0 pointer-events-none flex items-center justify-center">
-              <HoodieLayerPreview partColors={hoodieLayerColors} />
+              <HoodieCanvasPreview partColors={hoodieLayerColors} />
             </div>
           )}
           

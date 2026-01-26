@@ -16,7 +16,7 @@ import {
   HoodiePartSelector,
   HoodieLayerColorPicker,
 } from '../tools';
-import type { HoodiePart, LayerColor } from '../tools';
+import type { HoodiePart, LayerColor, LayerColors } from '../tools';
 import { ColorOption, DesignPlacement, DesignElement, ProductType, HoodieView } from '../types';
 
 interface ToolsPanelProps {
@@ -39,14 +39,10 @@ interface ToolsPanelProps {
   onProductChange: (product: ProductType) => void;
   currentView?: HoodieView;
   setCurrentView?: (view: HoodieView) => void;
-  // Beta layer-based hoodie props
+  // Beta layer-based hoodie props (now using hex colors for canvas tinting)
   selectedHoodiePart: HoodiePart;
   onHoodiePartChange: (part: HoodiePart) => void;
-  hoodieLayerColors: {
-    body: LayerColor;
-    sleeves: LayerColor;
-    hood: LayerColor;
-  };
+  hoodieLayerColors: LayerColors;
   onHoodieLayerColorChange: (part: HoodiePart, color: LayerColor) => void;
   useBetaLayerMode: boolean;
   onToggleBetaMode: () => void;
