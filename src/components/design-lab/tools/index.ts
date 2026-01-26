@@ -10,4 +10,4 @@ export { default as AdvancedArtworkColorPicker } from './AdvancedArtworkColorPic
 export { default as HoodiePartSelector } from './HoodiePartSelector';
 export { default as HoodieLayerColorPicker } from './HoodieLayerColorPicker';
 export type { HoodiePart } from './HoodiePartSelector';
-export type { LayerColor, LayerColors } from './HoodieLayerColorPicker';
+export type { LayerColor } from './HoodieLayerColorPicker';
