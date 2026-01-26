@@ -1,4 +1,3 @@
-
 export { default as ColorPicker } from './ColorPicker';
 export { default as TextEditor } from './TextEditor';
 export { default as DesignUploader } from './DesignUploader';
@@ -8,3 +7,7 @@ export { default as ProductSelector } from './ProductSelector';
 export { default as DynamicArtworkSelector } from './DynamicArtworkSelector';
 export { default as ArtworkColorPicker } from './ArtworkColorPicker';
 export { default as AdvancedArtworkColorPicker } from './AdvancedArtworkColorPicker';
+export { default as HoodiePartSelector } from './HoodiePartSelector';
+export { default as HoodieLayerColorPicker } from './HoodieLayerColorPicker';
+export type { HoodiePart } from './HoodiePartSelector';
+export type { LayerColor } from './HoodieLayerColorPicker';

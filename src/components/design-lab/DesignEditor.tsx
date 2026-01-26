@@ -6,6 +6,7 @@ import PreviewPanel from './panels/PreviewPanel';
 import OrderPanel from './panels/OrderPanel';
 import { ColorOption, DesignPlacement, HoodieView, DesignElement, Font, ProductType } from './types';
 import { toast } from "sonner";
+import type { HoodiePart, LayerColor } from './tools';
 
 interface DesignEditorProps {
   isMobile: boolean;
@@ -19,6 +20,19 @@ const DesignEditor = ({ isMobile }: DesignEditorProps) => {
     body: string;
     sleeves: string;
     hood: string;
+  }>({
+    body: 'black',
+    sleeves: 'black',
+    hood: 'black',
+  });
+  
+  // Beta layer-based hoodie state
+  const [useBetaLayerMode, setUseBetaLayerMode] = useState<boolean>(false);
+  const [selectedHoodiePart, setSelectedHoodiePart] = useState<HoodiePart>('body');
+  const [hoodieLayerColors, setHoodieLayerColors] = useState<{
+    body: LayerColor;
+    sleeves: LayerColor;
+    hood: LayerColor;
   }>({
     body: 'black',
     sleeves: 'black',
@@ -67,7 +81,28 @@ const DesignEditor = ({ isMobile }: DesignEditorProps) => {
     setSelectedProduct(product);
     // Reset color to black when changing products
     setSelectedColor('black');
+    // Reset beta mode when switching products
+    if (product !== 'hoodie') {
+      setUseBetaLayerMode(false);
+    }
     toast.success(`Product changed to ${product}`);
+  };
+  
+  const handleToggleBetaMode = () => {
+    setUseBetaLayerMode(!useBetaLayerMode);
+    if (!useBetaLayerMode) {
+      toast.success('Beta layer mode enabled! Select a part and choose its color.');
+    } else {
+      toast.info('Switched back to standard color mode');
+    }
+  };
+  
+  const handleHoodieLayerColorChange = (part: HoodiePart, color: LayerColor) => {
+    setHoodieLayerColors(prev => ({
+      ...prev,
+      [part]: color
+    }));
+    toast.success(`${part.charAt(0).toUpperCase() + part.slice(1)} color changed to ${color}`);
   };
   
   const addTextElement = (text: string, font: Font, color: string) => {
@@ -149,6 +184,8 @@ const DesignEditor = ({ isMobile }: DesignEditorProps) => {
           selectedColor={selectedColor}
           customPartColor={customPartColor}
           selectedProduct={selectedProduct}
+          useBetaLayerMode={useBetaLayerMode}
+          hoodieLayerColors={hoodieLayerColors}
         />
         
         <ToolsPanel 
@@ -167,6 +204,12 @@ const DesignEditor = ({ isMobile }: DesignEditorProps) => {
           onProductChange={handleProductChange}
           currentView={currentView}
           setCurrentView={handleViewChange}
+          selectedHoodiePart={selectedHoodiePart}
+          onHoodiePartChange={setSelectedHoodiePart}
+          hoodieLayerColors={hoodieLayerColors}
+          onHoodieLayerColorChange={handleHoodieLayerColorChange}
+          useBetaLayerMode={useBetaLayerMode}
+          onToggleBetaMode={handleToggleBetaMode}
         />
         
         <OrderPanel 
@@ -203,6 +246,12 @@ const DesignEditor = ({ isMobile }: DesignEditorProps) => {
           onProductChange={handleProductChange}
           currentView={currentView}
           setCurrentView={handleViewChange}
+          selectedHoodiePart={selectedHoodiePart}
+          onHoodiePartChange={setSelectedHoodiePart}
+          hoodieLayerColors={hoodieLayerColors}
+          onHoodieLayerColorChange={handleHoodieLayerColorChange}
+          useBetaLayerMode={useBetaLayerMode}
+          onToggleBetaMode={handleToggleBetaMode}
         />
       </ResizablePanel>
       
@@ -220,6 +269,8 @@ const DesignEditor = ({ isMobile }: DesignEditorProps) => {
           selectedColor={selectedColor}
           customPartColor={customPartColor}
           selectedProduct={selectedProduct}
+          useBetaLayerMode={useBetaLayerMode}
+          hoodieLayerColors={hoodieLayerColors}
         />
       </ResizablePanel>
       

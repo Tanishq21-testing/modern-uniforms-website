@@ -14,6 +14,8 @@ import {
   ContextMenuItem,
   ContextMenuTrigger,
 } from "@/components/ui/context-menu";
+import HoodieLayerPreview from '../HoodieLayerPreview';
+import type { LayerColor } from '../tools';
 
 interface PreviewPanelProps {
   currentView: HoodieView;
@@ -30,6 +32,13 @@ interface PreviewPanelProps {
     hood: string;
   };
   selectedProduct: ProductType;
+  // Beta layer mode props
+  useBetaLayerMode?: boolean;
+  hoodieLayerColors?: {
+    body: LayerColor;
+    sleeves: LayerColor;
+    hood: LayerColor;
+  };
 }
 
 const PreviewPanel = ({
@@ -42,7 +51,9 @@ const PreviewPanel = ({
   removeElement,
   selectedColor,
   customPartColor,
-  selectedProduct
+  selectedProduct,
+  useBetaLayerMode = false,
+  hoodieLayerColors = { body: 'black', sleeves: 'black', hood: 'black' }
 }: PreviewPanelProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
@@ -322,24 +333,45 @@ const PreviewPanel = ({
           onMouseUp={handleDragEnd}
           onMouseLeave={handleDragEnd}
         >
-          {/* Loading state */}
-          {isLoading && (
+          {/* Loading state - only show for non-beta mode */}
+          {!useBetaLayerMode && isLoading && (
             <div className="absolute inset-0 flex items-center justify-center bg-white/80 z-10">
               <Skeleton className="h-[350px] w-[250px] rounded-md" />
             </div>
           )}
           
-          {/* Product image */}
-          <div className="absolute inset-0 pointer-events-none flex items-center justify-center">
-            {imageUrl && (
-              <img 
-                src={imageUrl} 
-                alt={`${currentView} view of ${selectedColor} ${getProductName()}`}
-                className="max-h-full max-w-full object-contain transition-opacity duration-300"
-                style={{ opacity: isLoading ? 0 : 1 }}
-              />
-            )}
-          </div>
+          {/* Beta Layer Mode - Render stacked layers */}
+          {useBetaLayerMode && selectedProduct === 'hoodie' && currentView === 'front' && (
+            <div className="absolute inset-0 pointer-events-none flex items-center justify-center">
+              <HoodieLayerPreview partColors={hoodieLayerColors} />
+            </div>
+          )}
+          
+          {/* Beta mode back view placeholder */}
+          {useBetaLayerMode && selectedProduct === 'hoodie' && currentView === 'back' && (
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="text-center p-6">
+                <Badge variant="secondary" className="mb-2">Beta</Badge>
+                <p className="text-muted-foreground text-sm">
+                  Back view coming soon in layer mode
+                </p>
+              </div>
+            </div>
+          )}
+          
+          {/* Standard Product image - only show when not in beta mode */}
+          {!useBetaLayerMode && (
+            <div className="absolute inset-0 pointer-events-none flex items-center justify-center">
+              {imageUrl && (
+                <img 
+                  src={imageUrl} 
+                  alt={`${currentView} view of ${selectedColor} ${getProductName()}`}
+                  className="max-h-full max-w-full object-contain transition-opacity duration-300"
+                  style={{ opacity: isLoading ? 0 : 1 }}
+                />
+              )}
+            </div>
+          )}
           
           {/* Design elements */}
           {renderDesignElements()}
