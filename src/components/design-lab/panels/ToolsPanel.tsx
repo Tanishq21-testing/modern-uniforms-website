@@ -1,10 +1,9 @@
-
 import { useState } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
+import { Palette, Wand2, ImageIcon } from "lucide-react";
 import { 
   ColorPicker,
   TextEditor,
@@ -15,6 +14,7 @@ import {
   AdvancedArtworkColorPicker,
   HoodiePartSelector,
   HoodieLayerColorPicker,
+  ModernDesignTab,
 } from '../tools';
 import type { HoodiePart, LayerColor } from '../tools';
 import { ColorOption, DesignPlacement, DesignElement, ProductType, HoodieView } from '../types';
@@ -77,28 +77,40 @@ const ToolsPanel = ({
   onToggleBetaMode
 }: ToolsPanelProps) => {
   return (
-    <div className="h-full overflow-auto p-4 border-r">
-      <h2 className="text-xl font-semibold mb-4">Customize Your Product</h2>
+    <div className="h-full overflow-auto p-4 border-r bg-background">
+      <div className="mb-6">
+        <h2 className="text-lg font-semibold text-foreground">Customize</h2>
+        <p className="text-sm text-muted-foreground">Build your perfect product</p>
+      </div>
       
       <ProductSelector 
         selectedProduct={selectedProduct}
         onProductChange={onProductChange}
       />
       
-      <Tabs defaultValue="color">
-        <TabsList className="w-full mb-4">
-          <TabsTrigger value="color" className="flex-1">Color</TabsTrigger>
-          <TabsTrigger value="design" className="flex-1">Design</TabsTrigger>
-          <TabsTrigger value="art" className="flex-1">Art</TabsTrigger>
+      <Tabs defaultValue="design" className="mt-4">
+        <TabsList className="w-full mb-4 h-11 p-1 bg-muted/50">
+          <TabsTrigger value="color" className="flex-1 gap-2 data-[state=active]:bg-background">
+            <Palette className="w-4 h-4" />
+            <span className="hidden sm:inline">Color</span>
+          </TabsTrigger>
+          <TabsTrigger value="design" className="flex-1 gap-2 data-[state=active]:bg-background">
+            <Wand2 className="w-4 h-4" />
+            <span className="hidden sm:inline">Design</span>
+          </TabsTrigger>
+          <TabsTrigger value="art" className="flex-1 gap-2 data-[state=active]:bg-background">
+            <ImageIcon className="w-4 h-4" />
+            <span className="hidden sm:inline">Gallery</span>
+          </TabsTrigger>
         </TabsList>
         
-        <TabsContent value="color" className="space-y-4">
+        <TabsContent value="color" className="space-y-4 mt-0">
           {/* Beta Layer Mode Toggle for Hoodie */}
           {selectedProduct === 'hoodie' && (
-            <div className="p-3 bg-gradient-to-r from-purple-50 to-blue-50 border border-purple-200 rounded-lg">
+            <div className="p-4 bg-gradient-to-br from-primary/5 via-primary/10 to-primary/5 border border-primary/20 rounded-xl">
               <div className="flex items-center justify-between mb-2">
                 <div className="flex items-center gap-2">
-                  <Badge variant="secondary" className="bg-purple-100 text-purple-700">
+                  <Badge variant="secondary" className="bg-primary/10 text-primary border-0 text-xs">
                     BETA
                   </Badge>
                   <span className="text-sm font-medium">Layer Mode</span>
@@ -107,7 +119,7 @@ const ToolsPanel = ({
                   variant={useBetaLayerMode ? "default" : "outline"}
                   size="sm"
                   onClick={onToggleBetaMode}
-                  className="text-xs"
+                  className="text-xs h-8"
                 >
                   {useBetaLayerMode ? "Enabled" : "Try it"}
                 </Button>
@@ -120,16 +132,16 @@ const ToolsPanel = ({
 
           {/* Beta Layer Controls - Only show when hoodie and beta mode enabled */}
           {selectedProduct === 'hoodie' && useBetaLayerMode && (
-            <div className="space-y-4 p-3 bg-gray-50 rounded-lg border">
+            <div className="space-y-4 p-4 bg-muted/30 rounded-xl border">
               <div>
-                <h3 className="font-medium mb-3">Select Part to Customize</h3>
+                <h3 className="font-medium mb-3 text-sm">Select Part</h3>
                 <HoodiePartSelector
                   selectedPart={selectedHoodiePart}
                   onPartChange={onHoodiePartChange}
                 />
               </div>
               
-              <div className="border-t pt-3">
+              <div className="border-t border-border pt-4">
                 <HoodieLayerColorPicker
                   selectedPart={selectedHoodiePart}
                   partColors={hoodieLayerColors}
@@ -141,8 +153,8 @@ const ToolsPanel = ({
 
           {/* Standard Color Picker - Hide when beta mode is enabled for hoodie */}
           {!(selectedProduct === 'hoodie' && useBetaLayerMode) && (
-            <div>
-              <h3 className="font-medium mb-2">Product Color</h3>
+            <div className="space-y-3">
+              <h3 className="font-medium text-sm">Product Color</h3>
               <ColorPicker 
                 selectedColor={selectedColor} 
                 onColorChange={onColorChange} 
@@ -151,17 +163,17 @@ const ToolsPanel = ({
           )}
           
           {selectedProduct === 'varsityJacket' && (
-            <div>
-              <h3 className="font-medium mb-2">Custom Parts</h3>
-              <div className="space-y-2">
+            <div className="space-y-4 p-4 bg-muted/30 rounded-xl border">
+              <h3 className="font-medium text-sm">Custom Parts</h3>
+              <div className="space-y-3">
                 <div>
-                  <Label htmlFor="body-color">Body</Label>
+                  <Label htmlFor="body-color" className="text-xs text-muted-foreground">Body</Label>
                   <div className="flex gap-2 mt-1">
                     {['black', 'navy', 'gray', 'white', 'red'].map(color => (
                       <div 
                         key={color}
-                        className={`w-8 h-8 rounded-full cursor-pointer ${
-                          customPartColor.body === color ? 'ring-2 ring-offset-2 ring-brand-blue' : ''
+                        className={`w-8 h-8 rounded-full cursor-pointer transition-transform hover:scale-110 ${
+                          customPartColor.body === color ? 'ring-2 ring-offset-2 ring-primary' : ''
                         }`}
                         style={{ backgroundColor: color }}
                         onClick={() => onPartColorChange('body', color)}
@@ -171,13 +183,13 @@ const ToolsPanel = ({
                 </div>
                 
                 <div>
-                  <Label htmlFor="sleeves-color">Sleeves</Label>
+                  <Label htmlFor="sleeves-color" className="text-xs text-muted-foreground">Sleeves</Label>
                   <div className="flex gap-2 mt-1">
                     {['black', 'navy', 'gray', 'white', 'red'].map(color => (
                       <div 
                         key={color}
-                        className={`w-8 h-8 rounded-full cursor-pointer ${
-                          customPartColor.sleeves === color ? 'ring-2 ring-offset-2 ring-brand-blue' : ''
+                        className={`w-8 h-8 rounded-full cursor-pointer transition-transform hover:scale-110 ${
+                          customPartColor.sleeves === color ? 'ring-2 ring-offset-2 ring-primary' : ''
                         }`}
                         style={{ backgroundColor: color }}
                         onClick={() => onPartColorChange('sleeves', color)}
@@ -187,13 +199,13 @@ const ToolsPanel = ({
                 </div>
                 
                 <div>
-                  <Label htmlFor="hood-color">Hood</Label>
+                  <Label htmlFor="hood-color" className="text-xs text-muted-foreground">Hood</Label>
                   <div className="flex gap-2 mt-1">
                     {['black', 'navy', 'gray', 'white', 'red'].map(color => (
                       <div 
                         key={color}
-                        className={`w-8 h-8 rounded-full cursor-pointer ${
-                          customPartColor.hood === color ? 'ring-2 ring-offset-2 ring-brand-blue' : ''
+                        className={`w-8 h-8 rounded-full cursor-pointer transition-transform hover:scale-110 ${
+                          customPartColor.hood === color ? 'ring-2 ring-offset-2 ring-primary' : ''
                         }`}
                         style={{ backgroundColor: color }}
                         onClick={() => onPartColorChange('hood', color)}
@@ -206,44 +218,24 @@ const ToolsPanel = ({
           )}
         </TabsContent>
         
-        <TabsContent value="design" className="space-y-4">
-          <div>
-            <h3 className="font-medium mb-2">Placement</h3>
-            <PlacementSelector 
-              placement={placement}
-              setPlacement={setPlacement}
-              currentView={currentView}
-              setCurrentView={setCurrentView}
-            />
-          </div>
-          
-          <div>
-            <h3 className="font-medium mb-2">Text</h3>
-            <TextEditor 
-              addTextElement={addTextElement} 
-              selectedElement={selectedElement?.type === 'text' ? selectedElement : null}
-              updateElement={updateElement}
-              removeElement={removeElement}
-            />
-          </div>
-          
-          <div>
-            <h3 className="font-medium mb-2">Upload Design</h3>
-            <DesignUploader addImageElement={addImageElement} />
-          </div>
-
-          {/* Show advanced artwork color picker when an image is selected */}
-          {selectedElement?.type === 'image' && (
-            <AdvancedArtworkColorPicker 
-              selectedElement={selectedElement}
-              updateElement={updateElement}
-            />
-          )}
+        {/* NEW Modern Design Tab */}
+        <TabsContent value="design" className="mt-0">
+          <ModernDesignTab
+            placement={placement}
+            setPlacement={setPlacement}
+            addTextElement={addTextElement}
+            addImageElement={addImageElement}
+            selectedElement={selectedElement}
+            updateElement={updateElement}
+            removeElement={removeElement}
+            currentView={currentView}
+            setCurrentView={setCurrentView}
+          />
         </TabsContent>
         
-        <TabsContent value="art" className="space-y-4">
-          <div>
-            <h3 className="font-medium mb-2">Upload Your Own Artwork</h3>
+        <TabsContent value="art" className="space-y-4 mt-0">
+          <div className="space-y-3">
+            <h3 className="font-medium text-sm">Upload Artwork</h3>
             <DesignUploader addImageElement={addImageElement} />
           </div>
           
