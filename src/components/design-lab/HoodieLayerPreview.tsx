@@ -13,27 +13,36 @@ interface HoodieLayerPreviewProps {
 // Supabase storage bucket: uniformconnect, folder: Design Lab
 const STORAGE_BASE_URL = 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/Design%20Lab';
 
-// Explicit mapping table for exact file names (case-sensitive)
+// Explicit mapping table for exact file names (case-sensitive) - matches Supabase exactly
 const LAYER_FILE_MAP: Record<string, Record<LayerColor, string>> = {
   body: {
-    black: 'Body-Hoodie-Black.png',
+    black: 'Body-Hoodie-black.png',
     lightgrey: 'Body-Hoodie-lightgrey.png',
+    red: 'Body-Hoodie-red.png',
+    blue: 'Body-Hoodie-blue.png',
+    orange: 'Body-Hoodie-orange.png',
   },
   sleeves: {
     black: 'Sleeves-Hoodie-black.png',
     lightgrey: 'Sleeves-Hoodie-lightgrey.png',
+    red: 'Sleeves-Hoodie-red.png',
+    blue: 'Sleeves-Hoodie-blue.png',
+    orange: 'Sleeves-Hoodie-orange.png',
   },
   hood: {
     black: 'Hood-Hoodie-black.png',
     lightgrey: 'Hood-Hoodie-lightgrey.png',
+    red: 'Hood-Hoodie-red.png',
+    blue: 'Hood-Hoodie-blue.png',
+    orange: 'Hood-Hoodie-orange.png',
   },
 };
 
-// Get the exact URL for a layer image
+// Get the exact URL for a layer image with debug logging
 const getLayerImageUrl = (part: 'body' | 'sleeves' | 'hood', color: LayerColor): string => {
   const fileName = LAYER_FILE_MAP[part][color];
   const url = `${STORAGE_BASE_URL}/${fileName}`;
-  console.log(`[HoodieLayerPreview] ${part} ${color} URL:`, url);
+  console.log(`[HoodieLayerPreview] Layer URL - Part: ${part}, Color: ${color}, URL: ${url}`);
   return url;
 };
 

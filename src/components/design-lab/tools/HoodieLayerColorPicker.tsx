@@ -1,7 +1,7 @@
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { HoodiePart } from "./HoodiePartSelector";
 
-export type LayerColor = 'black' | 'lightgrey';
+export type LayerColor = 'black' | 'lightgrey' | 'red' | 'blue' | 'orange';
 
 interface HoodieLayerColorPickerProps {
   selectedPart: HoodiePart;
@@ -21,6 +21,9 @@ const HoodieLayerColorPicker = ({
   const colors: { value: LayerColor; label: string; bgColor: string }[] = [
     { value: 'black', label: 'Black', bgColor: '#1a1a1a' },
     { value: 'lightgrey', label: 'Light Grey', bgColor: '#d1d5db' },
+    { value: 'red', label: 'Red', bgColor: '#dc2626' },
+    { value: 'blue', label: 'Blue', bgColor: '#2563eb' },
+    { value: 'orange', label: 'Orange', bgColor: '#ea580c' },
   ];
 
   const currentColor = partColors[selectedPart];
