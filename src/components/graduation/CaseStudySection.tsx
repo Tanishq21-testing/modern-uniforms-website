@@ -50,22 +50,32 @@ const CaseStudySection = () => {
 
         {/* Two Column Layout */}
         <div className="grid lg:grid-cols-2 gap-10 max-w-6xl mx-auto">
-          {/* Left — Stats */}
-          <div className="grid grid-cols-2 gap-4">
-            {stats.map((stat) => (
-              <Card
-                key={stat.label}
-                className="border border-border/60 bg-muted/30 hover:shadow-md transition-shadow"
-              >
-                <CardContent className="p-6 flex flex-col items-center text-center gap-3">
-                  <div className="w-12 h-12 rounded-full bg-brand-red/10 flex items-center justify-center">
-                    <stat.icon className="h-6 w-6 text-brand-red" />
+          {/* Left — Product Showcase Image */}
+          <div className="flex flex-col gap-6">
+            <Card className="border border-border/60 shadow-lg overflow-hidden">
+              <div className="aspect-[4/5] bg-muted/30 flex items-center justify-center">
+                <div className="text-center p-8">
+                  <div className="w-20 h-20 mx-auto mb-4 rounded-2xl bg-muted flex items-center justify-center">
+                    <Package className="h-10 w-10 text-muted-foreground/40" />
                   </div>
-                  <span className="text-2xl font-bold">{stat.value}</span>
-                  <span className="text-sm text-muted-foreground leading-tight">{stat.label}</span>
-                </CardContent>
-              </Card>
-            ))}
+                  <p className="text-sm font-medium text-muted-foreground">Product Image</p>
+                  <p className="text-xs text-muted-foreground/60 mt-1">Coming soon</p>
+                </div>
+              </div>
+            </Card>
+            <div className="grid grid-cols-2 gap-3">
+              {stats.map((stat) => (
+                <div key={stat.label} className="flex items-center gap-3 p-3 rounded-xl bg-muted/30 border border-border/40">
+                  <div className="w-9 h-9 rounded-full bg-brand-red/10 flex items-center justify-center shrink-0">
+                    <stat.icon className="h-4 w-4 text-brand-red" />
+                  </div>
+                  <div>
+                    <span className="text-sm font-bold block leading-tight">{stat.value}</span>
+                    <span className="text-xs text-muted-foreground leading-tight">{stat.label}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* Right — Details Card */}
