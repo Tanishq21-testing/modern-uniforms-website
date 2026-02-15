@@ -63,19 +63,6 @@ const CaseStudySection = () => {
                 </div>
               </div>
             </Card>
-            <div className="grid grid-cols-2 gap-3">
-              {stats.map((stat) => (
-                <div key={stat.label} className="flex items-center gap-3 p-3 rounded-xl bg-muted/30 border border-border/40">
-                  <div className="w-9 h-9 rounded-full bg-brand-red/10 flex items-center justify-center shrink-0">
-                    <stat.icon className="h-4 w-4 text-brand-red" />
-                  </div>
-                  <div>
-                    <span className="text-sm font-bold block leading-tight">{stat.value}</span>
-                    <span className="text-xs text-muted-foreground leading-tight">{stat.label}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
           </div>
 
           {/* Right — Details Card */}
