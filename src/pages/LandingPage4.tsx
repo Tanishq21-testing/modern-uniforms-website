@@ -37,17 +37,34 @@ const LandingPage4 = () => {
     setIsSubmitting(true);
     try {
       // Insert consultation submission
-      const {
-        error
-      } = await supabase.from('consultation_submissions').insert({
+      const submissionData = {
         name: formData.fullName,
         email: `${formData.schoolName}@school.ae`,
         company: formData.schoolName,
         phone: formData.phone,
         employee_count: '50+',
         message: formData.description
-      });
+      };
+      const { error } = await supabase.from('consultation_submissions').insert(submissionData);
       if (error) throw error;
+
+      // Send email notification
+      try {
+        await supabase.functions.invoke('send-consultation-email', {
+          body: {
+            name: formData.fullName,
+            email: submissionData.email,
+            company: formData.schoolName,
+            phone: formData.phone,
+            employeeCount: '50+',
+            message: formData.description || 'No additional details provided',
+            formType: 'Graduation Page Inquiry'
+          }
+        });
+      } catch (emailError) {
+        console.error('Email notification failed:', emailError);
+      }
+
       toast.success('Thank you! We\'ll contact you within 24 hours.');
       setFormData({
         fullName: '',
