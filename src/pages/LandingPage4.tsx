@@ -6,7 +6,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent } from '@/components/ui/card';
 import { Upload, Users, CheckCircle, Award, Star, Phone, Mail, Instagram } from 'lucide-react';
 import { toast } from 'sonner';
-
+import CaseStudySection from '@/components/graduation/CaseStudySection';
 
 import WhySchoolsSection from '@/components/graduation/WhySchoolsSection';
 import { supabase } from '@/integrations/supabase/client';
@@ -230,6 +230,7 @@ const LandingPage4 = () => {
       </section>
 
       {/* Case Study, Video Showcase, Why Schools */}
+      <CaseStudySection />
       <WhySchoolsSection />
 
       {/* Product Catalog */}
