@@ -4,7 +4,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import LazyImage from '@/components/LazyImage';
 
-const FAIRGREEN_IMAGE = 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/Products/Fairgreen%20Model%201.png';
+const FAIRGREEN_IMAGE = 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/Products/Fairgreen%20Model%201.png?v=2';
 
 const approach = [
   'Direct coordination with school admin team and timelines',
