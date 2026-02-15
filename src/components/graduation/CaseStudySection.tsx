@@ -49,11 +49,11 @@ const CaseStudySection = () => {
           {/* Left — Product Showcase Image */}
           <div className="flex flex-col gap-6">
             <Card className="border border-border/60 shadow-lg overflow-hidden group cursor-pointer">
-              <div className="aspect-[4/5] overflow-hidden">
+              <div className="aspect-[4/5] bg-muted/10 overflow-hidden flex items-center justify-center p-4">
                 <LazyImage
                   src={FAIRGREEN_IMAGE}
                   alt="Fairgreen International School Graduation Hoodie"
-                  className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                  className="w-full h-full object-contain transition-transform duration-500 ease-out group-hover:scale-105"
                   priority
                   fetchPriority="high"
                 />
