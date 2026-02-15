@@ -1,14 +1,10 @@
 
-import { CheckCircle, Package, Clock, Users, ClipboardCheck } from 'lucide-react';
+import { CheckCircle } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import LazyImage from '@/components/LazyImage';
 
-const stats = [
-  { icon: Package, value: '500+', label: 'Hoodies Produced' },
-  { icon: ClipboardCheck, value: 'Full', label: 'Design + Approval Workflow' },
-  { icon: Users, value: 'Bulk', label: 'Sizing & Packaging' },
-  { icon: Clock, value: '100%', label: 'On-Time Delivery' },
-];
+const FAIRGREEN_IMAGE = 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/Products/Fairgreen%20Model%201.png';
 
 const approach = [
   'Direct coordination with school admin team and timelines',
@@ -53,14 +49,14 @@ const CaseStudySection = () => {
           {/* Left — Product Showcase Image */}
           <div className="flex flex-col gap-6">
             <Card className="border border-border/60 shadow-lg overflow-hidden">
-              <div className="aspect-[4/5] bg-muted/30 flex items-center justify-center">
-                <div className="text-center p-8">
-                  <div className="w-20 h-20 mx-auto mb-4 rounded-2xl bg-muted flex items-center justify-center">
-                    <Package className="h-10 w-10 text-muted-foreground/40" />
-                  </div>
-                  <p className="text-sm font-medium text-muted-foreground">Product Image</p>
-                  <p className="text-xs text-muted-foreground/60 mt-1">Coming soon</p>
-                </div>
+              <div className="aspect-[4/5] bg-muted/30 overflow-hidden">
+                <LazyImage
+                  src={FAIRGREEN_IMAGE}
+                  alt="Fairgreen International School Graduation Hoodie"
+                  className="w-full h-full object-cover"
+                  priority
+                  fetchPriority="high"
+                />
               </div>
             </Card>
           </div>
