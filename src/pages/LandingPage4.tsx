@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent } from '@/components/ui/card';
-import { Upload, Users, CheckCircle, Award, Star, Phone, Mail, Instagram } from 'lucide-react';
+import { Upload, Users, CheckCircle, Award, Star, Phone, Mail, Instagram, Loader2 } from 'lucide-react';
 import { toast } from 'sonner';
 import CaseStudySection from '@/components/graduation/CaseStudySection';
 
@@ -12,6 +12,7 @@ import WhySchoolsSection from '@/components/graduation/WhySchoolsSection';
 import { supabase } from '@/integrations/supabase/client';
 import PageFooter from '@/components/PageFooter';
 import LazyImage from '@/components/LazyImage';
+import SuccessModal from '@/components/SuccessModal';
 const LandingPage4 = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -22,6 +23,7 @@ const LandingPage4 = () => {
   });
   const [file, setFile] = useState<File | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
   const scrollToForm = () => {
     document.getElementById('lead-form')?.scrollIntoView({
       behavior: 'smooth',
@@ -36,16 +38,14 @@ const LandingPage4 = () => {
     }
     setIsSubmitting(true);
     try {
-      // Insert consultation submission
-      const submissionData = {
+      // Save to graduation_leads table
+      const { error } = await supabase.from('graduation_leads').insert({
         name: formData.fullName,
-        email: `${formData.schoolName}@school.ae`,
-        company: formData.schoolName,
+        school_name: formData.schoolName,
         phone: formData.phone,
-        employee_count: '50+',
-        message: formData.description
-      };
-      const { error } = await supabase.from('consultation_submissions').insert(submissionData);
+        message: formData.description || null,
+        page_source: 'Graduation Page'
+      });
       if (error) throw error;
 
       // Send email notification
@@ -53,26 +53,19 @@ const LandingPage4 = () => {
         await supabase.functions.invoke('send-consultation-email', {
           body: {
             name: formData.fullName,
-            email: submissionData.email,
             company: formData.schoolName,
             phone: formData.phone,
-            employeeCount: '50+',
             message: formData.description || 'No additional details provided',
-            formType: 'Graduation Page Inquiry'
+            pageSource: 'Graduation Page'
           }
         });
       } catch (emailError) {
         console.error('Email notification failed:', emailError);
       }
 
-      toast.success('Thank you! We\'ll contact you within 24 hours.');
-      setFormData({
-        fullName: '',
-        schoolName: '',
-        phone: '',
-        description: ''
-      });
+      setFormData({ fullName: '', schoolName: '', phone: '', description: '' });
       setFile(null);
+      setShowSuccess(true);
     } catch (error) {
       console.error('Error:', error);
       toast.error('Something went wrong. Please try again.');
@@ -237,7 +230,11 @@ const LandingPage4 = () => {
                   </div>
                   
                   <Button type="submit" className="w-full premium-button h-auto py-4" disabled={isSubmitting}>
-                    {isSubmitting ? 'Submitting...' : 'Bring My Design to Life'}
+                    {isSubmitting ? (
+                      <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Submitting...</>
+                    ) : (
+                      'Bring My Design to Life'
+                    )}
                   </Button>
                 </form>
               </CardContent>
@@ -402,6 +399,7 @@ const LandingPage4 = () => {
       </section>
 
       <PageFooter />
+      <SuccessModal open={showSuccess} onOpenChange={setShowSuccess} />
     </div>;
 };
 export default LandingPage4;

@@ -10,36 +10,41 @@ const corsHeaders = {
 };
 
 serve(async (req) => {
-  // Handle CORS preflight requests
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
   }
 
   try {
     console.log("Received email request");
-    const { name, email, company, phone, employeeCount, message, formType = "Consultation Form" } = await req.json();
+    const { name, email, company, phone, employeeCount, message, formType = "Consultation Form", pageSource } = await req.json();
     
+    const subjectPageName = pageSource || formType;
+    const subject = `New Lead – ${subjectPageName}`;
+
     console.log("Email Configuration:", {
-      from: "UniformConnect <onboarding@resend.dev>",
+      from: "UniformConnect <no-reply@uniformconnectuae.com>",
       to: "tanishqpremchand@gmail.com",
+      subject,
       sender_email: email,
       sender_name: name,
-      formType
     });
 
     const emailResponse = await resend.emails.send({
       from: "UniformConnect <no-reply@uniformconnectuae.com>",
       to: ["tanishqpremchand@gmail.com"],
-      reply_to: ["tanishqpremchand@gmail.com"],
-      subject: `New ${formType} Submission`,
+      reply_to: email ? [email] : ["tanishqpremchand@gmail.com"],
+      subject,
       html: `
-        <h1>New ${formType} Submission Received</h1>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Company:</strong> ${company}</p>
-        <p><strong>Phone:</strong> ${phone}</p>
-        <p><strong>Employee Count:</strong> ${employeeCount || 'Not specified'}</p>
-        <p><strong>Message:</strong> ${message}</p>
+        <h1>New Lead – ${subjectPageName}</h1>
+        <table style="border-collapse:collapse;width:100%;max-width:600px;">
+          <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold;">Name</td><td style="padding:8px;border:1px solid #ddd;">${name || 'N/A'}</td></tr>
+          <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold;">Email</td><td style="padding:8px;border:1px solid #ddd;">${email || 'N/A'}</td></tr>
+          <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold;">Company / School</td><td style="padding:8px;border:1px solid #ddd;">${company || 'N/A'}</td></tr>
+          <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold;">Phone</td><td style="padding:8px;border:1px solid #ddd;">${phone || 'N/A'}</td></tr>
+          <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold;">Employee Count</td><td style="padding:8px;border:1px solid #ddd;">${employeeCount || 'Not specified'}</td></tr>
+          <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold;">Page Source</td><td style="padding:8px;border:1px solid #ddd;">${pageSource || formType}</td></tr>
+          <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold;">Message</td><td style="padding:8px;border:1px solid #ddd;">${message || 'No message'}</td></tr>
+        </table>
       `,
     });
 

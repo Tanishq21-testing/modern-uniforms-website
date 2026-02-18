@@ -3,13 +3,15 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { MapPin, Phone, Mail, Clock, Building } from 'lucide-react';
-import { useToast } from '@/components/ui/use-toast';
+import { MapPin, Phone, Mail, Clock, Building, Loader2 } from 'lucide-react';
+import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
+import SuccessModal from '@/components/SuccessModal';
 
 const ContactInfo = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -28,58 +30,43 @@ const ContactInfo = () => {
     setIsSubmitting(true);
 
     try {
-      console.log('Submitting form data:', formData);
-      
-      // Save to Supabase
+      // Save to dedicated contact_page_leads table
       const { error: dbError } = await supabase
-        .from('consultation_submissions')
+        .from('contact_page_leads')
         .insert({
           name: formData.name,
           email: formData.email,
           company: formData.company,
           phone: formData.phone,
-          employee_count: 'not specified', // Default value
-          message: formData.message
+          message: formData.message,
+          page_source: 'Contact Us Page'
         });
 
-      if (dbError) {
-        console.error('Database error:', dbError);
-        throw dbError;
-      }
-      
-      console.log('Successfully saved to database');
+      if (dbError) throw dbError;
 
       // Send email notification
-      const { error: emailError, data: emailData } = await supabase.functions.invoke('send-consultation-email', {
-        body: {
-          ...formData,
-          employeeCount: 'not specified',
-          formType: 'Contact Page Form'
-        }
-      });
-
-      console.log('Email function response:', emailData);
-
-      if (emailError) {
-        console.error('Email error:', emailError);
-        throw emailError;
+      try {
+        await supabase.functions.invoke('send-consultation-email', {
+          body: {
+            name: formData.name,
+            email: formData.email,
+            company: formData.company,
+            phone: formData.phone,
+            message: formData.message,
+            pageSource: 'Contact Us Page'
+          }
+        });
+      } catch (emailError) {
+        console.error('Email notification failed:', emailError);
       }
-      
-      console.log('Successfully sent email notification');
-      
+
       // Track conversion with Google Ads if available
       if (typeof window !== 'undefined' && (window as any).gtag && (window as any).gtagSendEvent) {
-        console.log('Triggering Google Ads conversion tracking');
         (window as any).gtagSendEvent();
       }
 
-      // Set session storage flag for thank you page
-      sessionStorage.setItem('formSubmitted', 'true');
-      
-      // Redirect to thank you page
-      window.location.href = '/thank-you';
-      
       setFormData({ name: '', email: '', phone: '', company: '', message: '' });
+      setShowSuccess(true);
     } catch (error) {
       console.error('Submission error:', error);
       toast({
@@ -112,72 +99,26 @@ const ContactInfo = () => {
             {/* Contact Information */}
             <div className="bg-gray-100 p-8 rounded-lg shadow-md animate-slide-in-left">
               <h2 className="text-3xl font-bold mb-8 text-gray-800">Get In Touch</h2>
-              
               <div className="space-y-6">
                 <div className="flex items-start">
-                  <div className="mr-4 p-3 bg-brand-blue/20 rounded-full text-brand-blue">
-                    <MapPin size={24} />
-                  </div>
-                  <div>
-                    <h4 className="font-medium text-lg">Our Location</h4>
-                    <p className="text-gray-600 mt-1">
-                      Dubai Design District, Building 7<br />
-                      Dubai, United Arab Emirates
-                    </p>
-                  </div>
+                  <div className="mr-4 p-3 bg-brand-blue/20 rounded-full text-brand-blue"><MapPin size={24} /></div>
+                  <div><h4 className="font-medium text-lg">Our Location</h4><p className="text-gray-600 mt-1">Dubai Design District, Building 7<br />Dubai, United Arab Emirates</p></div>
                 </div>
-                
                 <div className="flex items-start">
-                  <div className="mr-4 p-3 bg-brand-red/20 rounded-full text-brand-red">
-                    <Phone size={24} />
-                  </div>
-                  <div>
-                    <h4 className="font-medium text-lg">Call Us</h4>
-                    <p className="text-gray-600 mt-1">
-                      +971 4 123 4567<br />
-                      +971 50 987 6543
-                    </p>
-                  </div>
+                  <div className="mr-4 p-3 bg-brand-red/20 rounded-full text-brand-red"><Phone size={24} /></div>
+                  <div><h4 className="font-medium text-lg">Call Us</h4><p className="text-gray-600 mt-1">+971 4 123 4567<br />+971 50 987 6543</p></div>
                 </div>
-                
                 <div className="flex items-start">
-                  <div className="mr-4 p-3 bg-brand-green/20 rounded-full text-brand-green">
-                    <Mail size={24} />
-                  </div>
-                  <div>
-                    <h4 className="font-medium text-lg">Email Us</h4>
-                    <p className="text-gray-600 mt-1">
-                      info@uniformconnect.ae<br />
-                      sales@uniformconnect.ae
-                    </p>
-                  </div>
+                  <div className="mr-4 p-3 bg-brand-green/20 rounded-full text-brand-green"><Mail size={24} /></div>
+                  <div><h4 className="font-medium text-lg">Email Us</h4><p className="text-gray-600 mt-1">info@uniformconnect.ae<br />sales@uniformconnect.ae</p></div>
                 </div>
-
                 <div className="flex items-start">
-                  <div className="mr-4 p-3 bg-brand-blue/20 rounded-full text-brand-blue">
-                    <Clock size={24} />
-                  </div>
-                  <div>
-                    <h4 className="font-medium text-lg">Business Hours</h4>
-                    <p className="text-gray-600 mt-1">
-                      Monday - Friday: 8:30 AM - 6:00 PM<br />
-                      Saturday: 9:00 AM - 4:00 PM<br />
-                      Sunday: Closed
-                    </p>
-                  </div>
+                  <div className="mr-4 p-3 bg-brand-blue/20 rounded-full text-brand-blue"><Clock size={24} /></div>
+                  <div><h4 className="font-medium text-lg">Business Hours</h4><p className="text-gray-600 mt-1">Monday - Friday: 8:30 AM - 6:00 PM<br />Saturday: 9:00 AM - 4:00 PM<br />Sunday: Closed</p></div>
                 </div>
-
                 <div className="flex items-start">
-                  <div className="mr-4 p-3 bg-brand-green/20 rounded-full text-brand-green">
-                    <Building size={24} />
-                  </div>
-                  <div>
-                    <h4 className="font-medium text-lg">Industries We Serve</h4>
-                    <p className="text-gray-600 mt-1">
-                      Hospitality • Hotels • Restaurants<br />
-                      Schools • Corporate • Healthcare
-                    </p>
-                  </div>
+                  <div className="mr-4 p-3 bg-brand-green/20 rounded-full text-brand-green"><Building size={24} /></div>
+                  <div><h4 className="font-medium text-lg">Industries We Serve</h4><p className="text-gray-600 mt-1">Hospitality • Hotels • Restaurants<br />Schools • Corporate • Healthcare</p></div>
                 </div>
               </div>
             </div>
@@ -185,66 +126,20 @@ const ContactInfo = () => {
             {/* Contact Form */}
             <div className="bg-white p-8 rounded-lg shadow-md animate-slide-in-right">
               <h2 className="text-3xl font-bold mb-6 text-gray-800">Send Us a Message</h2>
-              <p className="text-gray-600 mb-6">
-                Fill out the form below and our team will get back to you within 24 hours.
-              </p>
+              <p className="text-gray-600 mb-6">Fill out the form below and our team will get back to you within 24 hours.</p>
               
               <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                  <Input
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    placeholder="Your Name"
-                    required
-                    className="border-gray-300 focus:border-brand-blue"
-                  />
-                </div>
-                <div>
-                  <Input
-                    name="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder="Your Email"
-                    required
-                    className="border-gray-300 focus:border-brand-blue"
-                  />
-                </div>
-                <div>
-                  <Input
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    placeholder="Your Phone"
-                    className="border-gray-300 focus:border-brand-blue"
-                  />
-                </div>
-                <div>
-                  <Input
-                    name="company"
-                    value={formData.company}
-                    onChange={handleChange}
-                    placeholder="Your Company"
-                    className="border-gray-300 focus:border-brand-blue"
-                  />
-                </div>
-                <div>
-                  <Textarea
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    placeholder="Tell us about your uniform needs"
-                    required
-                    className="border-gray-300 focus:border-brand-blue"
-                    rows={5}
-                  />
-                </div>
-                <Button 
-                  type="submit" 
-                  className="w-full bg-brand-red hover:bg-brand-red/90 text-white"
-                >
-                  Send Message
+                <div><Input name="name" value={formData.name} onChange={handleChange} placeholder="Your Name" required className="border-gray-300 focus:border-brand-blue" /></div>
+                <div><Input name="email" type="email" value={formData.email} onChange={handleChange} placeholder="Your Email" required className="border-gray-300 focus:border-brand-blue" /></div>
+                <div><Input name="phone" value={formData.phone} onChange={handleChange} placeholder="Your Phone" className="border-gray-300 focus:border-brand-blue" /></div>
+                <div><Input name="company" value={formData.company} onChange={handleChange} placeholder="Your Company" className="border-gray-300 focus:border-brand-blue" /></div>
+                <div><Textarea name="message" value={formData.message} onChange={handleChange} placeholder="Tell us about your uniform needs" required className="border-gray-300 focus:border-brand-blue" rows={5} /></div>
+                <Button type="submit" className="w-full bg-brand-red hover:bg-brand-red/90 text-white" disabled={isSubmitting}>
+                  {isSubmitting ? (
+                    <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Sending...</>
+                  ) : (
+                    'Send Message'
+                  )}
                 </Button>
               </form>
             </div>
@@ -259,12 +154,7 @@ const ContactInfo = () => {
           <div className="w-full h-96 rounded-lg overflow-hidden shadow-lg">
             <iframe 
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3611.174459610075!2d55.32608931500937!3d25.185621883903673!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f6833dd75c5a3%3A0x55f77fb219481885!2sDubai%20Design%20District!5e0!3m2!1sen!2sae!4v1641455641234!5m2!1sen!2sae" 
-              width="100%" 
-              height="100%" 
-              style={{ border: 0 }} 
-              allowFullScreen 
-              loading="lazy"
-              title="UniformConnect Location"
+              width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" title="UniformConnect Location"
             ></iframe>
           </div>
         </div>
@@ -274,14 +164,12 @@ const ContactInfo = () => {
       <section className="bg-gradient-to-r from-gray-900 to-gray-800 text-white py-16">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4">Ready to transform your uniform experience?</h2>
-          <p className="text-xl mb-8 max-w-3xl mx-auto">
-            Let's discuss how our premium uniform solutions can elevate your brand identity.
-          </p>
-          <Button className="bg-brand-green hover:bg-brand-green/90 text-white text-lg px-8 py-6">
-            Schedule a Consultation
-          </Button>
+          <p className="text-xl mb-8 max-w-3xl mx-auto">Let's discuss how our premium uniform solutions can elevate your brand identity.</p>
+          <Button className="bg-brand-green hover:bg-brand-green/90 text-white text-lg px-8 py-6">Schedule a Consultation</Button>
         </div>
       </section>
+
+      <SuccessModal open={showSuccess} onOpenChange={setShowSuccess} />
     </>
   );
 };
