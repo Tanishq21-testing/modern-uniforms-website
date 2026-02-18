@@ -32,6 +32,42 @@ export type Database = {
         }
         Relationships: []
       }
+      consultation_leads: {
+        Row: {
+          company: string | null
+          created_at: string
+          email: string
+          employee_count: string | null
+          id: string
+          message: string | null
+          name: string
+          page_source: string
+          phone: string | null
+        }
+        Insert: {
+          company?: string | null
+          created_at?: string
+          email: string
+          employee_count?: string | null
+          id?: string
+          message?: string | null
+          name: string
+          page_source?: string
+          phone?: string | null
+        }
+        Update: {
+          company?: string | null
+          created_at?: string
+          email?: string
+          employee_count?: string | null
+          id?: string
+          message?: string | null
+          name?: string
+          page_source?: string
+          phone?: string | null
+        }
+        Relationships: []
+      }
       consultation_submissions: {
         Row: {
           company: string
@@ -62,6 +98,39 @@ export type Database = {
           message?: string | null
           name?: string
           phone?: string
+        }
+        Relationships: []
+      }
+      contact_page_leads: {
+        Row: {
+          company: string | null
+          created_at: string
+          email: string
+          id: string
+          message: string | null
+          name: string
+          page_source: string
+          phone: string | null
+        }
+        Insert: {
+          company?: string | null
+          created_at?: string
+          email: string
+          id?: string
+          message?: string | null
+          name: string
+          page_source?: string
+          phone?: string | null
+        }
+        Update: {
+          company?: string | null
+          created_at?: string
+          email?: string
+          id?: string
+          message?: string | null
+          name?: string
+          page_source?: string
+          phone?: string | null
         }
         Relationships: []
       }
@@ -126,6 +195,105 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      design_lab_leads: {
+        Row: {
+          company: string | null
+          created_at: string
+          email: string
+          id: string
+          message: string | null
+          name: string
+          page_source: string
+          phone: string | null
+        }
+        Insert: {
+          company?: string | null
+          created_at?: string
+          email: string
+          id?: string
+          message?: string | null
+          name: string
+          page_source?: string
+          phone?: string | null
+        }
+        Update: {
+          company?: string | null
+          created_at?: string
+          email?: string
+          id?: string
+          message?: string | null
+          name?: string
+          page_source?: string
+          phone?: string | null
+        }
+        Relationships: []
+      }
+      graduation_leads: {
+        Row: {
+          created_at: string
+          email: string | null
+          id: string
+          message: string | null
+          name: string
+          page_source: string
+          phone: string
+          school_name: string | null
+        }
+        Insert: {
+          created_at?: string
+          email?: string | null
+          id?: string
+          message?: string | null
+          name: string
+          page_source?: string
+          phone: string
+          school_name?: string | null
+        }
+        Update: {
+          created_at?: string
+          email?: string | null
+          id?: string
+          message?: string | null
+          name?: string
+          page_source?: string
+          phone?: string
+          school_name?: string | null
+        }
+        Relationships: []
+      }
+      hospitality_leads: {
+        Row: {
+          company: string | null
+          created_at: string
+          email: string
+          id: string
+          message: string | null
+          name: string
+          page_source: string
+          phone: string | null
+        }
+        Insert: {
+          company?: string | null
+          created_at?: string
+          email: string
+          id?: string
+          message?: string | null
+          name: string
+          page_source?: string
+          phone?: string | null
+        }
+        Update: {
+          company?: string | null
+          created_at?: string
+          email?: string
+          id?: string
+          message?: string | null
+          name?: string
+          page_source?: string
+          phone?: string | null
+        }
+        Relationships: []
       }
       order_items: {
         Row: {
@@ -292,6 +460,93 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      referral_leads: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          image_url: string | null
+          message: string | null
+          name: string
+          page_source: string
+          phone: string
+          product_type: string | null
+          quantity: string | null
+          referred_manager: string | null
+          referred_phone: string | null
+          referred_school: string | null
+          referred_school_name: string | null
+          school_name: string | null
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          image_url?: string | null
+          message?: string | null
+          name: string
+          page_source?: string
+          phone: string
+          product_type?: string | null
+          quantity?: string | null
+          referred_manager?: string | null
+          referred_phone?: string | null
+          referred_school?: string | null
+          referred_school_name?: string | null
+          school_name?: string | null
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          image_url?: string | null
+          message?: string | null
+          name?: string
+          page_source?: string
+          phone?: string
+          product_type?: string | null
+          quantity?: string | null
+          referred_manager?: string | null
+          referred_phone?: string | null
+          referred_school?: string | null
+          referred_school_name?: string | null
+          school_name?: string | null
+        }
+        Relationships: []
+      }
+      school_uniform_leads: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          message: string | null
+          name: string
+          page_source: string
+          phone: string | null
+          school_name: string | null
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          message?: string | null
+          name: string
+          page_source?: string
+          phone?: string | null
+          school_name?: string | null
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          message?: string | null
+          name?: string
+          page_source?: string
+          phone?: string | null
+          school_name?: string | null
+        }
+        Relationships: []
       }
       schools: {
         Row: {
