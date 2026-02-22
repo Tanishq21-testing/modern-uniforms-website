@@ -5,6 +5,9 @@ import { Button } from '@/components/ui/button';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { images } from '@/assets/images';
+import restaurantUniformsImg from '@/assets/images/restaurant-uniforms.jpg';
+import industrialWorkers1 from '@/assets/images/industrial-workers-1.jpg';
+import industrialWorkers2 from '@/assets/images/industrial-workers-2.jpg';
 import { 
   GraduationCap, UtensilsCrossed, Building2, Factory, 
   ArrowRight, CheckCircle2, MessageSquare, Palette, 
@@ -165,31 +168,29 @@ const CaseStudies = () => {
       {/* SECTION 4 — RESTAURANT GROUPS */}
       <section className="py-20 md:py-28 bg-background">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-14">
-            <div className="flex items-center gap-3 justify-center mb-4">
-              <div className="w-10 h-10 rounded-lg bg-brand-green/10 flex items-center justify-center">
-                <UtensilsCrossed className="h-5 w-5 text-brand-green" />
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <div>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 rounded-lg bg-brand-green/10 flex items-center justify-center">
+                  <UtensilsCrossed className="h-5 w-5 text-brand-green" />
+                </div>
+                <span className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">Restaurants</span>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
+                Branded Uniform Programs for Restaurant Groups
+              </h2>
+              <div className="grid grid-cols-2 gap-4">
+                {['Custom Embroidery & Print', 'Multi-Location Consistency', 'Interior Concept Alignment', 'Staff Comfort & Durability'].map((item) => (
+                  <div key={item} className="flex items-start gap-2">
+                    <CheckCircle2 className="h-4 w-4 text-brand-green mt-1 shrink-0" />
+                    <span className="text-sm text-foreground">{item}</span>
+                  </div>
+                ))}
               </div>
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Branded Uniform Programs for Restaurant Groups
-            </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              We help restaurant groups maintain brand identity and consistency across every location with custom uniform programs.
-            </p>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { title: 'Custom Embroidery & Print', description: 'Logo placement, brand colors, and custom designs applied with precision.' },
-              { title: 'Interior Concept Alignment', description: "Uniforms designed to complement your venue's aesthetic and brand identity." },
-              { title: 'Multi-Location Consistency', description: 'Identical quality and appearance across all branches and outlets.' },
-              { title: 'Staff Comfort & Durability', description: 'Fabrics selected for all-day comfort and commercial-grade durability.' },
-            ].map((card) => (
-              <div key={card.title} className="bg-card border border-border rounded-xl p-6 hover:shadow-[var(--shadow-soft)] transition-shadow duration-300">
-                <h3 className="font-semibold text-foreground mb-2">{card.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{card.description}</p>
-              </div>
-            ))}
+            <div className="rounded-xl overflow-hidden shadow-[var(--shadow-medium)]">
+              <img src={restaurantUniformsImg} alt="Restaurant staff in professional uniforms" className="w-full h-auto object-cover" />
+            </div>
           </div>
         </div>
       </section>
@@ -226,11 +227,12 @@ const CaseStudies = () => {
               </ul>
             </div>
             <div className="grid grid-cols-2 gap-4">
-              {[images.Jonescoat1, images.Jonesapron1].map((img, i) => (
-                <div key={i} className="rounded-xl overflow-hidden shadow-[var(--shadow-soft)] aspect-square bg-premium-100">
-                  <img src={img} alt="Industrial uniforms" className="w-full h-full object-cover" />
-                </div>
-              ))}
+              <div className="rounded-xl overflow-hidden shadow-[var(--shadow-soft)] aspect-square">
+                <img src={industrialWorkers1} alt="Construction workers in safety uniforms" className="w-full h-full object-cover" />
+              </div>
+              <div className="rounded-xl overflow-hidden shadow-[var(--shadow-soft)] aspect-square">
+                <img src={industrialWorkers2} alt="Facility maintenance worker" className="w-full h-full object-cover" />
+              </div>
             </div>
           </div>
         </div>
