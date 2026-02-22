@@ -5,9 +5,10 @@ import { Button } from '@/components/ui/button';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { images } from '@/assets/images';
-import jonesGrocerImg from '@/assets/images/jones-grocer-uniforms.jpg';
-import autogrillImg from '@/assets/images/autogrill-uniforms.jpg';
-import littleBangkokImg from '@/assets/images/little-bangkok-uniforms.jpg';
+const STORAGE_BASE = 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect';
+const jonesGrocerImg = `${STORAGE_BASE}/Jones%20The%20Grocer%20Uniforms.png`;
+const autogrillImg = `${STORAGE_BASE}/Autogrill%20Uniforms.png`;
+const littleBangkokImg = `${STORAGE_BASE}/Little%20Bangkok%20uniforms%202.png`;
 import industrialWorkers1 from '@/assets/images/industrial-workers-1.jpg';
 import industrialWorkers2 from '@/assets/images/industrial-workers-2.jpg';
 import { 
