@@ -5,7 +5,8 @@ import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 import {
   LogOut, Package, ClipboardList, Upload, History, CalendarClock,
-  X, ShoppingCart, FileSpreadsheet, BarChart3, ChevronRight
+  X, ShoppingCart, FileSpreadsheet, BarChart3, ChevronRight,
+  TrendingUp, Users, DollarSign, Filter
 } from 'lucide-react';
 
 // ─── Product Data ─────────────────────────────────────────
@@ -20,11 +21,37 @@ const PRODUCTS = [
   { id: 8, name: 'Black Cotton Dryfit Poloshirts Short-sleeves with Embroidery', price: 75, desc: 'Short-sleeve dryfit polo with front, back, and sleeve embroidery.' },
 ];
 
-const MOCK_ORDERS = [
-  { id: 'FG-2026-001', date: 'Jan 15, 2026', product: 'Navy Blue Children Hoodies', qty: 120, status: 'Completed' },
-  { id: 'FG-2026-002', date: 'Feb 5, 2026', product: 'Grey Poloshirts with Embroideries', qty: 200, status: 'In Production' },
-  { id: 'FG-2026-003', date: 'Feb 18, 2026', product: 'Light Purple Hoodies', qty: 80, status: 'Pending Approval' },
+// ─── Historical Order Data ─────────────────────────────────
+interface OrderLine {
+  invoice: string;
+  date: string;
+  category: string;
+  product: string;
+  qty: number;
+  unitPrice: number;
+  subtotal: number;
+  vat: number;
+  totalDue: number;
+  status: string;
+}
+
+const ORDER_HISTORY: OrderLine[] = [
+  { invoice: '7606', date: '31 Jan 2026', category: 'Bulk Hoodie Rollout', product: 'Kids Navy Blue Hoodies (Printing + Embroidery)', qty: 280, unitPrice: 115, subtotal: 32200, vat: 1610, totalDue: 66570, status: 'Completed' },
+  { invoice: '7606', date: '31 Jan 2026', category: 'Bulk Hoodie Rollout', product: 'Adult Navy Blue Hoodies (Printing + Embroidery)', qty: 240, unitPrice: 130, subtotal: 31200, vat: 1560, totalDue: 66570, status: 'Completed' },
+  { invoice: '7570', date: '15 Jan 2026', category: 'Hoodie Reorder', product: 'Kids Navy Hoodies', qty: 45, unitPrice: 109.5, subtotal: 4927.5, vat: 246.38, totalDue: 6215.5, status: 'Completed' },
+  { invoice: '7570', date: '15 Jan 2026', category: 'Hoodie Reorder', product: 'Adult Navy Hoodies', qty: 8, unitPrice: 124, subtotal: 992, vat: 49.6, totalDue: 6215.5, status: 'Completed' },
+  { invoice: '7591', date: '27 Jan 2026', category: 'Track Pants', product: 'Kids Track Pants', qty: 40, unitPrice: 60, subtotal: 2400, vat: 120, totalDue: 4567.5, status: 'Completed' },
+  { invoice: '7591', date: '27 Jan 2026', category: 'Track Pants', product: 'Adult Track Pants', qty: 30, unitPrice: 65, subtotal: 1950, vat: 97.5, totalDue: 4567.5, status: 'Completed' },
+  { invoice: '7609', date: '2 Feb 2026', category: 'Graduation', product: 'Graduation Gowns', qty: 11, unitPrice: 130, subtotal: 1430, vat: 71.5, totalDue: 2898, status: 'Completed' },
+  { invoice: '7609', date: '2 Feb 2026', category: 'Graduation', product: 'Graduation Caps', qty: 13, unitPrice: 35, subtotal: 455, vat: 22.75, totalDue: 2898, status: 'Completed' },
+  { invoice: '7609', date: '2 Feb 2026', category: 'Graduation', product: 'Sashes', qty: 25, unitPrice: 35, subtotal: 875, vat: 43.75, totalDue: 2898, status: 'Completed' },
+  { invoice: '7369', date: '13 Oct 2025', category: 'Event T-Shirts', product: 'White T-shirts', qty: 149, unitPrice: 20, subtotal: 2980, vat: 149, totalDue: 3129, status: 'Completed' },
+  { invoice: '7315', date: '20 Sep 2025', category: 'Polos & Pants', product: 'Grey Poloshirts', qty: 6, unitPrice: 60, subtotal: 360, vat: 18, totalDue: 882, status: 'Completed' },
+  { invoice: '7315', date: '20 Sep 2025', category: 'Polos & Pants', product: 'Navy Cargo Pants', qty: 6, unitPrice: 80, subtotal: 480, vat: 24, totalDue: 882, status: 'Completed' },
 ];
+
+const CATEGORIES = [...new Set(ORDER_HISTORY.map(o => o.category))];
+const UNIQUE_INVOICES = [...new Set(ORDER_HISTORY.map(o => o.invoice))];
 
 const statusColors: Record<string, string> = {
   'Completed': 'bg-emerald-50 text-emerald-700 border-emerald-200',
@@ -165,6 +192,23 @@ const FairgreenPortalDemo = () => {
   const { isAuthenticated, loading, logout } = useSchoolAuth();
   const navigate = useNavigate();
   const [reorderProduct, setReorderProduct] = useState<typeof PRODUCTS[0] | null>(null);
+  const [categoryFilter, setCategoryFilter] = useState<string>('all');
+  const [dateFilter, setDateFilter] = useState<string>('all');
+
+  // Compute stats
+  const totalOrders = UNIQUE_INVOICES.length;
+  const totalUnits = ORDER_HISTORY.reduce((sum, o) => sum + o.qty, 0);
+  const totalProgramValue = [...new Set(ORDER_HISTORY.map(o => `${o.invoice}-${o.totalDue}`))].reduce((sum, key) => sum + parseFloat(key.split('-').pop()!), 0);
+
+  // Unique dates for filter
+  const uniqueDates = [...new Set(ORDER_HISTORY.map(o => o.date))];
+
+  // Filtered orders
+  const filteredOrders = ORDER_HISTORY.filter(o => {
+    if (categoryFilter !== 'all' && o.category !== categoryFilter) return false;
+    if (dateFilter !== 'all' && o.date !== dateFilter) return false;
+    return true;
+  });
 
   useEffect(() => {
     if (!loading && !isAuthenticated) {
@@ -212,6 +256,37 @@ const FairgreenPortalDemo = () => {
           </p>
         </section>
 
+        {/* Section 1.5 – Program Summary Stats */}
+        <section className="grid sm:grid-cols-3 gap-4">
+          <div className="bg-white rounded-2xl border border-slate-200 p-5">
+            <div className="flex items-center gap-3 mb-2">
+              <div className="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center">
+                <ClipboardList className="w-5 h-5 text-slate-700" />
+              </div>
+              <p className="text-xs text-slate-500 font-medium uppercase tracking-wider">Total Orders</p>
+            </div>
+            <p className="text-3xl font-bold text-slate-900">{totalOrders}</p>
+          </div>
+          <div className="bg-white rounded-2xl border border-slate-200 p-5">
+            <div className="flex items-center gap-3 mb-2">
+              <div className="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center">
+                <Package className="w-5 h-5 text-slate-700" />
+              </div>
+              <p className="text-xs text-slate-500 font-medium uppercase tracking-wider">Total Units Delivered</p>
+            </div>
+            <p className="text-3xl font-bold text-slate-900">{totalUnits.toLocaleString()}</p>
+          </div>
+          <div className="bg-white rounded-2xl border border-slate-200 p-5">
+            <div className="flex items-center gap-3 mb-2">
+              <div className="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center">
+                <TrendingUp className="w-5 h-5 text-slate-700" />
+              </div>
+              <p className="text-xs text-slate-500 font-medium uppercase tracking-wider">Total Program Value</p>
+            </div>
+            <p className="text-3xl font-bold text-slate-900">AED {totalProgramValue.toLocaleString()}</p>
+          </div>
+        </section>
+
         {/* Section 2 – Approved Products */}
         <section>
           <div className="flex items-center gap-2 mb-5">
@@ -251,37 +326,74 @@ const FairgreenPortalDemo = () => {
 
         {/* Section 5 – Order History */}
         <section className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8">
-          <div className="flex items-center gap-2 mb-5">
-            <History className="w-5 h-5 text-slate-700" />
-            <h2 className="text-lg font-semibold text-slate-900">Order History</h2>
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-5">
+            <div className="flex items-center gap-2">
+              <History className="w-5 h-5 text-slate-700" />
+              <h2 className="text-lg font-semibold text-slate-900">Order History</h2>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              <div className="flex items-center gap-1.5">
+                <Filter className="w-3.5 h-3.5 text-slate-400" />
+                <select value={categoryFilter} onChange={e => setCategoryFilter(e.target.value)}
+                  className="text-xs px-3 py-1.5 rounded-lg border border-slate-200 bg-slate-50 text-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-900">
+                  <option value="all">All Categories</option>
+                  {CATEGORIES.map(c => <option key={c} value={c}>{c}</option>)}
+                </select>
+              </div>
+              <select value={dateFilter} onChange={e => setDateFilter(e.target.value)}
+                className="text-xs px-3 py-1.5 rounded-lg border border-slate-200 bg-slate-50 text-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-900">
+                <option value="all">All Dates</option>
+                {uniqueDates.map(d => <option key={d} value={d}>{d}</option>)}
+              </select>
+            </div>
           </div>
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
-                <tr className="border-b border-slate-100">
-                  <th className="text-left py-3 px-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Order ID</th>
+                <tr className="border-b border-slate-200 bg-slate-50/50">
+                  <th className="text-left py-3 px-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Invoice #</th>
                   <th className="text-left py-3 px-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Date</th>
+                  <th className="text-left py-3 px-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Category</th>
                   <th className="text-left py-3 px-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Product</th>
-                  <th className="text-left py-3 px-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Qty</th>
+                  <th className="text-right py-3 px-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Qty</th>
+                  <th className="text-right py-3 px-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Unit Price</th>
+                  <th className="text-right py-3 px-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Subtotal</th>
+                  <th className="text-right py-3 px-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Total Due</th>
                   <th className="text-left py-3 px-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Status</th>
                 </tr>
               </thead>
               <tbody>
-                {MOCK_ORDERS.map(o => (
-                  <tr key={o.id} className="border-b border-slate-50 hover:bg-slate-25">
-                    <td className="py-3 px-4 font-medium text-slate-900">{o.id}</td>
-                    <td className="py-3 px-4 text-slate-600">{o.date}</td>
-                    <td className="py-3 px-4 text-slate-600">{o.product}</td>
-                    <td className="py-3 px-4 text-slate-600">{o.qty}</td>
-                    <td className="py-3 px-4">
-                      <span className={`inline-block px-3 py-1 rounded-full text-xs font-medium border ${statusColors[o.status]}`}>
-                        {o.status}
-                      </span>
-                    </td>
-                  </tr>
-                ))}
+                {filteredOrders.map((o, i) => {
+                  const isFirstInInvoice = i === 0 || filteredOrders[i - 1]?.invoice !== o.invoice;
+                  return (
+                    <tr key={`${o.invoice}-${o.product}`} className={`border-b border-slate-50 hover:bg-slate-50/50 ${isFirstInInvoice && i > 0 ? 'border-t-2 border-t-slate-200' : ''}`}>
+                      <td className="py-3 px-4 font-medium text-slate-900">{isFirstInInvoice ? `INV-${o.invoice}` : ''}</td>
+                      <td className="py-3 px-4 text-slate-600">{isFirstInInvoice ? o.date : ''}</td>
+                      <td className="py-3 px-4">
+                        {isFirstInInvoice && (
+                          <span className="inline-block px-2.5 py-0.5 rounded-md bg-slate-100 text-slate-600 text-xs font-medium">{o.category}</span>
+                        )}
+                      </td>
+                      <td className="py-3 px-4 text-slate-700">{o.product}</td>
+                      <td className="py-3 px-4 text-right text-slate-700 font-medium">{o.qty}</td>
+                      <td className="py-3 px-4 text-right text-slate-600">AED {o.unitPrice.toFixed(1)}</td>
+                      <td className="py-3 px-4 text-right text-slate-600">AED {o.subtotal.toLocaleString()}</td>
+                      <td className="py-3 px-4 text-right font-semibold text-slate-900">{isFirstInInvoice ? `AED ${o.totalDue.toLocaleString()}` : ''}</td>
+                      <td className="py-3 px-4">
+                        {isFirstInInvoice && (
+                          <span className={`inline-block px-3 py-1 rounded-full text-xs font-medium border ${statusColors[o.status] || 'bg-slate-100 text-slate-600 border-slate-200'}`}>
+                            {o.status}
+                          </span>
+                        )}
+                      </td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
+            {filteredOrders.length === 0 && (
+              <p className="text-center text-sm text-slate-400 py-8">No orders match the selected filters.</p>
+            )}
           </div>
         </section>
 
@@ -294,11 +406,11 @@ const FairgreenPortalDemo = () => {
           <div className="grid sm:grid-cols-2 gap-4">
             <div className="bg-slate-50 rounded-xl p-5 border border-slate-100">
               <p className="text-xs text-slate-500 mb-1">Last Order Placed</p>
-              <p className="text-lg font-bold text-slate-900">January 15, 2026</p>
+              <p className="text-lg font-bold text-slate-900">February 2, 2026</p>
             </div>
             <div className="bg-slate-50 rounded-xl p-5 border border-slate-100">
               <p className="text-xs text-slate-500 mb-1">Suggested Reorder Window</p>
-              <p className="text-lg font-bold text-emerald-700">April 2026</p>
+              <p className="text-lg font-bold text-emerald-700">May 2026</p>
             </div>
           </div>
         </section>
