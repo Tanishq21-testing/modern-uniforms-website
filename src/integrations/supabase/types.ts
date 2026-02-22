@@ -229,6 +229,42 @@ export type Database = {
         }
         Relationships: []
       }
+      fairgreen_demo_orders: {
+        Row: {
+          created_at: string
+          id: string
+          notes: string | null
+          product_name: string
+          quantity: number
+          size_l: number
+          size_m: number
+          size_s: number
+          size_xl: number
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          notes?: string | null
+          product_name: string
+          quantity?: number
+          size_l?: number
+          size_m?: number
+          size_s?: number
+          size_xl?: number
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          notes?: string | null
+          product_name?: string
+          quantity?: number
+          size_l?: number
+          size_m?: number
+          size_s?: number
+          size_xl?: number
+        }
+        Relationships: []
+      }
       graduation_leads: {
         Row: {
           created_at: string
