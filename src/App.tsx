@@ -29,6 +29,8 @@ const Products = lazy(() => import("./pages/Products"));
 const DesignLab = lazy(() => import("./pages/DesignLab"));
 const GreenInitiative = lazy(() => import("./pages/GreenInitiative"));
 const ThankYou = lazy(() => import("./pages/ThankYou"));
+const SchoolLogin = lazy(() => import("./pages/SchoolLogin"));
+const FairgreenPortalDemo = lazy(() => import("./pages/FairgreenPortalDemo"));
 
 // Loading fallback
 const PageLoader = () => (
@@ -189,6 +191,16 @@ const App = () => {
               <Route path="/thank-you" element={
                 <Suspense fallback={<PageLoader />}>
                   <ThankYou />
+                </Suspense>
+              } />
+              <Route path="/schools/login" element={
+                <Suspense fallback={<PageLoader />}>
+                  <SchoolLogin />
+                </Suspense>
+              } />
+              <Route path="/schools/fairgreen-portal-demo" element={
+                <Suspense fallback={<PageLoader />}>
+                  <FairgreenPortalDemo />
                 </Suspense>
               } />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
