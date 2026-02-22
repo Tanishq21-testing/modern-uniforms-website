@@ -6,8 +6,10 @@ import { useToast } from '@/hooks/use-toast';
 import {
   LogOut, Package, ClipboardList, Upload, History, CalendarClock,
   X, ShoppingCart, FileSpreadsheet, BarChart3, ChevronRight,
-  TrendingUp, Users, DollarSign, Filter
+  TrendingUp, Users, DollarSign, Filter, FileText, Shield,
+  Clock, Zap, Target, CheckCircle2, Lock, FileCheck
 } from 'lucide-react';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 
 // ─── Product Data ─────────────────────────────────────────
 const PRODUCTS = [
@@ -187,6 +189,173 @@ function SizeSummaryTool() {
   );
 }
 
+// ─── Contract Management Tab ──────────────────────────────
+const LOCKED_PRICING = [
+  { product: 'Navy Blue Children Hoodies', price: 115, validUntil: 'June 2027', moq: '200 units', protection: true },
+  { product: 'Navy Blue Adult Hoodies', price: 130, validUntil: 'June 2027', moq: '150 units', protection: true },
+  { product: 'Grey Poloshirts', price: 60, validUntil: 'June 2027', moq: '100 units', protection: true },
+  { product: 'Navy Blue Cargo Pants', price: 80, validUntil: 'June 2027', moq: '100 units', protection: true },
+];
+
+function ContractManagementTab() {
+  const [docModal, setDocModal] = useState<string | null>(null);
+
+  return (
+    <div className="space-y-8">
+      {/* Contract Overview */}
+      <section className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8">
+        <div className="flex items-center gap-2 mb-6">
+          <Shield className="w-5 h-5 text-slate-700" />
+          <h2 className="text-lg font-semibold text-slate-900">Contract Overview</h2>
+          <span className="ml-2 inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+            Active
+          </span>
+        </div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {[
+            { label: 'Contract Start Date', value: 'June 2025' },
+            { label: 'Contract Term', value: '2 Years' },
+            { label: 'Renewal Date', value: 'June 2027' },
+            { label: 'Pricing Tier', value: 'Institutional Tier A' },
+            { label: 'Dedicated Account Manager', value: 'Assigned' },
+            { label: 'Contract Status', value: 'Active', highlight: true },
+          ].map(item => (
+            <div key={item.label} className="bg-slate-50 rounded-xl p-4 border border-slate-100">
+              <p className="text-xs text-slate-500 font-medium uppercase tracking-wider mb-1">{item.label}</p>
+              <p className={`text-sm font-semibold ${item.highlight ? 'text-emerald-700' : 'text-slate-900'}`}>{item.value}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Locked Pricing */}
+      <section className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8">
+        <div className="flex items-center gap-2 mb-5">
+          <Lock className="w-5 h-5 text-slate-700" />
+          <h2 className="text-lg font-semibold text-slate-900">Approved &amp; Locked Pricing</h2>
+        </div>
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b border-slate-200 bg-slate-50/50">
+                <th className="text-left py-3 px-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Product Name</th>
+                <th className="text-right py-3 px-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Locked Price</th>
+                <th className="text-left py-3 px-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Valid Until</th>
+                <th className="text-left py-3 px-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">MOQ</th>
+                <th className="text-center py-3 px-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Price Protection</th>
+              </tr>
+            </thead>
+            <tbody>
+              {LOCKED_PRICING.map(row => (
+                <tr key={row.product} className="border-b border-slate-50 hover:bg-slate-50/50">
+                  <td className="py-3 px-4 font-medium text-slate-900">{row.product}</td>
+                  <td className="py-3 px-4 text-right font-semibold text-slate-900">AED {row.price}</td>
+                  <td className="py-3 px-4 text-slate-600">{row.validUntil}</td>
+                  <td className="py-3 px-4 text-slate-600">{row.moq}</td>
+                  <td className="py-3 px-4 text-center">
+                    {row.protection && (
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-200">
+                        <CheckCircle2 className="w-3 h-3" /> Yes
+                      </span>
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 text-xs text-slate-500 bg-slate-50 rounded-lg px-4 py-3 border border-slate-100 italic">
+          Pricing protected against raw material increases for duration of agreement.
+        </p>
+      </section>
+
+      {/* Reorder Agreement Terms */}
+      <section className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8">
+        <div className="flex items-center gap-2 mb-5">
+          <Clock className="w-5 h-5 text-slate-700" />
+          <h2 className="text-lg font-semibold text-slate-900">Reorder Agreement Terms</h2>
+        </div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {[
+            { icon: Clock, label: 'Standard Production Lead Time', value: '3–4 Weeks' },
+            { icon: Zap, label: 'Rush Production Available', value: 'Yes (Priority Tier)' },
+            { icon: CalendarClock, label: 'Average Reorder Cycle', value: '60–90 Days' },
+            { icon: Target, label: 'Bulk Discount Threshold', value: '300+ Units' },
+          ].map(item => (
+            <div key={item.label} className="bg-slate-50 rounded-xl p-5 border border-slate-100 text-center">
+              <div className="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center mx-auto mb-3">
+                <item.icon className="w-5 h-5 text-slate-600" />
+              </div>
+              <p className="text-xs text-slate-500 font-medium mb-1">{item.label}</p>
+              <p className="text-sm font-bold text-slate-900">{item.value}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Annual Program Summary */}
+      <section className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8">
+        <div className="flex items-center gap-2 mb-5">
+          <BarChart3 className="w-5 h-5 text-slate-700" />
+          <h2 className="text-lg font-semibold text-slate-900">Annual Program Summary</h2>
+        </div>
+        <div className="grid sm:grid-cols-3 gap-4">
+          {[
+            { label: 'Estimated Annual Volume', value: '900 – 1,200 Units' },
+            { label: 'Largest Single Rollout', value: '520 Hoodies (Jan 2026)' },
+            { label: 'Projected Annual Value', value: 'AED 120,000 – 150,000' },
+          ].map(item => (
+            <div key={item.label} className="bg-slate-50 rounded-xl p-5 border border-slate-100">
+              <p className="text-xs text-slate-500 font-medium uppercase tracking-wider mb-2">{item.label}</p>
+              <p className="text-lg font-bold text-slate-900">{item.value}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Documents */}
+      <section className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8">
+        <div className="flex items-center gap-2 mb-5">
+          <FileCheck className="w-5 h-5 text-slate-700" />
+          <h2 className="text-lg font-semibold text-slate-900">Documents</h2>
+        </div>
+        <div className="space-y-3">
+          {['Agreement Document', 'Pricing Schedule', 'Artwork Approval Sheet'].map(doc => (
+            <div key={doc} className="flex items-center justify-between bg-slate-50 rounded-xl px-5 py-4 border border-slate-100">
+              <div className="flex items-center gap-3">
+                <FileText className="w-4 h-4 text-slate-500" />
+                <span className="text-sm font-medium text-slate-900">{doc}</span>
+              </div>
+              <button onClick={() => setDocModal(doc)}
+                className="px-4 py-1.5 rounded-lg text-xs font-medium bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 transition-colors">
+                View
+              </button>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Document Modal */}
+      {docModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm px-4" onClick={() => setDocModal(null)}>
+          <div className="bg-white rounded-2xl shadow-xl w-full max-w-md p-6 relative" onClick={e => e.stopPropagation()}>
+            <button onClick={() => setDocModal(null)} className="absolute top-4 right-4 text-slate-400 hover:text-slate-600">
+              <X className="w-5 h-5" />
+            </button>
+            <FileText className="w-8 h-8 text-slate-400 mb-3" />
+            <h3 className="text-lg font-semibold text-slate-900 mb-2">{docModal}</h3>
+            <p className="text-sm text-slate-500 mb-4">This is a demo placeholder. In a live environment, this document would be available for download or online viewing.</p>
+            <div className="bg-slate-50 rounded-xl p-4 border border-slate-100 text-center text-xs text-slate-400">
+              Document preview not available in demo mode.
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 // ─── Main Portal ──────────────────────────────────────────
 const FairgreenPortalDemo = () => {
   const { isAuthenticated, loading, logout } = useSchoolAuth();
@@ -246,175 +415,190 @@ const FairgreenPortalDemo = () => {
         </div>
       </header>
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-10">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <Tabs defaultValue="dashboard" className="space-y-8">
+          <TabsList className="bg-white border border-slate-200 rounded-xl p-1 h-auto">
+            <TabsTrigger value="dashboard" className="rounded-lg px-5 py-2.5 text-sm font-medium data-[state=active]:bg-slate-900 data-[state=active]:text-white">
+              Dashboard
+            </TabsTrigger>
+            <TabsTrigger value="contracts" className="rounded-lg px-5 py-2.5 text-sm font-medium data-[state=active]:bg-slate-900 data-[state=active]:text-white">
+              Contract Management
+            </TabsTrigger>
+          </TabsList>
 
-        {/* Section 1 – Welcome */}
-        <section className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8">
-          <h2 className="text-lg font-semibold text-slate-900 mb-2">Welcome to your School Uniform Dashboard</h2>
-          <p className="text-sm text-slate-500 leading-relaxed max-w-2xl">
-            Here you can manage approved products, place reorders, and track your uniform program. Use the tools below to streamline your institutional uniform operations.
-          </p>
-        </section>
+          <TabsContent value="dashboard" className="space-y-10 mt-0">
+            {/* Section 1 – Welcome */}
+            <section className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8">
+              <h2 className="text-lg font-semibold text-slate-900 mb-2">Welcome to your School Uniform Dashboard</h2>
+              <p className="text-sm text-slate-500 leading-relaxed max-w-2xl">
+                Here you can manage approved products, place reorders, and track your uniform program. Use the tools below to streamline your institutional uniform operations.
+              </p>
+            </section>
 
-        {/* Section 1.5 – Program Summary Stats */}
-        <section className="grid sm:grid-cols-3 gap-4">
-          <div className="bg-white rounded-2xl border border-slate-200 p-5">
-            <div className="flex items-center gap-3 mb-2">
-              <div className="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center">
-                <ClipboardList className="w-5 h-5 text-slate-700" />
+            {/* Program Summary Stats */}
+            <section className="grid sm:grid-cols-3 gap-4">
+              <div className="bg-white rounded-2xl border border-slate-200 p-5">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center">
+                    <ClipboardList className="w-5 h-5 text-slate-700" />
+                  </div>
+                  <p className="text-xs text-slate-500 font-medium uppercase tracking-wider">Total Orders</p>
+                </div>
+                <p className="text-3xl font-bold text-slate-900">{totalOrders}</p>
               </div>
-              <p className="text-xs text-slate-500 font-medium uppercase tracking-wider">Total Orders</p>
-            </div>
-            <p className="text-3xl font-bold text-slate-900">{totalOrders}</p>
-          </div>
-          <div className="bg-white rounded-2xl border border-slate-200 p-5">
-            <div className="flex items-center gap-3 mb-2">
-              <div className="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center">
+              <div className="bg-white rounded-2xl border border-slate-200 p-5">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center">
+                    <Package className="w-5 h-5 text-slate-700" />
+                  </div>
+                  <p className="text-xs text-slate-500 font-medium uppercase tracking-wider">Total Units Delivered</p>
+                </div>
+                <p className="text-3xl font-bold text-slate-900">{totalUnits.toLocaleString()}</p>
+              </div>
+              <div className="bg-white rounded-2xl border border-slate-200 p-5">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center">
+                    <TrendingUp className="w-5 h-5 text-slate-700" />
+                  </div>
+                  <p className="text-xs text-slate-500 font-medium uppercase tracking-wider">Total Program Value</p>
+                </div>
+                <p className="text-3xl font-bold text-slate-900">AED {totalProgramValue.toLocaleString()}</p>
+              </div>
+            </section>
+
+            {/* Approved Products */}
+            <section>
+              <div className="flex items-center gap-2 mb-5">
                 <Package className="w-5 h-5 text-slate-700" />
+                <h2 className="text-lg font-semibold text-slate-900">Approved Products</h2>
               </div>
-              <p className="text-xs text-slate-500 font-medium uppercase tracking-wider">Total Units Delivered</p>
-            </div>
-            <p className="text-3xl font-bold text-slate-900">{totalUnits.toLocaleString()}</p>
-          </div>
-          <div className="bg-white rounded-2xl border border-slate-200 p-5">
-            <div className="flex items-center gap-3 mb-2">
-              <div className="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center">
-                <TrendingUp className="w-5 h-5 text-slate-700" />
+              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                {PRODUCTS.map(p => (
+                  <div key={p.id} className="bg-white rounded-2xl border border-slate-200 p-5 flex flex-col hover:shadow-md transition-shadow">
+                    <h3 className="text-sm font-semibold text-slate-900 leading-snug mb-1">{p.name}</h3>
+                    <p className="text-xs text-slate-500 leading-relaxed mb-3 flex-1">{p.desc}</p>
+                    <div className="text-lg font-bold text-slate-900 mb-4">AED {p.price.toFixed(p.price % 1 ? 1 : 0)}</div>
+                    <div className="flex gap-2">
+                      <button onClick={() => setReorderProduct(p)}
+                        className="flex-1 py-2 rounded-xl bg-slate-900 text-white text-xs font-medium hover:bg-slate-800 transition-colors flex items-center justify-center gap-1.5">
+                        <ShoppingCart className="w-3.5 h-3.5" />
+                        Reorder
+                      </button>
+                      <button className="px-3 py-2 rounded-xl border border-slate-200 text-xs font-medium text-slate-600 hover:bg-slate-50 transition-colors">
+                        Details
+                      </button>
+                    </div>
+                  </div>
+                ))}
               </div>
-              <p className="text-xs text-slate-500 font-medium uppercase tracking-wider">Total Program Value</p>
-            </div>
-            <p className="text-3xl font-bold text-slate-900">AED {totalProgramValue.toLocaleString()}</p>
-          </div>
-        </section>
+            </section>
 
-        {/* Section 2 – Approved Products */}
-        <section>
-          <div className="flex items-center gap-2 mb-5">
-            <Package className="w-5 h-5 text-slate-700" />
-            <h2 className="text-lg font-semibold text-slate-900">Approved Products</h2>
-          </div>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {PRODUCTS.map(p => (
-              <div key={p.id} className="bg-white rounded-2xl border border-slate-200 p-5 flex flex-col hover:shadow-md transition-shadow">
-                <h3 className="text-sm font-semibold text-slate-900 leading-snug mb-1">{p.name}</h3>
-                <p className="text-xs text-slate-500 leading-relaxed mb-3 flex-1">{p.desc}</p>
-                <div className="text-lg font-bold text-slate-900 mb-4">AED {p.price.toFixed(p.price % 1 ? 1 : 0)}</div>
-                <div className="flex gap-2">
-                  <button onClick={() => setReorderProduct(p)}
-                    className="flex-1 py-2 rounded-xl bg-slate-900 text-white text-xs font-medium hover:bg-slate-800 transition-colors flex items-center justify-center gap-1.5">
-                    <ShoppingCart className="w-3.5 h-3.5" />
-                    Reorder
-                  </button>
-                  <button className="px-3 py-2 rounded-xl border border-slate-200 text-xs font-medium text-slate-600 hover:bg-slate-50 transition-colors">
-                    Details
-                  </button>
+            {/* Size Summary Tool */}
+            <section className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8">
+              <div className="flex items-center gap-2 mb-5">
+                <FileSpreadsheet className="w-5 h-5 text-slate-700" />
+                <h2 className="text-lg font-semibold text-slate-900">Bulk Size Breakdown</h2>
+              </div>
+              <p className="text-sm text-slate-500 mb-5">Enter student names and sizes to calculate totals for your next order.</p>
+              <SizeSummaryTool />
+            </section>
+
+            {/* Order History */}
+            <section className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-5">
+                <div className="flex items-center gap-2">
+                  <History className="w-5 h-5 text-slate-700" />
+                  <h2 className="text-lg font-semibold text-slate-900">Order History</h2>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  <div className="flex items-center gap-1.5">
+                    <Filter className="w-3.5 h-3.5 text-slate-400" />
+                    <select value={categoryFilter} onChange={e => setCategoryFilter(e.target.value)}
+                      className="text-xs px-3 py-1.5 rounded-lg border border-slate-200 bg-slate-50 text-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-900">
+                      <option value="all">All Categories</option>
+                      {CATEGORIES.map(c => <option key={c} value={c}>{c}</option>)}
+                    </select>
+                  </div>
+                  <select value={dateFilter} onChange={e => setDateFilter(e.target.value)}
+                    className="text-xs px-3 py-1.5 rounded-lg border border-slate-200 bg-slate-50 text-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-900">
+                    <option value="all">All Dates</option>
+                    {uniqueDates.map(d => <option key={d} value={d}>{d}</option>)}
+                  </select>
                 </div>
               </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Section 4 – Size Summary Tool */}
-        <section className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8">
-          <div className="flex items-center gap-2 mb-5">
-            <FileSpreadsheet className="w-5 h-5 text-slate-700" />
-            <h2 className="text-lg font-semibold text-slate-900">Bulk Size Breakdown</h2>
-          </div>
-          <p className="text-sm text-slate-500 mb-5">Enter student names and sizes to calculate totals for your next order.</p>
-          <SizeSummaryTool />
-        </section>
-
-        {/* Section 5 – Order History */}
-        <section className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-5">
-            <div className="flex items-center gap-2">
-              <History className="w-5 h-5 text-slate-700" />
-              <h2 className="text-lg font-semibold text-slate-900">Order History</h2>
-            </div>
-            <div className="flex flex-wrap gap-2">
-              <div className="flex items-center gap-1.5">
-                <Filter className="w-3.5 h-3.5 text-slate-400" />
-                <select value={categoryFilter} onChange={e => setCategoryFilter(e.target.value)}
-                  className="text-xs px-3 py-1.5 rounded-lg border border-slate-200 bg-slate-50 text-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-900">
-                  <option value="all">All Categories</option>
-                  {CATEGORIES.map(c => <option key={c} value={c}>{c}</option>)}
-                </select>
-              </div>
-              <select value={dateFilter} onChange={e => setDateFilter(e.target.value)}
-                className="text-xs px-3 py-1.5 rounded-lg border border-slate-200 bg-slate-50 text-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-900">
-                <option value="all">All Dates</option>
-                {uniqueDates.map(d => <option key={d} value={d}>{d}</option>)}
-              </select>
-            </div>
-          </div>
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="border-b border-slate-200 bg-slate-50/50">
-                  <th className="text-left py-3 px-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Invoice #</th>
-                  <th className="text-left py-3 px-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Date</th>
-                  <th className="text-left py-3 px-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Category</th>
-                  <th className="text-left py-3 px-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Product</th>
-                  <th className="text-right py-3 px-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Qty</th>
-                  <th className="text-right py-3 px-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Unit Price</th>
-                  <th className="text-right py-3 px-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Subtotal</th>
-                  <th className="text-right py-3 px-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Total Due</th>
-                  <th className="text-left py-3 px-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                {filteredOrders.map((o, i) => {
-                  const isFirstInInvoice = i === 0 || filteredOrders[i - 1]?.invoice !== o.invoice;
-                  return (
-                    <tr key={`${o.invoice}-${o.product}`} className={`border-b border-slate-50 hover:bg-slate-50/50 ${isFirstInInvoice && i > 0 ? 'border-t-2 border-t-slate-200' : ''}`}>
-                      <td className="py-3 px-4 font-medium text-slate-900">{isFirstInInvoice ? `INV-${o.invoice}` : ''}</td>
-                      <td className="py-3 px-4 text-slate-600">{isFirstInInvoice ? o.date : ''}</td>
-                      <td className="py-3 px-4">
-                        {isFirstInInvoice && (
-                          <span className="inline-block px-2.5 py-0.5 rounded-md bg-slate-100 text-slate-600 text-xs font-medium">{o.category}</span>
-                        )}
-                      </td>
-                      <td className="py-3 px-4 text-slate-700">{o.product}</td>
-                      <td className="py-3 px-4 text-right text-slate-700 font-medium">{o.qty}</td>
-                      <td className="py-3 px-4 text-right text-slate-600">AED {o.unitPrice.toFixed(1)}</td>
-                      <td className="py-3 px-4 text-right text-slate-600">AED {o.subtotal.toLocaleString()}</td>
-                      <td className="py-3 px-4 text-right font-semibold text-slate-900">{isFirstInInvoice ? `AED ${o.totalDue.toLocaleString()}` : ''}</td>
-                      <td className="py-3 px-4">
-                        {isFirstInInvoice && (
-                          <span className={`inline-block px-3 py-1 rounded-full text-xs font-medium border ${statusColors[o.status] || 'bg-slate-100 text-slate-600 border-slate-200'}`}>
-                            {o.status}
-                          </span>
-                        )}
-                      </td>
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="border-b border-slate-200 bg-slate-50/50">
+                      <th className="text-left py-3 px-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Invoice #</th>
+                      <th className="text-left py-3 px-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Date</th>
+                      <th className="text-left py-3 px-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Category</th>
+                      <th className="text-left py-3 px-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Product</th>
+                      <th className="text-right py-3 px-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Qty</th>
+                      <th className="text-right py-3 px-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Unit Price</th>
+                      <th className="text-right py-3 px-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Subtotal</th>
+                      <th className="text-right py-3 px-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Total Due</th>
+                      <th className="text-left py-3 px-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Status</th>
                     </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-            {filteredOrders.length === 0 && (
-              <p className="text-center text-sm text-slate-400 py-8">No orders match the selected filters.</p>
-            )}
-          </div>
-        </section>
+                  </thead>
+                  <tbody>
+                    {filteredOrders.map((o, i) => {
+                      const isFirstInInvoice = i === 0 || filteredOrders[i - 1]?.invoice !== o.invoice;
+                      return (
+                        <tr key={`${o.invoice}-${o.product}`} className={`border-b border-slate-50 hover:bg-slate-50/50 ${isFirstInInvoice && i > 0 ? 'border-t-2 border-t-slate-200' : ''}`}>
+                          <td className="py-3 px-4 font-medium text-slate-900">{isFirstInInvoice ? `INV-${o.invoice}` : ''}</td>
+                          <td className="py-3 px-4 text-slate-600">{isFirstInInvoice ? o.date : ''}</td>
+                          <td className="py-3 px-4">
+                            {isFirstInInvoice && (
+                              <span className="inline-block px-2.5 py-0.5 rounded-md bg-slate-100 text-slate-600 text-xs font-medium">{o.category}</span>
+                            )}
+                          </td>
+                          <td className="py-3 px-4 text-slate-700">{o.product}</td>
+                          <td className="py-3 px-4 text-right text-slate-700 font-medium">{o.qty}</td>
+                          <td className="py-3 px-4 text-right text-slate-600">AED {o.unitPrice.toFixed(1)}</td>
+                          <td className="py-3 px-4 text-right text-slate-600">AED {o.subtotal.toLocaleString()}</td>
+                          <td className="py-3 px-4 text-right font-semibold text-slate-900">{isFirstInInvoice ? `AED ${o.totalDue.toLocaleString()}` : ''}</td>
+                          <td className="py-3 px-4">
+                            {isFirstInInvoice && (
+                              <span className={`inline-block px-3 py-1 rounded-full text-xs font-medium border ${statusColors[o.status] || 'bg-slate-100 text-slate-600 border-slate-200'}`}>
+                                {o.status}
+                              </span>
+                            )}
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+                {filteredOrders.length === 0 && (
+                  <p className="text-center text-sm text-slate-400 py-8">No orders match the selected filters.</p>
+                )}
+              </div>
+            </section>
 
-        {/* Section 6 – Delivery Timeline */}
-        <section className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8">
-          <div className="flex items-center gap-2 mb-4">
-            <CalendarClock className="w-5 h-5 text-slate-700" />
-            <h2 className="text-lg font-semibold text-slate-900">Delivery Timeline</h2>
-          </div>
-          <div className="grid sm:grid-cols-2 gap-4">
-            <div className="bg-slate-50 rounded-xl p-5 border border-slate-100">
-              <p className="text-xs text-slate-500 mb-1">Last Order Placed</p>
-              <p className="text-lg font-bold text-slate-900">February 2, 2026</p>
-            </div>
-            <div className="bg-slate-50 rounded-xl p-5 border border-slate-100">
-              <p className="text-xs text-slate-500 mb-1">Suggested Reorder Window</p>
-              <p className="text-lg font-bold text-emerald-700">May 2026</p>
-            </div>
-          </div>
-        </section>
+            {/* Delivery Timeline */}
+            <section className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8">
+              <div className="flex items-center gap-2 mb-4">
+                <CalendarClock className="w-5 h-5 text-slate-700" />
+                <h2 className="text-lg font-semibold text-slate-900">Delivery Timeline</h2>
+              </div>
+              <div className="grid sm:grid-cols-2 gap-4">
+                <div className="bg-slate-50 rounded-xl p-5 border border-slate-100">
+                  <p className="text-xs text-slate-500 mb-1">Last Order Placed</p>
+                  <p className="text-lg font-bold text-slate-900">February 2, 2026</p>
+                </div>
+                <div className="bg-slate-50 rounded-xl p-5 border border-slate-100">
+                  <p className="text-xs text-slate-500 mb-1">Suggested Reorder Window</p>
+                  <p className="text-lg font-bold text-emerald-700">May 2026</p>
+                </div>
+              </div>
+            </section>
+          </TabsContent>
 
+          <TabsContent value="contracts" className="mt-0">
+            <ContractManagementTab />
+          </TabsContent>
+        </Tabs>
       </main>
 
       <footer className="border-t border-slate-100 py-6 mt-10">
