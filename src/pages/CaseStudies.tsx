@@ -1,19 +1,65 @@
 
-import { useEffect } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { images } from '@/assets/images';
-import restaurantUniformsImg from '@/assets/images/restaurant-uniforms.jpg';
+import jonesGrocerImg from '@/assets/images/jones-grocer-uniforms.jpg';
+import autogrillImg from '@/assets/images/autogrill-uniforms.jpg';
+import littleBangkokImg from '@/assets/images/little-bangkok-uniforms.jpg';
 import industrialWorkers1 from '@/assets/images/industrial-workers-1.jpg';
 import industrialWorkers2 from '@/assets/images/industrial-workers-2.jpg';
 import { 
   GraduationCap, UtensilsCrossed, Building2, Factory, 
   ArrowRight, CheckCircle2, MessageSquare, Palette, 
   PackageCheck, ShieldCheck, Truck, Users,
-  School, Hotel, Briefcase, ShoppingBag
+  School, Hotel, Briefcase, ShoppingBag, ChevronLeft, ChevronRight
 } from 'lucide-react';
+
+const SUPABASE_STORAGE_URL = 'https://hpwyafqbadlkschxnple.supabase.co/storage/v1/object/public/uniformconnect/graduation2026';
+
+const graduationImages = [
+  { src: `${SUPABASE_STORAGE_URL}/Dia%20hoodie%202.jpg`, alt: 'DIA Graduation Hoodie' },
+  { src: `${SUPABASE_STORAGE_URL}/Raffle%20Hoodie.jpg`, alt: 'Raffles Graduation Hoodie' },
+  { src: `${SUPABASE_STORAGE_URL}/Sweater.png`, alt: 'School Sweater' },
+  { src: `${SUPABASE_STORAGE_URL}/WinchesterJacket.jpg`, alt: 'Winchester Leavers Jacket' },
+];
+
+const GraduationCarousel = () => {
+  const [current, setCurrent] = useState(0);
+  const next = useCallback(() => setCurrent((c) => (c + 1) % graduationImages.length), []);
+  const prev = useCallback(() => setCurrent((c) => (c - 1 + graduationImages.length) % graduationImages.length), []);
+
+  useEffect(() => {
+    const timer = setInterval(next, 4000);
+    return () => clearInterval(timer);
+  }, [next]);
+
+  return (
+    <div className="relative rounded-xl overflow-hidden shadow-[var(--shadow-medium)] aspect-[4/5] bg-muted">
+      {graduationImages.map((img, i) => (
+        <img
+          key={img.alt}
+          src={img.src}
+          alt={img.alt}
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${i === current ? 'opacity-100' : 'opacity-0'}`}
+        />
+      ))}
+      <button onClick={prev} className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-background/80 backdrop-blur flex items-center justify-center hover:bg-background transition-colors">
+        <ChevronLeft className="h-5 w-5 text-foreground" />
+      </button>
+      <button onClick={next} className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-background/80 backdrop-blur flex items-center justify-center hover:bg-background transition-colors">
+        <ChevronRight className="h-5 w-5 text-foreground" />
+      </button>
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+        {graduationImages.map((_, i) => (
+          <button key={i} onClick={() => setCurrent(i)} className={`w-2 h-2 rounded-full transition-all ${i === current ? 'bg-background w-6' : 'bg-background/50'}`} />
+        ))}
+      </div>
+    </div>
+  );
+};
 
 const CaseStudies = () => {
   useEffect(() => {
@@ -116,9 +162,7 @@ const CaseStudies = () => {
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div className="order-2 lg:order-1">
-              <div className="rounded-xl overflow-hidden shadow-[var(--shadow-medium)]">
-                <img src={images.schoolHoodie} alt="Fairgreen graduation hoodies" className="w-full h-auto object-cover" />
-              </div>
+              <GraduationCarousel />
             </div>
             <div className="order-1 lg:order-2">
               <div className="flex items-center gap-3 mb-4">
@@ -168,29 +212,34 @@ const CaseStudies = () => {
       {/* SECTION 4 — RESTAURANT GROUPS */}
       <section className="py-20 md:py-28 bg-background">
         <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            <div>
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-lg bg-brand-green/10 flex items-center justify-center">
-                  <UtensilsCrossed className="h-5 w-5 text-brand-green" />
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-10 h-10 rounded-lg bg-brand-green/10 flex items-center justify-center">
+              <UtensilsCrossed className="h-5 w-5 text-brand-green" />
+            </div>
+            <span className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">Restaurants</span>
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+            Branded Uniform Programs for Restaurant Groups
+          </h2>
+          <p className="text-muted-foreground mb-10 max-w-2xl leading-relaxed">
+            We partner with leading restaurant brands to deliver uniform programs that reinforce identity across every location.
+          </p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { img: jonesGrocerImg, name: 'Jones The Grocer', desc: 'Multi-branch aprons & service wear' },
+              { img: autogrillImg, name: 'Autogrill', desc: 'Airport F&B staff uniforms' },
+              { img: littleBangkokImg, name: 'Little Bangkok', desc: 'Chef jackets & front-of-house apparel' },
+            ].map((item) => (
+              <div key={item.name} className="rounded-xl overflow-hidden border border-border bg-card shadow-[var(--shadow-soft)] group">
+                <div className="aspect-square overflow-hidden">
+                  <img src={item.img} alt={`${item.name} uniforms`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                 </div>
-                <span className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">Restaurants</span>
+                <div className="p-5">
+                  <h3 className="font-semibold text-foreground mb-1">{item.name}</h3>
+                  <p className="text-sm text-muted-foreground">{item.desc}</p>
+                </div>
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-                Branded Uniform Programs for Restaurant Groups
-              </h2>
-              <div className="grid grid-cols-2 gap-4">
-                {['Custom Embroidery & Print', 'Multi-Location Consistency', 'Interior Concept Alignment', 'Staff Comfort & Durability'].map((item) => (
-                  <div key={item} className="flex items-start gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-brand-green mt-1 shrink-0" />
-                    <span className="text-sm text-foreground">{item}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="rounded-xl overflow-hidden shadow-[var(--shadow-medium)]">
-              <img src={restaurantUniformsImg} alt="Restaurant staff in professional uniforms" className="w-full h-auto object-cover" />
-            </div>
+            ))}
           </div>
         </div>
       </section>
