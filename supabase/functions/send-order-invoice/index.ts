@@ -29,12 +29,29 @@ interface OrderInvoiceRequest {
 }
 
 const handler = async (req: Request): Promise<Response> => {
-  // Handle CORS preflight requests
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
   }
 
   try {
+    // Authenticate the request
+    const authHeader = req.headers.get('Authorization');
+    if (!authHeader?.startsWith('Bearer ')) {
+      return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
+    }
+
+    const supabase = createClient(
+      Deno.env.get('SUPABASE_URL')!,
+      Deno.env.get('SUPABASE_ANON_KEY')!,
+      { global: { headers: { Authorization: authHeader } } }
+    );
+
+    const token = authHeader.replace('Bearer ', '');
+    const { data: claimsData, error: claimsError } = await supabase.auth.getClaims(token);
+    if (claimsError || !claimsData?.claims) {
+      return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
+    }
+
     const { 
       order_number, 
       customer_email, 
@@ -45,7 +62,7 @@ const handler = async (req: Request): Promise<Response> => {
       total_amount 
     }: OrderInvoiceRequest = await req.json();
 
-    console.log('Processing order invoice:', { order_number, customer_email, company_name, school_name });
+    console.log('Processing order invoice for user:', claimsData.claims.sub, { order_number, company_name });
 
     // Generate invoice HTML
     const invoiceHtml = `
@@ -154,23 +171,16 @@ const handler = async (req: Request): Promise<Response> => {
     console.log("Customer confirmation email sent successfully:", customerEmailResponse);
 
     return new Response(
-      JSON.stringify({ 
-        success: true,
-        admin_email: adminEmailResponse,
-        customer_email: customerEmailResponse 
-      }),
+      JSON.stringify({ success: true }),
       {
         status: 200,
-        headers: {
-          "Content-Type": "application/json",
-          ...corsHeaders,
-        },
+        headers: { "Content-Type": "application/json", ...corsHeaders },
       }
     );
   } catch (error: any) {
     console.error("Error in send-order-invoice function:", error);
     return new Response(
-      JSON.stringify({ error: error.message }),
+      JSON.stringify({ error: "Failed to process request" }),
       {
         status: 500,
         headers: { "Content-Type": "application/json", ...corsHeaders },
