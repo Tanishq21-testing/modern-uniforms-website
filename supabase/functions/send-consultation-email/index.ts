@@ -9,6 +9,16 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
+function sanitize(input: unknown): string {
+  if (typeof input !== 'string') return '';
+  return input
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .slice(0, 2000);
+}
+
 serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
@@ -16,18 +26,34 @@ serve(async (req) => {
 
   try {
     console.log("Received email request");
-    const { name, email, company, phone, employeeCount, message, formType = "Consultation Form", pageSource } = await req.json();
-    
+    const body = await req.json();
+    const name = sanitize(body.name);
+    const email = sanitize(body.email);
+    const company = sanitize(body.company);
+    const phone = sanitize(body.phone);
+    const employeeCount = sanitize(body.employeeCount);
+    const message = sanitize(body.message);
+    const formType = sanitize(body.formType || "Consultation Form");
+    const pageSource = sanitize(body.pageSource);
+
+    // Basic validation
+    if (!name || !email) {
+      return new Response(
+        JSON.stringify({ error: "Name and email are required" }),
+        { status: 400, headers: { "Content-Type": "application/json", ...corsHeaders } }
+      );
+    }
+
+    // Simple email format check
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      return new Response(
+        JSON.stringify({ error: "Invalid email format" }),
+        { status: 400, headers: { "Content-Type": "application/json", ...corsHeaders } }
+      );
+    }
+
     const subjectPageName = pageSource || formType;
     const subject = `New Lead – ${subjectPageName}`;
-
-    console.log("Email Configuration:", {
-      from: "UniformConnect <no-reply@uniformconnectuae.com>",
-      to: "tanishqpremchand@gmail.com",
-      subject,
-      sender_email: email,
-      sender_name: name,
-    });
 
     const emailResponse = await resend.emails.send({
       from: "UniformConnect <no-reply@uniformconnectuae.com>",
@@ -50,14 +76,14 @@ serve(async (req) => {
 
     console.log("Email sent successfully:", emailResponse);
 
-    return new Response(JSON.stringify(emailResponse), {
+    return new Response(JSON.stringify({ success: true }), {
       status: 200,
       headers: { "Content-Type": "application/json", ...corsHeaders },
     });
   } catch (error) {
     console.error("Error sending email:", error);
     return new Response(
-      JSON.stringify({ error: error.message }),
+      JSON.stringify({ error: "Failed to process request" }),
       {
         status: 500,
         headers: { "Content-Type": "application/json", ...corsHeaders },
